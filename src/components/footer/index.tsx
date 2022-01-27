@@ -1,8 +1,10 @@
+import { Contact } from "@components/contact";
 import Link from "next/link";
 import React from "react";
 
 export const Footer: React.FC = () => (
-    <footer className="w-full flex flex-col items-center">
+    <footer className="w-full flex flex-col items-center bottom-0">
+        <Contact />
         <a
             className="text-sm mb-4 text-jet hover:text-celadon dark:text-timberwolf dark:hover:text-soda transition-colors"
             href="mailto:alansandra2013@gmail.com?Subject=Hello"
