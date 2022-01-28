@@ -13,13 +13,13 @@ const BlogPage: NextPage<BlockPageProps> = ({ posts }: BlockPageProps) => {
     return (
         <Layout title="Blog" description="My engineering blog">
             <Section>
-                <div className="flex flex-col md:flex-row md:columns-2 my-40 w-11/12 mx-auto">
+                <div className="flex flex-col 2xl:flex-row 2xl:columns-2 my-40 w-11/12 mx-auto">
                     <div className="flex-shrink">
-                        <span className="font-clash text-8xl font-semibold text-center mx-auto w-full">
+                        <span className="font-clash text-5xl md:text-8xl font-light text-center mx-auto w-full">
                             My Blog
                         </span>
                     </div>
-                    <div className="flex-grow">
+                    <div className="flex-grow px-2">
                         {posts.map((post) => (
                             <PostCard
                                 id={post.id}

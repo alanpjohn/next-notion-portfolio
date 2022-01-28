@@ -1,7 +1,9 @@
+import { Tag } from "@components/card";
 import { Layout } from "@components/layout";
 import { Section } from "@components/section";
-import { IPost, IBlock } from "@util/interface";
-import { getBlogPostContent, readFromCache, readPost } from "@util/notion";
+import { getMonthAndYear } from "@util/datetime";
+import { IPost, IBlock, ITag } from "@util/interface";
+import { getBlogPostContent, getBlogPosts, readPost } from "@util/notion";
 import { renderPage } from "@util/render";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
@@ -12,19 +14,36 @@ type PostProps = {
 };
 
 const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
+    if (!post) {
+        return <></>;
+    }
     return (
         <Layout
             title={post.properties.title}
             description={post.properties.description}
         >
             <Section>
-                <div className="flex flex-col md:flex-row md:columns-2 my-40 w-11/12 mx-auto">
-                    <div className="w-1/3 px-4">
-                        <span className="font-clash text-5xl font-light text-center mx-auto w-full">
+                <div className="flex flex-col 2xl:flex-row 2xl:columns-2 my-40 w-11/12 mx-auto">
+                    <div className="flex-1 px-20 2xl:px-4 py-20">
+                        <span className="font-clash text-4xl md:text-5xl font-light text-center mx-auto w-full">
                             {post.properties.title}
                         </span>
+                        <div className="pb-4">
+                            {post.properties.tags.map((tag: ITag) => (
+                                <Tag key={tag.id} {...tag} />
+                            ))}
+                        </div>
+                        <p className="font-cabinet font-light mt-2 text:md md:text-xl">
+                            Last updated:{" "}
+                            {getMonthAndYear(post.properties.date)}
+                        </p>
+                        <p className="font-cabinet font-light mt-8 text-lg md:text-2xl">
+                            {post.properties.description}
+                        </p>
                     </div>
-                    <div className="flex-grow">{renderPage(blocks)}</div>
+                    <div className="flex-grow flex justify-center 2xl:ml-4">
+                        {renderPage(blocks)}
+                    </div>
                 </div>
             </Section>
         </Layout>
@@ -74,7 +93,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const posts = readFromCache();
+    const posts = await getBlogPosts();
     return {
         paths: posts.map((post: IPost) => ({ params: { id: post.url } })),
         fallback: true,

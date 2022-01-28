@@ -11,7 +11,7 @@ const getCanonicalURL = (title: string) => {
 export const getPosts = (response: QueryDatabaseResponse): IPost[] => {
     const posts: IPost[] = [];
     response.results.map((page) => {
-        const anyproperties = JSON.parse(JSON.stringify(page.properties));
+        const anyproperties = JSON.parse(JSON.stringify(page))["properties"];
         const properties: IPostDetails = {
             tags: anyproperties["Tags"]["multi_select"].map((tag: ITag) => {
                 return tag;

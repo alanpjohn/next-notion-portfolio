@@ -4,7 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### [0.3.0] - 2022-01-28
+## [0.3.1] - 2022-01-28
+### Added 
+- Sharp for image optimization
+- Post Card for blog
+- Datetime parsing
+### Fixed
+- Broken "About" link
+- Improvement in layout transitions
+- Responsive design  for Blog and Post pages
+
+## [0.3.0] - 2022-01-28
 ### Added
 - All Posts page (unstyled)
 - Read Post page (unstyled)
@@ -21,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Image filters
 - React.FC replaced by NextPage in pages
 
-### [0.2.2] - 2022-01-28
+## [0.2.2] - 2022-01-28
 ### Added
 - Button components
 - Navigation links
@@ -32,7 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Section to be customizable at page level
 - Header structure
 
-### [0.2.1] - 2022-01-28
+## [0.2.1] - 2022-01-28
 ### Removed
 - Animated background due to performance issues
 ### Fixed
