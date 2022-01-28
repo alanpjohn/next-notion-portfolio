@@ -5,5 +5,9 @@ type Props = {
 };
 
 export const Section: React.FC<Props> = ({ children }: Props) => {
-    return <div>{{ children }}</div>;
+    return (
+        <section className="flex flex-col w-full min-h-screen justify-center">
+            { children }
+        </section>
+    );
 };
