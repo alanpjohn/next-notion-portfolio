@@ -60,13 +60,6 @@ Use webpack-bundle-analyzer in your Next.js project. Visualize size of webpack o
 [Go To Documentation](https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer)
 
 
-### **Zustand**
-
-A small, fast and scalable bearbones state-management solution using simplified flux principles.
-
-[Go To Documentation](https://github.com/pmndrs/zustand)
-
-
 ### **ESLint**
 
 A pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript. Maintain your code quality with ease.

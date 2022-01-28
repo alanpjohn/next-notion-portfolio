@@ -41,11 +41,7 @@ jobs:
 
             - name: Run lint
               run: npm run lint
-
-            - name: Run tests
-              run: npm run test
-
-            
+           
     release:
         runs-on: ubuntu-latest
 
@@ -62,4 +58,4 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  branch: ${{ steps.package-version.outputs.current-version }}
+                  branch: v${{ steps.package-version.outputs.current-version }}

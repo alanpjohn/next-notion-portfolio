@@ -1,8 +1,10 @@
 import React from "react";
 import { AppProps } from "next/app";
+import { DefaultSeo } from "next-seo";
+
 import "tailwindcss/tailwind.css";
 import "@styles/global.scss";
-import { DefaultSeo } from "next-seo";
+import "highlight.js/styles/stackoverflow-dark.css";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
     const url = `https://localhost:3000${router.route}`;

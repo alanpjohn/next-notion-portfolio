@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
             <Link href="/">
                 <a className="logo">AJ</a>
             </Link>
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center justify-center w-2/5">
                 <NavigationLink text="About" href="#about" />
                 <NavigationLink text="Blog" href="/blog" />
                 <NavigationLink

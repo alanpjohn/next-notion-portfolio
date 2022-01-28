@@ -1,9 +1,9 @@
-import React from "react";
 import { Layout } from "@components/layout";
 import { Section } from "@components/section";
 import { CustomImage } from "@components/image";
+import { NextPage } from "next";
 
-const Home: React.FC = () => {
+const Home: NextPage = () => {
     return (
         <Layout title="Home" description="2022 Portfolio">
             <Section className="justify-center min-h-screen">
@@ -28,9 +28,12 @@ const Home: React.FC = () => {
                 <div className="flex flex-col md:flex-row md:columns-2 w-11/12 mx-auto">
                     <div className="flex md:w-1/2">
                         <div className="m-auto">
-                        <CustomImage src="/images/home_light.png" height="400px" width="400px" />
+                            <CustomImage
+                                src="/images/home_light.png"
+                                height="400px"
+                                width="400px"
+                            />
                         </div>
-                        
                     </div>
                     <div className="md:w-1/2">
                         <div className="py-20 text-xl">
