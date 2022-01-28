@@ -1,0 +1,27 @@
+.primary-button {
+    @apply h-12 z-0 flex w-min justify-center rounded-full border-2 border-eerie pr-4 hover:bg-red-500 ;
+
+    .icon {
+        @apply m-auto ml-3;
+    }
+
+    span {
+        @apply m-auto ml-4 font-clash font-semibold text-lg whitespace-nowrap;
+    }
+}
+
+.round-button {
+    @apply h-12 z-0 flex w-12 justify-center rounded-full border-2 border-eerie p-2 hover:bg-red-500 ;
+
+    .icon {
+        @apply m-auto
+    }
+}
+
+.contact-button {
+    @apply h-16 z-0 flex w-16 justify-center rounded-full border-2 border-eerie p-2 hover:border-0 ;
+
+    .icon {
+        @apply m-auto text-2xl
+    }
+}

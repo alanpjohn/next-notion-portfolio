@@ -44,3 +44,22 @@ jobs:
 
             - name: Run tests
               run: npm run test
+
+            
+    release:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@master
+
+            - name: Get NPM version
+              id: package-version
+              uses: martinbeentjes/npm-get-version-action@master
+
+            - name: Create Branch for version
+              uses: peterjgrainger/action-create-branch@v2.0.1
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  branch: ${{ steps.package-version.outputs.current-version }}
