@@ -16,7 +16,7 @@ const links = [
 ];
 
 export const Contact: React.FC = () => (
-    <div className="flex flex-row text-2xl my-6 text-eerie dark:text-timberwolf">
+    <div className="flex flex-row text-2xl my-6 text-eerie">
         {links.map(({ Icon, href }, i) => (
             <a
                 key={href}

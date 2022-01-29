@@ -1,0 +1,52 @@
+.tag {
+    @apply px-2 whitespace-nowrap decoration-dotted font-clash text-lg underline underline-offset-4 font-light text-eerie;
+}
+
+.post {
+    @apply mx-auto my-16 max-w-3xl flex flex-row px-2 py-4 border-b-2  border-eerie;
+
+    .content {
+        @apply flex-grow flex flex-col;
+
+        .title {
+            @apply font-cabinet text-2xl md:text-5xl ;
+        }
+
+        .description {
+            @apply font-cabinet font-light text-xl md:text-2xl;
+        }
+    }
+
+    .sidebar {
+        @apply flex;
+
+        div {
+            @apply m-auto;
+        }
+    }
+}
+
+.project {
+    @apply flex flex-row m-auto mb-8 pt-4 border-b-2 border-eerie;
+
+    .content {
+        @apply flex flex-col flex-wrap lg:flex-grow;
+
+        .title {
+            @apply font-cabinet text-lg md:text-2xl;
+        }
+
+        .description {
+            @apply inline my-auto py-2;
+        }
+    }
+
+    .sidebar {
+        @apply flex;
+
+        div {
+            @apply m-auto;
+        }
+    }
+
+}

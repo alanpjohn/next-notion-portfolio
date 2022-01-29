@@ -4,7 +4,18 @@ import { CustomImage } from "@components/image";
 import { GetStaticProps, NextPage } from "next";
 import { getPortfolioProjects } from "@util/notion";
 import { IProject } from "@util/interface";
-import { ProjectPanel, TechStack } from "@components/panel";
+import { ProjectPanel } from "@components/panel";
+import { PrimaryButton } from "@components/button";
+import { FaCamera, FaGoogleDrive } from "react-icons/fa";
+import { BiNews } from "react-icons/bi";
+import {
+    SiGithub,
+    SiGmail,
+    SiInstagram,
+    SiLinkedin,
+    SiLinuxfoundation,
+    SiTelegram,
+} from "react-icons/si";
 
 type HomeProps = {
     projects: IProject[];
@@ -14,9 +25,9 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
     return (
         <Layout title="Home" description="2022 Portfolio">
             <Section className="justify-center min-h-screen">
-                <div className="flex w-1/2 flex-col m-auto">
+                <div className="flex w-1/2 flex-col m-auto lg:mt-auto mt-32">
                     <div className="flex-grow flex flex-col">
-                        <span className="font-clash text-6xl lg:text-9xl font-medium">
+                        <span className="font-clash text-7xl lg:text-9xl font-medium">
                             Alan John
                         </span>
                         <span className="font-clash text-6xl lg:text-9xl font-light self-center">
@@ -26,6 +37,46 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                             Engineer
                         </span>
                     </div>
+                    <div className="flex flex-row flex-wrap content-between lg:mt-16">
+                        <PrimaryButton
+                            Icon={FaGoogleDrive}
+                            text="Download Resume"
+                            href=""
+                        />
+                        <PrimaryButton
+                            Icon={BiNews}
+                            text="Check out Blog"
+                            href=""
+                        />
+                        <PrimaryButton
+                            Icon={FaCamera}
+                            text="Photography"
+                            href=""
+                        />
+                        <PrimaryButton Icon={SiGithub} text="Github" href="" />
+                        <PrimaryButton
+                            Icon={SiLinkedin}
+                            text="Linkedin"
+                            href=""
+                        />
+                        <PrimaryButton
+                            Icon={SiLinuxfoundation}
+                            text="OpenDev Profile"
+                            href=""
+                        />
+                        <PrimaryButton
+                            Icon={SiTelegram}
+                            text="Telegram"
+                            href=""
+                        />
+                        <PrimaryButton
+                            Icon={SiInstagram}
+                            text="Instagram"
+                            href=""
+                        />
+                        <PrimaryButton Icon={SiGmail} text="Email" href="" />
+                    </div>
+                    <div></div>
                 </div>
             </Section>
             <Section title="About">
@@ -44,7 +95,7 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                     </div>
                     <div className="md:w-1/2">
                         <div className="py-20 text-xl">
-                            <p>
+                            <p className="py-4">
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit. Ut sit amet quam in leo
                                 molestie elementum. Mauris eleifend pretium
@@ -53,9 +104,9 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                                 vehicula dapibus. Proin ullamcorper diam quis
                                 consectetur porttitor. Quisque id ex non mi
                                 efficitur dictum nec viverra ligula. Nam
-                                pulvinar quis diam non tempor.
+                                pulvinar quis diam non tempor. <br />
                             </p>
-                            <p>
+                            <p className="py-4">
                                 Proin nec justo egestas, tincidunt purus sit
                                 amet, maximus orci. Phasellus interdum interdum
                                 turpis, a porttitor ex sagittis vel. Cras vel
@@ -69,16 +120,15 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                     </div>
                 </div>
             </Section>
-            <Section title="skills" className="mt-16">
-                <div className="flex flex-col lg:flex-row lg:columns-3 w-11/12 mx-auto">
-                    <div className="flex lg:w-2/5 lg:order-1">
+            <Section title="skills" className="mt-16 mb-32">
+                <div className="flex flex-col-reverse md:flex-row md:columns-2 w-11/12 mx-auto">
+                    <div className="md:w-3/5 px-8">
                         <ProjectPanel projects={projects} />
                     </div>
-                    <div className="order-first lg:order-2 lg:w-1/5 flex">
-                        <span className="m-auto">Code</span>
-                    </div>
-                    <div className="flex lg:w-2/5 lg:order-3">
-                        <TechStack />
+                    <div className="md:flex-grow md:w-2/5 align-bottom">
+                        <span className="inline-block font-clash text-8xl font-light text-left md:text-right my-6">
+                            My Projects
+                        </span>
                     </div>
                 </div>
             </Section>

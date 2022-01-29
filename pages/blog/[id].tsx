@@ -24,7 +24,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
         >
             <Section>
                 <div className="flex flex-col 2xl:flex-row 2xl:columns-2 my-40 w-11/12 mx-auto">
-                    <div className="flex-1 px-20 2xl:px-4 py-20">
+                    <div className="flex-1 px-20 2xl:px-4 py-4 2xl:py-20">
                         <span className="font-clash text-4xl md:text-5xl font-light text-center mx-auto w-full">
                             {post.properties.title}
                         </span>

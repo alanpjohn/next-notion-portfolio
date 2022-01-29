@@ -7,15 +7,6 @@ type PrimaryButtonProps = {
     href: string;
 };
 
-type RoundButtonProps = {
-    Icon: IconType;
-    href?: string;
-};
-
-type ContactButtonProps = RoundButtonProps & {
-    color: string;
-};
-
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     text,
     Icon = FaArrowRight,
@@ -29,6 +20,11 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     );
 };
 
+type RoundButtonProps = {
+    Icon: IconType;
+    href?: string;
+};
+
 export const RoundButton: React.FC<RoundButtonProps> = ({
     Icon,
 }: RoundButtonProps) => {
@@ -36,17 +32,5 @@ export const RoundButton: React.FC<RoundButtonProps> = ({
         <div className="round-button">
             <Icon className="icon" />
         </div>
-    );
-};
-
-export const ContactButton: React.FC<ContactButtonProps> = ({
-    Icon,
-    href,
-    color,
-}: ContactButtonProps) => {
-    return (
-        <a href={href} className="contact-button">
-            <Icon className="icon" />
-        </a>
     );
 };

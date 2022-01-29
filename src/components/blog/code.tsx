@@ -17,8 +17,8 @@ export const CodeBlock: React.FC<CodeProps> = ({
     });
 
     return (
-        <pre>
-            <code className={language}>{children}</code>
+        <pre className="codeblock">
+            <code className={`${language}`}>{children}</code>
         </pre>
     );
 };

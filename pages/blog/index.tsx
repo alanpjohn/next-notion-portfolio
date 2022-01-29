@@ -1,5 +1,5 @@
-import { PostCard } from "@components/card";
 import { Layout } from "@components/layout";
+import { PostPanel } from "@components/panel";
 import { Section } from "@components/section";
 import { IPost } from "@util/interface";
 import { getBlogPosts } from "@util/notion";
@@ -20,14 +20,7 @@ const BlogPage: NextPage<BlockPageProps> = ({ posts }: BlockPageProps) => {
                         </span>
                     </div>
                     <div className="flex-grow px-2">
-                        {posts.map((post) => (
-                            <PostCard
-                                id={post.id}
-                                key={post.id}
-                                url={post.url}
-                                properties={post.properties}
-                            />
-                        ))}
+                        <PostPanel posts={posts} />
                     </div>
                 </div>
             </Section>

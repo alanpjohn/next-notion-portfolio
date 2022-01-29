@@ -1,0 +1,31 @@
+.heading {
+    @apply font-clash font-medium;
+}
+
+.callout  {
+    @apply flex flex-row bg-slate-100 p-6;
+
+    div:first-child {
+        @apply my-auto mx-4;
+    }
+    
+    div:nth-child(2) {
+        @apply flex-grow;
+    }
+}
+
+.warning {
+    @apply flex flex-row bg-yellow-200 p-6;
+    
+    .icon {
+        @apply my-auto mx-4 text-2xl;
+    }
+
+    .desc {
+        @apply font-mono font-light italic;
+    }
+}
+
+.codeblock {
+    @apply bg-transparent overflow-auto;
+}

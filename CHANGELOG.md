@@ -4,11 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.3] - 2022-01-29
+### Added
+- Stylesheet for blog components
+- Accordian menu
+- Button to scroll back to top
+- Stylesheet for cards
+- Stylesheet for Header components
+### Changed
+- Layout animations
+- Header animations
+- Button styling
+
 ## [0.3.2] - 2022-01-29
 ### Added
 - Panels to show projects (unstyled)
 - Notion support to read Project database
-### Fixed
+### Changed
 - Tag component padding
 - Round button styling
 - Home hero component alinment
@@ -20,10 +32,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Sharp for image optimization
 - Post Card for blog
 - Datetime parsing
-### Fixed
-- Broken "About" link
+### Changed
 - Improvement in layout transitions
 - Responsive design  for Blog and Post pages
+### Fixed
+- Broken "About" link
 
 ## [0.3.0] - 2022-01-28
 ### Added
@@ -34,13 +47,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Blog components
 - Post cache in JSON format
 - Highlight.js for code highlighting
+### Changed
+- Image filters
+- React.FC replaced by NextPage in pages
 ### Removed
 - Boilerplate example files
 - Zustland
 ### Fixed
 - Header alignment
-- Image filters
-- React.FC replaced by NextPage in pages
 
 ## [0.2.2] - 2022-01-28
 ### Added
@@ -49,14 +63,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - About me section with filler text
 - Image component
 - Release branch automation using actions
-### Fixed
+### Changed
 - Section to be customizable at page level
 - Header structure
 
 ## [0.2.1] - 2022-01-28
 ### Removed
 - Animated background due to performance issues
-### Fixed
+### Changed
 - Bumped Next JS to v12.0.9
 - Bumped TailwindCSS to v3.0.17
 - Bumped Framer Motion to v6.2.3
@@ -69,12 +83,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Contact icons
 - Layout component for the pages
 - Section component for the page section
+### Changed
+- Github actions to run in node 12 environment as well
 ### Removed
 - The container component
-### Fixed
-- Github actions to run in node 12 environment as well
-
-
 
 ## [0.1.0] - 2022-01-20
 ### Added

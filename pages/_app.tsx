@@ -4,7 +4,7 @@ import { DefaultSeo } from "next-seo";
 
 import "tailwindcss/tailwind.css";
 import "@styles/global.scss";
-import "highlight.js/styles/stackoverflow-dark.css";
+import "highlight.js/styles/stackoverflow-light.css";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
     const url = `https://localhost:3000${router.route}`;
@@ -23,7 +23,6 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                 }}
                 canonical={url}
             />
-
             <Component {...pageProps} />
         </>
     );

@@ -24,18 +24,18 @@ export const Callout: React.FC<CalloutProps> = ({
     children,
 }: CalloutProps) => {
     return (
-        <div className="flex flex-row border-1 bg-slate-100 p-6">
-            <div className="my-auto mx-4">{icon}</div>
-            <div className="flex-grow">{children}</div>
+        <div className="callout">
+            <div>{icon}</div>
+            <div>{children}</div>
         </div>
     );
 };
 
 export const NotSupportedBlock: React.FC = () => {
     return (
-        <div className="flex flex-row border-1 bg-yellow-200 p-6">
-            <div className="my-auto mx-4 text-2xl">{<VscWarning />}</div>
-            <div className="font-mono font-light italic">
+        <div className="warning">
+            <div className="icon">{<VscWarning />}</div>
+            <div className="desc">
                 Uh-oh! A certain Notion component has not been rendered as it is
                 not supported by the blog yet.
             </div>

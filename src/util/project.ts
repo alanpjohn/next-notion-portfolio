@@ -1,7 +1,7 @@
 import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import { IProject, IProjectDetails, ITag } from "./interface";
 
-export const getProjects = (response: QueryDatabaseResponse) => {
+export const getProjects = (response: QueryDatabaseResponse): IProject[] => {
     const projects: IProject[] = [];
     response.results.map((page) => {
         const anyproperties = JSON.parse(JSON.stringify(page))["properties"];

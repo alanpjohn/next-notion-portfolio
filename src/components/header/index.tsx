@@ -1,28 +1,49 @@
-import { NavigationLink } from "@components/menu";
+import { PrimaryButton } from "@components/button";
+import { Menu } from "@components/menu";
+import {
+    motion,
+    useSpring,
+    useTime,
+    useTransform,
+    useViewportScroll,
+} from "framer-motion";
 import Link from "next/link";
 import React from "react";
+import { FaArrowUp } from "react-icons/fa";
 
 export const Header: React.FC = () => {
+    const { scrollYProgress } = useViewportScroll();
+    const buttonAppearance = useTransform(
+        scrollYProgress,
+        [0, 0.3, 0.35],
+        [-100, -100, 0],
+    );
+    const headerDisappearance = useTransform(
+        scrollYProgress,
+        [0, 0.25, 0.3],
+        [0, 0, -100],
+    );
+    const time = useTime();
+    const headerAppearance = useSpring(
+        useTransform(time, [0, 1500, 1750], [0, 0, 1]),
+        { stiffness: 300 },
+    );
     return (
-        <div
-            className="
-        w-full fixed flex flex-row justify-between items-center
-        h-16 md:h-20 z-50
-        px-4 md:px-8 lg:px-16 xl:px-28 2xl:px-36
-        "
-            data-testid="container"
-        >
-            <Link href="/">
-                <a className="logo">AJ</a>
-            </Link>
-            <div className="flex flex-row items-center justify-center w-2/5">
-                <NavigationLink text="About" href="/#about" />
-                <NavigationLink text="Blog" href="/blog" />
-                <NavigationLink
-                    text="Photography"
-                    href="https://alanjohn.myportfolio.com/"
-                />
-            </div>
+        <div>
+            <motion.div
+                className="header"
+                style={{ y: headerDisappearance, opacity: headerAppearance }}
+            >
+                <Link href="/">
+                    <a className="logo">AJ</a>
+                </Link>
+                <div className="w-2/5">
+                    <Menu />
+                </div>
+            </motion.div>
+            <motion.div className="header" style={{ y: buttonAppearance }}>
+                <PrimaryButton text="Back to top" href="#" Icon={FaArrowUp} />
+            </motion.div>
         </div>
     );
 };

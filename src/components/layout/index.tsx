@@ -24,6 +24,7 @@ export const Layout: React.FC<Props> = ({
     return (
         <div>
             <NextSeo title={title} description={description} />
+
             <motion.main
                 initial="hidden"
                 animate="enter"
