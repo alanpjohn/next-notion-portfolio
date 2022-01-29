@@ -11,7 +11,7 @@
 }
 
 .round-button {
-    @apply h-12 z-0 flex w-12 justify-center rounded-full border-2 border-eerie p-2 hover:bg-red-500 ;
+    @apply h-12 z-0 flex w-12 justify-center rounded-full p-2 group-hover:bg-red-500 group-hover:-rotate-45 transition-transform duration-300;
 
     .icon {
         @apply m-auto

@@ -116,3 +116,11 @@ type TBlock = {
 };
 
 export type IBlock = TBlock;
+
+export interface IProjectDetails extends IPostDetails {
+    link: string;
+}
+
+export interface IProject extends IPost {
+    properties: IProjectDetails;
+}

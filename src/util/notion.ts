@@ -4,6 +4,7 @@ import { Client } from "@notionhq/client";
 import { getPosts } from "@util/post";
 import { IPost } from "@util/interface";
 import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
+import { getProjects } from "./project";
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 const allpostscache = "public/posts.json";
@@ -89,4 +90,20 @@ const getBlocks = async (blockId: string) => {
 export const getBlogPostContent = async (pageId: string) => {
     const response = await getBlocks(pageId);
     return response;
+};
+
+export const getPortfolioProjects = async () => {
+    const databaseId = process.env.NOTION_PROJECT_DATABASE_ID
+        ? process.env.NOTION_PROJECT_DATABASE_ID
+        : "";
+    const response = await notion.databases.query({
+        database_id: databaseId,
+        filter: {
+            property: "Publish",
+            checkbox: {
+                equals: true,
+            },
+        },
+    });
+    return getProjects(response);
 };

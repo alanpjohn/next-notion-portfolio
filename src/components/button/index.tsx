@@ -9,7 +9,7 @@ type PrimaryButtonProps = {
 
 type RoundButtonProps = {
     Icon: IconType;
-    href: string;
+    href?: string;
 };
 
 type ContactButtonProps = RoundButtonProps & {
@@ -31,12 +31,11 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 
 export const RoundButton: React.FC<RoundButtonProps> = ({
     Icon,
-    href,
 }: RoundButtonProps) => {
     return (
-        <a href={href} className="round-button">
+        <div className="round-button">
             <Icon className="icon" />
-        </a>
+        </div>
     );
 };
 
