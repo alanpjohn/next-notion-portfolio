@@ -2,54 +2,40 @@
     @apply min-h-screen text-eerie;
 
     .main {
-        @apply flex flex-col lg:w-7/12 lg:flex-row m-auto;
-    
-    
+        @apply m-auto flex flex-col lg:w-7/12 lg:flex-row;
+
         .main-text {
-            @apply flex flex-col flex-1 font-clash  justify-center text-center;
-        
+            @apply flex flex-1 flex-col justify-center  text-center font-clash;
+
             .title {
-                @apply text-6xl lg:text-9xl whitespace-nowrap;
+                @apply whitespace-nowrap text-6xl lg:text-9xl;
             }
 
             .subtitle {
-            @apply text-5xl lg:text-7xl font-light; 
+                @apply text-5xl font-light lg:text-7xl;
             }
-        }    
+        }
     }
 
     .hero-menu {
-        @apply flex-1 lg:w-1/2 flex;
+        @apply flex flex-1 lg:w-1/2;
     }
-
 }
 
 .section-title {
-    @apply font-clash text-6xl sm:text-8xl font-light text-center z-10;
+    @apply z-10 text-center font-clash text-6xl font-light sm:text-8xl;
 }
 
 .home-section {
-    @apply flex flex-col md:flex-row md:columns-2 w-11/12 mx-auto my-8 text-eerie;
+    @apply mx-auto my-8 flex w-11/12 flex-col text-eerie md:columns-2 md:flex-row;
 }
 
 .home-section-reverse {
-    @apply flex flex-col-reverse md:flex-row md:columns-2 w-11/12 mx-auto my-8 text-eerie;
-}
-
-.about-me {
-
-}
-
-.featured-projects {
-
-}
-
-.skills {
-
+    @apply mx-auto my-8 flex w-11/12 flex-col-reverse text-eerie md:columns-2 md:flex-row;
 }
 
 .home-text {
-    @apply text-xl text-justify md:mr-8;
+    @apply text-justify text-xl md:mr-8;
 
     p {
         @apply p-4;

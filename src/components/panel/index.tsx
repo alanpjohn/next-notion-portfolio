@@ -21,7 +21,7 @@ export const ProjectPanel: React.FC<ProjectPanelProps> = ({
             initial="hidden"
             whileInView="enter"
             variants={PanelVariants}
-            className="w-full md:w-3/4 ml-2"
+            className="ml-2 w-full md:w-3/4"
         >
             {projects.map((project) => (
                 <ProjectCard key={project.id} {...project} />

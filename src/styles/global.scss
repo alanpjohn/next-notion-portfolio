@@ -2,19 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "logo.scss";
-@import "button.scss";
-@import "blog.scss";
-@import "card.scss";
-@import "header.scss";
-@import "menu.scss";
-@import "home.scss";
-@import "footer.scss";
-@import "panel.scss";
+@import "logo";
+@import "button";
+@import "blog";
+@import "card";
+@import "header";
+@import "menu";
+@import "home";
+@import "footer";
+@import "panel";
 
-@layer base{
+@layer base {
     html,
     body {
-        @apply m-0 p-0 font-cabinet bg-timberwolf scroll-smooth;
+        @apply m-0 scroll-smooth bg-timberwolf p-0 font-cabinet;
     }
 }

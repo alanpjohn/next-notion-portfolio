@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hero Section animations and layout
 - Colors
 - Footer content
+- Menu now closes on mouse leave
 ### Removed
 - Marquee component
 

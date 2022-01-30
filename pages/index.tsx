@@ -57,7 +57,7 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
             </Section>
             <Section title="Portfolio">
                 <div className="home-section-reverse">
-                    <div className="flex md:w-3/5 md:ml-2 md:mt-12">
+                    <div className="flex md:ml-2 md:mt-12 md:w-3/5">
                         <ProjectPanel projects={projects} />
                     </div>
                     <div className="flex flex-col md:w-2/5">
@@ -102,7 +102,7 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                             </div>
                         </Parallax>
                     </div>
-                    <div className="flex md:w-2/3 justify-center">
+                    <div className="flex justify-center md:w-2/3">
                         <TechStack />
                     </div>
                 </div>

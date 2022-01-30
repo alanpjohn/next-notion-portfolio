@@ -31,7 +31,7 @@ export const Layout: React.FC<Props> = ({
                 exit="exit"
                 variants={variants}
                 transition={{ type: "linear" }}
-                className="flex flex-col items-start w-full"
+                className="flex w-full flex-col items-start"
             >
                 <Header />
                 {children}

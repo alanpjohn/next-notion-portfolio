@@ -2,6 +2,6 @@
     min-height: 5rem;
     z-index: 50;
 
-    @apply w-full fixed flex flex-row justify-between pt-4;
+    @apply fixed flex w-full flex-row justify-between pt-4;
     @apply px-8 md:px-16 lg:px-32 xl:px-56 2xl:px-72;
 }

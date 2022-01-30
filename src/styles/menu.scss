@@ -6,12 +6,10 @@
     }
 
     .navlinks {
-        @apply text-right mt-2 z-20;
+        @apply z-20 mt-2 text-right;
 
         .navlink {
-            @apply font-clash font-light text-xl lg:text-3xl hover:text-accent my-8;
+            @apply my-8 font-clash text-xl font-light hover:text-accent lg:text-3xl;
         }
-        
     }
 }
-

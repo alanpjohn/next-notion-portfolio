@@ -1,19 +1,19 @@
 .tag {
-    @apply px-2 whitespace-nowrap decoration-dotted font-clash text-lg underline underline-offset-4 font-light text-eerie;
+    @apply whitespace-nowrap px-2 font-clash text-lg font-light text-eerie underline decoration-dotted underline-offset-4;
 }
 
 .post {
-    @apply mx-auto my-16 max-w-3xl flex flex-row px-2 py-4 border-b-2  border-eerie;
+    @apply mx-auto my-16 flex max-w-3xl flex-row border-b-2 border-eerie px-2  py-4;
 
     .content {
-        @apply flex-grow flex flex-col;
+        @apply flex flex-grow flex-col;
 
         .title {
-            @apply font-cabinet text-2xl md:text-5xl ;
+            @apply font-cabinet text-2xl md:text-5xl;
         }
 
         .description {
-            @apply font-cabinet font-light text-xl md:text-2xl;
+            @apply font-cabinet text-xl font-light md:text-2xl;
         }
     }
 
@@ -27,7 +27,7 @@
 }
 
 .project {
-    @apply flex flex-row m-auto mb-8 pt-4 border-b-2 border-eerie;
+    @apply m-auto mb-8 flex flex-row border-b-2 border-eerie pt-4;
 
     .content {
         @apply flex flex-col flex-wrap lg:flex-grow;
@@ -37,7 +37,7 @@
         }
 
         .description {
-            @apply inline my-auto py-2;
+            @apply my-auto inline py-2;
         }
     }
 
@@ -48,5 +48,4 @@
             @apply m-auto;
         }
     }
-
 }

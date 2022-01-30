@@ -1,35 +1,35 @@
 .primary-button {
-    @apply h-12 z-0 m-2 flex w-min text-eerie justify-center rounded-full border-2 border-eerie pr-4 bg-timberwolf hover:bg-accent ;
+    @apply z-0 m-2 flex h-12 w-min justify-center rounded-full border-2 border-eerie bg-timberwolf pr-4 text-eerie hover:bg-accent;
 
     .icon {
         @apply m-auto ml-3;
     }
 
     span {
-        @apply m-auto ml-4 font-clash font-semibold text-lg whitespace-nowrap;
+        @apply m-auto ml-4 whitespace-nowrap font-clash text-lg font-semibold;
     }
 }
 
 .round-button {
-    @apply h-12 z-0 flex w-12 justify-center rounded-full p-2 group-hover:bg-accent group-hover:-rotate-45 transition-transform duration-300;
+    @apply z-0 flex h-12 w-12 justify-center rounded-full p-2 transition-transform duration-300 group-hover:-rotate-45 group-hover:bg-accent;
 
     .icon {
-        @apply m-auto
+        @apply m-auto;
     }
 }
 
 .double-button {
-    @apply py-2 px-4 items-center flex flex-row w-min;
-    
+    @apply flex w-min flex-row items-center py-2 px-4;
+
     .icon {
-        @apply mx-2 ;
+        @apply mx-2;
     }
 
     span {
-        @apply m-auto font-clash font-light text-lg whitespace-nowrap;
+        @apply m-auto whitespace-nowrap font-clash text-lg font-light;
     }
 }
 
 .quick-link {
-    @apply rounded-full w-full h-full flex flex-row items-center text-base md:text-xl font-clash font-medium px-8 border-2 border-eerie bg-timberwolf hover:bg-accent;
+    @apply flex h-full w-full flex-row items-center rounded-full border-2 border-eerie bg-timberwolf px-8 font-clash text-base font-medium hover:bg-accent md:text-xl;
 }

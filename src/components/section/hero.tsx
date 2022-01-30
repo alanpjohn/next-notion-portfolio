@@ -99,8 +99,8 @@ export const HeroSection: React.FC = () => {
                         whileInView="view"
                         variants={quickLinkVariants}
                         className="
-                                grid mx-auto my-16 lg:m-auto gap-2
-                                grid-rows-6 grid-cols-1 h-72 w-56
+                                mx-auto my-16 grid h-72 w-56
+                                grid-cols-1 grid-rows-6 gap-2 lg:m-auto
                                 lg:h-96 lg:w-72
                             "
                     >

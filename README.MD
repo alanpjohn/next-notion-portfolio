@@ -1,11 +1,6 @@
 # next-notion-portfolio
 
-
-This project was generated with [superplate](https://github.com/pankod/superplate).
-
-## Getting Started
-
-superplate is a Next.js all-in-one project generator. Create your project with the tools you need without spending hours on setting them up.
+This project was build on a template generated with [superplate](https://github.com/pankod/superplate).
 
 ## Available Scripts
 
@@ -18,7 +13,7 @@ superplate is a Next.js all-in-one project generator. Create your project with t
 ### Building for production.
 
 ```bash
-    npm run build
+    npm run build:analyze
 ```
 
 ### Running the production server.
@@ -27,10 +22,34 @@ superplate is a Next.js all-in-one project generator. Create your project with t
     npm run start
 ```
 
+### Linting the code
+
+```bash
+    npm run lint
+    npm run lint:style
+```
+
 ## Learn More
 
 To learn more about **superplate**, please check out the [Documentation](https://github.com/pankod/superplate).
 
+### **NextJS**
+
+A React framework for production with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. 
+
+[Go To Documentation](https://nextjs.org/docs)
+
+### **Notion API**
+
+Allows to connect to Notion databases giving you the power to use Notion as a CMS
+
+[Go To Documentation](https://developers.notion.com/docs)
+
+### **Framer Motion**
+
+A opensource production-ready motion library for React.
+
+[Go To Documentation](https://www.framer.com/docs/)
 
 ### **TailwindCSS**
 
@@ -73,14 +92,15 @@ An opinionated code formatter; Supports many languages; Integrates with most edi
 
 [Go To Documentation](https://prettier.io/docs/en/index.html)
 
+### **Stylelint**
+
+[Go To Documentation]()
 
 ### **Github Actions**
 
 GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub.
 
 [Go To Documentation](https://docs.github.com/en/actions)
-
-
 
 ## License
 
