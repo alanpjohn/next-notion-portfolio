@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
+import { PropsWithChildren } from "react";
 import { IconType } from "react-icons";
-import { FaArrowRight } from "react-icons/fa";
+import { FaAngleDoubleDown, FaArrowRight } from "react-icons/fa";
 
 type PrimaryButtonProps = {
     text: string;
@@ -32,5 +34,60 @@ export const RoundButton: React.FC<RoundButtonProps> = ({
         <div className="round-button">
             <Icon className="icon" />
         </div>
+    );
+};
+
+export const DoubleIconButton: React.FC<PrimaryButtonProps> = ({
+    text,
+    Icon = FaAngleDoubleDown,
+    href,
+}: PrimaryButtonProps) => {
+    return (
+        <a href={href} className="double-button hover:text-accent">
+            <Icon className="icon " />
+            <span>{text}</span>
+            <Icon className="icon " />
+        </a>
+    );
+};
+
+const quickLinkItemVariants = {
+    hidden: {
+        opacity: 0,
+        x: 500,
+    },
+    enter: {
+        opacity: 1,
+        x: 0,
+        rotate: -20,
+    },
+    view: {
+        x: [0, 50, 0],
+        rotate: -20,
+    },
+};
+
+type ContactProps = PropsWithChildren<{
+    Icon: IconType;
+    text: string;
+    href: string;
+}>;
+
+export const QuickLink: React.FC<ContactProps> = ({
+    Icon,
+    text,
+    href,
+}: ContactProps) => {
+    return (
+        <a href={href}>
+            <motion.li
+                whileInView="view"
+                variants={quickLinkItemVariants}
+                className="quick-link"
+            >
+                <Icon className="mr-8 text-2xl" />
+                <span>{text}</span>
+            </motion.li>
+        </a>
     );
 };

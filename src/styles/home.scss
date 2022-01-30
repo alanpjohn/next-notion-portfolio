@@ -1,0 +1,57 @@
+.hero-section {
+    @apply min-h-screen text-eerie;
+
+    .main {
+        @apply flex flex-col lg:w-7/12 lg:flex-row m-auto;
+    
+    
+        .main-text {
+            @apply flex flex-col flex-1 font-clash  justify-center text-center;
+        
+            .title {
+                @apply text-6xl lg:text-9xl whitespace-nowrap;
+            }
+
+            .subtitle {
+            @apply text-5xl lg:text-7xl font-light; 
+            }
+        }    
+    }
+
+    .hero-menu {
+        @apply flex-1 lg:w-1/2 flex;
+    }
+
+}
+
+.section-title {
+    @apply font-clash text-6xl sm:text-8xl font-light text-center z-10;
+}
+
+.home-section {
+    @apply flex flex-col md:flex-row md:columns-2 w-11/12 mx-auto my-8 text-eerie;
+}
+
+.home-section-reverse {
+    @apply flex flex-col-reverse md:flex-row md:columns-2 w-11/12 mx-auto my-8 text-eerie;
+}
+
+.about-me {
+
+}
+
+.featured-projects {
+
+}
+
+.skills {
+
+}
+
+.home-text {
+    @apply text-xl text-justify md:mr-8;
+
+    p {
+        @apply p-4;
+    }
+}

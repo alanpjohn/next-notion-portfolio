@@ -25,7 +25,7 @@ export const PostCard: React.FC<PostProps> = ({
     return (
         <a href={link} className="post group">
             <motion.li className="content" variants={cardVariants}>
-                <span className="title group-hover:text-red-500">
+                <span className="title group-hover:text-accent">
                     {properties.title}
                 </span>
                 <div className="pb-4">
@@ -53,7 +53,7 @@ export const ProjectCard: React.FC<ProjectProps> = ({
         <a href={properties.link}>
             <motion.li className="project group" variants={cardVariants}>
                 <div className="content">
-                    <span className="title group-hover:text-red-500">
+                    <span className="title group-hover:text-accent">
                         {properties.title}
                     </span>
                     <div className="flex flex-wrap">

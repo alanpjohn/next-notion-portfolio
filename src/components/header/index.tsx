@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
     const headerDisappearance = useTransform(
         scrollYProgress,
         [0, 0.25, 0.3],
-        [0, 0, -100],
+        [0, 0, -300],
     );
     const time = useTime();
     const headerAppearance = useSpring(

@@ -1,15 +1,15 @@
 .nav {
-    @apply flex flex-col;
+    @apply flex flex-col text-eerie;
 
     .icon {
         @apply self-end text-4xl;
     }
 
     .navlinks {
-        @apply text-right mt-2;
+        @apply text-right mt-2 z-20;
 
         .navlink {
-            @apply font-clash font-light text-xl lg:text-3xl hover:text-red-500 my-4;
+            @apply font-clash font-light text-xl lg:text-3xl hover:text-accent my-8;
         }
         
     }

@@ -1,5 +1,5 @@
 .primary-button {
-    @apply h-12 z-0 m-2 flex w-min justify-center rounded-full border-2 border-eerie pr-4 bg-white hover:bg-red-500 ;
+    @apply h-12 z-0 m-2 flex w-min text-eerie justify-center rounded-full border-2 border-eerie pr-4 bg-timberwolf hover:bg-accent ;
 
     .icon {
         @apply m-auto ml-3;
@@ -11,22 +11,25 @@
 }
 
 .round-button {
-    @apply h-12 z-0 flex w-12 justify-center rounded-full p-2 group-hover:bg-red-500 group-hover:-rotate-45 transition-transform duration-300;
+    @apply h-12 z-0 flex w-12 justify-center rounded-full p-2 group-hover:bg-accent group-hover:-rotate-45 transition-transform duration-300;
 
     .icon {
         @apply m-auto
     }
 }
 
-.contact-button {
-    @apply h-16 z-0 flex w-16 justify-center rounded-full p-2 border-eerie border-2 hover:bg-red-500;
-
+.double-button {
+    @apply py-2 px-4 items-center flex flex-row w-min;
+    
     .icon {
-        @apply m-auto text-xl;
+        @apply mx-2 ;
+    }
+
+    span {
+        @apply m-auto font-clash font-light text-lg whitespace-nowrap;
     }
 }
 
-.contact-panel {
-    @apply flex flex-row ;
-
+.quick-link {
+    @apply rounded-full w-full h-full flex flex-row items-center text-base md:text-xl font-clash font-medium px-8 border-2 border-eerie bg-timberwolf hover:bg-accent;
 }

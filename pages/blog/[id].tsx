@@ -23,9 +23,9 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
             description={post.properties.description}
         >
             <Section>
-                <div className="flex flex-col 2xl:flex-row 2xl:columns-2 my-40 w-11/12 mx-auto">
-                    <div className="flex-1 px-20 2xl:px-4 py-4 2xl:py-20">
-                        <span className="font-clash text-4xl md:text-5xl font-light text-center mx-auto w-full">
+                <div className="post-section">
+                    <div className="post-hero">
+                        <span className="post-title">
                             {post.properties.title}
                         </span>
                         <div className="pb-4">
@@ -33,17 +33,15 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                                 <Tag key={tag.id} {...tag} />
                             ))}
                         </div>
-                        <p className="font-cabinet font-light mt-2 text:md md:text-xl">
+                        <p className="post-date">
                             Last updated:{" "}
                             {getMonthAndYear(post.properties.date)}
                         </p>
-                        <p className="font-cabinet font-light mt-8 text-lg md:text-2xl">
+                        <p className="post-desc">
                             {post.properties.description}
                         </p>
                     </div>
-                    <div className="flex-grow flex justify-center 2xl:ml-4">
-                        {renderPage(blocks)}
-                    </div>
+                    <div className="post-main">{renderPage(blocks)}</div>
                 </div>
             </Section>
         </Layout>

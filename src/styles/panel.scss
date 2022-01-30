@@ -1,0 +1,31 @@
+.tech-stack {
+    @apply flex flex-col md:w-3/4 mx-auto p-4;
+
+    .nav {
+        @apply h-16 grid grid-cols-5 gap-0 grid-flow-row mb-3;
+
+        .nav-item {
+            @apply font-clash text-xl py-4 w-full text-center cursor-pointer;
+
+            .highlight {
+                @apply h-1 bg-accent mt-4;
+            }
+        }
+    }
+
+    .main {
+        @apply flex flex-col justify-center;
+
+        .domain {
+            @apply font-clash text-4xl font-medium text-center my-4 ;
+        }
+
+        .tools {
+            @apply grid grid-rows-1 grid-flow-col w-min gap-5 text-3xl h-12 mx-auto my-4;
+        }
+
+        .description {
+            @apply px-7 text-xl text-justify;
+        }
+    }
+}

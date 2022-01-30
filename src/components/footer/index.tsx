@@ -1,20 +1,17 @@
 import { Contact } from "@components/contact";
-import Link from "next/link";
 import React from "react";
 
 export const Footer: React.FC = () => (
-    <footer className="w-full flex flex-col items-center bottom-0">
+    <footer className="footer">
         <Contact />
         <a
-            className="text-sm mb-4 text-jet hover:text-celadon dark:text-timberwolf dark:hover:text-soda transition-colors"
+            className="email"
             href="mailto:alansandra2013@gmail.com?Subject=Hello"
         >
             alansandra2013@gmail.com
         </a>
-        <Link href="/posts">
-            <a className="text-sm mb-8 text-jet hover:text-celadon dark:text-timberwolf dark:hover:text-soda transition-colors">
-                Powered by the Notion API. Find out more.
-            </a>
-        </Link>
+        <span className="powered">
+            Powered by the Next JS, Notion API, Framer motion and TailwindCSS.
+        </span>
     </footer>
 );

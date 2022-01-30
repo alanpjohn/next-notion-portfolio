@@ -4,18 +4,9 @@ import { CustomImage } from "@components/image";
 import { GetStaticProps, NextPage } from "next";
 import { getPortfolioProjects } from "@util/notion";
 import { IProject } from "@util/interface";
-import { ProjectPanel } from "@components/panel";
-import { PrimaryButton } from "@components/button";
-import { FaCamera, FaGoogleDrive } from "react-icons/fa";
-import { BiNews } from "react-icons/bi";
-import {
-    SiGithub,
-    SiGmail,
-    SiInstagram,
-    SiLinkedin,
-    SiLinuxfoundation,
-    SiTelegram,
-} from "react-icons/si";
+import { ProjectPanel, TechStack } from "@components/panel";
+import { HeroSection } from "@components/section/hero";
+import { Parallax } from "@components/parallax";
 
 type HomeProps = {
     projects: IProject[];
@@ -24,78 +15,22 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
     return (
         <Layout title="Home" description="2022 Portfolio">
-            <Section className="justify-center min-h-screen">
-                <div className="flex w-1/2 flex-col m-auto lg:mt-auto mt-32">
-                    <div className="flex-grow flex flex-col">
-                        <span className="font-clash text-7xl lg:text-9xl font-medium">
-                            Alan John
-                        </span>
-                        <span className="font-clash text-6xl lg:text-9xl font-light self-center">
-                            Software
-                        </span>
-                        <span className="font-clash text-6xl lg:text-9xl font-light self-center -mt-2 lg:-mt-8">
-                            Engineer
-                        </span>
-                    </div>
-                    <div className="flex flex-row flex-wrap content-between lg:mt-16">
-                        <PrimaryButton
-                            Icon={FaGoogleDrive}
-                            text="Download Resume"
-                            href=""
-                        />
-                        <PrimaryButton
-                            Icon={BiNews}
-                            text="Check out Blog"
-                            href=""
-                        />
-                        <PrimaryButton
-                            Icon={FaCamera}
-                            text="Photography"
-                            href=""
-                        />
-                        <PrimaryButton Icon={SiGithub} text="Github" href="" />
-                        <PrimaryButton
-                            Icon={SiLinkedin}
-                            text="Linkedin"
-                            href=""
-                        />
-                        <PrimaryButton
-                            Icon={SiLinuxfoundation}
-                            text="OpenDev Profile"
-                            href=""
-                        />
-                        <PrimaryButton
-                            Icon={SiTelegram}
-                            text="Telegram"
-                            href=""
-                        />
-                        <PrimaryButton
-                            Icon={SiInstagram}
-                            text="Instagram"
-                            href=""
-                        />
-                        <PrimaryButton Icon={SiGmail} text="Email" href="" />
-                    </div>
-                    <div></div>
-                </div>
-            </Section>
+            <HeroSection />
             <Section title="About">
-                <span className="font-clash text-8xl font-light md:w-1/3 text-center my-6">
-                    About me
-                </span>
-                <div className="flex flex-col md:flex-row md:columns-2 w-11/12 mx-auto">
-                    <div className="flex md:w-1/2">
-                        <div className="m-auto">
+                <div className="home-section">
+                    <div className="flex flex-col md:w-1/2">
+                        <span className="section-title">About me</span>
+                        <Parallax range={[0, -0.15]} className="m-auto">
                             <CustomImage
                                 src="/images/home_light.png"
                                 height="400px"
                                 width="400px"
                             />
-                        </div>
+                        </Parallax>
                     </div>
                     <div className="md:w-1/2">
-                        <div className="py-20 text-xl">
-                            <p className="py-4">
+                        <div className="home-text">
+                            <p>
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit. Ut sit amet quam in leo
                                 molestie elementum. Mauris eleifend pretium
@@ -106,7 +41,7 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                                 efficitur dictum nec viverra ligula. Nam
                                 pulvinar quis diam non tempor. <br />
                             </p>
-                            <p className="py-4">
+                            <p>
                                 Proin nec justo egestas, tincidunt purus sit
                                 amet, maximus orci. Phasellus interdum interdum
                                 turpis, a porttitor ex sagittis vel. Cras vel
@@ -120,15 +55,55 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                     </div>
                 </div>
             </Section>
-            <Section title="skills" className="mt-16 mb-32">
-                <div className="flex flex-col-reverse md:flex-row md:columns-2 w-11/12 mx-auto">
-                    <div className="md:w-3/5 px-8">
+            <Section title="Portfolio">
+                <div className="home-section-reverse">
+                    <div className="flex md:w-3/5 md:ml-2 md:mt-12">
                         <ProjectPanel projects={projects} />
                     </div>
-                    <div className="md:flex-grow md:w-2/5 align-bottom">
-                        <span className="inline-block font-clash text-8xl font-light text-left md:text-right my-6">
-                            My Projects
-                        </span>
+                    <div className="flex flex-col md:w-2/5">
+                        <Parallax range={[0, -0.15]} className="mb-8">
+                            <span className="section-title">
+                                Featured Projects
+                            </span>
+                            <div className="home-text">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Ut sit amet quam in leo
+                                    molestie elementum. Mauris eleifend pretium
+                                    sapien. Aenean ac sagittis purus. Nam eget
+                                    dictum magna. Integer molestie neque eu odio
+                                    vehicula dapibus. Proin ullamcorper diam
+                                    quis consectetur porttitor. Quisque id ex
+                                    non mi efficitur dictum nec viverra ligula.
+                                    Nam pulvinar quis diam non tempor. <br />
+                                </p>
+                            </div>
+                        </Parallax>
+                    </div>
+                </div>
+            </Section>
+            <Section>
+                <div className="home-section">
+                    <div className="flex flex-col md:w-1/3">
+                        <Parallax range={[0, -0.15]} className="mb-8">
+                            <span className="section-title">Skillset</span>
+                            <div className="home-text">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Ut sit amet quam in leo
+                                    molestie elementum. Mauris eleifend pretium
+                                    sapien. Aenean ac sagittis purus. Nam eget
+                                    dictum magna. Integer molestie neque eu odio
+                                    vehicula dapibus. Proin ullamcorper diam
+                                    quis consectetur porttitor. Quisque id ex
+                                    non mi efficitur dictum nec viverra ligula.
+                                    Nam pulvinar quis diam non tempor. <br />
+                                </p>
+                            </div>
+                        </Parallax>
+                    </div>
+                    <div className="flex md:w-2/3 justify-center">
+                        <TechStack />
                     </div>
                 </div>
             </Section>

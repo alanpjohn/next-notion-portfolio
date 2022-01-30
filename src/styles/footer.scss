@@ -1,0 +1,12 @@
+.footer {
+    @apply mt-40 w-full flex flex-col items-center bottom-0;
+
+    .email {
+        @apply text-sm mb-4 text-eerie hover:text-accent transition-colors;
+    }
+
+    .powered {
+        @apply text-sm mb-8 mx-3 text-center text-eerie hover:text-accent transition-colors cursor-pointer;
+    }
+}
+

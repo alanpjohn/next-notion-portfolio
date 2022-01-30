@@ -7,6 +7,12 @@ module.exports = {
                 eerie: {
                     DEFAULT: "#242423",
                 },
+                accent: {
+                    DEFAULT: "#f2542d",
+                },
+                timberwolf: {
+                    DEFAULT: "#fffcf2",
+                },
             },
             fontFamily: {
                 ...fontFamily,

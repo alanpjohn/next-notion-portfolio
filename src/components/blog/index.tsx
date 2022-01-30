@@ -12,7 +12,7 @@ export const Paragraph: React.FC<BlockContentProps> = ({
 export const Quote: React.FC<BlockContentProps> = ({
     children,
 }: BlockContentProps) => {
-    return <blockquote>{children}</blockquote>;
+    return <blockquote className="text-eerie">{children}</blockquote>;
 };
 
 type CalloutProps = BlockContentProps & {

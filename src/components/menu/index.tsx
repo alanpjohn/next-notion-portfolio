@@ -1,4 +1,5 @@
-import { motion, useCycle } from "framer-motion";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
 
 type NavigationProps = {
@@ -50,14 +51,15 @@ const menuVariants = {
 };
 
 export const Menu: React.FC = () => {
-    const [isOpen, toggleOpen] = useCycle(false, true);
+    const [isOpen, setOpen] = useState(false);
     return (
         <motion.nav
             className="nav"
             initial={false}
             animate={isOpen ? "open" : "closed"}
+            onPointerLeave={() => setOpen(false)}
         >
-            <BiMenu className="icon" onClick={() => toggleOpen()} />
+            <BiMenu className="icon" onClick={() => setOpen(true)} />
             <motion.ul variants={menuVariants} className="navlinks">
                 <NavigationLink text="Home" href="/" />
                 <NavigationLink text="Blog" href="/blog" />

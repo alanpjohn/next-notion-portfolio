@@ -8,10 +8,13 @@
 @import "card.scss";
 @import "header.scss";
 @import "menu.scss";
+@import "home.scss";
+@import "footer.scss";
+@import "panel.scss";
 
 @layer base{
     html,
     body {
-        @apply m-0 p-0 font-cabinet bg-white scroll-smooth;
+        @apply m-0 p-0 font-cabinet bg-timberwolf scroll-smooth;
     }
 }
