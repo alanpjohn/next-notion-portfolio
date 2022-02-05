@@ -2,15 +2,15 @@ import { Tag } from "@components/card";
 import { Layout } from "@components/layout";
 import { Section } from "@components/section";
 import { getMonthAndYear } from "@util/datetime";
-import { IPost, IBlock, ITag } from "@util/interface";
-import { getBlogPostContent, getBlogPosts, readPost } from "@util/notion";
+import { IPost, BlockWithChildren, ITag } from "@util/interface";
+import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
 import { renderPage } from "@util/render";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 
 type PostProps = {
     post: IPost;
-    blocks: IBlock[];
+    blocks: BlockWithChildren[];
 };
 
 const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
@@ -18,28 +18,20 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
         return <></>;
     }
     return (
-        <Layout
-            title={post.properties.title}
-            description={post.properties.description}
-        >
+        <Layout title={post.title} description={post.description}>
             <Section>
                 <div className="post-section">
                     <div className="post-hero">
-                        <span className="post-title">
-                            {post.properties.title}
-                        </span>
+                        <span className="post-title">{post.title}</span>
                         <div className="pb-4">
-                            {post.properties.tags.map((tag: ITag) => (
+                            {post.tags.map((tag: ITag) => (
                                 <Tag key={tag.id} {...tag} />
                             ))}
                         </div>
                         <p className="post-date">
-                            Last updated:{" "}
-                            {getMonthAndYear(post.properties.date)}
+                            Last updated: {getMonthAndYear(post.date)}
                         </p>
-                        <p className="post-desc">
-                            {post.properties.description}
-                        </p>
+                        <p className="post-desc">{post.description}</p>
                     </div>
                     <div className="post-main">{renderPage(blocks)}</div>
                 </div>
@@ -56,30 +48,11 @@ export const getStaticProps: GetStaticProps<PostProps> = async (context) => {
     const { id } = context.params as IParams;
     const post = readPost(id);
     if (post) {
-        const blocks = await getBlogPostContent(post.id);
-        const childBlocks = await Promise.all(
-            blocks
-                .filter((block) => block.has_children)
-                .map(async (block) => {
-                    return {
-                        id: block.id,
-                        children: await getBlogPostContent(block.id),
-                    };
-                }),
-        );
-        const blocksWithChildren: IBlock[] = blocks.map((ablock) => {
-            const block = JSON.parse(JSON.stringify(ablock));
-            if (block.has_children && !block[block.type].children) {
-                block[block.type]["children"] = childBlocks.find(
-                    (x) => x.id === block.id,
-                )?.children;
-            }
-            return block;
-        });
+        const blocks = await getPostBlocks(post.id);
         return {
             props: {
                 post: post,
-                blocks: blocksWithChildren,
+                blocks: blocks,
             },
             revalidate: 3600,
         };

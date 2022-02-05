@@ -1,5 +1,5 @@
 .hero-section {
-    @apply min-h-screen text-eerie;
+    @apply min-h-screen text-secondary;
 
     .main {
         @apply m-auto flex flex-col lg:w-7/12 lg:flex-row;
@@ -27,11 +27,11 @@
 }
 
 .home-section {
-    @apply mx-auto my-8 flex w-11/12 flex-col text-eerie md:columns-2 md:flex-row;
+    @apply mx-auto my-8 flex w-11/12 flex-col text-secondary md:columns-2 md:flex-row;
 }
 
 .home-section-reverse {
-    @apply mx-auto my-8 flex w-11/12 flex-col-reverse text-eerie md:columns-2 md:flex-row;
+    @apply mx-auto my-8 flex w-11/12 flex-col-reverse text-secondary md:columns-2 md:flex-row;
 }
 
 .home-text {

@@ -7,7 +7,7 @@ type CodeProps = BlockContentProps & {
     language?: string;
 };
 
-export const CodeBlock: React.FC<CodeProps> = ({
+export const MultilineCodeBlock: React.FC<CodeProps> = ({
     children,
     language = "",
 }: CodeProps) => {

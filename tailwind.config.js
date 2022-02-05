@@ -1,16 +1,17 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 module.exports = {
-    purge: ["./pages/**/*.tsx", "./src/**/*.tsx"],
+    content: ["./pages/**/*.tsx", "./src/**/*.tsx"],
     theme: {
         extend: {
             colors: {
-                eerie: {
+                primary: {
                     DEFAULT: "#242423",
+                    100: "#333533",
                 },
                 accent: {
                     DEFAULT: "#f2542d",
                 },
-                timberwolf: {
+                secondary: {
                     DEFAULT: "#fffcf2",
                 },
             },

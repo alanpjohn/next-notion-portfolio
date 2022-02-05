@@ -1,9 +1,9 @@
 .tag {
-    @apply whitespace-nowrap px-2 font-clash text-lg font-light text-eerie underline decoration-dotted underline-offset-4;
+    @apply whitespace-nowrap px-2 font-clash text-lg font-light text-secondary underline decoration-dotted underline-offset-4;
 }
 
 .post {
-    @apply mx-auto my-16 flex max-w-3xl flex-row border-b-2 border-eerie px-2  py-4;
+    @apply mx-auto my-16 flex max-w-3xl flex-row border-b-2 border-secondary px-2  py-4;
 
     .content {
         @apply flex flex-grow flex-col;
@@ -27,7 +27,7 @@
 }
 
 .project {
-    @apply m-auto mb-8 flex flex-row border-b-2 border-eerie pt-4;
+    @apply m-auto mb-8 flex flex-row border-b-2 border-secondary pt-4;
 
     .content {
         @apply flex flex-col flex-wrap lg:flex-grow;

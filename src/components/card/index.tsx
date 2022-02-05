@@ -19,21 +19,21 @@ type PostProps = PropsWithChildren<IPost>;
 
 export const PostCard: React.FC<PostProps> = ({
     url,
-    properties,
+    title,
+    tags,
+    description,
 }: PostProps) => {
     const link = `/blog/${url}`;
     return (
         <a href={link} className="post group">
             <motion.li className="content" variants={cardVariants}>
-                <span className="title group-hover:text-accent">
-                    {properties.title}
-                </span>
+                <span className="title group-hover:text-accent">{title}</span>
                 <div className="pb-4">
-                    {properties.tags.map((tag: ITag) => (
+                    {tags.map((tag: ITag) => (
                         <Tag key={tag.id} {...tag} />
                     ))}
                 </div>
-                <span className="description">{properties.description}</span>
+                <span className="description">{description}</span>
             </motion.li>
             <div className="sidebar">
                 <div>
@@ -47,25 +47,28 @@ export const PostCard: React.FC<PostProps> = ({
 type ProjectProps = PropsWithChildren<IProject>;
 
 export const ProjectCard: React.FC<ProjectProps> = ({
-    properties,
+    link,
+    title,
+    tags,
+    description,
 }: ProjectProps) => {
     return (
-        <a href={properties.link}>
+        <a href={link}>
             <motion.li className="project group" variants={cardVariants}>
                 <div className="content">
                     <span className="title group-hover:text-accent">
-                        {properties.title}
+                        {title}
                     </span>
                     <div className="flex flex-wrap">
-                        {properties.tags.map((tag: ITag) => (
+                        {tags.map((tag: ITag) => (
                             <Tag key={tag.id} {...tag} />
                         ))}
                     </div>
-                    <div className="description">{properties.description}</div>
+                    <div className="description">{description}</div>
                 </div>
                 <div className="sidebar">
                     <div>
-                        <RoundButton href={properties.link} Icon={FaCode} />
+                        <RoundButton href={link} Icon={FaCode} />
                     </div>
                 </div>
             </motion.li>

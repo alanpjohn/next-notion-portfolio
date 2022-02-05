@@ -1,5 +1,5 @@
 .primary-button {
-    @apply z-0 m-2 flex h-12 w-min justify-center rounded-full border-2 border-eerie bg-timberwolf pr-4 text-eerie hover:bg-accent;
+    @apply z-0 m-2 flex h-12 w-min justify-center rounded-full border-2 border-secondary bg-primary pr-4 text-secondary hover:bg-accent;
 
     .icon {
         @apply m-auto ml-3;
@@ -31,5 +31,5 @@
 }
 
 .quick-link {
-    @apply flex h-full w-full flex-row items-center rounded-full border-2 border-eerie bg-timberwolf px-8 font-clash text-base font-medium hover:bg-accent md:text-xl;
+    @apply flex h-full w-full flex-row items-center rounded-full border-2 border-secondary bg-primary px-8 font-clash text-base font-medium hover:bg-accent md:text-xl;
 }

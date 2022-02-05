@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2022-02-05
+### Added
+- Pagination support for fetching blocks from Notion
+- Notion typing to resolve [typing issue](https://github.com/makenotion/notion-sdk-js/issues/219) with the help of "@notion-stuff/v4-types": "^5.1.0"
+### Fixed
+- Notion block children processing
+- Notion components list block generation
+- Blog image using Next/Image to reduce CLS
+- Color tagging in tailwindcss
+### Removed
+- `Post.ts` and `Project.ts` as new typing simplifies extracting information from `QueryDatabaseResponse`.
+
 ## [0.3.4] - 2022-01-30
 ### Added
 - Stylesheets for all components necessary

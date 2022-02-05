@@ -117,6 +117,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
         props: {
             projects: response,
         },
+        revalidate: 86400,
     };
 };
 

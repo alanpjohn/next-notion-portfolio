@@ -47,6 +47,7 @@ export const getStaticProps: GetStaticProps<BlockPageProps> = async () => {
         props: {
             posts: posts,
         },
+        revalidate: 3600,
     };
 };
 

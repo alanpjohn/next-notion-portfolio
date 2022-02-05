@@ -2,10 +2,10 @@
     @apply bottom-0 mt-40 flex w-full flex-col items-center;
 
     .email {
-        @apply mb-4 text-sm text-eerie transition-colors hover:text-accent;
+        @apply mb-4 text-sm text-secondary transition-colors hover:text-accent;
     }
 
     .powered {
-        @apply mx-3 mb-8 cursor-pointer text-center text-sm text-eerie transition-colors hover:text-accent;
+        @apply mx-3 mb-8 cursor-pointer text-center text-sm text-secondary transition-colors hover:text-accent;
     }
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BlockContentProps } from "@components/blog";
 
 type ImageProps = BlockContentProps & {
@@ -9,8 +10,8 @@ export const BlogImage: React.FC<ImageProps> = ({
     src,
 }: ImageProps) => {
     return (
-        <figure className="h-1/3">
-            <img src={src} className="relative" />
+        <figure className="image-container not-prose">
+            <Image src={src} layout="fill" className="image" />
             {children && <figcaption>{children}</figcaption>}
         </figure>
     );
