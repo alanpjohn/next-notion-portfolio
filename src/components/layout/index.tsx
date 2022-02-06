@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
-import { Header } from "@components/header";
-import { Footer } from "@components/footer";
 
 type Props = {
     children: ReactNode;
@@ -33,9 +31,7 @@ export const Layout: React.FC<Props> = ({
                 transition={{ type: "linear" }}
                 className="flex w-full flex-col items-start"
             >
-                <Header />
                 {children}
-                <Footer />
             </motion.main>
         </div>
     );

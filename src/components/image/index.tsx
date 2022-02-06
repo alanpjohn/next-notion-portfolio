@@ -11,5 +11,7 @@ export const CustomImage: React.FC<ImageProps> = ({
     height,
     width,
 }: ImageProps) => {
-    return <Image src={src} height={height} width={width} className="" />;
+    return (
+        <Image src={src} height={height} width={width} className="" priority />
+    );
 };

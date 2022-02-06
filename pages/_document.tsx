@@ -20,10 +20,7 @@ class CustomDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <link
-                        href="https://api.fontshare.com/css?f[]=clash-display@200,300,400,500,600,700,1&f[]=cabinet-grotesk@100,200,300,400,500,700,800,900,1&display=swap"
-                        rel="stylesheet"
-                    />
+                    <link rel="shortcut icon" href="/favicon.ico" />
                 </Head>
                 <body>
                     <Main />

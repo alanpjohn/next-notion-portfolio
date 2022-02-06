@@ -2,6 +2,7 @@ import { Callout, NotSupportedBlock, Paragraph, Quote } from "@components/blog";
 import { Heading1, Heading2, Heading3 } from "@components/blog/headings";
 import { BlogImage } from "@components/blog/image";
 import { ListItem, OrderedList, UnorderedList } from "@components/blog/lists";
+import { ReactNode } from "react";
 import {
     RichText,
     ParagraphBlock,
@@ -10,9 +11,10 @@ import {
     CalloutBlock,
     ImageBlock,
     CodeBlock,
-} from "@notion-stuff/v4-types";
-import { ReactNode } from "react";
-import { BlockWithChildren, ListBlock, ListItemBlock } from "@util/interface";
+    BlockWithChildren,
+    ListBlock,
+    ListItemBlock,
+} from "@util/interface";
 import { MultilineCodeBlock } from "@components/blog/code";
 
 const createListBlock = (
@@ -147,19 +149,19 @@ const renderHeading = (block: HeadingBlock): React.ReactNode => {
     switch (block.type) {
         case "heading_1":
             return (
-                <Heading1>
+                <Heading1 key={block.id}>
                     {renderText(block.id, block.heading_1.text)}
                 </Heading1>
             );
         case "heading_2":
             return (
-                <Heading2>
+                <Heading2 key={block.id}>
                     {renderText(block.id, block.heading_2.text)}
                 </Heading2>
             );
         default:
             return (
-                <Heading3>
+                <Heading3 key={block.id}>
                     {renderText(block.id, block.heading_3.text)}
                 </Heading3>
             );
@@ -275,7 +277,7 @@ const renderBlock = (block: BlockWithChildren): React.ReactNode => {
 export const renderPage = (blocks: Array<BlockWithChildren>): JSX.Element => {
     const blocksWithList = extractListItems(blocks);
     return (
-        <article className="prose min-w-full lg:prose-lg">
+        <article className="prose mx-auto mt-8 w-full text-justify lg:prose-lg lg:mt-16 lg:w-3/4">
             {blocksWithList.map((block: BlockWithChildren) => {
                 return renderBlock(block);
             })}

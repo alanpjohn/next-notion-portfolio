@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.1] - 2022-02-06
+### Added
+- Added SCSS stylesheet to handle imported fonts
+### Changed
+- Menu to hide hamburger menu on large screens
+- Added favicon.ico
+- Fonts are now self-hosted instead of using the FontShare API
+- Header and Footer are now outside the Layout component and fixed accross pages.
+### Fixed
+- Header disappearance is now based on absolute y-scroll rather than percentage
+- Security vulnerabities caused by "@notion-stuff/v4-types" by adding custom typing
+### Removed
+- Removed Icons from Superplate template
+- Parallax component due to high CLS
+
 ## [0.4.0] - 2022-02-05
 ### Added
 - Pagination support for fetching blocks from Notion

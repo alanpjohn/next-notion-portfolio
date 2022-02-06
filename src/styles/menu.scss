@@ -2,14 +2,22 @@
     @apply flex flex-col text-secondary;
 
     .icon {
-        @apply self-end text-4xl;
+        @apply block self-end text-4xl md:hidden;
+    }
+
+    .navbar {
+        @apply hidden flex-row justify-center md:flex;
+
+        .navlink {
+            @apply ml-4 font-clash text-base font-light hover:text-accent lg:text-xl;
+        }
     }
 
     .navlinks {
-        @apply z-20 mt-2 text-right;
+        @apply z-20 mt-2 block text-right md:hidden;
 
         .navlink {
-            @apply my-8 font-clash text-xl font-light hover:text-accent lg:text-3xl;
+            @apply my-8 w-full bg-primary-100 font-clash text-xl font-light hover:text-accent lg:text-3xl;
         }
     }
 }

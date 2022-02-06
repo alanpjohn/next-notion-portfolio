@@ -6,7 +6,6 @@ import { getPortfolioProjects } from "@util/notion";
 import { IProject } from "@util/interface";
 import { ProjectPanel, TechStack } from "@components/panel";
 import { HeroSection } from "@components/section/hero";
-import { Parallax } from "@components/parallax";
 
 type HomeProps = {
     projects: IProject[];
@@ -20,13 +19,13 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                 <div className="home-section">
                     <div className="flex flex-col md:w-1/2">
                         <span className="section-title">About me</span>
-                        <Parallax range={[0, -0.15]} className="m-auto">
+                        <div className="m-auto">
                             <CustomImage
                                 src="/images/home_light.png"
                                 height="400px"
                                 width="400px"
                             />
-                        </Parallax>
+                        </div>
                     </div>
                     <div className="md:w-1/2">
                         <div className="home-text">
@@ -61,7 +60,7 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                         <ProjectPanel projects={projects} />
                     </div>
                     <div className="flex flex-col md:w-2/5">
-                        <Parallax range={[0, -0.15]} className="mb-8">
+                        <div className="mb-8">
                             <span className="section-title">
                                 Featured Projects
                             </span>
@@ -78,14 +77,14 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                                     Nam pulvinar quis diam non tempor. <br />
                                 </p>
                             </div>
-                        </Parallax>
+                        </div>
                     </div>
                 </div>
             </Section>
             <Section>
                 <div className="home-section">
                     <div className="flex flex-col md:w-1/3">
-                        <Parallax range={[0, -0.15]} className="mb-8">
+                        <div className="mb-8">
                             <span className="section-title">Skillset</span>
                             <div className="home-text">
                                 <p>
@@ -100,7 +99,7 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                                     Nam pulvinar quis diam non tempor. <br />
                                 </p>
                             </div>
-                        </Parallax>
+                        </div>
                     </div>
                     <div className="flex justify-center md:w-2/3">
                         <TechStack />

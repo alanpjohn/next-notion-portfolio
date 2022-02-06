@@ -10,8 +10,10 @@ import {
     PropertyValueRichText,
     PropertyValueTitle,
     PropertyValueUrl,
-} from "@notion-stuff/v4-types";
-import { BlockWithChildren, IPost, IProject } from "@util/interface";
+    BlockWithChildren,
+    IPost,
+    IProject,
+} from "@util/interface";
 import { getCanonicalURL } from "@util/router";
 
 const notion = new Client({ auth: process.env.NOTION_KEY });

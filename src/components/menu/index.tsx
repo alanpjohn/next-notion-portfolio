@@ -7,7 +7,7 @@ type NavigationProps = {
     href: string;
 };
 
-const navVariants = {
+const menuLinkVariants = {
     open: {
         y: 0,
         opacity: 1,
@@ -24,19 +24,32 @@ const navVariants = {
     },
 };
 
-export const NavigationLink: React.FC<NavigationProps> = ({
+export const MenuLink: React.FC<NavigationProps> = ({
     text,
     href,
 }: NavigationProps) => {
     return (
         <a className="navlink" href={href}>
             <motion.li
-                variants={navVariants}
-                whileHover={{ x: -20 }}
+                variants={menuLinkVariants}
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
             >
                 {text}
             </motion.li>
+        </a>
+    );
+};
+
+export const NavLink: React.FC<NavigationProps> = ({
+    text,
+    href,
+}: NavigationProps) => {
+    return (
+        <a className="navlink" href={href}>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                {text}
+            </motion.div>
         </a>
     );
 };
@@ -59,11 +72,19 @@ export const Menu: React.FC = () => {
             animate={isOpen ? "open" : "closed"}
             onPointerLeave={() => setOpen(false)}
         >
+            <div className="navbar">
+                <NavLink text="Home" href="/" />
+                <NavLink text="Blog" href="/blog" />
+                <NavLink
+                    text="Photography"
+                    href="https://alanjohn.myportfolio.com/"
+                />
+            </div>
             <BiMenu className="icon" onClick={() => setOpen(true)} />
             <motion.ul variants={menuVariants} className="navlinks">
-                <NavigationLink text="Home" href="/" />
-                <NavigationLink text="Blog" href="/blog" />
-                <NavigationLink
+                <MenuLink text="Home" href="/" />
+                <MenuLink text="Blog" href="/blog" />
+                <MenuLink
                     text="Photography"
                     href="https://alanjohn.myportfolio.com/"
                 />
