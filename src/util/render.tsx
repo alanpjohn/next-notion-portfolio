@@ -16,6 +16,7 @@ import {
     ListItemBlock,
 } from "@util/interface";
 import { MultilineCodeBlock } from "@components/blog/code";
+import { CustomLink } from "@components/link";
 
 const createListBlock = (
     blocktype: "bulleted_list" | "numbered_list",
@@ -124,9 +125,9 @@ const renderText = (
                 style={color !== "default" ? { color } : {}}
             >
                 {href ? (
-                    <a className="blog-link not-prose" href={href}>
+                    <CustomLink className="default-link not-prose" href={href}>
                         {plain_text}
-                    </a>
+                    </CustomLink>
                 ) : (
                     plain_text
                 )}
@@ -199,10 +200,13 @@ const renderCallout = (
 };
 
 const renderImage = (block: ImageBlock): React.ReactNode => {
+    const altText = block.image.caption
+        ? block.image.caption.map((richText) => richText.plain_text).join(" ")
+        : "Some image";
     const src = block.image.type == "file" ? block.image.file.url : "external";
     if (src != "external") {
         return (
-            <BlogImage key={block.id} src={src}>
+            <BlogImage key={block.id} src={src} altText={altText}>
                 {renderText(block.id, block.image.caption)}
             </BlogImage>
         );

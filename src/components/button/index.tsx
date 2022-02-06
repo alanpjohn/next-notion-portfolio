@@ -1,3 +1,4 @@
+import { CustomLink } from "@components/link";
 import { motion } from "framer-motion";
 import { PropsWithChildren } from "react";
 import { IconType } from "react-icons";
@@ -15,10 +16,10 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     href,
 }: PrimaryButtonProps) => {
     return (
-        <a href={href} className="primary-button">
+        <CustomLink href={href} className="primary-button">
             <span>{text}</span>
             <Icon className="icon" />
-        </a>
+        </CustomLink>
     );
 };
 
@@ -43,11 +44,11 @@ export const DoubleIconButton: React.FC<PrimaryButtonProps> = ({
     href,
 }: PrimaryButtonProps) => {
     return (
-        <a href={href} className="double-button hover:text-accent">
+        <CustomLink href={href} className="double-button hover:text-accent">
             <Icon className="icon " />
             <span>{text}</span>
             <Icon className="icon " />
-        </a>
+        </CustomLink>
     );
 };
 
@@ -79,15 +80,15 @@ export const QuickLink: React.FC<ContactProps> = ({
     href,
 }: ContactProps) => {
     return (
-        <a href={href}>
-            <motion.li
+        <CustomLink href={href}>
+            <motion.div
                 whileInView="view"
                 variants={quickLinkItemVariants}
                 className="quick-link"
             >
                 <Icon className="mr-8 text-2xl" />
                 <span>{text}</span>
-            </motion.li>
-        </a>
+            </motion.div>
+        </CustomLink>
     );
 };

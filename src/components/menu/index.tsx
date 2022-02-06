@@ -1,3 +1,4 @@
+import { CustomLink } from "@components/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
@@ -29,15 +30,15 @@ export const MenuLink: React.FC<NavigationProps> = ({
     href,
 }: NavigationProps) => {
     return (
-        <a className="navlink" href={href}>
-            <motion.li
+        <CustomLink className="navlink" href={href}>
+            <motion.div
                 variants={menuLinkVariants}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
             >
                 {text}
-            </motion.li>
-        </a>
+            </motion.div>
+        </CustomLink>
     );
 };
 
@@ -46,11 +47,11 @@ export const NavLink: React.FC<NavigationProps> = ({
     href,
 }: NavigationProps) => {
     return (
-        <a className="navlink" href={href}>
+        <CustomLink className="navlink" href={href}>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 {text}
             </motion.div>
-        </a>
+        </CustomLink>
     );
 };
 

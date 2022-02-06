@@ -6,6 +6,9 @@ import { getPortfolioProjects } from "@util/notion";
 import { IProject } from "@util/interface";
 import { ProjectPanel, TechStack } from "@components/panel";
 import { HeroSection } from "@components/section/hero";
+import { CustomLink } from "@components/link";
+import { PrimaryButton } from "@components/button";
+import { FaFileDownload, FaGithub } from "react-icons/fa";
 
 type HomeProps = {
     projects: IProject[];
@@ -21,34 +24,41 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                         <span className="section-title">About me</span>
                         <div className="m-auto">
                             <CustomImage
+                                altText="Alan John"
                                 src="/images/home_light.png"
                                 height="400px"
                                 width="400px"
                             />
                         </div>
                     </div>
-                    <div className="md:w-1/2">
-                        <div className="home-text">
+                    <div className="flex md:w-1/2">
+                        <div className="home-text m-auto">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Ut sit amet quam in leo
-                                molestie elementum. Mauris eleifend pretium
-                                sapien. Aenean ac sagittis purus. Nam eget
-                                dictum magna. Integer molestie neque eu odio
-                                vehicula dapibus. Proin ullamcorper diam quis
-                                consectetur porttitor. Quisque id ex non mi
-                                efficitur dictum nec viverra ligula. Nam
-                                pulvinar quis diam non tempor. <br />
+                                Hi, I am a software engineer working at HSBC
+                                currently based in Shillong, India. I am BE
+                                Computer Engineering Graduate from{" "}
+                                <CustomLink href="https://www.aitpune.com/">
+                                    Army Insitute of Techology, Pune
+                                </CustomLink>{" "}
+                                (Affliated with Savitribai Phule Pune
+                                University). I developed an interest in
+                                computers during my school days. During my
+                                undergraduate, I had the chance to explore many
+                                technologies at the end of which I got hooked to
+                                cloud native technologies and DevSecOps and
+                                always am looking for an opportunity to work
+                                with them.
                             </p>
                             <p>
-                                Proin nec justo egestas, tincidunt purus sit
-                                amet, maximus orci. Phasellus interdum interdum
-                                turpis, a porttitor ex sagittis vel. Cras vel
-                                enim vel turpis interdum aliquam. Curabitur
-                                pulvinar elementum est, eget sodales magna
-                                tristique eu. Curabitur suscipit ut arcu non
-                                suscipit. Fusce id enim tempus, mollis enim ac,
-                                suscipit ante.
+                                There are few things I enjoy more than bringing
+                                ideas to life using the best of my knowledge.
+                                Regardless of the project, I take special care
+                                of code quality, workflows, repository
+                                organisation and documentation. I have had the
+                                opportunity to work with a plethora of tech
+                                stacks and I hope the list keeps growing. Always
+                                looking forward to contributing to open source
+                                projects and networking through communities.
                             </p>
                         </div>
                     </div>
@@ -66,15 +76,17 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
                             </span>
                             <div className="home-text">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Ut sit amet quam in leo
-                                    molestie elementum. Mauris eleifend pretium
-                                    sapien. Aenean ac sagittis purus. Nam eget
-                                    dictum magna. Integer molestie neque eu odio
-                                    vehicula dapibus. Proin ullamcorper diam
-                                    quis consectetur porttitor. Quisque id ex
-                                    non mi efficitur dictum nec viverra ligula.
-                                    Nam pulvinar quis diam non tempor. <br />
+                                    Here are some of my favourite projects that
+                                    I have made for either personal, competition
+                                    or academic purposes. You can check out more
+                                    at my Github Profile.
+                                    <div className="float-right py-4">
+                                        <PrimaryButton
+                                            text={"Go to Github"}
+                                            Icon={FaGithub}
+                                            href="https://github.com/TheForeverLost"
+                                        />
+                                    </div>
                                 </p>
                             </div>
                         </div>
@@ -84,19 +96,24 @@ const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
             <Section>
                 <div className="home-section">
                     <div className="flex flex-col md:w-1/3">
-                        <div className="mb-8">
+                        <div className=" mb-8">
                             <span className="section-title">Skillset</span>
                             <div className="home-text">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Ut sit amet quam in leo
-                                    molestie elementum. Mauris eleifend pretium
-                                    sapien. Aenean ac sagittis purus. Nam eget
-                                    dictum magna. Integer molestie neque eu odio
-                                    vehicula dapibus. Proin ullamcorper diam
-                                    quis consectetur porttitor. Quisque id ex
-                                    non mi efficitur dictum nec viverra ligula.
-                                    Nam pulvinar quis diam non tempor. <br />
+                                    My go-to tech stack right now would be
+                                    NextJS for frontend and FastAPI and/or gRPC
+                                    to make my microservices architecture
+                                    deployed with the help of a kubernetes
+                                    service provider. Outside of tech, I am
+                                    comfortable with adobe tools such as
+                                    Photoshop, Lightroom and Illustrator.
+                                    <div className="float-right py-4">
+                                        <PrimaryButton
+                                            text={"Download Resume"}
+                                            Icon={FaFileDownload}
+                                            href="https://drive.google.com/file/d/1OAWqwJ6cXa4yS0vrsdn-Ni3lAtw8aNA3/view?usp=sharing"
+                                        />
+                                    </div>
                                 </p>
                             </div>
                         </div>

@@ -22,7 +22,15 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                     description:
                         "The personal website for Alan John, developer.",
                     site_name: "Alan John",
-                    images: [],
+                    images: [
+                        {
+                            url: "/images/social_media_preview_blog.png",
+                            width: 1200,
+                            height: 628,
+                            alt: "My Portfolio Preview",
+                            type: "image/png",
+                        },
+                    ],
                 }}
                 canonical={url}
             />

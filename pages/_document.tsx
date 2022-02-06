@@ -18,8 +18,34 @@ class CustomDocument extends Document {
 
     render(): JSX.Element {
         return (
-            <Html>
+            <Html lang="en">
                 <Head>
+                    <link
+                        rel="preload"
+                        href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2"
+                        as="font"
+                        type="font/woff2"
+                    />
+                    <link
+                        rel="preload"
+                        href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff"
+                        as="font"
+                        type="font/woff"
+                    />
+                    <link
+                        rel="preload"
+                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
+                        as="font"
+                        type="font/woff2"
+                    />
+                    <link
+                        rel="preload"
+                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff"
+                        as="font"
+                        type="font/woff"
+                    />
+
+                    {/* <link rel="preload" href="styles.css" as="style"/> */}
                     <link rel="shortcut icon" href="/favicon.ico" />
                 </Head>
                 <body>

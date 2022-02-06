@@ -1,4 +1,5 @@
 import { PrimaryButton } from "@components/button";
+import { CustomLink } from "@components/link";
 import { Menu } from "@components/menu";
 import { isActiveLink } from "@util/router";
 import {
@@ -8,7 +9,6 @@ import {
     useTransform,
     useViewportScroll,
 } from "framer-motion";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { FaArrowUp } from "react-icons/fa";
@@ -39,9 +39,9 @@ export const Header: React.FC = () => {
                 className="header"
                 style={{ y: headerDisappearance, opacity: headerAppearance }}
             >
-                <Link href="/">
-                    <a className="logo">AJ</a>
-                </Link>
+                <CustomLink href="/" className="logo">
+                    AJ
+                </CustomLink>
                 <div className="w-2/5">
                     <Menu />
                 </div>

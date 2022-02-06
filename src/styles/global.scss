@@ -1,8 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import "fonts";
+@import "link";
 @import "logo";
 @import "button";
 @import "blog";
@@ -13,9 +10,7 @@
 @import "footer";
 @import "panel";
 
-@layer base {
-    html,
-    body {
-        @apply m-0 scroll-smooth bg-primary p-0 font-cabinet;
-    }
+html,
+body {
+    @apply m-0 scroll-smooth bg-primary p-0 font-cabinet;
 }

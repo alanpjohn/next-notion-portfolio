@@ -1,4 +1,5 @@
 import { RoundButton } from "@components/button";
+import { CustomLink } from "@components/link";
 import { IPost, IProject, ITag } from "@util/interface";
 import { motion } from "framer-motion";
 import { PropsWithChildren } from "react";
@@ -25,8 +26,8 @@ export const PostCard: React.FC<PostProps> = ({
 }: PostProps) => {
     const link = `/blog/${url}`;
     return (
-        <a href={link} className="post group">
-            <motion.li className="content" variants={cardVariants}>
+        <CustomLink href={link} className="post group">
+            <motion.div className="content" variants={cardVariants}>
                 <span className="title group-hover:text-accent">{title}</span>
                 <div className="pb-4">
                     {tags.map((tag: ITag) => (
@@ -34,13 +35,13 @@ export const PostCard: React.FC<PostProps> = ({
                     ))}
                 </div>
                 <span className="description">{description}</span>
-            </motion.li>
+            </motion.div>
             <div className="sidebar">
                 <div>
                     <RoundButton href={link} Icon={FaArrowRight} />
                 </div>
             </div>
-        </a>
+        </CustomLink>
     );
 };
 
@@ -53,8 +54,8 @@ export const ProjectCard: React.FC<ProjectProps> = ({
     description,
 }: ProjectProps) => {
     return (
-        <a href={link}>
-            <motion.li className="project group" variants={cardVariants}>
+        <CustomLink href={link}>
+            <motion.div className="project group" variants={cardVariants}>
                 <div className="content">
                     <span className="title group-hover:text-accent">
                         {title}
@@ -71,7 +72,7 @@ export const ProjectCard: React.FC<ProjectProps> = ({
                         <RoundButton href={link} Icon={FaCode} />
                     </div>
                 </div>
-            </motion.li>
-        </a>
+            </motion.div>
+        </CustomLink>
     );
 };

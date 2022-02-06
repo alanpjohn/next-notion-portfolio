@@ -1,3 +1,4 @@
+import { CustomLink } from "@components/link";
 import { FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const links = [
@@ -18,7 +19,7 @@ const links = [
 export const Contact: React.FC = () => (
     <div className="my-6 flex flex-row text-2xl text-secondary">
         {links.map(({ Icon, href }, i) => (
-            <a
+            <CustomLink
                 key={href}
                 href={href}
                 target="_blank"
@@ -28,7 +29,7 @@ export const Contact: React.FC = () => (
                 }`}
             >
                 <Icon />
-            </a>
+            </CustomLink>
         ))}
     </div>
 );

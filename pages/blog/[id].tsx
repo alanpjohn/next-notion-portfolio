@@ -6,6 +6,7 @@ import { IPost, BlockWithChildren, ITag } from "@util/interface";
 import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
 import { renderPage } from "@util/render";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { NextSeo } from "next-seo";
 import { ParsedUrlQuery } from "querystring";
 
 type PostProps = {
@@ -19,6 +20,16 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
     }
     return (
         <Layout title={post.title} description={post.description}>
+            <NextSeo
+                openGraph={{
+                    article: {
+                        publishedTime: post.date,
+                        authors: ["Alan P John"],
+                        section: "Software",
+                        tags: post.tags.map((tag) => tag.name),
+                    },
+                }}
+            />
             <Section>
                 <div className="post-section">
                     <div className="post-hero">
