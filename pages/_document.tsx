@@ -25,26 +25,42 @@ class CustomDocument extends Document {
                         href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2"
                         as="font"
                         type="font/woff2"
+                        crossOrigin=""
                     />
                     <link
                         rel="preload"
                         href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff"
                         as="font"
                         type="font/woff"
+                        crossOrigin=""
                     />
                     <link
                         rel="preload"
                         href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
                         as="font"
                         type="font/woff2"
+                        crossOrigin=""
                     />
                     <link
                         rel="preload"
                         href="/fonts/ClashDisplay/ClashDisplay-Variable.woff"
                         as="font"
                         type="font/woff"
+                        crossOrigin=""
                     />
-
+                    <link
+                        rel="preconnect"
+                        href="https://fonts.googleapis.com"
+                    />
+                    <link
+                        rel="preconnect"
+                        href="https://fonts.gstatic.com"
+                        crossOrigin=""
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+                        rel="stylesheet"
+                    />
                     {/* <link rel="preload" href="styles.css" as="style"/> */}
                     <link rel="shortcut icon" href="/favicon.ico" />
                 </Head>

@@ -36,13 +36,13 @@ export const Header: React.FC = () => {
     return (
         <div>
             <motion.div
-                className="header"
+                className="header withborder"
                 style={{ y: headerDisappearance, opacity: headerAppearance }}
             >
                 <CustomLink href="/" className="logo">
                     AJ
                 </CustomLink>
-                <div className="w-2/5">
+                <div className="my-auto w-2/5">
                     <Menu />
                 </div>
             </motion.div>

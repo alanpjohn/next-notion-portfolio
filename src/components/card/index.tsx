@@ -54,7 +54,7 @@ export const ProjectCard: React.FC<ProjectProps> = ({
     description,
 }: ProjectProps) => {
     return (
-        <CustomLink href={link}>
+        <CustomLink href={link} className="">
             <motion.div className="project group" variants={cardVariants}>
                 <div className="content">
                     <span className="title group-hover:text-accent">

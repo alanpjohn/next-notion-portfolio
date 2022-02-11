@@ -6,6 +6,7 @@ import { BiMenu } from "react-icons/bi";
 type NavigationProps = {
     text: string;
     href: string;
+    isOpen?: boolean;
 };
 
 const menuLinkVariants = {
@@ -28,9 +29,10 @@ const menuLinkVariants = {
 export const MenuLink: React.FC<NavigationProps> = ({
     text,
     href,
+    isOpen = true,
 }: NavigationProps) => {
     return (
-        <CustomLink className="navlink" href={href}>
+        <CustomLink className={`navlink ${isOpen ? "" : "hidden"}`} href={href}>
             <motion.div
                 variants={menuLinkVariants}
                 whileHover={{ scale: 1.1 }}
@@ -71,7 +73,6 @@ export const Menu: React.FC = () => {
             className="nav"
             initial={false}
             animate={isOpen ? "open" : "closed"}
-            onPointerLeave={() => setOpen(false)}
         >
             <div className="navbar">
                 <NavLink text="Home" href="/" />
@@ -81,13 +82,18 @@ export const Menu: React.FC = () => {
                     href="https://alanjohn.myportfolio.com/"
                 />
             </div>
-            <BiMenu className="icon" onClick={() => setOpen(true)} />
-            <motion.ul variants={menuVariants} className="navlinks">
-                <MenuLink text="Home" href="/" />
-                <MenuLink text="Blog" href="/blog" />
+            <BiMenu className="icon" onClick={() => setOpen(!isOpen)} />
+            <motion.ul
+                variants={menuVariants}
+                className="navlinks"
+                onClick={() => setOpen(!isOpen)}
+            >
+                <MenuLink text="Home" href="/" isOpen={isOpen} />
+                <MenuLink text="Blog" href="/blog" isOpen={isOpen} />
                 <MenuLink
                     text="Photography"
                     href="https://alanjohn.myportfolio.com/"
+                    isOpen={isOpen}
                 />
             </motion.ul>
         </motion.nav>

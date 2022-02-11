@@ -80,7 +80,7 @@ export const QuickLink: React.FC<ContactProps> = ({
     href,
 }: ContactProps) => {
     return (
-        <CustomLink href={href}>
+        <CustomLink href={href} className="">
             <motion.div
                 whileInView="view"
                 variants={quickLinkItemVariants}
