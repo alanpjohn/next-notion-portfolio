@@ -13,7 +13,17 @@ type BlockPageProps = {
 const BlogPage: NextPage<BlockPageProps> = ({ posts }: BlockPageProps) => {
     return (
         <Layout>
-            <NextSeo title="Blog" description="My engineering blog" />
+            <NextSeo
+                title="Blog"
+                description="My engineering blog"
+                additionalMetaTags={[
+                    {
+                        property: "keywords",
+                        content:
+                            "Alan, John, Software Developer, Sofware Engineer, Developer, Portfolio, Devops, Cloud Native, Blog",
+                    },
+                ]}
+            />
             <Section className="pt-16 md:pt-24">
                 <div className="blog-section">
                     <div className="blog-hero">

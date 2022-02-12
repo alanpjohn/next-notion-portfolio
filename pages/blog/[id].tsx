@@ -31,6 +31,12 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                         tags: post.tags.map((tag) => tag.name),
                     },
                 }}
+                additionalMetaTags={[
+                    {
+                        property: "keywords",
+                        content: post.tags.map((tag) => tag.name).join(", "),
+                    },
+                ]}
             />
             <Section className="pt-30">
                 <div className="post-section">

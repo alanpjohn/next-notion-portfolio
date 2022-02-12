@@ -84,34 +84,22 @@ export async function getBlogPosts(): Promise<IPost[]> {
     const databaseId = process.env.NOTION_BLOG_DATABASE_ID
         ? process.env.NOTION_BLOG_DATABASE_ID
         : "";
-    let response: QueryDatabaseResponse;
-    if (process.env.NODE_ENV == "production") {
-        response = await notion.databases.query({
-            database_id: databaseId,
-            filter: {
-                property: "Publish",
-                checkbox: {
-                    equals: true,
-                },
+    const response: QueryDatabaseResponse = await notion.databases.query({
+        database_id: databaseId,
+        filter: {
+            property: "Publish",
+            checkbox: {
+                equals: process.env.LOCAL ? false : true,
             },
-            sorts: [
-                {
-                    property: "Date",
-                    direction: "descending",
-                },
-            ],
-        });
-    } else {
-        response = await notion.databases.query({
-            database_id: databaseId,
-            sorts: [
-                {
-                    property: "Date",
-                    direction: "descending",
-                },
-            ],
-        });
-    }
+        },
+        sorts: [
+            {
+                property: "Date",
+                direction: "descending",
+            },
+        ],
+    });
+
     const posts = extractPosts(response);
     writeToCache(posts);
     return posts;

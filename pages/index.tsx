@@ -15,7 +15,17 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = ({ projects }: HomeProps) => {
     return (
         <Layout>
-            <NextSeo title="Home" description="2022 Portfolio" />
+            <NextSeo
+                title="Home"
+                description="2022 Portfolio"
+                additionalMetaTags={[
+                    {
+                        property: "keywords",
+                        content:
+                            "Alan, John, Software Developer, Sofware Engineer, Developer, Portfolio, Devops, Cloud Native",
+                    },
+                ]}
+            />
             <HeroSection />
             <AboutSection />
             <ProjectSection projects={projects} />

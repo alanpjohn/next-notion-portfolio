@@ -9,7 +9,10 @@ import { Header } from "@components/header";
 import { Footer } from "@components/footer";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
-    const url = `https://localhost:3000${router.route}`;
+    const domain = process.env.LOCAL
+        ? "https://localhost:3000"
+        : "https://alan-john-portfolio.vercel.app";
+    const url = `${domain}${router.route}`;
 
     return (
         <>
@@ -24,7 +27,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                     site_name: "Alan John",
                     images: [
                         {
-                            url: "/images/social_media_preview_blog.png",
+                            url: `${domain}/images/social_media_preview_blog.png`,
                             width: 1200,
                             height: 628,
                             alt: "My Portfolio Preview",
