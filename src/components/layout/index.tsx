@@ -1,11 +1,8 @@
 import { ReactNode } from "react";
-import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
 
 type Props = {
     children: ReactNode;
-    title: string;
-    description: string;
 };
 
 const variants = {
@@ -14,15 +11,9 @@ const variants = {
     exit: { opacity: 0, x: 0, y: -100 },
 };
 
-export const Layout: React.FC<Props> = ({
-    children,
-    title,
-    description,
-}: Props) => {
+export const Layout: React.FC<Props> = ({ children }: Props) => {
     return (
         <div>
-            <NextSeo title={title} description={description} />
-
             <motion.main
                 initial="hidden"
                 animate="enter"

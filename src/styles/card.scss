@@ -9,11 +9,11 @@
         @apply flex flex-grow flex-col;
 
         .title {
-            @apply font-satoshi text-2xl md:text-5xl;
+            @apply font-cabinet text-2xl md:text-5xl;
         }
 
         .description {
-            @apply font-satoshi text-xl font-light md:text-2xl;
+            @apply font-cabinet text-xl font-light md:text-2xl;
         }
     }
 
@@ -33,7 +33,7 @@
         @apply flex flex-col flex-wrap lg:flex-grow;
 
         .title {
-            @apply font-satoshi text-lg md:text-2xl;
+            @apply font-cabinet text-lg md:text-2xl;
         }
 
         .description {

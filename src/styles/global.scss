@@ -8,9 +8,8 @@
 @import "menu";
 @import "home";
 @import "footer";
-@import "panel";
 
 html,
 body {
-    @apply m-0 scroll-smooth bg-primary p-0 font-satoshi;
+    @apply m-0 scroll-smooth bg-primary p-0 font-cabinet text-secondary;
 }

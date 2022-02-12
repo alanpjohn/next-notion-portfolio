@@ -19,8 +19,10 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
         return <></>;
     }
     return (
-        <Layout title={post.title} description={post.description}>
+        <Layout>
             <NextSeo
+                title={post.title}
+                description={post.description}
                 openGraph={{
                     article: {
                         publishedTime: post.date,
@@ -30,7 +32,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     },
                 }}
             />
-            <Section>
+            <Section className="pt-30">
                 <div className="post-section">
                     <div className="post-hero">
                         <span className="post-title">{post.title}</span>

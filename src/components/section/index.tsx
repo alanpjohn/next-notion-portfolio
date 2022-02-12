@@ -14,7 +14,7 @@ export const Section: React.FC<Props> = ({
     return (
         <section
             id={title}
-            className={`flex w-full snap-y snap-proximity snap-center flex-col pt-20 ${className}`}
+            className={`flex w-full snap-y snap-proximity snap-center flex-col ${className}`}
         >
             {children}
         </section>

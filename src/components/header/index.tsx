@@ -1,43 +1,28 @@
-import { PrimaryButton } from "@components/button";
 import { CustomLink } from "@components/link";
 import { Menu } from "@components/menu";
-import { isActiveLink } from "@util/router";
-import {
-    motion,
-    useSpring,
-    useTime,
-    useTransform,
-    useViewportScroll,
-} from "framer-motion";
-import { useRouter } from "next/router";
+import { CustomButton } from "@components/button";
+import { motion, useTransform, useViewportScroll } from "framer-motion";
 import React from "react";
 import { FaArrowUp } from "react-icons/fa";
 
 export const Header: React.FC = () => {
-    const { pathname } = useRouter();
-    const isHome = isActiveLink("/", pathname);
-
     const { scrollY } = useViewportScroll();
     const buttonAppearance = useTransform(
         scrollY,
-        [0, 200, 250],
+        [0, 300, 325],
         [-100, -100, 0],
     );
     const headerDisappearance = useTransform(
         scrollY,
-        [0, 175, 225],
+        [0, 250, 300],
         [0, 0, -300],
     );
-    const time = useTime();
-    const headerAppearance = useSpring(
-        useTransform(time, [0, 1500, 1750], isHome ? [0, 0, 1] : [1, 1, 1]),
-        { stiffness: 300 },
-    );
+
     return (
         <div>
             <motion.div
                 className="header withborder"
-                style={{ y: headerDisappearance, opacity: headerAppearance }}
+                style={{ y: headerDisappearance }}
             >
                 <CustomLink href="/" className="logo">
                     AJ
@@ -47,7 +32,12 @@ export const Header: React.FC = () => {
                 </div>
             </motion.div>
             <motion.div className="header" style={{ y: buttonAppearance }}>
-                <PrimaryButton text="Back to top" href="#" Icon={FaArrowUp} />
+                <CustomButton
+                    text="Back to top"
+                    href="#"
+                    Icon={FaArrowUp}
+                    primary
+                />
             </motion.div>
         </div>
     );

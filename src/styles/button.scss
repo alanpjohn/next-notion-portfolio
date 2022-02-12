@@ -1,13 +1,21 @@
-.primary-button {
-    @apply z-0 m-2 flex h-12 w-min justify-center rounded-full border-2 border-secondary bg-primary pr-4 text-secondary hover:bg-accent;
+.button {
+    @apply z-0 m-2 flex h-12 w-min justify-center rounded-md px-5 py-2.5 text-secondary;
 
     .icon {
         @apply m-auto ml-3;
     }
 
     span {
-        @apply m-auto ml-4 whitespace-nowrap font-clash text-lg font-semibold;
+        @apply m-auto ml-4 whitespace-nowrap font-clash text-lg font-medium;
     }
+}
+
+.button-primary {
+    @apply bg-accent hover:bg-primary-100;
+}
+
+.button-secondary {
+    @apply border-2 border-primary-100 bg-primary  hover:bg-accent;
 }
 
 .round-button {
@@ -16,20 +24,4 @@
     .icon {
         @apply m-auto;
     }
-}
-
-.double-button {
-    @apply flex w-min flex-row items-center py-2 px-4;
-
-    .icon {
-        @apply mx-2;
-    }
-
-    span {
-        @apply m-auto whitespace-nowrap font-clash text-lg font-light;
-    }
-}
-
-.quick-link {
-    @apply flex h-full w-full flex-row items-center rounded-full border-2 border-secondary bg-primary px-8 font-clash text-base font-medium hover:bg-accent md:text-xl;
 }

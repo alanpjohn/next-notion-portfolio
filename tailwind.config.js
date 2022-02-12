@@ -9,7 +9,7 @@ module.exports = {
                     100: "#333533",
                 },
                 accent: {
-                    DEFAULT: "#f2542d",
+                    DEFAULT: "#e2441d",
                 },
                 secondary: {
                     DEFAULT: "#fffcf2",
@@ -17,7 +17,7 @@ module.exports = {
             },
             fontFamily: {
                 ...fontFamily,
-                satoshi: ["Satoshi", "ui-sans-serif"],
+                cabinet: ["CabinetGrotesk", "ui-sans-serif"],
                 clash: ["ClashDisplay", "ui-sans-serif"],
                 playfair: ["Playfair Display", "ui-sans-serif"],
             },

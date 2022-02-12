@@ -4,6 +4,7 @@ import { Section } from "@components/section";
 import { IPost } from "@util/interface";
 import { getBlogPosts } from "@util/notion";
 import { GetStaticProps, NextPage } from "next";
+import { NextSeo } from "next-seo";
 
 type BlockPageProps = {
     posts: IPost[];
@@ -11,22 +12,18 @@ type BlockPageProps = {
 
 const BlogPage: NextPage<BlockPageProps> = ({ posts }: BlockPageProps) => {
     return (
-        <Layout title="Blog" description="My engineering blog">
-            <Section>
+        <Layout>
+            <NextSeo title="Blog" description="My engineering blog" />
+            <Section className="pt-16 md:pt-24">
                 <div className="blog-section">
                     <div className="blog-hero">
                         <span className="blog-title">My Blog</span>
                         <div className="introduction">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Ut sit amet quam in leo
-                                molestie elementum. Mauris eleifend pretium
-                                sapien. Aenean ac sagittis purus. Nam eget
-                                dictum magna. Integer molestie neque eu odio
-                                vehicula dapibus. Proin ullamcorper diam quis
-                                consectetur porttitor. Quisque id ex non mi
-                                efficitur dictum nec viverra ligula. Nam
-                                pulvinar quis diam non tempor. <br />
+                                Sharing ideas and project case ideas. Usually
+                                read a lot on linux and cloud native patterns so
+                                would share some articles on that as well.{" "}
+                                <br />
                             </p>
                         </div>
                     </div>

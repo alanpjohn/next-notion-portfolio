@@ -6,3 +6,8 @@ node_modules
 .env
 .env.*
 !.env.example
+
+# dev test files
+pages/test
+src/components/test
+src/styles/test.scss

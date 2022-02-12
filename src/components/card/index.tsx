@@ -1,9 +1,9 @@
-import { RoundButton } from "@components/button";
+import { CustomButton, RoundButton } from "@components/button";
 import { CustomLink } from "@components/link";
 import { IPost, IProject, ITag } from "@util/interface";
 import { motion } from "framer-motion";
-import { PropsWithChildren } from "react";
-import { FaArrowRight, FaCode } from "react-icons/fa";
+import { PropsWithChildren, PropsWithRef } from "react";
+import { FaArrowRight } from "react-icons/fa";
 
 type TagProps = PropsWithChildren<ITag>;
 
@@ -45,34 +45,32 @@ export const PostCard: React.FC<PostProps> = ({
     );
 };
 
-type ProjectProps = PropsWithChildren<IProject>;
+type ProjectCardProps = PropsWithRef<IProject>;
 
-export const ProjectCard: React.FC<ProjectProps> = ({
-    link,
+export const ProjectCard: React.FC<ProjectCardProps> = ({
     title,
-    tags,
+    date,
     description,
-}: ProjectProps) => {
+    link,
+    tags,
+}: ProjectCardProps) => {
     return (
-        <CustomLink href={link} className="">
-            <motion.div className="project group" variants={cardVariants}>
-                <div className="content">
-                    <span className="title group-hover:text-accent">
-                        {title}
-                    </span>
-                    <div className="flex flex-wrap">
-                        {tags.map((tag: ITag) => (
-                            <Tag key={tag.id} {...tag} />
-                        ))}
-                    </div>
-                    <div className="description">{description}</div>
+        <div className="project-card">
+            <div className="project-nav">{date}</div>
+            <div className="project-title">
+                <CustomLink href={link} className="">
+                    {title}
+                </CustomLink>
+            </div>
+            <div className="project-content">
+                <div className="project-desc">{description}</div>
+                <div className="project-tags">
+                    {tags.map((tag) => (
+                        <span key={tag.id}>{tag.name}</span>
+                    ))}
                 </div>
-                <div className="sidebar">
-                    <div>
-                        <RoundButton href={link} Icon={FaCode} />
-                    </div>
-                </div>
-            </motion.div>
-        </CustomLink>
+            </div>
+            <CustomButton href={link} text="Go to Project" />
+        </div>
     );
 };

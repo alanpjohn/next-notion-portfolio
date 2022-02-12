@@ -1,43 +1,109 @@
-.hero-section {
-    @apply min-h-screen text-secondary;
+.vertical {
+    writing-mode: vertical-lr;
+}
 
-    .main {
-        @apply m-auto flex flex-col lg:w-7/12 lg:flex-row;
+.section-banner {
+    @apply mx-4 flex items-center justify-evenly py-10 lg:mx-0 lg:flex-row;
+}
 
-        .main-text {
-            @apply flex flex-1 flex-col justify-center  text-center font-clash;
+.about-main {
+    @apply w-4/5 px-2 text-justify lg:w-2/5;
 
-            .title {
-                @apply whitespace-nowrap text-6xl lg:text-9xl;
+    div {
+        @apply py-4;
+    }
+}
+
+.hero-card {
+    @apply mx-4 md:col-span-2 md:mx-8 lg:col-span-1 lg:mx-2;
+
+    .hero-title {
+        @apply my-2 font-clash text-6xl font-light;
+    }
+
+    .hero-text {
+        max-width: 700px;
+        @apply mt-4 text-justify text-xl md:w-4/5 lg:w-3/4;
+    }
+}
+
+.project-grid {
+    max-width: 1200px;
+    @apply mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mx-auto lg:grid-cols-3;
+
+    .project-card {
+        max-width: 500px;
+        min-width: 300px;
+        @apply mx-auto flex flex-col justify-between rounded-sm border-2 border-primary-100;
+
+        .project-nav {
+            @apply flex w-full justify-end border-b-2 border-primary-100 py-2 px-2 font-clash text-sm font-light;
+        }
+
+        .project-title {
+            @apply w-full px-2 pt-6  pb-10;
+            @apply font-clash text-5xl;
+        }
+
+        .project-content {
+            @apply w-full border-y-2 border-primary-100 px-2;
+            @apply flex flex-row items-center;
+
+            .project-desc {
+                @apply flex-1 px-2 font-light;
             }
 
-            .subtitle {
-                @apply text-5xl font-light lg:text-7xl;
+            .project-tags {
+                @apply flex h-full flex-shrink flex-col border-l-2 border-primary-100 py-4 px-2;
+
+                span {
+                    @apply whitespace-nowrap;
+                    @apply m-1 w-fit rounded-md bg-primary-100 py-1 px-2 font-clash text-sm uppercase;
+                }
+            }
+        }
+
+        .project-link {
+            @apply flex w-full justify-start py-2 px-2 font-clash text-xs font-light;
+        }
+    }
+}
+
+.skill-panel {
+    max-width: 800px;
+    @apply mx-auto flex flex-col justify-between rounded-sm border-2 border-primary-100;
+
+    .head {
+        @apply flex w-full justify-end border-b-2 border-primary-100 py-2 px-2 font-clash text-sm font-light;
+    }
+
+    .nav {
+        @apply mb-3 grid h-16 grid-flow-row grid-cols-5 gap-0 border-b-2 border-primary-100;
+
+        .nav-item {
+            @apply w-full cursor-pointer py-4 text-center font-clash text-xl;
+
+            .highlight {
+                @apply mt-4 h-1 bg-accent;
             }
         }
     }
 
-    .hero-menu {
-        @apply flex flex-1 lg:w-1/2;
+    .heading {
+        @apply border-b-2 border-primary-100;
+        @apply flex flex-row items-center px-4;
+
+        .domain {
+            @apply w-full px-3 pt-6  pb-10;
+            @apply font-clash text-5xl;
+        }
+
+        .tools {
+            @apply flex flex-row items-center;
+        }
     }
-}
 
-.section-title {
-    @apply z-10 text-center font-clash text-6xl font-light sm:text-8xl;
-}
-
-.home-section {
-    @apply mx-auto my-8 flex w-11/12 flex-col text-secondary md:columns-2 md:flex-row;
-}
-
-.home-section-reverse {
-    @apply mx-auto my-8 flex w-11/12 flex-col-reverse text-secondary md:columns-2 md:flex-row;
-}
-
-.home-text {
-    @apply text-justify text-xl font-light md:mr-8;
-
-    p {
-        @apply p-4;
+    .description {
+        @apply py-4 px-6;
     }
 }
