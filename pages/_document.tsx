@@ -22,14 +22,28 @@ class CustomDocument extends Document {
                 <Head>
                     <link
                         rel="preload"
-                        href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2"
+                        href="/fonts/Satoshi/Satoshi-Variable.woff2"
                         as="font"
                         type="font/woff2"
                         crossOrigin=""
                     />
                     <link
                         rel="preload"
-                        href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff"
+                        href="/fonts/Satoshi/Satoshi-Variable.woff"
+                        as="font"
+                        type="font/woff"
+                        crossOrigin=""
+                    />
+                    <link
+                        rel="preload"
+                        href="/fonts/Satoshi/Satoshi-VariableItalic.woff2"
+                        as="font"
+                        type="font/woff2"
+                        crossOrigin=""
+                    />
+                    <link
+                        rel="preload"
+                        href="/fonts/Satoshi/Satoshi-VariableItalic.woff"
                         as="font"
                         type="font/woff"
                         crossOrigin=""
@@ -56,6 +70,10 @@ class CustomDocument extends Document {
                         rel="preconnect"
                         href="https://fonts.gstatic.com"
                         crossOrigin=""
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+                        rel="stylesheet"
                     />
                     <link
                         href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"

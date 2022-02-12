@@ -17,8 +17,9 @@ module.exports = {
             },
             fontFamily: {
                 ...fontFamily,
-                cabinet: ["CabinetGrotesk", "ui-sans-serif"],
+                satoshi: ["Satoshi", "ui-sans-serif"],
                 clash: ["ClashDisplay", "ui-sans-serif"],
+                playfair: ["Playfair Display", "ui-sans-serif"],
             },
         },
     },
