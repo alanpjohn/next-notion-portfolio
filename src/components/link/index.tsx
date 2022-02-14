@@ -15,9 +15,20 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
     target = "",
     rel = "",
 }: CustomLinkProps) => {
+    const scrollToTop = () => {
+        window.scrollTo(0, 0);
+    };
+
     const label = href
         .split("/")
         .filter((text) => text != "" && text.indexOf("?") == -1);
+    if (href == "#") {
+        return (
+            <div className={className} onClick={scrollToTop}>
+                {children}
+            </div>
+        );
+    }
     const internal: boolean = href.startsWith("/") || href.startsWith("#");
     return internal ? (
         <Link href={href} passHref>

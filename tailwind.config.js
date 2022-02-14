@@ -1,18 +1,34 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 module.exports = {
     content: ["./pages/**/*.tsx", "./src/**/*.tsx"],
+    darkMode: "class",
     theme: {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: "#242423",
-                    100: "#333533",
+                    DEFAULT: "#eff0f3",
+                    100: "#cccccd",
                 },
                 accent: {
-                    DEFAULT: "#e2441d",
+                    DEFAULT: "#ff8e3c",
                 },
                 secondary: {
-                    DEFAULT: "#fffcf2",
+                    DEFAULT: "#0d0d0d",
+                    100: "#2a2a2a",
+                },
+                darkprimary: {
+                    DEFAULT: "#16161a",
+                    100: "#27272b",
+                },
+                darkaccent: {
+                    DEFAULT: "#7f5af0",
+                },
+                darksecondary: {
+                    DEFAULT: "#fffffe",
+                    100: "#94a1b2",
+                },
+                codeblock: {
+                    DEFAULT: "#22272e",
                 },
             },
             fontFamily: {

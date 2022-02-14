@@ -12,4 +12,5 @@
 html,
 body {
     @apply m-0 scroll-smooth bg-primary p-0 font-cabinet text-secondary;
+    @apply dark:bg-darkprimary dark:text-darksecondary;
 }

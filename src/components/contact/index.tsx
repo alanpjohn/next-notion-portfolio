@@ -17,14 +17,14 @@ const links = [
 ];
 
 export const Contact: React.FC = () => (
-    <div className="my-6 flex flex-row text-2xl text-secondary">
+    <div className="my-6 flex flex-row text-2xl text-secondary dark:text-darksecondary">
         {links.map(({ Icon, href }, i) => (
             <CustomLink
                 key={href}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className={`transition-colors hover:text-red-600 ${
+                className={`transition-colors hover:text-accent dark:hover:text-darkaccent ${
                     i < links.length - 1 ? "mr-3" : ""
                 }`}
             >

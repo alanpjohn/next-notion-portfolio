@@ -4,6 +4,7 @@ import { CustomButton } from "@components/button";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import React from "react";
 import { FaArrowUp } from "react-icons/fa";
+import { DarkModeToggle } from "@components/darktoggle";
 
 export const Header: React.FC = () => {
     const { scrollY } = useViewportScroll();
@@ -24,9 +25,10 @@ export const Header: React.FC = () => {
                 className="header withborder"
                 style={{ y: headerDisappearance }}
             >
-                <CustomLink href="/" className="logo">
+                <CustomLink href="/" className="logo w-2/5">
                     AJ
                 </CustomLink>
+                <DarkModeToggle />
                 <div className="my-auto w-2/5">
                     <Menu />
                 </div>

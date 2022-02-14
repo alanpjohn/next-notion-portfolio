@@ -8,7 +8,10 @@ import { CustomButton } from "@components/button";
 export const SkillsSection: React.FC = () => {
     const [isSelected, setSelected] = useState(techStackDetails[0]);
     return (
-        <Section title="Skills" className="border-b-2 border-primary-100 py-20">
+        <Section
+            title="Skills"
+            className="border-b-2 border-primary-100 py-20 dark:border-darkprimary-100"
+        >
             <div className="section-banner flex-col-reverse">
                 <div className="skill-panel">
                     <div className="head">Change tabs for more details</div>
@@ -78,7 +81,6 @@ export const SkillsSection: React.FC = () => {
                             text={"Download Resume"}
                             Icon={FaFileDownload}
                             href="https://drive.google.com/file/d/1OAWqwJ6cXa4yS0vrsdn-Ni3lAtw8aNA3/view?usp=sharing"
-                            primary={true}
                         />
                     </div>
                 </div>

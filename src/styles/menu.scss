@@ -1,5 +1,5 @@
 .nav {
-    @apply flex h-16 flex-col overflow-visible text-secondary;
+    @apply flex h-16 flex-col overflow-visible text-secondary dark:text-darksecondary;
 
     .icon {
         @apply absolute z-30 block h-16 self-end text-4xl md:hidden;
@@ -9,7 +9,7 @@
         @apply my-auto hidden flex-row justify-center md:flex;
 
         .navlink {
-            @apply ml-4 font-clash text-base font-light hover:text-accent lg:text-xl;
+            @apply ml-4 font-clash text-base font-light hover:text-accent dark:hover:text-darkaccent lg:text-xl;
         }
     }
 
@@ -17,7 +17,7 @@
         @apply mt-20 block text-right md:hidden;
 
         .navlink {
-            @apply my-8 w-full bg-primary-100 font-clash text-xl font-light hover:text-accent lg:text-3xl;
+            @apply my-8 w-full bg-primary-100 font-clash  text-xl font-light hover:text-accent dark:bg-darkprimary-100 dark:hover:text-darkaccent lg:text-3xl;
         }
     }
 }

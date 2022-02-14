@@ -1,3 +1,4 @@
+import { CustomButton } from "@components/button";
 import { Layout } from "@components/layout";
 import { PostPanel } from "@components/panel";
 import { Section } from "@components/section";
@@ -5,6 +6,7 @@ import { IPost } from "@util/interface";
 import { getBlogPosts } from "@util/notion";
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
+import { SiDevdotto } from "react-icons/si";
 
 type BlockPageProps = {
     posts: IPost[];
@@ -35,6 +37,11 @@ const BlogPage: NextPage<BlockPageProps> = ({ posts }: BlockPageProps) => {
                                 would share some articles on that as well.{" "}
                                 <br />
                             </p>
+                            <CustomButton
+                                Icon={SiDevdotto}
+                                href="https://dev.to/theforeverlost"
+                                text="Read on Dev.to"
+                            />
                         </div>
                     </div>
                     <div className="blog-main">

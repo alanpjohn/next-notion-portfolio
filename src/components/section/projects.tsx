@@ -12,7 +12,7 @@ export const ProjectSection: React.FC<Props> = ({ projects }: Props) => {
     return (
         <Section
             title="Projects"
-            className="border-b-2 border-primary-100 py-20"
+            className="border-b-2 border-primary-100 py-20 dark:border-darkprimary-100"
         >
             <div className="project-grid">
                 <div className="hero-card">
@@ -27,7 +27,6 @@ export const ProjectSection: React.FC<Props> = ({ projects }: Props) => {
                             text={"Go to Github"}
                             Icon={FaGithub}
                             href="https://github.com/TheForeverLost"
-                            primary={true}
                         />
                     </div>
                 </div>

@@ -4,7 +4,7 @@ import { DefaultSeo } from "next-seo";
 
 import "tailwindcss/tailwind.css";
 import "@styles/global.scss";
-import "highlight.js/styles/stackoverflow-dark.css";
+import "highlight.js/styles/github-dark-dimmed.css";
 import { Header } from "@components/header";
 import { Footer } from "@components/footer";
 

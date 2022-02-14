@@ -28,8 +28,10 @@ export const PostCard: React.FC<PostProps> = ({
     return (
         <CustomLink href={link} className="post group">
             <motion.div className="content" variants={cardVariants}>
-                <span className="title group-hover:text-accent">{title}</span>
-                <div className="pb-4">
+                <span className="title group-hover:text-accent dark:group-hover:text-darkaccent">
+                    {title}
+                </span>
+                <div className="py-4">
                     {tags.map((tag: ITag) => (
                         <Tag key={tag.id} {...tag} />
                     ))}

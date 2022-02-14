@@ -42,7 +42,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                 <div className="post-section">
                     <div className="post-hero">
                         <span className="post-title">{post.title}</span>
-                        <div className="pb-4">
+                        <div className="py-4">
                             {post.tags.map((tag: ITag) => (
                                 <Tag key={tag.id} {...tag} />
                             ))}

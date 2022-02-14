@@ -23,7 +23,8 @@
 
     .hero-text {
         max-width: 700px;
-        @apply mt-4 text-justify text-xl md:w-4/5 lg:w-3/4;
+        @apply mt-4 text-justify text-xl text-secondary-100 md:w-4/5 lg:w-3/4;
+        @apply dark:text-darksecondary-100;
     }
 }
 
@@ -34,10 +35,12 @@
     .project-card {
         max-width: 500px;
         min-width: 300px;
-        @apply mx-auto flex flex-col justify-between rounded-sm border-2 border-primary-100;
+        @apply mx-auto flex flex-col justify-between rounded-lg border-2 border-secondary-100;
+        @apply dark:border-darksecondary-100;
 
         .project-nav {
-            @apply flex w-full justify-end border-b-2 border-primary-100 py-2 px-2 font-clash text-sm font-light;
+            @apply flex w-full justify-end border-b-2 border-secondary-100 py-2 px-2 font-clash text-sm font-light;
+            @apply dark:border-darksecondary-100;
         }
 
         .project-title {
@@ -46,7 +49,7 @@
         }
 
         .project-content {
-            @apply w-full border-y-2 border-primary-100 px-2;
+            @apply w-full border-y-2 border-secondary-100 px-2 dark:border-darksecondary-100;
             @apply flex flex-row items-center;
 
             .project-desc {
@@ -54,11 +57,11 @@
             }
 
             .project-tags {
-                @apply flex h-full flex-shrink flex-col border-l-2 border-primary-100 py-4 px-2;
+                @apply flex h-full flex-shrink flex-col border-l-2 border-secondary-100 py-4 px-2 dark:border-darksecondary-100;
 
                 span {
                     @apply whitespace-nowrap;
-                    @apply m-1 w-fit rounded-md bg-primary-100 py-1 px-2 font-clash text-sm uppercase;
+                    @apply m-1 w-fit rounded-lg bg-primary-100 py-1 px-2 font-clash text-sm uppercase dark:bg-darkprimary-100;
                 }
             }
         }
@@ -71,26 +74,26 @@
 
 .skill-panel {
     max-width: 800px;
-    @apply mx-auto flex flex-col justify-between rounded-sm border-2 border-primary-100;
+    @apply mx-auto flex flex-col justify-between rounded-lg border-2 border-secondary-100;
 
     .head {
-        @apply flex w-full justify-end border-b-2 border-primary-100 py-2 px-2 font-clash text-sm font-light;
+        @apply flex w-full justify-end border-b-2 border-secondary-100 py-2 px-2 font-clash text-sm font-light;
     }
 
     .nav {
-        @apply mb-3 grid h-16 grid-flow-row grid-cols-5 gap-0 border-b-2 border-primary-100;
+        @apply mb-3 grid h-16 grid-flow-row grid-cols-5 gap-0 border-b-2 border-secondary-100;
 
         .nav-item {
             @apply w-full cursor-pointer py-4 text-center font-clash text-xl;
 
             .highlight {
-                @apply mt-4 h-1 bg-accent;
+                @apply mt-4 h-1 bg-accent dark:bg-darkaccent;
             }
         }
     }
 
     .heading {
-        @apply border-b-2 border-primary-100;
+        @apply border-b-2 border-secondary-100;
         @apply flex flex-row items-center px-4;
 
         .domain {

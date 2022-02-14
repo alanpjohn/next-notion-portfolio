@@ -1,5 +1,5 @@
 import { CustomLink } from "@components/link";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
 
@@ -29,10 +29,9 @@ const menuLinkVariants = {
 export const MenuLink: React.FC<NavigationProps> = ({
     text,
     href,
-    isOpen = true,
 }: NavigationProps) => {
     return (
-        <CustomLink className={`navlink ${isOpen ? "" : "hidden"}`} href={href}>
+        <CustomLink className="navlink" href={href}>
             <motion.div
                 variants={menuLinkVariants}
                 whileHover={{ scale: 1.1 }}
@@ -59,9 +58,11 @@ export const NavLink: React.FC<NavigationProps> = ({
 
 const menuVariants = {
     open: {
+        y: 0,
         transition: { staggerChildren: 0.07, delayChildren: 0.2 },
     },
     closed: {
+        y: -150,
         transition: { staggerChildren: 0.05, staggerDirection: -1 },
     },
 };
@@ -71,8 +72,9 @@ export const Menu: React.FC = () => {
     return (
         <motion.nav
             className="nav"
-            initial={false}
+            initial="closed"
             animate={isOpen ? "open" : "closed"}
+            exit="closed"
         >
             <div className="navbar">
                 <NavLink text="Home" href="/" />
@@ -83,19 +85,23 @@ export const Menu: React.FC = () => {
                 />
             </div>
             <BiMenu className="icon" onClick={() => setOpen(!isOpen)} />
-            <motion.ul
-                variants={menuVariants}
-                className="navlinks"
-                onClick={() => setOpen(!isOpen)}
-            >
-                <MenuLink text="Home" href="/" isOpen={isOpen} />
-                <MenuLink text="Blog" href="/blog" isOpen={isOpen} />
-                <MenuLink
-                    text="Photography"
-                    href="https://alanjohn.myportfolio.com/"
-                    isOpen={isOpen}
-                />
-            </motion.ul>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.ul
+                        variants={menuVariants}
+                        className="navlinks"
+                        onClick={() => setOpen(!isOpen)}
+                    >
+                        <MenuLink text="Home" href="/" isOpen={isOpen} />
+                        <MenuLink text="Blog" href="/blog" isOpen={isOpen} />
+                        <MenuLink
+                            text="Photography"
+                            href="https://alanjohn.myportfolio.com/"
+                            isOpen={isOpen}
+                        />
+                    </motion.ul>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 };

@@ -1,5 +1,6 @@
 .button {
-    @apply z-0 m-2 flex h-12 w-min justify-center rounded-md px-5 py-2.5 text-secondary;
+    @apply z-0 m-2 flex h-12 w-min cursor-pointer justify-center rounded-lg px-5 py-2.5 text-secondary;
+    @apply dark:text-darksecondary;
 
     .icon {
         @apply m-auto ml-3;
@@ -11,15 +12,17 @@
 }
 
 .button-primary {
-    @apply bg-accent hover:bg-primary-100;
+    @apply bg-accent hover:bg-primary-100 dark:bg-darkaccent dark:hover:bg-darkprimary-100;
 }
 
 .button-secondary {
-    @apply border-2 border-primary-100 bg-primary  hover:bg-accent;
+    @apply border-2 border-secondary-100 bg-primary  hover:bg-accent;
+    @apply dark:border-darksecondary-100 dark:bg-darkprimary  dark:hover:bg-darkaccent;
 }
 
 .round-button {
     @apply z-0 flex h-12 w-12 justify-center rounded-full p-2 transition-transform duration-300 group-hover:-rotate-45 group-hover:bg-accent;
+    @apply dark:group-hover:bg-darkaccent;
 
     .icon {
         @apply m-auto;

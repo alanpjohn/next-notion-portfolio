@@ -32,7 +32,7 @@ const quicklinks = [
 
 export const HeroSection: React.FC = () => {
     return (
-        <Section className="border-b-2 border-primary-100">
+        <Section className="border-b-2 border-primary-100 dark:border-darkprimary-100">
             <div className="mx-4 flex flex-col items-start justify-evenly pb-20 pt-40 md:mx-0 md:flex-row md:items-center">
                 <div className="flex flex-col">
                     <span className="font-clash text-8xl font-normal">
@@ -45,7 +45,7 @@ export const HeroSection: React.FC = () => {
                 <div className="my-10 grid grid-flow-row grid-cols-4">
                     {quicklinks.map(({ Icon, href }) => (
                         <CustomLink key={Icon.name} href={href} className="p-4">
-                            <Icon className="text-4xl hover:text-accent" />
+                            <Icon className="text-4xl hover:text-accent dark:hover:text-darkaccent" />
                         </CustomLink>
                     ))}
                 </div>

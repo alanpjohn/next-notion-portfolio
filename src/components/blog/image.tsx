@@ -13,7 +13,13 @@ export const BlogImage: React.FC<ImageProps> = ({
 }: ImageProps) => {
     return (
         <figure className="image-container not-prose">
-            <Image src={src} layout="fill" className="image" alt={altText} priority/>
+            <Image
+                src={src}
+                layout="fill"
+                className="image"
+                alt={altText}
+                priority
+            />
             {children && <figcaption>{children}</figcaption>}
         </figure>
     );

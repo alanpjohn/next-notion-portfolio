@@ -3,7 +3,10 @@ import { Section } from "@components/section";
 
 export const AboutSection: React.FC = () => {
     return (
-        <Section title="About" className="border-b-2 border-primary-100">
+        <Section
+            title="About"
+            className="border-b-2 border-primary-100 dark:border-darkprimary-100"
+        >
             <div className="section-banner flex-col ">
                 <div>
                     <CustomImage
@@ -26,7 +29,7 @@ export const AboutSection: React.FC = () => {
                         </span>
                         .
                     </div>
-                    <div className="text-xl">
+                    <div className="text-xl text-secondary-100 dark:text-darksecondary-100">
                         I am a BE Computer Engineering Graduate from Army
                         Insitute of Techology, Pune (Affliated with Savitribai
                         Phule Pune University). I developed an interest in
@@ -36,7 +39,7 @@ export const AboutSection: React.FC = () => {
                         native technologies and DevSecOps and always am looking
                         for an opportunity to work with them.
                     </div>
-                    <div className="text-xl">
+                    <div className="text-xl text-secondary-100 dark:text-darksecondary-100">
                         Always looking forward to contributing to{" "}
                         <span className="font-playfair italic">
                             Open Source{" "}

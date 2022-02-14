@@ -8,4 +8,5 @@
 
 .withborder {
     @apply border-b-2 border-primary-100 bg-primary;
+    @apply dark:border-darkprimary-100 dark:bg-darkprimary;
 }

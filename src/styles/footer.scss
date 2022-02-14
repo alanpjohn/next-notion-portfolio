@@ -3,9 +3,11 @@
 
     .email {
         @apply mb-4 text-sm text-secondary transition-colors hover:text-accent;
+        @apply dark:text-darksecondary dark:hover:text-darkaccent;
     }
 
     .powered {
         @apply mx-3 mb-8 cursor-pointer text-center text-sm text-secondary transition-colors hover:text-accent;
+        @apply dark:text-darksecondary dark:hover:text-darkaccent;
     }
 }
