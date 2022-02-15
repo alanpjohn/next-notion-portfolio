@@ -35,11 +35,7 @@ export const Header: React.FC = () => {
                 </div>
             </motion.div>
             <motion.div className="header" style={{ y: buttonAppearance }}>
-                <CustomButton
-                    text="Back to top"
-                    href="#"
-                    Icon={FaArrowUp}
-                />
+                <CustomButton text="Back to top" href="#" Icon={FaArrowUp} />
             </motion.div>
         </div>
     );
