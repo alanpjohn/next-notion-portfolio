@@ -3,8 +3,10 @@ import { AboutSection } from "@components/section/about";
 import { HeroSection } from "@components/section/hero";
 import { ProjectSection } from "@components/section/projects";
 import { SkillsSection } from "@components/section/skills";
+
 import { IProject } from "@util/interface";
 import { getPortfolioProjects } from "@util/notion";
+
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 

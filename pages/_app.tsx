@@ -1,12 +1,13 @@
-import React from "react";
-import { AppProps } from "next/app";
-import { DefaultSeo } from "next-seo";
-
-import "tailwindcss/tailwind.css";
-import "@styles/global.scss";
-import "highlight.js/styles/github-dark-dimmed.css";
-import { Header } from "@components/header";
 import { Footer } from "@components/footer";
+import { Header } from "@components/header";
+
+import "highlight.js/styles/github-dark-dimmed.css";
+import { DefaultSeo } from "next-seo";
+import { AppProps } from "next/app";
+import React from "react";
+import "tailwindcss/tailwind.css";
+
+import "@styles/global.scss";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
     const domain = process.env.LOCAL

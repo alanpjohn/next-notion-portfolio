@@ -1,9 +1,11 @@
+import { CustomButton } from "@components/button";
 import { Section } from "@components/section";
+
 import { techStackDetails } from "@util/tech";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { FaFileDownload } from "react-icons/fa";
-import { CustomButton } from "@components/button";
 
 export const SkillsSection: React.FC = () => {
     const [isSelected, setSelected] = useState(techStackDetails[0]);

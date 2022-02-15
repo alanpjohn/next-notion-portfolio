@@ -1,6 +1,8 @@
 import { CustomButton, RoundButton } from "@components/button";
 import { CustomLink } from "@components/link";
+
 import { IPost, IProject, ITag } from "@util/interface";
+
 import { motion } from "framer-motion";
 import { PropsWithChildren, PropsWithRef } from "react";
 import { FaArrowRight } from "react-icons/fa";

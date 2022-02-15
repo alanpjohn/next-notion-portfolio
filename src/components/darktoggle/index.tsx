@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
 const isDark = (): boolean =>
     (localStorage && localStorage.theme === "dark") ||
@@ -30,8 +30,8 @@ export const DarkModeToggle = (): JSX.Element => {
         process.browser && document.documentElement.classList.contains("dark");
     return (
         <AnimatePresence exitBeforeEnter initial={false}>
-            <motion.button
-                className="text-2xl text-secondary-100 focus:outline-none dark:text-darksecondary-100 sm:text-3xl"
+            <motion.div
+                className="text-2xl text-secondary-100 focus:outline-none dark:text-darksecondary-100 sm:text-3xl cursor-pointer"
                 onClick={() => toggleMode()}
                 key={darkModeActive ? "dark-icon" : "light-icon"}
                 initial={{ y: -20, opacity: 0 }}
@@ -39,7 +39,7 @@ export const DarkModeToggle = (): JSX.Element => {
                 exit={{ y: 20, opacity: 0 }}
             >
                 {darkModeActive ? <BsSunFill /> : <BsMoonFill />}
-            </motion.button>
+            </motion.div>
         </AnimatePresence>
     );
 };

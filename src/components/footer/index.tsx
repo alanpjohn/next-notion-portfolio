@@ -1,6 +1,5 @@
 import { Contact } from "@components/contact";
 import { CustomLink } from "@components/link";
-import React from "react";
 
 export const Footer: React.FC = () => (
     <footer className="footer">
@@ -11,7 +10,7 @@ export const Footer: React.FC = () => (
         >
             alansandra2013@gmail.com
         </CustomLink>
-        <span className="powered">
+        <span className="subtext">
             Powered by the Next JS, Notion API, Framer motion and TailwindCSS.
         </span>
     </footer>

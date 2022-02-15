@@ -1,5 +1,7 @@
 import { PostCard } from "@components/card";
+
 import { IPost } from "@util/interface";
+
 import { motion } from "framer-motion";
 import { PropsWithChildren } from "react";
 

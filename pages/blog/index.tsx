@@ -2,8 +2,10 @@ import { CustomButton } from "@components/button";
 import { Layout } from "@components/layout";
 import { PostPanel } from "@components/panel";
 import { Section } from "@components/section";
+
 import { IPost } from "@util/interface";
 import { getBlogPosts } from "@util/notion";
+
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import { SiDevdotto } from "react-icons/si";

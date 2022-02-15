@@ -1,10 +1,12 @@
+import { renderPage } from "@components/blog";
 import { Tag } from "@components/card";
 import { Layout } from "@components/layout";
 import { Section } from "@components/section";
+
 import { getMonthAndYear } from "@util/datetime";
-import { IPost, BlockWithChildren, ITag } from "@util/interface";
+import { BlockWithChildren, IPost, ITag } from "@util/interface";
 import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
-import { renderPage } from "@util/render";
+
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import { ParsedUrlQuery } from "querystring";

@@ -47,7 +47,7 @@
 }
 
 .prose {
-    @apply text-secondary-100 dark:text-darksecondary-100;
+    @apply text-lg text-secondary-100 dark:text-darksecondary-100 lg:text-xl;
 }
 
 .heading {
@@ -55,8 +55,8 @@
 }
 
 .callout {
-    @apply mx-auto flex flex-row bg-primary-100 p-6 text-secondary md:w-5/6;
-    @apply dark:bg-darkprimary-100 dark:text-darksecondary;
+    @apply mx-auto flex flex-row rounded-lg bg-primary-100 p-6 text-secondary-100 md:w-5/6;
+    @apply dark:bg-darkprimary-100 dark:text-darksecondary-100;
 
     div:first-child {
         @apply my-auto mx-4;

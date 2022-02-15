@@ -1,24 +1,30 @@
-import { BlockContentProps } from "@components/blog";
-import { useEffect } from "react";
+import { renderText } from "@components/blog/text";
 
-import highlight from "highlight.js";
+import { CodeBlock } from "@util/interface";
 
-type CodeProps = BlockContentProps & {
-    language?: string;
-};
+import hljs from "highlight.js/lib/common";
+import { PropsWithRef, useEffect, useRef } from "react";
 
-export const MultilineCodeBlock: React.FC<CodeProps> = ({
-    children,
-    language = "",
-}: CodeProps) => {
+type CodeBlockProps = PropsWithRef<CodeBlock>;
+
+export const MultilineCodeBlock: React.FC<CodeBlockProps> = ({
+    id,
+    code,
+}: CodeBlockProps) => {
+    const ref = useRef<HTMLElement>(null);
+
     useEffect(() => {
-        highlight.configure({ ignoreUnescapedHTML: true });
-        highlight.highlightAll();
+        hljs.configure({ ignoreUnescapedHTML: true });
+        if (ref.current) {
+            hljs.highlightElement(ref.current);
+        }
     });
 
     return (
         <pre className="codeblock">
-            <code className={`${language}`}>{children}</code>
+            <code ref={ref} className={`${code.language}`}>
+                {renderText(id, code.text)}
+            </code>
         </pre>
     );
 };

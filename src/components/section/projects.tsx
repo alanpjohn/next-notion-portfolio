@@ -1,8 +1,10 @@
-import { Section } from "@components/section";
-import { IProject } from "@util/interface";
-import { FaGithub } from "react-icons/fa";
 import { CustomButton } from "@components/button";
 import { ProjectCard } from "@components/card";
+import { Section } from "@components/section";
+
+import { IProject } from "@util/interface";
+
+import { FaGithub } from "react-icons/fa";
 
 type Props = {
     projects: IProject[];

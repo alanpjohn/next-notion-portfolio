@@ -1,20 +1,21 @@
-import fs from "fs";
-import path from "path";
-import { Client } from "@notionhq/client";
-import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import {
     Block,
+    BlockWithChildren,
+    IPost,
+    IProject,
     PostResult,
     PropertyValueEditedTime,
     PropertyValueMultiSelect,
     PropertyValueRichText,
     PropertyValueTitle,
     PropertyValueUrl,
-    BlockWithChildren,
-    IPost,
-    IProject,
 } from "@util/interface";
 import { getCanonicalURL } from "@util/router";
+
+import { Client } from "@notionhq/client";
+import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
+import fs from "fs";
+import path from "path";
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 const allpostscache = "public/posts.json";
@@ -141,7 +142,7 @@ const getChildren = async (block: Block): Promise<BlockWithChildren> => {
     }
     const ablock: BlockWithChildren = {
         ...block,
-        children: children,
+        childblocks: children,
     };
     return ablock;
 };

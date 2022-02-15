@@ -1,10 +1,11 @@
+import { CustomButton } from "@components/button";
+import { DarkModeToggle } from "@components/darktoggle";
 import { CustomLink } from "@components/link";
 import { Menu } from "@components/menu";
-import { CustomButton } from "@components/button";
+
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import React from "react";
 import { FaArrowUp } from "react-icons/fa";
-import { DarkModeToggle } from "@components/darktoggle";
 
 export const Header: React.FC = () => {
     const { scrollY } = useViewportScroll();

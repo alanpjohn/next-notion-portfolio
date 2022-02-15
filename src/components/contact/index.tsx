@@ -1,5 +1,6 @@
 import { CustomLink } from "@components/link";
-import { FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
+
+import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const links = [
     {
