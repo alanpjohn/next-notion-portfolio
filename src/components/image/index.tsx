@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaHeartbeat } from "react-icons/fa";
 
 type ImageProps = {
     src: string;
@@ -14,14 +15,20 @@ export const CustomImage: React.FC<ImageProps> = ({
     altText,
 }: ImageProps) => {
     return (
-        <Image
-            src={src}
-            height={height}
-            width={width}
-            className=""
-            priority
-            layout="fixed"
-            alt={altText}
-        />
+        <div className="custom-img">
+            <div className="top-nav">
+                <span>{altText}</span>
+                <FaHeartbeat />
+            </div>
+            <Image
+                src={src}
+                height={height}
+                width={width}
+                className="img"
+                priority
+                layout="fixed"
+                alt={altText}
+            />
+        </div>
     );
 };

@@ -31,7 +31,7 @@ export const DarkModeToggle = (): JSX.Element => {
     return (
         <AnimatePresence exitBeforeEnter initial={false}>
             <motion.div
-                className="text-2xl text-secondary-100 focus:outline-none dark:text-darksecondary-100 sm:text-3xl cursor-pointer"
+                className="text-2xl text-accent focus:outline-none dark:text-darkaccent sm:text-3xl cursor-pointer m-auto"
                 onClick={() => toggleMode()}
                 key={darkModeActive ? "dark-icon" : "light-icon"}
                 initial={{ y: -20, opacity: 0 }}

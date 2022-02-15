@@ -1,4 +1,4 @@
-import { renderText } from "@components/blog/text";
+import { renderText } from "@components/notion/text";
 
 import { CodeBlock } from "@util/interface";
 

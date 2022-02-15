@@ -1,6 +1,6 @@
-import { renderPage } from "@components/blog";
 import { Tag } from "@components/card";
 import { Layout } from "@components/layout";
+import { RenderedPageContent } from "@components/notion";
 import { Section } from "@components/section";
 
 import { getMonthAndYear } from "@util/datetime";
@@ -54,7 +54,9 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                         </p>
                         <p className="post-desc">{post.description}</p>
                     </div>
-                    <div className="post-main">{renderPage(blocks)}</div>
+                    <div className="post-main">
+                        <RenderedPageContent blocks={blocks} />
+                    </div>
                 </div>
             </Section>
         </Layout>

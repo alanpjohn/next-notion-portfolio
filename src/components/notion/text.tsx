@@ -74,8 +74,6 @@ export const Quote: React.FC<QuoteBlockProps> = ({
     children,
     has_children,
 }: QuoteBlockProps) => {
-    console.log("children? ", has_children);
-    console.log("text?", quote);
     return (
         <blockquote className="text-secondary">
             {has_children ? children : renderText(id, quote.text)}

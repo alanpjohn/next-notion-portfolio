@@ -6,6 +6,7 @@ import { IPost, IProject, ITag } from "@util/interface";
 import { motion } from "framer-motion";
 import { PropsWithChildren, PropsWithRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { VscGitPullRequest } from "react-icons/vsc";
 
 type TagProps = PropsWithChildren<ITag>;
 
@@ -60,7 +61,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 }: ProjectCardProps) => {
     return (
         <div className="project-card">
-            <div className="project-nav">{date}</div>
+            <div className="top-nav">
+                <VscGitPullRequest />
+                <span>{date}</span>
+            </div>
             <div className="project-title">
                 <CustomLink href={link} className="">
                     {title}

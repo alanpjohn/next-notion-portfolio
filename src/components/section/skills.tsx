@@ -1,24 +1,30 @@
 import { CustomButton } from "@components/button";
+import { RenderedSkillContent, extractSkills } from "@components/notion";
 import { Section } from "@components/section";
 
-import { techStackDetails } from "@util/tech";
+import { BlockWithChildren } from "@util/interface";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { FaFileDownload } from "react-icons/fa";
 
-export const SkillsSection: React.FC = () => {
-    const [isSelected, setSelected] = useState(techStackDetails[0]);
+type SkillSectionProps = {
+    skillsdata: BlockWithChildren[];
+};
+
+export const SkillsSection: React.FC<SkillSectionProps> = ({ skillsdata }) => {
+    const skills = extractSkills(skillsdata);
+    const [isSelected, setSelected] = useState(skills[0]);
     return (
         <Section
             title="Skills"
             className="border-b-2 border-primary-100 py-20 dark:border-darkprimary-100"
         >
-            <div className="section-banner flex-col-reverse">
+            <div className="section-banner-top flex-col-reverse">
                 <div className="skill-panel">
-                    <div className="head">Change tabs for more details</div>
+                    <div className="top-nav">Change tabs for more details</div>
                     <div className="nav">
-                        {techStackDetails.map((tech) => (
+                        {skills.map((tech) => (
                             <div
                                 key={tech.id}
                                 className={`
@@ -51,18 +57,12 @@ export const SkillsSection: React.FC = () => {
                                     <span className="domain">
                                         {isSelected.domain}
                                     </span>
-                                    <div className="tools">
-                                        {isSelected.tools.map((Icon) => (
-                                            <Icon
-                                                key={Icon.name}
-                                                className="mx-2 text-3xl"
-                                            />
-                                        ))}
-                                    </div>
                                 </div>
 
                                 <div className="description">
-                                    <p>{isSelected.description}</p>
+                                    <RenderedSkillContent
+                                        blocks={isSelected.content}
+                                    />
                                 </div>
                             </motion.div>
                         </AnimatePresence>
@@ -83,6 +83,7 @@ export const SkillsSection: React.FC = () => {
                             text={"Download Resume"}
                             Icon={FaFileDownload}
                             href="https://drive.google.com/file/d/1OAWqwJ6cXa4yS0vrsdn-Ni3lAtw8aNA3/view?usp=sharing"
+                            primary
                         />
                     </div>
                 </div>

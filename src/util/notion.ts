@@ -200,3 +200,8 @@ export const getPortfolioProjects = async (): Promise<IProject[]> => {
     });
     return extractProjects(response);
 };
+
+export const getSkills = async (): Promise<BlockWithChildren[]> => {
+    const page = process.env.NOTION_SKILLS_PAGE_ID || "";
+    return await getPostBlocks(page);
+};

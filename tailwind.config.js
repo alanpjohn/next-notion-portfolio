@@ -5,25 +5,25 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: {
+                darkprimary: {
                     DEFAULT: "#eff0f3",
                     100: "#cccccd",
                 },
-                accent: {
+                darkaccent: {
                     DEFAULT: "#ff8e3c",
                 },
-                secondary: {
+                darksecondary: {
                     DEFAULT: "#0d0d0d",
                     100: "#2a2a2a",
                 },
-                darkprimary: {
+                primary: {
                     DEFAULT: "#16161a",
                     100: "#27272b",
                 },
-                darkaccent: {
+                accent: {
                     DEFAULT: "#7f5af0",
                 },
-                darksecondary: {
+                secondary: {
                     DEFAULT: "#fffffe",
                     100: "#94a1b2",
                 },

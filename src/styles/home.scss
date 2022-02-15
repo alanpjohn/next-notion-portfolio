@@ -2,6 +2,10 @@
     @apply mx-4 flex items-center justify-evenly py-10 lg:mx-0 lg:flex-row;
 }
 
+.section-banner-top {
+    @apply mx-4 flex items-start justify-evenly py-10 lg:mx-0 lg:flex-row;
+}
+
 .about-main {
     @apply w-4/5 px-2 text-justify lg:w-2/5;
 
@@ -70,14 +74,14 @@
 
 .skill-panel {
     max-width: 800px;
-    @apply mx-auto flex flex-col justify-between rounded-lg border-2 border-secondary-100;
+    @apply mx-auto flex w-full flex-col justify-between rounded-lg border-2 border-secondary-100;
 
     .head {
         @apply flex w-full justify-end border-b-2 border-secondary-100 py-2 px-2 font-clash text-sm font-light;
     }
 
     .nav {
-        @apply mb-3 grid h-16 grid-flow-row grid-cols-5 gap-0 border-b-2 border-secondary-100;
+        @apply mb-3 flex h-16 flex-row justify-evenly gap-0 border-b-2 border-secondary-100;
 
         .nav-item {
             @apply w-full cursor-pointer py-4 text-center font-clash text-xl;
@@ -90,19 +94,15 @@
 
     .heading {
         @apply border-b-2 border-secondary-100;
-        @apply flex flex-row items-center px-4;
+        @apply py-6 px-4;
 
         .domain {
             @apply w-full px-3 pt-6  pb-10;
-            @apply font-clash text-5xl;
-        }
-
-        .tools {
-            @apply flex flex-row items-center;
+            @apply font-clash text-3xl;
         }
     }
 
     .description {
-        @apply py-4 px-6;
+        @apply h-80 overflow-scroll overflow-x-hidden py-4 px-6;
     }
 }

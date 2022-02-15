@@ -28,7 +28,7 @@ const BlogPage: NextPage<BlockPageProps> = ({ posts }: BlockPageProps) => {
                     },
                 ]}
             />
-            <Section className="pt-16 md:pt-24">
+            <Section className="pt-16 md:pt-24 min-h-screen">
                 <div className="blog-section">
                     <div className="blog-hero">
                         <span className="blog-title">My Blog</span>

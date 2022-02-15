@@ -26,3 +26,9 @@
         }
     }
 }
+
+.top-nav {
+    @apply p-2 font-clash text-sm font-medium text-primary-100 dark:text-darksecondary-100;
+    @apply flex flex-row justify-between;
+    @apply border-b-2 bg-accent dark:bg-darkaccent;
+}

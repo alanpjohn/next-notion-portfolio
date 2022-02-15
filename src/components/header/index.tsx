@@ -39,7 +39,6 @@ export const Header: React.FC = () => {
                     text="Back to top"
                     href="#"
                     Icon={FaArrowUp}
-                    primary
                 />
             </motion.div>
         </div>

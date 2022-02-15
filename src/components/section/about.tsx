@@ -10,7 +10,7 @@ export const AboutSection: React.FC = () => {
             <div className="section-banner flex-col ">
                 <div>
                     <CustomImage
-                        altText="Alan John"
+                        altText="Me"
                         src="/images/home_light.png"
                         height="500px"
                         width="500px"

@@ -1,4 +1,4 @@
-import { NotSupportedBlock, renderText } from "@components/blog/text";
+import { NotSupportedBlock, renderText } from "@components/notion/text";
 
 import { ImageBlock } from "@util/interface";
 
@@ -18,13 +18,7 @@ export const BlogImage: React.FC<ImageProps> = ({ id, image }: ImageProps) => {
     }
     return (
         <figure className="image-container not-prose">
-            <Image
-                src={src}
-                layout="fill"
-                className="image"
-                alt={altText}
-                priority
-            />
+            <Image src={src} layout="fill" className="image" alt={altText} />
             {children && <figcaption>{children}</figcaption>}
         </figure>
     );

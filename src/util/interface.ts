@@ -75,6 +75,8 @@ export type QuoteBlock = ExtractedBlockType<"quote">;
 export type EquationBlock = ExtractedBlockType<"equation">;
 export type CodeBlock = ExtractedBlockType<"code">;
 export type CalloutBlock = ExtractedBlockType<"callout">;
+export type ToggleBlock = ExtractedBlockType<"toggle">;
+
 export type RichText = ParagraphBlock["paragraph"]["text"][number];
 
 export type ImageBlock = ExtractedBlockType<"image">;

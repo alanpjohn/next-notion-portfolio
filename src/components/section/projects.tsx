@@ -29,6 +29,7 @@ export const ProjectSection: React.FC<Props> = ({ projects }: Props) => {
                             text={"Go to Github"}
                             Icon={FaGithub}
                             href="https://github.com/TheForeverLost"
+                            primary
                         />
                     </div>
                 </div>

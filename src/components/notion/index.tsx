@@ -1,15 +1,16 @@
-import { MultilineCodeBlock } from "@components/blog/code";
-import { Heading1, Heading2, Heading3 } from "@components/blog/headings";
-import { BlogImage } from "@components/blog/image";
-import { ListItem, OrderedList, UnorderedList } from "@components/blog/lists";
+import { MultilineCodeBlock } from "@components/notion/code";
+import { Heading1, Heading2, Heading3 } from "@components/notion/headings";
+import { BlogImage } from "@components/notion/image";
+import { ListItem, OrderedList, UnorderedList } from "@components/notion/lists";
 import {
     Callout,
     NotSupportedBlock,
     Paragraph,
     Quote,
-} from "@components/blog/text";
+} from "@components/notion/text";
 
-import { BlockWithChildren, extractListItems } from "@util/interface";
+import { BlockWithChildren, RichText, extractListItems } from "@util/interface";
+import { Skill, getAcronym } from "@util/skills";
 
 import { PropsWithChildren } from "react";
 
@@ -74,10 +75,53 @@ const renderBlock = (block: BlockWithChildren): React.ReactNode => {
     }
 };
 
-export const renderPage = (blocks: Array<BlockWithChildren>): JSX.Element => {
+type RenderProps = {
+    blocks: Array<BlockWithChildren>;
+};
+
+export const RenderedPageContent: React.FC<RenderProps> = ({
+    blocks,
+}: RenderProps) => {
     const blocksWithList = extractListItems(blocks);
     return (
         <article className="prose mx-auto mt-8 w-full text-justify lg:prose-lg lg:mt-16 lg:w-3/4">
+            {blocksWithList.map((block: BlockWithChildren) => {
+                return renderBlock(block);
+            })}
+        </article>
+    );
+};
+
+export const extractSkills = (blocks: Array<BlockWithChildren>): Skill[] => {
+    const skills: Skill[] = [];
+
+    blocks
+        .filter((block: BlockWithChildren) => block.type === "toggle")
+        .map((block) => {
+            const domain: string =
+                block.type == "toggle"
+                    ? block.toggle.text
+                          .map((text: RichText) => text.plain_text)
+                          .join("\n")
+                    : "";
+
+            skills.push({
+                id: skills.length,
+                domain: domain,
+                acronym: getAcronym(domain),
+                content: block.has_children ? block.childblocks : [],
+            });
+        });
+
+    return skills;
+};
+
+export const RenderedSkillContent: React.FC<RenderProps> = ({
+    blocks,
+}: RenderProps) => {
+    const blocksWithList = extractListItems(blocks);
+    return (
+        <article className="prose w-full text-justify lg:prose-lg">
             {blocksWithList.map((block: BlockWithChildren) => {
                 return renderBlock(block);
             })}
