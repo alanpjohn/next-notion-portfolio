@@ -18,7 +18,7 @@ export const AboutSection: React.FC = () => {
                 </div>
 
                 <div className="about-main">
-                    <div className="text-5xl">
+                    <div className="text-3xl md:text-5xl mt-4">
                         Hi, I am a{" "}
                         <span className="font-playfair italic">
                             software engineer

@@ -26,7 +26,7 @@ export const CustomImage: React.FC<ImageProps> = ({
                 width={width}
                 className="img"
                 priority
-                layout="fixed"
+                layout="intrinsic"
                 alt={altText}
             />
         </div>

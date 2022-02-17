@@ -18,6 +18,7 @@ jobs:
           NOTION_KEY : ${{ secrets.NOTION_KEY }}
           NOTION_PROJECT_DATABASE_ID : ${{ secrets.NOTION_PROJECT_DATABASE_ID }}
           NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}
+          NOTION_SKILLS_PAGE_ID: ${{ secrets.NOTION_SKILLS_PAGE_ID }}
       - name: run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.8.x

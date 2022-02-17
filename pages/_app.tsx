@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                     site_name: "Alan John",
                     images: [
                         {
-                            url: `${domain}/images/social_media_preview_blog.png`,
+                            url: `${domain}/images/social_media_preview.png`,
                             width: 1200,
                             height: 628,
                             alt: "My Portfolio Preview",
