@@ -1,6 +1,7 @@
 import { Tag } from "@components/card";
 import { Layout } from "@components/layout";
 import { CustomLink } from "@components/link";
+import CustomArticleJsonLd from "@components/meta";
 import { RenderedPageContent } from "@components/notion";
 import { Section } from "@components/section";
 
@@ -9,7 +10,7 @@ import { BlockWithChildren, IPost, ITag } from "@util/interface";
 import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { ArticleJsonLd, NextSeo } from "next-seo";
+import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
@@ -57,8 +58,8 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     },
                 }}
             />
-            <ArticleJsonLd
-                type="Blog"
+            <CustomArticleJsonLd
+                type="BlogPosting"
                 url={url}
                 title={post.title}
                 images={
@@ -70,7 +71,11 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                 }
                 datePublished={post.publishDate}
                 dateModified={post.modifiedDate}
-                authorName="Alan John"
+                authorName={{
+                    "@type": "person",
+                    name: "Alan John",
+                    url: "https://www.linkedin.com/in/alan-john-b2b521193",
+                }}
                 description={truncated}
             />
             <Section>

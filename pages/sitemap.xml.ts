@@ -1,5 +1,6 @@
 import { IPost } from "@util/interface";
 import { readFromCache } from "@util/notion";
+import { getBaseURL } from "@util/router";
 
 import fs from "fs";
 import { GetServerSideProps } from "next";
@@ -9,13 +10,7 @@ const Sitemap = (): void => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-    const baseUrl = process.env.LOCAL
-        ? "http://localhost:3000"
-        : {
-              test: "https://alan-john-portfolio.vercel.app",
-              development: "https://alan-john-portfolio.vercel.app",
-              production: "https://www.alanjohn.dev.dev",
-          }[process.env.NODE_ENV];
+    const baseUrl = getBaseURL();
 
     const staticPages = fs
         .readdirSync("pages")

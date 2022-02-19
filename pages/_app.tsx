@@ -2,6 +2,7 @@ import { Footer } from "@components/footer";
 import { Header } from "@components/header";
 
 import { pageview } from "@util/ga";
+import { getBaseURL } from "@util/router";
 
 import "highlight.js/styles/github-dark-dimmed.css";
 import { DefaultSeo } from "next-seo";
@@ -13,13 +14,7 @@ import "@styles/styles.scss";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     const router = useRouter();
-    const baseUrl = process.env.LOCAL
-        ? "http://localhost:3000"
-        : {
-              test: "https://alan-john-portfolio.vercel.app",
-              development: "https://alan-john-portfolio.vercel.app",
-              production: "https://www.alanjohn.dev.dev",
-          }[process.env.NODE_ENV];
+    const baseUrl = getBaseURL();
 
     const url = `${baseUrl}${router.route}`;
 
