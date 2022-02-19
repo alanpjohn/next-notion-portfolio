@@ -12,7 +12,7 @@ type Props = {
 
 export const ProjectSection: React.FC<Props> = ({ projects }: Props) => {
     return (
-        <Section title="Projects" className="border-b-2 border-secondary">
+        <Section title="Projects" className="">
             <div
                 className="
                 mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mx-auto xl:grid-cols-3 max-w-6xl my-24

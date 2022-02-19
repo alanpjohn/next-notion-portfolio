@@ -17,9 +17,9 @@ export const SkillsSection: React.FC<SkillSectionProps> = ({ skillsdata }) => {
     const skills = extractSkills(skillsdata);
     const [isSelected, setSelected] = useState(skills[0]);
     return (
-        <Section title="Skills" className="border-b-2 border-secondary">
-            <div className="banner flex-col-reverse lg:flex-row">
-                <div className="ml-4 card">
+        <Section title="Skills">
+            <div className="banner flex-col-reverse mx-2 lg:flex-row">
+                <div className="ml-4 flex-grow card max-w-4xl">
                     <div className="card__nav">
                         Change tabs for more details
                     </div>
@@ -75,15 +75,11 @@ export const SkillsSection: React.FC<SkillSectionProps> = ({ skillsdata }) => {
                         </AnimatePresence>
                     </div>
                 </div>
-                <div className="mx-4 md:mx-6 xl:mx-2 px-2 md:px-8 lg:max-w-lg mb-10">
+                <div className="flex-shrink px-2 md:px-8 lg:max-w-lg mb-10">
                     <h3 className="section__heading">Skillset</h3>
                     <p className="section__desc">
-                        My go-to tech stack right now would be NextJS for
-                        frontend and FastAPI and/or gRPC to make my backend
-                        architecture deployed with the help of a kubernetes
-                        service provider. Outside of tech, I am comfortable with
-                        adobe tools such as Photoshop, Lightroom and
-                        Illustrator.
+                        You can learn more about work philosophy and core
+                        skills. Alternatively, you can check out my resume.
                     </p>
                     <div className="float-left py-4">
                         <CustomButton

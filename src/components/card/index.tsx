@@ -47,7 +47,7 @@ export const PostCard: React.FC<PostProps> = ({
             >
                 <h3
                     className="font-cabinet text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
-                group-hover:text-accent dark:group-hover:text-darkaccent"
+                group-hover:text-razzmatazz dark:group-hover:text-mint"
                 >
                     {title}
                 </h3>

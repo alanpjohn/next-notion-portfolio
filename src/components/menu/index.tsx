@@ -1,8 +1,9 @@
 import { CustomLink } from "@components/link";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
-import { BiMenu } from "react-icons/bi";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { BiMenu, BiX } from "react-icons/bi";
 
 type NavigationProps = {
     text: string;
@@ -12,18 +13,15 @@ type NavigationProps = {
 
 const menuLinkVariants = {
     open: {
-        y: 0,
+        x: 0,
         opacity: 1,
         transition: {
             y: { stiffness: 1000, velocity: -100 },
         },
     },
     closed: {
-        y: 50,
+        x: 50,
         opacity: 0,
-        transition: {
-            y: { stiffness: 1000 },
-        },
     },
 };
 
@@ -38,8 +36,8 @@ export const MenuLink: React.FC<NavigationProps> = ({
         >
             <motion.div
                 variants={menuLinkVariants}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 1.1 }}
+                whileHover={{ scale: 0.95 }}
             >
                 {text}
             </motion.div>
@@ -65,17 +63,28 @@ export const NavLink: React.FC<NavigationProps> = ({
 
 const menuVariants = {
     open: {
-        y: 0,
         transition: { staggerChildren: 0.07, delayChildren: 0.2 },
     },
     closed: {
-        y: -150,
-        transition: { staggerChildren: 0.05, staggerDirection: -1 },
+        transition: {
+            staggerChildren: 0.05,
+            staggerDirection: -1,
+            delayChildren: 0.3,
+        },
     },
 };
 
 export const Menu: React.FC = () => {
     const [isOpen, setOpen] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        router.events.on("routeChangeComplete", () => setOpen(false));
+        return () => {
+            router.events.off("routeChangeComplete", () => setOpen(false));
+        };
+    }, [router.events]);
+
     return (
         <motion.nav
             className="flex h-16 flex-col overflow-visible"
@@ -88,24 +97,36 @@ export const Menu: React.FC = () => {
                 <span className="mx-4"> / </span>
                 <NavLink text="Blog" href="/blog" />
                 <span className="mx-4"> / </span>
-                <NavLink text="Photography" href="photos.alanjohn.dev" />
+                <NavLink
+                    text="Photography"
+                    href="https://photos.alanjohn.dev"
+                />
             </div>
-            <BiMenu
-                className="absolute z-30 block h-16 self-end text-4xl md:hidden"
-                onClick={() => setOpen(!isOpen)}
-            />
+            {isOpen ? (
+                <BiX
+                    className="absolute z-30 block h-16 self-end text-4xl md:hidden"
+                    onClick={() => setOpen(false)}
+                />
+            ) : (
+                <BiMenu
+                    className="absolute z-30 block h-16 self-end text-4xl md:hidden"
+                    onClick={() => setOpen(true)}
+                />
+            )}
             <AnimatePresence>
                 {isOpen && (
                     <motion.ul
                         variants={menuVariants}
                         className="mt-20 block text-right md:hidden"
+                        initial="closed"
                         onClick={() => setOpen(!isOpen)}
+                        exit="closed"
                     >
                         <MenuLink text="Home" href="/" isOpen={isOpen} />
                         <MenuLink text="Blog" href="/blog" isOpen={isOpen} />
                         <MenuLink
                             text="Photography"
-                            href="photos.alanjohn.dev"
+                            href="https://photos.alanjohn.dev"
                             isOpen={isOpen}
                         />
                     </motion.ul>

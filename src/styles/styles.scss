@@ -17,10 +17,7 @@
 
 @font-face {
     font-family: "ClashDisplay";
-    src: url("../../public/fonts/ClashDisplay/ClashDisplay-Variable.woff2")
-            format("woff2"),
-        url("../../public/fonts/ClashDisplay/ClashDisplay-Variable.woff")
-            format("woff");
+    src: url("/fonts/ClashDisplay/ClashDisplay-Variable.woff2") format("woff2");
     font-weight: 200 700;
     font-display: swap;
     font-style: normal;
@@ -41,10 +38,8 @@
 
 @font-face {
     font-family: "CabinetGrotesk";
-    src: url("../../public/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2")
-            format("woff2"),
-        url("../../public/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff")
-            format("woff");
+    src: url("/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2")
+        format("woff2");
     font-weight: 100 900;
     font-display: swap;
     font-style: normal;
@@ -137,17 +132,17 @@
     }
 
     .button-primary {
-        @apply bg-orange hover:bg-cultured dark:bg-purple dark:hover:bg-jet;
+        @apply bg-orange hover:bg-razzmatazz dark:bg-purple dark:hover:bg-mint;
     }
 
     .button-secondary {
-        @apply bg-white  hover:bg-orange;
-        @apply dark:bg-eerie  dark:hover:bg-purple;
+        @apply bg-white  hover:bg-razzmatazz;
+        @apply dark:bg-eerie  dark:hover:bg-mint;
     }
 
     .round-button {
-        @apply z-0 flex h-12 w-12 justify-center rounded-full p-2 transition-transform duration-300;
-        @apply group-hover:-rotate-45 group-hover:bg-orange dark:group-hover:bg-purple;
+        @apply z-0 flex aspect-square h-12 w-12 justify-center rounded-full p-2 transition-transform duration-300;
+        @apply group-hover:-rotate-45 group-hover:bg-razzmatazz dark:group-hover:bg-mint;
 
         .icon {
             @apply m-auto;

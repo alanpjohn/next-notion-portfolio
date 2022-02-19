@@ -43,6 +43,20 @@ class CustomDocument extends Document {
                         }}
                     />
                     <link
+                        rel="preload"
+                        href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2"
+                        as="font"
+                        type="font/woff2"
+                        crossOrigin=""
+                    />
+                    <link
+                        rel="preload"
+                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
+                        as="font"
+                        type="font/woff2"
+                        crossOrigin=""
+                    />
+                    <link
                         rel="preconnect"
                         href="https://fonts.googleapis.com"
                     />

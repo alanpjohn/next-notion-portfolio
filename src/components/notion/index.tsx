@@ -1,3 +1,4 @@
+import { WebBookmark } from "@components/notion/attachment";
 import { MultilineCodeBlock } from "@components/notion/code";
 import { Heading1, Heading2, Heading3 } from "@components/notion/headings";
 import { BlogImage } from "@components/notion/image";
@@ -70,8 +71,11 @@ const renderBlock = (block: BlockWithChildren): React.ReactNode => {
                     {content}
                 </ListItem>
             );
+        case "bookmark":
+            return <WebBookmark key={block.id} {...block} />;
         default:
-            return <NotSupportedBlock key={block.id} />;
+            process.env.NODE_ENV == "development" && console.log(block);
+            return <NotSupportedBlock key={block.id} reason={block.type} />;
     }
 };
 

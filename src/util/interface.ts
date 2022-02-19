@@ -76,6 +76,8 @@ export type EquationBlock = ExtractedBlockType<"equation">;
 export type CodeBlock = ExtractedBlockType<"code">;
 export type CalloutBlock = ExtractedBlockType<"callout">;
 export type ToggleBlock = ExtractedBlockType<"toggle">;
+export type EmbedBlock = ExtractedBlockType<"embed">;
+export type WebBookmarkBlock = ExtractedBlockType<"bookmark">;
 
 export type RichText = ParagraphBlock["paragraph"]["text"][number];
 

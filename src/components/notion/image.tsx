@@ -14,7 +14,12 @@ export const BlogImage: React.FC<ImageProps> = ({ id, image }: ImageProps) => {
     const src = image.type == "file" ? image.file.url : "external";
     const children = renderText(id, image.caption);
     if (src == "external") {
-        return <NotSupportedBlock key={id} />;
+        return (
+            <NotSupportedBlock
+                key={id}
+                reason={`Image type ${image.type} not supported`}
+            />
+        );
     }
     return (
         <figure className="blog__image not-prose">

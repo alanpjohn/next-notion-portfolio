@@ -14,7 +14,7 @@ module.exports = {
                 purple: "#7f5af0",
                 mint: "#2cb67d",
                 orange: "#ff8e3c",
-                razzmatazz: "#d9376e",
+                razzmatazz: "#f25f4c",
                 cultured: "#b9beca",
                 white: "#fffffe",
             },

@@ -8,7 +8,7 @@ import { PropsWithChildren } from "react";
 const PanelVariants = {
     hidden: {},
     enter: {
-        transition: { staggerChildren: 0.1, delayChildren: 0.5 },
+        transition: { staggerChildren: 0.1, delayChildren: 0.2 },
     },
 };
 

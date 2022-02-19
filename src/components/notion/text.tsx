@@ -46,7 +46,14 @@ export const renderText = (
     });
 };
 
-export const NotSupportedBlock: React.FC = () => {
+type NotSupportedProps = PropsWithRef<{
+    reason: string;
+}>;
+
+export const NotSupportedBlock: React.FC<NotSupportedProps> = ({
+    reason,
+}: NotSupportedProps) => {
+    process.env.NODE_ENV == "development" && console.log(reason);
     return (
         <div className="mx-auto flex flex-row rounded-lg font-light px-6 items-center md:w-5/6 b-2 border-secondary">
             <div className="mr-4">{<VscWarning />}</div>
@@ -94,7 +101,7 @@ export const Callout: React.FC<CalloutProps> = ({
             ? callout.icon.emoji
             : "💡";
     return (
-        <div className="mx-auto flex flex-col md:flex-row items-center rounded-lg font-light px-6 py-2 md:w-5/6 border-secondary">
+        <div className="mx-auto flex flex-col md:flex-row items-center rounded-lg font-light px-6 py-2 md:w-5/6 border-2 border-primary">
             <div>{icon}</div>
             <p className="ml-4">
                 {has_children ? children : renderText(id, callout.text)}
