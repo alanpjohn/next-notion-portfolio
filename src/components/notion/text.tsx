@@ -59,7 +59,7 @@ export const NotSupportedBlock: React.FC<NotSupportedProps> = ({
             <div className="mr-4">{<VscWarning />}</div>
             <p>
                 Uh-oh! A certain Notion component has not been rendered as it is
-                not supported by the blog yet.
+                not supported by the blog yet. {reason}
             </p>
         </div>
     );

@@ -74,7 +74,6 @@ const renderBlock = (block: BlockWithChildren): React.ReactNode => {
         case "bookmark":
             return <WebBookmark key={block.id} {...block} />;
         default:
-            process.env.NODE_ENV == "development" && console.log(block);
             return <NotSupportedBlock key={block.id} reason={block.type} />;
     }
 };

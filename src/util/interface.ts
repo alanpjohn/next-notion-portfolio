@@ -1,4 +1,5 @@
 import {
+    GetPageResponse,
     ListBlockChildrenResponse,
     QueryDatabaseResponse,
 } from "@notionhq/client/build/src/api-endpoints";
@@ -9,6 +10,9 @@ export interface ITag {
     color: string;
 }
 
+export type PageResult = Extract<GetPageResponse, { cover: unknown }>;
+export type PageCoverProperty = PageResult["cover"];
+
 export interface IPost {
     id: string;
     url: string;
@@ -17,6 +21,7 @@ export interface IPost {
     title: string;
     description: string;
     link?: string;
+    cover?: PageCoverProperty;
 }
 
 export interface IProject extends IPost {

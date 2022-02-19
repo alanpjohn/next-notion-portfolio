@@ -5,6 +5,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 module.exports = withPlugins([withBundleAnalyzer], {
     images: {
-        domains: ["s3.us-west-2.amazonaws.com"],
+        domains: ["s3.us-west-2.amazonaws.com", "images.unsplash.com"],
     },
 });

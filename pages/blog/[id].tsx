@@ -9,6 +9,7 @@ import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 import { ParsedUrlQuery } from "querystring";
 
 type PostProps = {
@@ -19,6 +20,11 @@ type PostProps = {
 const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
     if (!post) {
         return <></>;
+    }
+    const image = post.cover;
+    let src = "";
+    if (image) {
+        src = image.type == "external" ? image.external.url : image.file.url;
     }
     return (
         <Layout>
@@ -40,19 +46,38 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     },
                 ]}
             />
-            <Section className="pt-40">
-                <div className="container">
+            <Section>
+                <div className="container my-20">
+                    {image ? (
+                        <div className="mx-auto my-4 w-full max-w-3xl">
+                            <figure className="blog__image">
+                                <Image
+                                    src={src}
+                                    layout="fill"
+                                    className="image saturate-50"
+                                    alt="Cover"
+                                    priority
+                                />
+                            </figure>
+                        </div>
+                    ) : (
+                        ""
+                    )}
                     <div className="w-full max-w-xl mx-auto px-4">
-                        <span className="section__heading">{post.title}</span>
+                        <span className="my-2 font-clash text-3xl md:text-4xl lg:text-5xl font-light">
+                            {post.title}
+                        </span>
                         <div className="py-4">
                             {post.tags.map((tag: ITag) => (
                                 <Tag key={tag.id} {...tag} />
                             ))}
                         </div>
-                        <p className="post-date">
+                        <p className="font-clash text-sm">
                             Last updated: {getMonthAndYear(post.date)}
                         </p>
-                        <p className="section__desc">{post.description}</p>
+                        <p className="mt-4 text-justify text-base font-light md:w-4/5 lg:w-3/4 border-l-8 px-2 border-secondary">
+                            {post.description}
+                        </p>
                     </div>
                     <div className="mx-8">
                         <RenderedPageContent blocks={blocks} />

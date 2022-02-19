@@ -3,6 +3,8 @@ import {
     BlockWithChildren,
     IPost,
     IProject,
+    PageCoverProperty,
+    PageResult,
     PostResult,
     PropertyValueEditedTime,
     PropertyValueMultiSelect,
@@ -55,11 +57,24 @@ type DatabaseItem = PostResult & {
     };
 };
 
-const extractPosts = (response: QueryDatabaseResponse): IPost[] => {
-    const posts: IPost[] = [];
-    response.results
-        .map((databaseItem) => databaseItem as DatabaseItem)
-        .map((postInDB: DatabaseItem) => {
+type PageWithCover = PageResult & {
+    cover: PageCoverProperty;
+};
+
+const getPageCover = async (pageId: string): Promise<PageCoverProperty> => {
+    const response = await notion.pages.retrieve({ page_id: pageId });
+    const cover = (response as PageWithCover).cover || null;
+    return cover;
+};
+
+const extractPosts = async (
+    response: QueryDatabaseResponse,
+): Promise<IPost[]> => {
+    const databaseItems: DatabaseItem[] = response.results.map(
+        (databaseItem) => databaseItem as DatabaseItem,
+    );
+    const posts: IPost[] = await Promise.all(
+        databaseItems.map(async (postInDB: DatabaseItem) => {
             const title = postInDB.properties.Title.title[0].plain_text;
             const date = postInDB.properties.Date.last_edited_time;
             const description =
@@ -67,17 +82,21 @@ const extractPosts = (response: QueryDatabaseResponse): IPost[] => {
             const url = getCanonicalURL(title);
             const link = postInDB.properties.Link.url || "";
             const tags = postInDB.properties.Tags.multi_select;
+            const cover = await getPageCover(postInDB.id);
 
-            posts.push({
+            const post: IPost = {
                 id: postInDB.id,
                 title: title,
                 date: date,
                 description: description,
                 url: url,
                 link: link,
+                cover: cover,
                 tags: tags,
-            });
-        });
+            };
+            return post;
+        }),
+    );
     return posts;
 };
 
@@ -101,7 +120,7 @@ export async function getBlogPosts(): Promise<IPost[]> {
         ],
     });
 
-    const posts = extractPosts(response);
+    const posts = await extractPosts(response);
     writeToCache(posts);
     return posts;
 }

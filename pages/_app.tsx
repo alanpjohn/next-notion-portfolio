@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     const router = useRouter();
     const domain = process.env.LOCAL
         ? "https://localhost:3000"
-        : "https://alan-john-portfolio.vercel.app";
+        : "https://alanjohn.dev";
 
     const url = `${domain}${router.route}`;
 
@@ -23,12 +23,8 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         const handleRouteChange = (url: URL) => {
             pageview(url);
         };
-        //When the component is mounted, subscribe to router changes
-        //and log those page views
         router.events.on("routeChangeComplete", handleRouteChange);
 
-        // If the component is unmounted, unsubscribe
-        // from the event with the `off` method
         return () => {
             router.events.off("routeChangeComplete", handleRouteChange);
         };
