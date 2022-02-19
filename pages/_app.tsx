@@ -13,11 +13,15 @@ import "@styles/styles.scss";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     const router = useRouter();
-    const domain = process.env.LOCAL
-        ? "https://localhost:3000"
-        : "https://alanjohn.dev";
+    const baseUrl = process.env.LOCAL
+        ? "http://localhost:3000"
+        : {
+              test: "https://alan-john-portfolio.vercel.app",
+              development: "https://alan-john-portfolio.vercel.app",
+              production: "https://www.alanjohn.dev.dev",
+          }[process.env.NODE_ENV];
 
-    const url = `${domain}${router.route}`;
+    const url = `${baseUrl}${router.route}`;
 
     useEffect(() => {
         const handleRouteChange = (url: URL) => {
@@ -37,13 +41,13 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                 openGraph={{
                     type: "website",
                     locale: "en_IE",
-                    url,
+                    url: url,
                     description:
                         "The personal website for Alan John, developer.",
                     site_name: "Alan John",
                     images: [
                         {
-                            url: `${domain}/images/social_media_preview.png`,
+                            url: `${baseUrl}/images/social_media_preview.png`,
                             width: 1200,
                             height: 628,
                             alt: "My Portfolio Preview",

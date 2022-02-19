@@ -6,6 +6,7 @@ import {
     PageCoverProperty,
     PageResult,
     PostResult,
+    PropertyValueDate,
     PropertyValueEditedTime,
     PropertyValueMultiSelect,
     PropertyValueRichText,
@@ -22,26 +23,24 @@ import path from "path";
 const notion = new Client({ auth: process.env.NOTION_KEY });
 const allpostscache = "public/posts.json";
 
-type IBlog = IPost[];
-
-const writeToCache = (blog: IBlog) => {
+const writeToCache = (blog: IPost[]) => {
     fs.writeFileSync(
         path.join(process.cwd(), allpostscache),
         JSON.stringify(blog),
     );
 };
 
-export const readFromCache = (): IBlog => {
+export const readFromCache = (): IPost[] => {
     const cacheContents = fs.readFileSync(
         path.join(process.cwd(), allpostscache),
         "utf-8",
     );
-    const cache: IBlog = JSON.parse(cacheContents);
+    const cache: IPost[] = JSON.parse(cacheContents);
     return cache;
 };
 
 export const readPost = (url: string): IPost | undefined => {
-    const blog: IBlog = readFromCache();
+    const blog: IPost[] = readFromCache();
     const post: IPost | undefined = blog.find((post) => {
         return post.url == url;
     });
@@ -54,6 +53,7 @@ type DatabaseItem = PostResult & {
         Tags: PropertyValueMultiSelect;
         Description: PropertyValueRichText;
         Link: PropertyValueUrl;
+        PublishDate: PropertyValueDate;
     };
 };
 
@@ -83,16 +83,18 @@ const extractPosts = async (
             const link = postInDB.properties.Link.url || "";
             const tags = postInDB.properties.Tags.multi_select;
             const cover = await getPageCover(postInDB.id);
+            const publishdate = postInDB.properties.PublishDate.date?.start;
 
             const post: IPost = {
                 id: postInDB.id,
                 title: title,
-                date: date,
+                modifiedDate: date,
                 description: description,
                 url: url,
                 link: link,
                 cover: cover,
                 tags: tags,
+                publishDate: publishdate || date,
             };
             return post;
         }),
@@ -194,7 +196,7 @@ const extractProjects = (response: QueryDatabaseResponse): IProject[] => {
             projects.push({
                 id: projectInDB.id,
                 title: title,
-                date: date,
+                modifiedDate: date,
                 description: description,
                 url: link,
                 link: link,

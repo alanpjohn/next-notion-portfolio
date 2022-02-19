@@ -1,6 +1,6 @@
 import { CustomLink } from "@components/link";
 
-import { SiGithub, SiInstagram, SiLinkedin } from "react-icons/si";
+import { SiBehance, SiGithub, SiInstagram, SiLinkedin } from "react-icons/si";
 
 export const quicklinks = [
     {
@@ -17,6 +17,11 @@ export const quicklinks = [
         Icon: SiInstagram,
         text: "Instagram",
         href: "https://www.instagram.com/_alan_not_allen_/",
+    },
+    {
+        Icon: SiBehance,
+        text: "Behance",
+        href: "https://www.behance.net/alanjohn8",
     },
 ];
 

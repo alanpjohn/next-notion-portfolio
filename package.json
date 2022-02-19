@@ -1,6 +1,6 @@
 {
     "name": "next-notion-portfolio",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "private": true,
     "scripts": {
         "dev": "next dev",
@@ -17,7 +17,7 @@
         "framer-motion": "^6.2.3",
         "next": "^12.1.0",
         "next-compose-plugins": "^2.2.1",
-        "next-seo": "^4.28.1",
+        "next-seo": "^5.1.0",
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "sass": "^1.32.5",

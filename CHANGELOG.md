@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2022-02-19
+### Added 
+- Added Sitemap and robots.txt
+- ArticleLd for blog articles
+- Behance social icon
+### Fixed
+- Blog page heading padding
+- HighlightJS bundle inflation by supporting select fonts
+- Dark Toggle behaviour when preferred theme is dark
+### Changed
+- Datetime formatter
+- Split Blog post date into `publishedDate` and `modifiedDate`
+### Removed
+- Github actions - version branch creation removed
 ## [1.0.0] - 2022-02-19
 ### Added
 - Skills tabs generation from Notion Page

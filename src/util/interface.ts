@@ -17,14 +17,21 @@ export interface IPost {
     id: string;
     url: string;
     tags: ITag[];
-    date: string;
+    modifiedDate: string;
+    publishDate: string;
     title: string;
     description: string;
     link?: string;
     cover?: PageCoverProperty;
 }
 
-export interface IProject extends IPost {
+export interface IProject {
+    id: string;
+    url: string;
+    tags: ITag[];
+    modifiedDate: string;
+    title: string;
+    description: string;
     link: string;
 }
 
@@ -47,6 +54,7 @@ export type PropertyValueTitle = ExtractedPropertyValue<"title">;
 export type PropertyValueRichText = ExtractedPropertyValue<"rich_text">;
 export type PropertyValueMultiSelect = ExtractedPropertyValue<"multi_select">;
 export type PropertyValueUrl = ExtractedPropertyValue<"url">;
+export type PropertyValueDate = ExtractedPropertyValue<"date">;
 export type PropertyValueEditedTime =
     ExtractedPropertyValue<"last_edited_time">;
 

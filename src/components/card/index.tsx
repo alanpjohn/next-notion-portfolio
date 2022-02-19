@@ -73,7 +73,7 @@ type ProjectCardProps = PropsWithRef<IProject>;
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
     title,
-    date,
+    modifiedDate: date,
     description,
     link,
     tags,
