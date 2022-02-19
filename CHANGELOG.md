@@ -4,10 +4,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2022-02-19
+### Added
+- Skills tabs generation from Notion Page
+- Trivago import sorting plugin to organize imports during linting
+- Google Analytics for production environent
+- Added Font Playfair from Google fonts for cursive display
+- Cover Image support for blog articles (Only Unsplash)
+- Web Bookmark support for blog articles
+- Card style display for image blocks on home page
+- Dark mode support
+- Added new Custom Button replacing Primary Button and Secondary Button
+- Seperate Section components for homepage sections
+- Tailwind optimized SCSS in styles.scss
+### Fixed
+- Mobile screen hamburger menu using AnimatePresence
+- Scrolling using `Back to Top` using JS scrolling
+- highlight.js inflated bundle size by using select language support
+### Changed
+- Refaactored Render functions into React components
+- Moved all notion related rendering from `@util` to `@components/notion`
+- update color scheme
+- Update Favicon
+- update SEO
+### Removed
+- Unneccessary SCSS.
+
 ## [0.4.3] - 2022-02-11
 ### Added
 - Link to preload fonts fron Google fonts
-### Fix
+### Fixed
 - CustomLink Highlighting
 - Hamburger menu links being accessible when menu closed
 
