@@ -21,12 +21,15 @@ export const Header: React.FC = () => {
     );
 
     return (
-        <div>
+        <header>
             <motion.div
-                className="header withborder"
+                className="header border-b-2 border-secondary bg-primary"
                 style={{ y: headerDisappearance }}
             >
-                <CustomLink href="/" className="logo w-2/5">
+                <CustomLink
+                    href="/"
+                    className="font-logo my-auto text-4xl font-semibold w-2/5"
+                >
                     AJ
                 </CustomLink>
                 <DarkModeToggle />
@@ -37,6 +40,6 @@ export const Header: React.FC = () => {
             <motion.div className="header" style={{ y: buttonAppearance }}>
                 <CustomButton text="Back to top" href="#" Icon={FaArrowUp} />
             </motion.div>
-        </div>
+        </header>
     );
 };

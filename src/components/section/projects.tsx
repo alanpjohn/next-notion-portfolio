@@ -12,14 +12,15 @@ type Props = {
 
 export const ProjectSection: React.FC<Props> = ({ projects }: Props) => {
     return (
-        <Section
-            title="Projects"
-            className="border-b-2 border-primary-100 py-20 dark:border-darkprimary-100"
-        >
-            <div className="project-grid">
-                <div className="hero-card">
-                    <span className="hero-title">Featured Projects</span>
-                    <p className="hero-text">
+        <Section title="Projects" className="border-b-2 border-secondary">
+            <div
+                className="
+                mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mx-auto xl:grid-cols-3 max-w-6xl my-24
+            "
+            >
+                <div className="mx-4 md:col-span-2 md:mx-8 xl:col-span-1 xl:mx-2">
+                    <h2 className="section__heading">Featured Projects</h2>
+                    <p className="section__desc">
                         Here are some of my favourite projects that I have made
                         for either personal, competition or academic purposes.
                         You can check out more at my Github Profile.

@@ -21,7 +21,7 @@ export const MultilineCodeBlock: React.FC<CodeBlockProps> = ({
     });
 
     return (
-        <pre className="codeblock">
+        <pre className="bg-codeblock">
             <code ref={ref} className={`${code.language}`}>
                 {renderText(id, code.text)}
             </code>

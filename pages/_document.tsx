@@ -17,36 +17,30 @@ class CustomDocument extends Document {
     }
 
     render(): JSX.Element {
+        const GA_MEASUREMENT_ID =
+            process.env.NODE_ENV == "production" &&
+            process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
         return (
             <Html lang="en">
                 <Head>
-                    <link
-                        rel="preload"
-                        href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2"
-                        as="font"
-                        type="font/woff2"
-                        crossOrigin=""
+                    {/* Global Site Tag (gtag.js) - Google Analytics */}
+                    <script
+                        async
+                        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
                     />
-                    <link
-                        rel="preload"
-                        href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff"
-                        as="font"
-                        type="font/woff"
-                        crossOrigin=""
-                    />
-                    <link
-                        rel="preload"
-                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
-                        as="font"
-                        type="font/woff2"
-                        crossOrigin=""
-                    />
-                    <link
-                        rel="preload"
-                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff"
-                        as="font"
-                        type="font/woff"
-                        crossOrigin=""
+                    <script
+                        async
+                        // eslint-disable-next-line react/no-danger
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', '${GA_MEASUREMENT_ID}', {
+                            page_path: window.location.pathname,
+                        });
+                        `,
+                        }}
                     />
                     <link
                         rel="preconnect"

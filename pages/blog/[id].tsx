@@ -40,10 +40,10 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     },
                 ]}
             />
-            <Section className="pt-30">
-                <div className="post-section">
-                    <div className="post-hero">
-                        <span className="post-title">{post.title}</span>
+            <Section className="pt-40">
+                <div className="container">
+                    <div className="w-full max-w-xl mx-auto px-4">
+                        <span className="section__heading">{post.title}</span>
                         <div className="py-4">
                             {post.tags.map((tag: ITag) => (
                                 <Tag key={tag.id} {...tag} />
@@ -52,9 +52,9 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                         <p className="post-date">
                             Last updated: {getMonthAndYear(post.date)}
                         </p>
-                        <p className="post-desc">{post.description}</p>
+                        <p className="section__desc">{post.description}</p>
                     </div>
-                    <div className="post-main">
+                    <div className="mx-8">
                         <RenderedPageContent blocks={blocks} />
                     </div>
                 </div>

@@ -17,15 +17,17 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
     primary = false,
 }: CustomButtonProps) => {
     return (
-        <CustomLink
-            href={href}
-            className={`button ${
-                primary ? "button-primary" : "button-secondary"
-            }`}
-        >
-            <span>{text}</span>
-            <Icon className="icon" />
-        </CustomLink>
+        <button>
+            <CustomLink
+                href={href}
+                className={`button ${
+                    primary ? "button-primary" : "button-secondary"
+                }`}
+            >
+                <Icon className="icon" />
+                <span>{text}</span>
+            </CustomLink>
+        </button>
     );
 };
 

@@ -31,14 +31,14 @@ export const DarkModeToggle = (): JSX.Element => {
     return (
         <AnimatePresence exitBeforeEnter initial={false}>
             <motion.div
-                className="text-2xl text-accent focus:outline-none dark:text-darkaccent sm:text-3xl cursor-pointer m-auto"
+                className="text-2xl hover:text-orange dark:hover:text-purple sm:text-3xl cursor-pointer m-auto"
                 onClick={() => toggleMode()}
                 key={darkModeActive ? "dark-icon" : "light-icon"}
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 20, opacity: 0 }}
             >
-                {darkModeActive ? <BsSunFill /> : <BsMoonFill />}
+                {!darkModeActive ? <BsSunFill /> : <BsMoonFill />}
             </motion.div>
         </AnimatePresence>
     );

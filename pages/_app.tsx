@@ -1,19 +1,38 @@
 import { Footer } from "@components/footer";
 import { Header } from "@components/header";
 
+import { pageview } from "@util/ga";
+
 import "highlight.js/styles/github-dark-dimmed.css";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
-import React from "react";
-import "tailwindcss/tailwind.css";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
-import "@styles/global.scss";
+import "@styles/styles.scss";
 
-function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+    const router = useRouter();
     const domain = process.env.LOCAL
         ? "https://localhost:3000"
         : "https://alan-john-portfolio.vercel.app";
+
     const url = `${domain}${router.route}`;
+
+    useEffect(() => {
+        const handleRouteChange = (url: URL) => {
+            pageview(url);
+        };
+        //When the component is mounted, subscribe to router changes
+        //and log those page views
+        router.events.on("routeChangeComplete", handleRouteChange);
+
+        // If the component is unmounted, unsubscribe
+        // from the event with the `off` method
+        return () => {
+            router.events.off("routeChangeComplete", handleRouteChange);
+        };
+    }, [router.events]);
 
     return (
         <>

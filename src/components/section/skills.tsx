@@ -2,6 +2,7 @@ import { CustomButton } from "@components/button";
 import { RenderedSkillContent, extractSkills } from "@components/notion";
 import { Section } from "@components/section";
 
+import { event } from "@util/ga";
 import { BlockWithChildren } from "@util/interface";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -16,31 +17,37 @@ export const SkillsSection: React.FC<SkillSectionProps> = ({ skillsdata }) => {
     const skills = extractSkills(skillsdata);
     const [isSelected, setSelected] = useState(skills[0]);
     return (
-        <Section
-            title="Skills"
-            className="border-b-2 border-primary-100 py-20 dark:border-darkprimary-100"
-        >
-            <div className="section-banner-top flex-col-reverse">
-                <div className="skill-panel">
-                    <div className="top-nav">Change tabs for more details</div>
-                    <div className="nav">
+        <Section title="Skills" className="border-b-2 border-secondary">
+            <div className="banner flex-col-reverse lg:flex-row">
+                <div className="ml-4 card">
+                    <div className="card__nav">
+                        Change tabs for more details
+                    </div>
+                    <div className="mb-3 flex h-16 flex-row justify-evenly gap-0 border-b-2 border-secondary">
                         {skills.map((tech) => (
-                            <div
+                            <button
                                 key={tech.id}
                                 className={`
-                                nav-item 
+                                w-full py-4 text-center text-xl 
                                 ${tech.id == isSelected.id ? "selected" : ""}
                             `}
-                                onClick={() => setSelected(tech)}
+                                onClick={() => {
+                                    setSelected(tech);
+                                    event({
+                                        category: "SkillTab",
+                                        action: "switch",
+                                        label: tech.domain,
+                                    });
+                                }}
                             >
                                 {tech.acronym}
                                 {tech.id === isSelected.id ? (
                                     <motion.div
-                                        className="highlight"
+                                        className="mt-4 h-2 bg-orange dark:bg-purple"
                                         layoutId="underline"
                                     />
                                 ) : null}
-                            </div>
+                            </button>
                         ))}
                     </div>
                     <div>
@@ -53,13 +60,13 @@ export const SkillsSection: React.FC<SkillSectionProps> = ({ skillsdata }) => {
                                 transition={{ duration: 0.15 }}
                                 className="main"
                             >
-                                <div className="heading">
-                                    <span className="domain">
+                                <div className="">
+                                    <h3 className="my-6 mx-4 w-full px-3 text-3xl">
                                         {isSelected.domain}
-                                    </span>
+                                    </h3>
                                 </div>
 
-                                <div className="description">
+                                <div className="h-80 overflow-scroll overflow-x-hidden py-4 px-6">
                                     <RenderedSkillContent
                                         blocks={isSelected.content}
                                     />
@@ -68,9 +75,9 @@ export const SkillsSection: React.FC<SkillSectionProps> = ({ skillsdata }) => {
                         </AnimatePresence>
                     </div>
                 </div>
-                <div className="hero-card px-2 md:px-8">
-                    <span className="hero-title">Skillset</span>
-                    <p className="hero-text">
+                <div className="mx-4 md:mx-6 xl:mx-2 px-2 md:px-8 lg:max-w-lg mb-10">
+                    <h3 className="section__heading">Skillset</h3>
+                    <p className="section__desc">
                         My go-to tech stack right now would be NextJS for
                         frontend and FastAPI and/or gRPC to make my backend
                         architecture deployed with the help of a kubernetes

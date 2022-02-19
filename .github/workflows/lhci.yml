@@ -28,3 +28,4 @@ jobs:
           NOTION_KEY : ${{ secrets.NOTION_KEY }}
           NOTION_PROJECT_DATABASE_ID : ${{ secrets.NOTION_PROJECT_DATABASE_ID }}
           NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}
+          LOCAL: ${{ secrets.LOCAL }}

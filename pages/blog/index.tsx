@@ -29,11 +29,11 @@ const BlogPage: NextPage<BlockPageProps> = ({ posts }: BlockPageProps) => {
                 ]}
             />
             <Section className="pt-16 md:pt-24 min-h-screen">
-                <div className="blog-section">
-                    <div className="blog-hero">
-                        <span className="blog-title">My Blog</span>
-                        <div className="introduction">
-                            <p>
+                <div className="my-20 mx-auto flex w-11/12 flex-col xl:columns-2 xl:flex-row">
+                    <div className="flex flex-col xl:w-1/3">
+                        <span className="section__heading">My Blog</span>
+                        <div className="section__desc my-4">
+                            <p className="md:text-2xl my-4">
                                 Sharing ideas and project case ideas. Usually
                                 read a lot on linux and cloud native patterns so
                                 would share some articles on that as well.{" "}
@@ -46,7 +46,7 @@ const BlogPage: NextPage<BlockPageProps> = ({ posts }: BlockPageProps) => {
                             />
                         </div>
                     </div>
-                    <div className="blog-main">
+                    <div className="flex-grow px-2">
                         <PostPanel posts={posts} />
                     </div>
                 </div>
