@@ -1,3 +1,4 @@
+/*eslint-disable @typescript-eslint/no-explicit-any */
 import Head from "next/head";
 import React from "react";
 

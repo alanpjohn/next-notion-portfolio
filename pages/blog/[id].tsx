@@ -12,7 +12,6 @@ import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import { FaLink } from "react-icons/fa";
 
@@ -22,7 +21,6 @@ type PostProps = {
 };
 
 const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
-    const router = useRouter();
     if (!post) {
         return <></>;
     }
@@ -32,8 +30,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
         src = image.type == "external" ? image.external.url : image.file.url;
     }
 
-    const pathname = router.pathname;
-    const url = "https://www.alanjohn.dev.dev/" + pathname;
+    const url = "https://www.alanjohn.dev.dev/" + post.url;
     const truncated =
         post.description.length > 110
             ? post.description.substring(0, 110)
