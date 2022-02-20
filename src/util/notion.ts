@@ -13,7 +13,7 @@ import {
     PropertyValueTitle,
     PropertyValueUrl,
 } from "@util/interface";
-import { getCanonicalURL } from "@util/router";
+import { getBaseURL, getCanonicalURL } from "@util/router";
 
 import { Client } from "@notionhq/client";
 import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
@@ -22,6 +22,7 @@ import path from "path";
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 const allpostscache = "public/posts.json";
+const sitemapxml = "public/sitemap.xml";
 
 const writeToCache = (blog: IPost[]) => {
     fs.writeFileSync(
@@ -46,6 +47,54 @@ export const readPost = (url: string): IPost | undefined => {
     });
     return post;
 };
+
+const generateSiteMap = (posts: IPost[]) => {
+    const baseUrl = getBaseURL();
+
+    const staticPages = fs
+        .readdirSync("pages")
+        .filter((staticPage) => {
+            return ![
+                "_app.js",
+                "_document.js",
+                "_error.js",
+                "sitemap.xml.js",
+            ].includes(staticPage);
+        })
+        .map((staticPagePath) => {
+            return `${baseUrl}/${staticPagePath.split(".")[0]}`;
+        });
+
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${staticPages
+          .map((url) => {
+              return `
+            <url>
+              <loc>${url}</loc>
+              <lastmod>${new Date().toISOString()}</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>1.0</priority>
+            </url>
+          `;
+          })
+          .join("")}
+        ${posts
+            .map((post) => {
+                return `<url>
+            <loc>${baseUrl + "/" + post.url}</loc>
+            <lastmod>${post.modifiedDate}</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>1.0</priority>
+          </url>`;
+            })
+            .join("")}
+    </urlset>
+  `;
+
+    fs.writeFileSync(sitemapxml, sitemap);
+};
+
 type DatabaseItem = PostResult & {
     properties: {
         Title: PropertyValueTitle;
@@ -124,6 +173,7 @@ export async function getBlogPosts(): Promise<IPost[]> {
 
     const posts = await extractPosts(response);
     writeToCache(posts);
+    generateSiteMap(posts);
     return posts;
 }
 
