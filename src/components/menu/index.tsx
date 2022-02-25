@@ -31,13 +31,14 @@ export const MenuLink: React.FC<NavigationProps> = ({
 }: NavigationProps) => {
     return (
         <CustomLink
-            className="my-24 w-full font-clash text-xl font-medium bg-primary hover:text-orange dark:hover:text-purple"
+            className="w-full font-clash text-xl font-medium bg-primary hover:text-orange dark:hover:text-purple"
             href={href}
         >
             <motion.div
                 variants={menuLinkVariants}
                 whileTap={{ scale: 1.1 }}
                 whileHover={{ scale: 0.95 }}
+                className="my-4"
             >
                 {text}
             </motion.div>
@@ -63,13 +64,15 @@ export const NavLink: React.FC<NavigationProps> = ({
 
 const menuVariants = {
     open: {
+        x: 0,
         transition: { staggerChildren: 0.07, delayChildren: 0.2 },
     },
     closed: {
+        x: 300,
         transition: {
-            staggerChildren: 0.05,
+            staggerChildren: 0.07,
             staggerDirection: -1,
-            delayChildren: 0.3,
+            delayChildren: 0.2,
         },
     },
 };
@@ -117,7 +120,7 @@ export const Menu: React.FC = () => {
                 {isOpen && (
                     <motion.ul
                         variants={menuVariants}
-                        className="mt-20 block text-right md:hidden"
+                        className="min-h-screen bg-primary pt-40 -mr-8 px-4"
                         initial="closed"
                         onClick={() => setOpen(!isOpen)}
                         exit="closed"

@@ -1,7 +1,8 @@
-import { CustomButton, RoundButton } from "@components/button";
+import { RoundButton } from "@components/button";
 import { CustomLink } from "@components/link";
+import { RenderedProfileContent } from "@components/notion";
 
-import { IPost, IProject, ITag } from "@util/interface";
+import { IPost, IProfileSection, IProject, ITag } from "@util/interface";
 
 import { motion } from "framer-motion";
 import { PropsWithChildren, PropsWithRef } from "react";
@@ -79,27 +80,41 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     tags,
 }: ProjectCardProps) => {
     return (
-        <div className="card max-w-lg">
-            <div className="card__nav">
-                <VscGitPullRequest />
-                <span>{date}</span>
-            </div>
-            <div className="card__title">
-                <CustomLink href={link} className="">
-                    {title}
-                </CustomLink>
-            </div>
-            <div className="h-56 w-full border-y-2 px-2 flex flex-row items-center border-primary">
-                <p className="text-base flex-1 px-2 font-light">
-                    {description}
-                </p>
-                <div className="flex h-full flex-shrink flex-col py-4 px-2 justify-center border-l-2 border-primary">
+        <CustomLink href={link} className="">
+            <div className="card group my-10 max-w-4xl">
+                <div className="card__nav">
+                    <VscGitPullRequest />
+                    <span>{date}</span>
+                </div>
+                <div className="flex flex-col md:flex-row p-4 justify-evenly items-center">
+                    <h3 className="my-10 md:m-0 md:basis-1/5 text-4xl">
+                        {title}
+                    </h3>
+                    <p className="md:basis-2/5">{description}</p>
+                    <div className="self-end my-4 md:self-auto md:my-0">
+                        <RoundButton Icon={FaArrowRight} href={link} />
+                    </div>
+                </div>
+                <div className="flex w-full flex-shrink flex-wrap flex-row p-2 justify-center border-t-2 border-primary">
                     {tags.map((tag) => (
                         <Tag key={tag.id} {...tag} />
                     ))}
                 </div>
             </div>
-            <CustomButton href={link} text="Go to Project" />
+        </CustomLink>
+    );
+};
+
+type ProfileDetailsProps = PropsWithRef<IProfileSection>;
+
+export const ProfileSectionCard: React.FC<ProfileDetailsProps> = ({
+    title,
+    content,
+}) => {
+    return (
+        <div className="md:card md:p-8 rounded-md ">
+            <h3 className="text-4xl my-4">{title}</h3>
+            <RenderedProfileContent blocks={content} />
         </div>
     );
 };

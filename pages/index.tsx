@@ -2,20 +2,19 @@ import { Layout } from "@components/layout";
 import { AboutSection } from "@components/section/about";
 import { HeroSection } from "@components/section/hero";
 import { ProjectSection } from "@components/section/projects";
-import { SkillsSection } from "@components/section/skills";
 
-import { BlockWithChildren, IProject } from "@util/interface";
-import { getPortfolioProjects, getSkills } from "@util/notion";
+import { IProfile, IProject } from "@util/interface";
+import { getPortfolioProjects, getProfile } from "@util/notion";
 
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 
 type HomeProps = {
     projects: IProject[];
-    skillsdata: BlockWithChildren[];
+    profile: IProfile;
 };
 
-const Home: NextPage<HomeProps> = ({ projects, skillsdata }: HomeProps) => {
+const Home: NextPage<HomeProps> = ({ projects, profile }: HomeProps) => {
     return (
         <Layout>
             <NextSeo
@@ -30,20 +29,20 @@ const Home: NextPage<HomeProps> = ({ projects, skillsdata }: HomeProps) => {
                 ]}
             />
             <HeroSection />
-            <AboutSection />
+            <AboutSection profileData={profile} />
             <ProjectSection projects={projects} />
-            <SkillsSection skillsdata={skillsdata} />
         </Layout>
     );
 };
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     const projects = await getPortfolioProjects();
-    const skills = await getSkills();
+    const profile = await getProfile();
+
     return {
         props: {
             projects: projects,
-            skillsdata: skills,
+            profile: profile,
         },
         revalidate: 86400,
     };

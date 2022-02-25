@@ -10,8 +10,7 @@ import {
     Quote,
 } from "@components/notion/text";
 
-import { BlockWithChildren, RichText, extractListItems } from "@util/interface";
-import { Skill, getAcronym } from "@util/skills";
+import { BlockWithChildren, extractListItems } from "@util/interface";
 
 import { PropsWithChildren } from "react";
 
@@ -78,7 +77,7 @@ const renderBlock = (block: BlockWithChildren): React.ReactNode => {
     }
 };
 
-type RenderProps = {
+export type RenderProps = {
     blocks: Array<BlockWithChildren>;
 };
 
@@ -95,36 +94,12 @@ export const RenderedPageContent: React.FC<RenderProps> = ({
     );
 };
 
-export const extractSkills = (blocks: Array<BlockWithChildren>): Skill[] => {
-    const skills: Skill[] = [];
-
-    blocks
-        .filter((block: BlockWithChildren) => block.type === "toggle")
-        .map((block) => {
-            const domain: string =
-                block.type == "toggle"
-                    ? block.toggle.text
-                          .map((text: RichText) => text.plain_text)
-                          .join("\n")
-                    : "";
-
-            skills.push({
-                id: skills.length,
-                domain: domain,
-                acronym: getAcronym(domain),
-                content: block.has_children ? block.childblocks : [],
-            });
-        });
-
-    return skills;
-};
-
-export const RenderedSkillContent: React.FC<RenderProps> = ({
+export const RenderedProfileContent: React.FC<RenderProps> = ({
     blocks,
 }: RenderProps) => {
     const blocksWithList = extractListItems(blocks);
     return (
-        <article className="prose w-full text-justify lg:prose-lg">
+        <article className="prose w-full lg:prose-lg">
             {blocksWithList.map((block: BlockWithChildren) => {
                 return renderBlock(block);
             })}

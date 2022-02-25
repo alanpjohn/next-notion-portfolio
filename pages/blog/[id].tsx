@@ -118,7 +118,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                                 </CustomLink>
                             </div>
                         )}
-                        <p className="mt-4 text-justify text-base font-light md:w-4/5 lg:w-3/4 border-l-8 px-2 border-secondary">
+                        <p className="mt-4 text-base font-light md:w-4/5 lg:w-3/4 border-l-8 px-2 border-secondary">
                             {post.description}
                         </p>
                     </div>

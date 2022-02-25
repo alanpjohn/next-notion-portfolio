@@ -12,13 +12,13 @@ type Props = {
 
 export const ProjectSection: React.FC<Props> = ({ projects }: Props) => {
     return (
-        <Section title="Projects" className="">
+        <Section title="Projects" className="py-32">
             <div
                 className="
-                mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mx-auto xl:grid-cols-3 max-w-6xl my-24
+                flex flex-col lg:flex-row mx-auto w-11/12 lg:w-4/5
             "
             >
-                <div className="mx-4 md:col-span-2 md:mx-8 xl:col-span-1 xl:mx-2">
+                <div className="mx-8 basis-1/3">
                     <h2 className="section__heading">Featured Projects</h2>
                     <p className="section__desc">
                         Here are some of my favourite projects that I have made
@@ -34,9 +34,11 @@ export const ProjectSection: React.FC<Props> = ({ projects }: Props) => {
                         />
                     </div>
                 </div>
-                {projects.map((project) => (
-                    <ProjectCard key={project.id} {...project} />
-                ))}
+                <div>
+                    {projects.map((project) => (
+                        <ProjectCard key={project.id} {...project} />
+                    ))}
+                </div>
             </div>
         </Section>
     );

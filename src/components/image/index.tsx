@@ -15,7 +15,7 @@ export const CustomImage: React.FC<ImageProps> = ({
     altText,
 }: ImageProps) => {
     return (
-        <div className="h-fit w-fit card">
+        <div className="h-fit w-fit card group">
             <div className="card__nav">
                 <span>{altText}</span>
                 <FaHeartbeat />

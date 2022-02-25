@@ -2,6 +2,8 @@ import {
     Block,
     BlockWithChildren,
     IPost,
+    IProfile,
+    IProfileSection,
     IProject,
     PageCoverProperty,
     PageResult,
@@ -12,6 +14,7 @@ import {
     PropertyValueRichText,
     PropertyValueTitle,
     PropertyValueUrl,
+    RichText,
 } from "@util/interface";
 import { getBaseURL, getCanonicalURL } from "@util/router";
 
@@ -54,12 +57,9 @@ const generateSiteMap = (posts: IPost[]) => {
     const staticPages = fs
         .readdirSync("pages")
         .filter((staticPage) => {
-            return ![
-                "_app.js",
-                "_document.js",
-                "_error.js",
-                "sitemap.xml.js",
-            ].includes(staticPage);
+            return !["_app.tsx", "_document.tsx", "_error.tsx"].includes(
+                staticPage,
+            );
         })
         .map((staticPagePath) => {
             return `${baseUrl}/${staticPagePath.split(".")[0]}`;
@@ -103,6 +103,7 @@ type DatabaseItem = PostResult & {
         Description: PropertyValueRichText;
         Link: PropertyValueUrl;
         PublishDate: PropertyValueDate;
+        LastUpdated?: PropertyValueDate;
     };
 };
 
@@ -268,11 +269,46 @@ export const getPortfolioProjects = async (): Promise<IProject[]> => {
                 equals: true,
             },
         },
+        sorts: [
+            {
+                property: "LastUpdated",
+                direction: "descending",
+            },
+        ],
     });
     return extractProjects(response);
 };
 
-export const getSkills = async (): Promise<BlockWithChildren[]> => {
+export const extractProfileData = (blocks: BlockWithChildren[]): IProfile => {
+    const sections: IProfileSection[] = [];
+    const about: BlockWithChildren[] = [];
+
+    blocks.map((block) => {
+        if (block.type == "toggle") {
+            const domain: string =
+                block.type == "toggle"
+                    ? block.toggle.text
+                          .map((text: RichText) => text.plain_text)
+                          .join("\n")
+                    : "";
+            sections.push({
+                title: domain,
+                content: block.has_children ? block.childblocks : [],
+            });
+        } else if (block.type == "heading_1" || block.type == "paragraph") {
+            about.push(block);
+        }
+    });
+
+    const profile: IProfile = {
+        about: about,
+        sections: sections,
+    };
+    return profile;
+};
+
+export const getProfile = async (): Promise<IProfile> => {
     const page = process.env.NOTION_SKILLS_PAGE_ID || "";
-    return await getPostBlocks(page);
+    const blocks = await getPostBlocks(page);
+    return extractProfileData(blocks);
 };

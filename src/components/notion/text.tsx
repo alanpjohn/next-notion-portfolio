@@ -28,7 +28,7 @@ export const renderText = (
                 className={[
                     bold ? "bold-text" : "",
                     code ? "code-text" : "",
-                    italic ? "italic-text" : "",
+                    italic ? "font-playfair italic" : "",
                     strikethrough ? "strikethrough-text" : "",
                     underline ? "underline-text" : "",
                 ].join(" ")}

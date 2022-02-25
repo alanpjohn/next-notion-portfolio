@@ -32,9 +32,14 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
         .filter((text) => text != "" && text.indexOf("?") == -1);
     if (href == "#") {
         return (
-            <div className={className} onClick={scrollToTop}>
+            <a
+                className={className}
+                href="#"
+                onClick={scrollToTop}
+                aria-label={label[0]}
+            >
                 {children}
-            </div>
+            </a>
         );
     }
     const internal: boolean = href.startsWith("/") || href.startsWith("#");

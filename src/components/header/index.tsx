@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
                     AJ
                 </CustomLink>
                 <DarkModeToggle />
-                <div className="my-auto w-2/5">
+                <div className="my-auto w-3/5 md:w-2/5">
                     <Menu />
                 </div>
             </motion.div>

@@ -8,6 +8,7 @@ import "highlight.js/styles/github-dark-dimmed.css";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import Script from "next/script";
 import React, { useEffect } from "react";
 
 import "@styles/styles.scss";
@@ -17,6 +18,10 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     const baseUrl = getBaseURL();
 
     const url = `${baseUrl}${router.route}`;
+
+    const GA_MEASUREMENT_ID =
+        process.env.NODE_ENV == "production" &&
+        process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
 
     useEffect(() => {
         const handleRouteChange = (url: URL) => {
@@ -51,6 +56,25 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                     ],
                 }}
                 canonical={url}
+            />
+            <Script
+                strategy="afterInteractive"
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            />
+            <Script
+                id="google analytics"
+                async
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                    __html: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', '${GA_MEASUREMENT_ID}', {
+                            page_path: window.location.pathname,
+                        });
+                        `,
+                }}
             />
             <Header />
             <Component {...pageProps} />

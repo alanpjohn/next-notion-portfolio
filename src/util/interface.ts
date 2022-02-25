@@ -209,3 +209,13 @@ export const extractListItems = (
 
     return postprocessed;
 };
+
+export interface IProfileSection {
+    title: string;
+    content: BlockWithChildren[];
+}
+
+export interface IProfile {
+    about: BlockWithChildren[];
+    sections: IProfileSection[];
+}
