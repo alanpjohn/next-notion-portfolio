@@ -166,7 +166,7 @@ export async function getBlogPosts(): Promise<IPost[]> {
         },
         sorts: [
             {
-                property: "Date",
+                property: process.env.LOCAL ? "Date" : "PublishDate",
                 direction: "descending",
             },
         ],

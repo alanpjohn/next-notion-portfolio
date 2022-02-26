@@ -92,11 +92,11 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     ) : (
                         ""
                     )}
-                    <div className="w-full max-w-xl mx-auto px-8 whitespace-pre-wrap my-10">
-                        <span className="my-2 font-clash text-3xl md:text-4xl lg:text-6xl font-light">
+                    <div className="w-full max-w-xl mx-auto px-2 whitespace-pre-wrap my-10">
+                        <span className="my-2 font-clash text-3xl md:text-4xl lg:text-5xl font-light">
                             {post.title}
                         </span>
-                        <div className="py-4">
+                        <div className="py-4 flex flex-wrap">
                             {post.tags.map((tag: ITag) => (
                                 <Tag key={tag.id} {...tag} />
                             ))}

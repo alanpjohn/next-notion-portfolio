@@ -120,7 +120,7 @@ export const Menu: React.FC = () => {
                 {isOpen && (
                     <motion.ul
                         variants={menuVariants}
-                        className="min-h-screen bg-primary pt-40 px-4 -mr-4"
+                        className="min-h-screen bg-primary pt-40 pl-2 -mr-4"
                         initial="closed"
                         onClick={() => setOpen(!isOpen)}
                         exit="closed"
@@ -128,7 +128,7 @@ export const Menu: React.FC = () => {
                         <MenuLink text="Home" href="/" isOpen={isOpen} />
                         <MenuLink text="Blog" href="/blog" isOpen={isOpen} />
                         <MenuLink
-                            text="Photography"
+                            text="Photos"
                             href="https://photos.alanjohn.dev"
                             isOpen={isOpen}
                         />

@@ -101,7 +101,7 @@
 
     .header {
         min-height: 5rem;
-        @apply fixed z-20 flex w-full flex-row items-center justify-evenly;
+        @apply fixed z-20 flex w-full flex-row items-center justify-between md:justify-evenly;
         @apply px-4 md:px-16 lg:px-32 xl:px-56 2xl:px-72;
     }
 
