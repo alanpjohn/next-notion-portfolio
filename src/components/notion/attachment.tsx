@@ -16,10 +16,10 @@ export const WebBookmark: React.FC<WebBookmarkProps> = ({
     const children =
         bookmark.caption.length > 0
             ? renderText(id, bookmark.caption)
-            : bookmark.url;
+            : "For more information";
     return (
         <CustomLink
-            className="flex flex-row group items-center card justify-evenly p-2 prose"
+            className="flex flex-row group items-center card justify-evenly prose mx-2 py-4"
             href={bookmark.url}
         >
             {children}

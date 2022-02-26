@@ -16,7 +16,9 @@ export const Tag: React.FC<TagProps> = ({ name }: TagProps) => {
         <span
             className="
         whitespace-nowrap bg-secondary m-1 w-fit 
-        rounded-lg py-1 px-2 font-clash text-sm uppercase"
+        rounded-lg py-1 px-2 font-clash text-sm uppercase
+        group-hover:bg-orange dark:group-hover:bg-purple
+        "
         >
             {name}
         </span>
@@ -40,15 +42,15 @@ export const PostCard: React.FC<PostProps> = ({
     return (
         <CustomLink
             href={link}
-            className="mx-auto mb-16 flex max-w-3xl flex-row border-b-2 border-primary group"
+            className="mx-1 mb-16 flex max-w-3xl flex-row border-b-2 border-primary group"
         >
             <motion.div
-                className="my-4 mx-2 flex flex-grow flex-col"
+                className="my-4 px-1 flex flex-grow flex-col"
                 variants={cardVariants}
             >
                 <h3
                     className="font-cabinet text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
-                group-hover:text-razzmatazz dark:group-hover:text-mint"
+                    group-hover:text-orange dark:group-hover:text-purple"
                 >
                     {title}
                 </h3>
@@ -61,7 +63,7 @@ export const PostCard: React.FC<PostProps> = ({
                     {description}
                 </span>
             </motion.div>
-            <div className="flex">
+            <div className="hidden md:flex">
                 <div className="m-auto">
                     <RoundButton href={link} Icon={FaArrowRight} />
                 </div>
@@ -82,7 +84,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     return (
         <CustomLink href={link} className="">
             <div className="card group my-10 max-w-4xl">
-                <div className="card__nav">
+                <div className="card__nav bg-accent">
                     <VscGitPullRequest />
                     <span>{date}</span>
                 </div>

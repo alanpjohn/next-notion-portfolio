@@ -4,7 +4,7 @@ import { Section } from "@components/section";
 
 import { IProject } from "@util/interface";
 
-import { FaGithub } from "react-icons/fa";
+import { FaDownload, FaGithub } from "react-icons/fa";
 
 type Props = {
     projects: IProject[];
@@ -25,11 +25,17 @@ export const ProjectSection: React.FC<Props> = ({ projects }: Props) => {
                         for either personal, competition or academic purposes.
                         You can check out more at my Github Profile.
                     </p>
-                    <div className="float-left py-4">
+                    <div className="float-left flex flex-col py-4">
                         <CustomButton
                             text={"Go to Github"}
                             Icon={FaGithub}
                             href="https://github.com/TheForeverLost"
+                            primary
+                        />
+                        <CustomButton
+                            text={"Download Resume"}
+                            Icon={FaDownload}
+                            href="https://drive.google.com/file/d/1OAWqwJ6cXa4yS0vrsdn-Ni3lAtw8aNA3/view?usp=sharing"
                             primary
                         />
                     </div>

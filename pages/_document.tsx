@@ -51,7 +51,6 @@ class CustomDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
                         rel="stylesheet"
                     />
-                    {/* <link rel="preload" href="styles.css" as="style"/> */}
                     <link rel="shortcut icon" href="/favicon.ico" />
                 </Head>
                 <body>

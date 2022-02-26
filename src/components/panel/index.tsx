@@ -18,7 +18,12 @@ export const PostPanel: React.FC<PostPanelProps> = ({
     posts,
 }: PostPanelProps) => {
     return (
-        <motion.ul initial="hidden" animate="enter" variants={PanelVariants}>
+        <motion.ul
+            className="px-2"
+            initial="hidden"
+            animate="enter"
+            variants={PanelVariants}
+        >
             {posts.map((post) => (
                 <PostCard key={post.id} {...post} />
             ))}

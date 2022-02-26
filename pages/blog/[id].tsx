@@ -76,7 +76,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                 description={truncated}
             />
             <Section>
-                <div className="container my-20">
+                <div className="container px-4 my-20">
                     {image ? (
                         <div className="mx-auto w-full max-w-3xl">
                             <figure className="blog__image">
@@ -92,7 +92,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     ) : (
                         ""
                     )}
-                    <div className="w-full max-w-xl mx-auto px-2 my-10">
+                    <div className="w-full max-w-xl mx-auto px-8 whitespace-pre-wrap my-10">
                         <span className="my-2 font-clash text-3xl md:text-4xl lg:text-6xl font-light">
                             {post.title}
                         </span>
@@ -114,7 +114,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                             <div className="flex flex-row items-center text-sm my-2">
                                 <FaLink className="text-jet dark:text-cultured mx-1" />
                                 <CustomLink href={post.link}>
-                                    {post.link}
+                                    Read this elsewhere
                                 </CustomLink>
                             </div>
                         )}
@@ -122,9 +122,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                             {post.description}
                         </p>
                     </div>
-                    <div className="mx-8">
-                        <RenderedPageContent blocks={blocks} />
-                    </div>
+                    <RenderedPageContent blocks={blocks} />
                 </div>
             </Section>
         </Layout>

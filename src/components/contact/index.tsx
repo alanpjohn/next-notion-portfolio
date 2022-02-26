@@ -1,6 +1,12 @@
 import { CustomLink } from "@components/link";
 
-import { SiBehance, SiGithub, SiInstagram, SiLinkedin } from "react-icons/si";
+import {
+    SiBehance,
+    SiDevdotto,
+    SiGithub,
+    SiGmail,
+    SiLinkedin,
+} from "react-icons/si";
 
 export const quicklinks = [
     {
@@ -14,14 +20,19 @@ export const quicklinks = [
         href: "https://www.linkedin.com/in/alan-john-b2b521193/",
     },
     {
-        Icon: SiInstagram,
-        text: "Instagram",
-        href: "https://www.instagram.com/_alan_not_allen_/",
-    },
-    {
         Icon: SiBehance,
         text: "Behance",
         href: "https://www.behance.net/alanjohn8",
+    },
+    {
+        Icon: SiDevdotto,
+        text: "DevTo",
+        href: "dev.to/theforeverlost",
+    },
+    {
+        Icon: SiGmail,
+        text: "Gmail",
+        href: "alansandra2013@gmail.com",
     },
 ];
 

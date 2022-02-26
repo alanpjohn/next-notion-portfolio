@@ -86,7 +86,7 @@ export const RenderedPageContent: React.FC<RenderProps> = ({
 }: RenderProps) => {
     const blocksWithList = extractListItems(blocks);
     return (
-        <article className="prose mx-auto mt-8 w-full text-justify lg:prose-lg lg:mt-16 lg:w-3/4">
+        <article className="prose mx-auto mt-8 text-justify lg:prose-lg lg:mt-16">
             {blocksWithList.map((block: BlockWithChildren) => {
                 return renderBlock(block);
             })}

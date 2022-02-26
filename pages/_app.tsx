@@ -59,11 +59,13 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             />
             <Script
                 strategy="afterInteractive"
+                async
                 src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
             />
             <Script
                 id="google analytics"
                 async
+                strategy="afterInteractive"
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                     __html: `

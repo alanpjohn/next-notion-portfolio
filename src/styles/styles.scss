@@ -91,14 +91,18 @@
         @apply bg-cultured text-jet dark:bg-jet dark:text-cultured;
     }
 
+    .bg-accent {
+        @apply bg-razzmatazz dark:bg-mint;
+    }
+
     .banner {
         @apply mx-4 flex items-center justify-evenly py-10 lg:mx-0 lg:items-start lg:py-24;
     }
 
     .header {
         min-height: 5rem;
-        @apply fixed z-20 flex w-full flex-row justify-evenly;
-        @apply px-8 md:px-16 lg:px-32 xl:px-56 2xl:px-72;
+        @apply fixed z-20 flex w-full flex-row items-center justify-evenly;
+        @apply px-4 md:px-16 lg:px-32 xl:px-56 2xl:px-72;
     }
 
     .card {
@@ -138,12 +142,12 @@
     }
 
     .button-primary {
-        @apply bg-orange hover:bg-razzmatazz dark:bg-purple dark:hover:bg-mint;
+        @apply bg-razzmatazz hover:bg-orange dark:bg-mint dark:hover:bg-purple;
     }
 
     .button-secondary {
-        @apply bg-white  hover:bg-razzmatazz group-hover:bg-razzmatazz;
-        @apply dark:bg-eerie  dark:hover:bg-mint dark:group-hover:bg-mint;
+        @apply bg-white  hover:bg-orange group-hover:bg-orange;
+        @apply dark:bg-eerie  dark:hover:bg-purple dark:group-hover:bg-purple;
     }
 
     .round-button {
@@ -179,5 +183,42 @@
 
     .prose {
         @apply text-base text-jet dark:text-cultured md:text-lg lg:text-xl;
+    }
+
+    #hero_svg__base-3,
+    #hero_svg__base-2 {
+        @apply fill-orange dark:fill-mint;
+    }
+
+    #hero_svg__base-4 {
+        @apply fill-razzmatazz dark:fill-purple;
+    }
+
+    #hero_svg__grid {
+        @apply dark:stroke-jet;
+    }
+
+    #spinner g path {
+        @apply fill-jet dark:fill-white;
+    }
+
+    #spinner g circle {
+        @apply fill-orange dark:fill-purple;
+    }
+}
+
+#spinner {
+    animation-name: spin;
+    animation-duration: 10000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
