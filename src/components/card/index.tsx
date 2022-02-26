@@ -54,7 +54,7 @@ export const PostCard: React.FC<PostProps> = ({
                 >
                     {title}
                 </h3>
-                <div className="py-4">
+                <div className="py-4 flex flex-wrap">
                     {tags.map((tag: ITag) => (
                         <Tag key={tag.id} {...tag} />
                     ))}
