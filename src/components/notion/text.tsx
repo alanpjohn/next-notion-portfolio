@@ -26,11 +26,13 @@ export const renderText = (
             <span
                 key={`text-${id}-${count}`}
                 className={[
-                    bold ? "bold-text" : "",
-                    code ? "code-text" : "",
+                    bold ? "font-medium" : "",
+                    code
+                        ? "font-clash bg-secondary px-2 rounded-md whitespace-nowrap"
+                        : "",
                     italic ? "font-playfair italic" : "",
-                    strikethrough ? "strikethrough-text" : "",
-                    underline ? "underline-text" : "",
+                    strikethrough ? "strikethrough" : "",
+                    underline ? "underline" : "",
                 ].join(" ")}
                 style={color !== "default" ? { color } : {}}
             >

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2022-02-27
+### Changed
+- Footer contents
+- Notion paragraph text styling
+### Fixed
+- Accessibility issue due to color contrast in card headers
+
 ## [1.0.4] - 2022-02-27
 ### Added
 - SVGs injected

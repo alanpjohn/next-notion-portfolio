@@ -92,7 +92,7 @@
     }
 
     .bg-accent {
-        @apply bg-razzmatazz dark:bg-mint;
+        @apply bg-razzmatazz text-eerie dark:bg-mint;
     }
 
     .banner {
@@ -160,7 +160,7 @@
     }
 
     .default-link {
-        @apply font-semibold text-jet underline decoration-dotted underline-offset-auto hover:text-orange;
+        @apply font-semibold text-jet underline decoration-dotted underline-offset-4 hover:text-orange;
         @apply dark:text-cultured dark:hover:text-purple;
     }
 
@@ -178,6 +178,14 @@
             width: 100% !important;
             position: relative !important;
             height: unset !important;
+        }
+    }
+
+    .footer__text {
+        @apply flex flex-row font-clash;
+
+        span {
+            @apply px-2 font-playfair italic;
         }
     }
 

@@ -18,6 +18,7 @@ export const Tag: React.FC<TagProps> = ({ name }: TagProps) => {
         whitespace-nowrap bg-secondary m-1 w-fit 
         rounded-lg py-1 px-2 font-clash text-sm uppercase
         group-hover:bg-orange dark:group-hover:bg-purple
+        group-hover:text-eerie dark:group-hover:text-eerie
         "
         >
             {name}
@@ -49,7 +50,7 @@ export const PostCard: React.FC<PostProps> = ({
                 variants={cardVariants}
             >
                 <h3
-                    className="font-cabinet text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
+                    className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
                     group-hover:text-orange dark:group-hover:text-purple"
                 >
                     {title}
@@ -88,7 +89,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     <VscGitPullRequest />
                     <span>{date}</span>
                 </div>
-                <div className="flex flex-col md:flex-row p-4 justify-evenly items-center">
+                <div className="flex flex-col md:flex-row p-4 justify-evenly items-start md:items-center">
                     <h3 className="my-10 md:m-0 md:basis-1/5 text-4xl">
                         {title}
                     </h3>

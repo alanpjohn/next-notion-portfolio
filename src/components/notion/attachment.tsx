@@ -19,7 +19,7 @@ export const WebBookmark: React.FC<WebBookmarkProps> = ({
             : "For more information";
     return (
         <CustomLink
-            className="flex flex-row group items-center card justify-evenly prose mx-2 py-4"
+            className="flex flex-row group items-center card justify-between prose m-2 p-4 font-clash"
             href={bookmark.url}
         >
             {children}

@@ -37,18 +37,16 @@ export const quicklinks = [
 ];
 
 export const Contact: React.FC = () => (
-    <div className="my-6 flex flex-row text-2xl text-secondary dark:text-darksecondary">
-        {quicklinks.map(({ Icon, href }, i) => (
+    <div className="my-2 flex flex-row flex-wrap text-secondary dark:text-darksecondary">
+        {quicklinks.map(({ Icon, href }) => (
             <CustomLink
-                key={href}
-                href={href}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className={`transition-colors hover:text-accent dark:hover:text-darkaccent ${
-                    i < quicklinks.length - 1 ? "mr-3" : ""
-                }`}
+                key={Icon.name}
+                href={href}
+                className="hover:text-orange dark:hover:text-purple font-clash"
             >
-                <Icon />
+                <Icon className="text-2xl hover:text-orange dark:hover:text-purple m-4" />
             </CustomLink>
         ))}
     </div>
