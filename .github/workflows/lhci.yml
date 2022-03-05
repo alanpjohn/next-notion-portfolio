@@ -6,10 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 12.x
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: npm install, build
         run: |
           npm install
@@ -18,6 +18,7 @@ jobs:
           NOTION_KEY : ${{ secrets.NOTION_KEY }}
           NOTION_PROJECT_DATABASE_ID : ${{ secrets.NOTION_PROJECT_DATABASE_ID }}
           NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}
+          NOTION_SKILLS_PAGE_ID: ${{ secrets.NOTION_SKILLS_PAGE_ID }}
       - name: run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.8.x
@@ -27,3 +28,4 @@ jobs:
           NOTION_KEY : ${{ secrets.NOTION_KEY }}
           NOTION_PROJECT_DATABASE_ID : ${{ secrets.NOTION_PROJECT_DATABASE_ID }}
           NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}
+          LOCAL: TRUE

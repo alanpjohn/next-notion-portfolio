@@ -1,7 +1,9 @@
 import { CustomLink } from "@components/link";
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { BiMenu } from "react-icons/bi";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { BiMenu, BiX } from "react-icons/bi";
 
 type NavigationProps = {
     text: string;
@@ -11,32 +13,32 @@ type NavigationProps = {
 
 const menuLinkVariants = {
     open: {
-        y: 0,
+        x: 0,
         opacity: 1,
         transition: {
             y: { stiffness: 1000, velocity: -100 },
         },
     },
     closed: {
-        y: 50,
+        x: 50,
         opacity: 0,
-        transition: {
-            y: { stiffness: 1000 },
-        },
     },
 };
 
 export const MenuLink: React.FC<NavigationProps> = ({
     text,
     href,
-    isOpen = true,
 }: NavigationProps) => {
     return (
-        <CustomLink className={`navlink ${isOpen ? "" : "hidden"}`} href={href}>
+        <CustomLink
+            className="w-full font-clash text-xl font-medium bg-primary hover:text-orange dark:hover:text-purple"
+            href={href}
+        >
             <motion.div
                 variants={menuLinkVariants}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 1.1 }}
+                whileHover={{ scale: 0.95 }}
+                className="my-4"
             >
                 {text}
             </motion.div>
@@ -49,7 +51,10 @@ export const NavLink: React.FC<NavigationProps> = ({
     href,
 }: NavigationProps) => {
     return (
-        <CustomLink className="navlink" href={href}>
+        <CustomLink
+            className="font-clash text-base font-medium hover:text-orange dark:hover:text-purple lg:text-xl"
+            href={href}
+        >
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 {text}
             </motion.div>
@@ -59,43 +64,77 @@ export const NavLink: React.FC<NavigationProps> = ({
 
 const menuVariants = {
     open: {
+        x: 0,
         transition: { staggerChildren: 0.07, delayChildren: 0.2 },
     },
     closed: {
-        transition: { staggerChildren: 0.05, staggerDirection: -1 },
+        x: 300,
+        transition: {
+            staggerChildren: 0.07,
+            staggerDirection: -1,
+            delayChildren: 0.2,
+        },
     },
 };
 
 export const Menu: React.FC = () => {
     const [isOpen, setOpen] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        router.events.on("routeChangeComplete", () => setOpen(false));
+        return () => {
+            router.events.off("routeChangeComplete", () => setOpen(false));
+        };
+    }, [router.events]);
+
     return (
         <motion.nav
-            className="nav"
-            initial={false}
+            className="flex h-16 flex-col overflow-visible"
+            initial="closed"
             animate={isOpen ? "open" : "closed"}
+            exit="closed"
         >
-            <div className="navbar">
+            <div className="my-auto hidden flex-row justify-center md:flex">
                 <NavLink text="Home" href="/" />
+                <span className="mx-4"> / </span>
                 <NavLink text="Blog" href="/blog" />
+                <span className="mx-4"> / </span>
                 <NavLink
                     text="Photography"
-                    href="https://alanjohn.myportfolio.com/"
+                    href="https://photos.alanjohn.dev"
                 />
             </div>
-            <BiMenu className="icon" onClick={() => setOpen(!isOpen)} />
-            <motion.ul
-                variants={menuVariants}
-                className="navlinks"
-                onClick={() => setOpen(!isOpen)}
-            >
-                <MenuLink text="Home" href="/" isOpen={isOpen} />
-                <MenuLink text="Blog" href="/blog" isOpen={isOpen} />
-                <MenuLink
-                    text="Photography"
-                    href="https://alanjohn.myportfolio.com/"
-                    isOpen={isOpen}
+            {isOpen ? (
+                <BiX
+                    className="absolute z-30 block h-16 self-end text-4xl md:hidden"
+                    onClick={() => setOpen(false)}
                 />
-            </motion.ul>
+            ) : (
+                <BiMenu
+                    className="absolute z-30 block h-16 self-end text-4xl md:hidden"
+                    onClick={() => setOpen(true)}
+                />
+            )}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.ul
+                        variants={menuVariants}
+                        className="min-h-screen bg-primary pt-40 pl-2 -mr-4"
+                        initial="closed"
+                        onClick={() => setOpen(!isOpen)}
+                        exit="closed"
+                    >
+                        <MenuLink text="Home" href="/" isOpen={isOpen} />
+                        <MenuLink text="Blog" href="/blog" isOpen={isOpen} />
+                        <MenuLink
+                            text="Photos"
+                            href="https://photos.alanjohn.dev"
+                            isOpen={isOpen}
+                        />
+                    </motion.ul>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 };

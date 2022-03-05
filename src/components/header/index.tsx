@@ -1,54 +1,45 @@
-import { PrimaryButton } from "@components/button";
+import { CustomButton } from "@components/button";
+import { DarkModeToggle } from "@components/darktoggle";
 import { CustomLink } from "@components/link";
 import { Menu } from "@components/menu";
-import { isActiveLink } from "@util/router";
-import {
-    motion,
-    useSpring,
-    useTime,
-    useTransform,
-    useViewportScroll,
-} from "framer-motion";
-import { useRouter } from "next/router";
+
+import { motion, useTransform, useViewportScroll } from "framer-motion";
 import React from "react";
 import { FaArrowUp } from "react-icons/fa";
 
 export const Header: React.FC = () => {
-    const { pathname } = useRouter();
-    const isHome = isActiveLink("/", pathname);
-
     const { scrollY } = useViewportScroll();
     const buttonAppearance = useTransform(
         scrollY,
-        [0, 200, 250],
+        [0, 300, 325],
         [-100, -100, 0],
     );
     const headerDisappearance = useTransform(
         scrollY,
-        [0, 175, 225],
+        [0, 250, 300],
         [0, 0, -300],
     );
-    const time = useTime();
-    const headerAppearance = useSpring(
-        useTransform(time, [0, 1500, 1750], isHome ? [0, 0, 1] : [1, 1, 1]),
-        { stiffness: 300 },
-    );
+
     return (
-        <div>
+        <header>
             <motion.div
-                className="header withborder"
-                style={{ y: headerDisappearance, opacity: headerAppearance }}
+                className="header border-b-2 border-secondary bg-primary"
+                style={{ y: headerDisappearance }}
             >
-                <CustomLink href="/" className="logo">
+                <CustomLink
+                    href="/"
+                    className="font-logo text-4xl font-semibold hidden md:block"
+                >
                     AJ
                 </CustomLink>
-                <div className="my-auto w-2/5">
+                <DarkModeToggle />
+                <div className="w-2/5 md:w-min">
                     <Menu />
                 </div>
             </motion.div>
             <motion.div className="header" style={{ y: buttonAppearance }}>
-                <PrimaryButton text="Back to top" href="#" Icon={FaArrowUp} />
+                <CustomButton text="Back to top" href="#" Icon={FaArrowUp} />
             </motion.div>
-        </div>
+        </header>
     );
 };

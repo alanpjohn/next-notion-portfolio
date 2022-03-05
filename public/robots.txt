@@ -1,0 +1,5 @@
+# Allow all user agents.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.alanjohn.dev.dev/sitemap.xml

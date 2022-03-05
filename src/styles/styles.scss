@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * @license
+ *
+ * Font Family: Clash Display
+ * Designed by: Indian Type Foundry
+ * URL: https://www.fontshare.com/fonts/clash-display
+ * © 2022 Indian Type Foundry
+ *
+ * Font Styles:
+ * Clash Display Variable(Variable font)
+ *
+*/
+
+@font-face {
+    font-family: "ClashDisplay";
+    src: url("/fonts/ClashDisplay/ClashDisplay-Variable.woff2") format("woff2");
+    font-weight: 200 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+/**
+ * @license
+ *
+ * Font Family: Cabinet Grotesk
+ * Designed by: Indian Type Foundry
+ * URL: https://www.fontshare.com/fonts/cabinet-grotesk
+ * © 2022 Indian Type Foundry
+ *
+ * Font Styles:
+ * Cabinet Grotesk Variable(Variable font)
+ *
+*/
+
+@font-face {
+    font-family: "CabinetGrotesk";
+    src: url("/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2")
+        format("woff2");
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+}
+
+@layer base {
+    html,
+    body {
+        @apply scroll-smooth bg-white text-eerie dark:bg-eerie dark:text-white;
+        // ::-webkit-scrollbar {
+        //     width: 0px;
+        //     background: transparent; /* make scrollbar transparent */
+        // }
+    }
+
+    p,
+    li {
+        @apply font-cabinet text-lg text-jet dark:text-cultured;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-clash;
+    }
+
+    button {
+        @apply font-clash;
+    }
+}
+
+@layer components {
+    .border-primary {
+        @apply border-jet dark:border-cultured;
+    }
+
+    .border-secondary {
+        @apply border-cultured dark:border-jet;
+    }
+
+    .bg-primary {
+        @apply bg-white text-eerie dark:bg-eerie dark:text-white;
+    }
+
+    .bg-secondary {
+        @apply bg-cultured text-jet dark:bg-jet dark:text-cultured;
+    }
+
+    .bg-accent {
+        @apply bg-razzmatazz text-eerie dark:bg-mint;
+    }
+
+    .banner {
+        @apply mx-4 flex items-center justify-evenly py-10 lg:mx-0 lg:items-start lg:py-24;
+    }
+
+    .header {
+        min-height: 5rem;
+        @apply fixed z-20 flex w-full flex-row items-center justify-between md:justify-evenly;
+        @apply px-4 md:px-16 lg:px-32 xl:px-56 2xl:px-72;
+    }
+
+    .card {
+        @apply border-primary min-w-xs border-2 shadow-md shadow-jet dark:shadow-mint;
+    }
+
+    .card__nav {
+        @apply flex flex-row justify-between p-2 font-clash text-sm font-medium;
+        @apply border-primary mb-1 border-b-2;
+        @apply group-hover:bg-orange dark:group-hover:bg-purple;
+    }
+
+    .card__title {
+        @apply w-full px-2 pt-6  pb-10;
+        @apply font-clash text-5xl;
+    }
+
+    .section__heading {
+        @apply my-2 font-clash text-6xl font-light;
+    }
+
+    .section__desc {
+        @apply mt-4 text-xl md:w-4/5 lg:w-3/4;
+    }
+
+    .button {
+        @apply z-0 m-2 flex h-12 w-min cursor-pointer justify-center rounded-md  px-8 py-2.5;
+        @apply border-2 border-jet text-jet dark:border-white dark:text-white;
+
+        .icon {
+            @apply my-auto mr-2;
+        }
+
+        span {
+            @apply my-auto whitespace-nowrap font-clash text-lg font-medium;
+        }
+    }
+
+    .button-primary {
+        @apply bg-razzmatazz hover:bg-orange dark:bg-mint dark:hover:bg-purple;
+    }
+
+    .button-secondary {
+        @apply bg-white  hover:bg-orange group-hover:bg-orange;
+        @apply dark:bg-eerie  dark:hover:bg-purple dark:group-hover:bg-purple;
+    }
+
+    .round-button {
+        @apply z-0 flex aspect-square h-12 w-12 justify-center rounded-full p-2 transition-transform duration-300;
+        @apply group-hover:-rotate-45 group-hover:bg-orange dark:group-hover:bg-purple;
+
+        .icon {
+            @apply m-auto;
+        }
+    }
+
+    .default-link {
+        @apply font-semibold text-jet underline decoration-dotted underline-offset-4 hover:text-orange;
+        @apply dark:text-cultured dark:hover:text-purple;
+    }
+
+    .blog__image {
+        width: 100%;
+        position: relative;
+
+        > div,
+        span {
+            position: unset !important;
+        }
+
+        .image {
+            object-fit: contain;
+            width: 100% !important;
+            position: relative !important;
+            height: unset !important;
+        }
+    }
+
+    .footer__text {
+        @apply flex flex-row font-clash;
+
+        span {
+            @apply px-2 font-playfair italic;
+        }
+    }
+
+    .prose {
+        @apply text-base text-jet dark:text-cultured md:text-lg lg:text-xl;
+    }
+
+    #hero_svg__base-3,
+    #hero_svg__base-2 {
+        @apply fill-orange dark:fill-mint;
+    }
+
+    #hero_svg__base-4 {
+        @apply fill-razzmatazz dark:fill-purple;
+    }
+
+    #hero_svg__grid {
+        @apply dark:stroke-jet;
+    }
+
+    #spinner g path {
+        @apply fill-jet dark:fill-white;
+    }
+
+    #spinner g circle {
+        @apply fill-orange dark:fill-purple;
+    }
+}
+
+#spinner {
+    animation-name: spin;
+    animation-duration: 10000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

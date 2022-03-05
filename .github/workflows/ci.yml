@@ -48,20 +48,5 @@ jobs:
                 NOTION_KEY : ${{ secrets.NOTION_KEY }}
                 NOTION_PROJECT_DATABASE_ID : ${{ secrets.NOTION_PROJECT_DATABASE_ID }}
                 NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}
-    release:
-        runs-on: ubuntu-latest
-
-        steps:
-            - name: Checkout
-              uses: actions/checkout@master
-
-            - name: Get NPM version
-              id: package-version
-              uses: martinbeentjes/npm-get-version-action@master
-
-            - name: Create Branch for version
-              uses: peterjgrainger/action-create-branch@v2.0.1
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              with:
-                  branch: v${{ steps.package-version.outputs.current-version }}
+                NOTION_SKILLS_PAGE_ID: ${{ secrets.NOTION_SKILLS_PAGE_ID }}
+                LOCAL: TRUE

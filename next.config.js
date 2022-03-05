@@ -4,7 +4,18 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 module.exports = withPlugins([withBundleAnalyzer], {
+    webpack(config) {
+        const fileLoaderRule = config.module.rules.find(
+            (rule) => rule.test && rule.test.test(".svg"),
+        );
+        fileLoaderRule.exclude = /\.svg$/;
+        config.module.rules.push({
+            test: /\.svg$/,
+            loader: require.resolve("@svgr/webpack"),
+        });
+        return config;
+    },
     images: {
-        domains: ["s3.us-west-2.amazonaws.com"],
+        domains: ["s3.us-west-2.amazonaws.com", "images.unsplash.com"],
     },
 });

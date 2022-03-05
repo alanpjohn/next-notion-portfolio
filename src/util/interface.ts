@@ -1,4 +1,5 @@
 import {
+    GetPageResponse,
     ListBlockChildrenResponse,
     QueryDatabaseResponse,
 } from "@notionhq/client/build/src/api-endpoints";
@@ -9,17 +10,28 @@ export interface ITag {
     color: string;
 }
 
+export type PageResult = Extract<GetPageResponse, { cover: unknown }>;
+export type PageCoverProperty = PageResult["cover"];
+
 export interface IPost {
     id: string;
     url: string;
     tags: ITag[];
-    date: string;
+    modifiedDate: string;
+    publishDate: string;
     title: string;
     description: string;
     link?: string;
+    cover?: PageCoverProperty;
 }
 
-export interface IProject extends IPost {
+export interface IProject {
+    id: string;
+    url: string;
+    tags: ITag[];
+    modifiedDate: string;
+    title: string;
+    description: string;
     link: string;
 }
 
@@ -42,6 +54,7 @@ export type PropertyValueTitle = ExtractedPropertyValue<"title">;
 export type PropertyValueRichText = ExtractedPropertyValue<"rich_text">;
 export type PropertyValueMultiSelect = ExtractedPropertyValue<"multi_select">;
 export type PropertyValueUrl = ExtractedPropertyValue<"url">;
+export type PropertyValueDate = ExtractedPropertyValue<"date">;
 export type PropertyValueEditedTime =
     ExtractedPropertyValue<"last_edited_time">;
 
@@ -75,6 +88,10 @@ export type QuoteBlock = ExtractedBlockType<"quote">;
 export type EquationBlock = ExtractedBlockType<"equation">;
 export type CodeBlock = ExtractedBlockType<"code">;
 export type CalloutBlock = ExtractedBlockType<"callout">;
+export type ToggleBlock = ExtractedBlockType<"toggle">;
+export type EmbedBlock = ExtractedBlockType<"embed">;
+export type WebBookmarkBlock = ExtractedBlockType<"bookmark">;
+
 export type RichText = ParagraphBlock["paragraph"]["text"][number];
 
 export type ImageBlock = ExtractedBlockType<"image">;
@@ -84,7 +101,7 @@ export type ListBlock = {
     id: string;
     object: string;
     type: "bulleted_list" | "numbered_list";
-    children: BlockWithChildren[];
+    childblocks: BlockWithChildren[];
     has_children: boolean;
     archived: boolean;
     created_time: string;
@@ -95,7 +112,7 @@ export type ListItemBlock = {
     id: string;
     object: string;
     type: "list_item";
-    children: BlockWithChildren[];
+    childblocks: BlockWithChildren[];
     has_children: boolean;
     archived: boolean;
     list_item: BulletedListItemBlock["bulleted_list_item"];
@@ -106,7 +123,99 @@ export type ListItemBlock = {
 export type BlockWithChildren =
     | (Block & {
           type: BlockType;
-          children: BlockWithChildren[];
+          childblocks: BlockWithChildren[];
       })
     | ListBlock
     | ListItemBlock;
+
+const createListBlock = (
+    blocktype: "bulleted_list" | "numbered_list",
+    blocks: Array<BlockWithChildren>,
+) => {
+    const processedChildren: BlockWithChildren[] = blocks.map(
+        (block: BlockWithChildren) => {
+            if (
+                block.type == "bulleted_list_item" ||
+                block.type == "numbered_list_item"
+            ) {
+                const blockContent =
+                    block.type == "bulleted_list_item"
+                        ? block.bulleted_list_item
+                        : block.numbered_list_item;
+                const ablock: ListItemBlock = {
+                    ...block,
+                    type: "list_item",
+                    list_item: blockContent,
+                };
+                return ablock;
+            }
+            return block;
+        },
+    );
+    const block: BlockWithChildren = {
+        object: blocks[0].object,
+        id: blocks[0].id,
+        created_time: new Date(Date.now()).toISOString(),
+        last_edited_time: new Date(Date.now()).toISOString(),
+        has_children: true,
+        archived: false,
+        type: blocktype,
+        childblocks: processedChildren,
+    };
+    return block;
+};
+
+export const extractListItems = (
+    blocks: Array<BlockWithChildren>,
+): Array<BlockWithChildren> => {
+    const postprocessed = Array<BlockWithChildren>();
+    const bulleted_list_stack = Array<BlockWithChildren>();
+    const numbered_list_stack = Array<BlockWithChildren>();
+
+    blocks.forEach((block: BlockWithChildren) => {
+        switch (block.type) {
+            case "bulleted_list_item":
+                bulleted_list_stack.push(block);
+                break;
+            case "numbered_list_item":
+                numbered_list_stack.push(block);
+                break;
+            default:
+                if (bulleted_list_stack.length > 0) {
+                    postprocessed.push(
+                        createListBlock("bulleted_list", bulleted_list_stack),
+                    );
+                } else if (numbered_list_stack.length > 0) {
+                    postprocessed.push(
+                        createListBlock("numbered_list", numbered_list_stack),
+                    );
+                }
+                postprocessed.push(block);
+                bulleted_list_stack.length = 0;
+                numbered_list_stack.length = 0;
+                break;
+        }
+    });
+
+    if (bulleted_list_stack.length > 0) {
+        postprocessed.push(
+            createListBlock("bulleted_list", bulleted_list_stack),
+        );
+    } else if (numbered_list_stack.length > 0) {
+        postprocessed.push(
+            createListBlock("numbered_list", numbered_list_stack),
+        );
+    }
+
+    return postprocessed;
+};
+
+export interface IProfileSection {
+    title: string;
+    content: BlockWithChildren[];
+}
+
+export interface IProfile {
+    about: BlockWithChildren[];
+    sections: IProfileSection[];
+}

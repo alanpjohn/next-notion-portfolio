@@ -29,23 +29,9 @@ class CustomDocument extends Document {
                     />
                     <link
                         rel="preload"
-                        href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff"
-                        as="font"
-                        type="font/woff"
-                        crossOrigin=""
-                    />
-                    <link
-                        rel="preload"
                         href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
                         as="font"
                         type="font/woff2"
-                        crossOrigin=""
-                    />
-                    <link
-                        rel="preload"
-                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff"
-                        as="font"
-                        type="font/woff"
                         crossOrigin=""
                     />
                     <link
@@ -58,10 +44,13 @@ class CustomDocument extends Document {
                         crossOrigin=""
                     />
                     <link
+                        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
                         href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
                         rel="stylesheet"
                     />
-                    {/* <link rel="preload" href="styles.css" as="style"/> */}
                     <link rel="shortcut icon" href="/favicon.ico" />
                 </Head>
                 <body>

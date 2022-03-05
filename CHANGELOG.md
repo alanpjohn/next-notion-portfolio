@@ -4,10 +4,85 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2022-02-27
+### Changed
+- Footer contents
+- Notion paragraph text styling
+### Fixed
+- Accessibility issue due to color contrast in card headers
+
+## [1.0.4] - 2022-02-27
+### Added
+- SVGs injected
+### Changed
+- Styling for header and menu
+- Styling for long links
+- Styling for blog pages
+- Social media preview
+
+
+## [1.0.3] - 2022-02-26
+### Changed
+- Improved Header Menu
+- Instead of getting just skills, all homepage data comes from Notion. Added Profile data render component and profile details section
+- Changes Project Card styling
+- Improved Hero
+### Fixed
+- Back to top broken behaviour, now route is replaced smoothly
+### Removed
+- Skills section
+- Skills @util file
+- Skills notion render components
+
+## [1.0.2] - 2022-02-19
+### Added
+- Function to access BaseURL
+- Added `CustomArticleJSONld` tag for rich text search
+
+## [1.0.1] - 2022-02-19
+### Added 
+- Added Sitemap and robots.txt
+- ArticleLd for blog articles
+- Behance social icon
+### Fixed
+- Blog page heading padding
+- HighlightJS bundle inflation by supporting select fonts
+- Dark Toggle behaviour when preferred theme is dark
+### Changed
+- Datetime formatter
+- Split Blog post date into `publishedDate` and `modifiedDate`
+### Removed
+- Github actions - version branch creation removed
+## [1.0.0] - 2022-02-19
+### Added
+- Skills tabs generation from Notion Page
+- Trivago import sorting plugin to organize imports during linting
+- Google Analytics for production environent
+- Added Font Playfair from Google fonts for cursive display
+- Cover Image support for blog articles (Only Unsplash)
+- Web Bookmark support for blog articles
+- Card style display for image blocks on home page
+- Dark mode support
+- Added new Custom Button replacing Primary Button and Secondary Button
+- Seperate Section components for homepage sections
+- Tailwind optimized SCSS in styles.scss
+### Fixed
+- Mobile screen hamburger menu using AnimatePresence
+- Scrolling using `Back to Top` using JS scrolling
+- highlight.js inflated bundle size by using select language support
+### Changed
+- Refaactored Render functions into React components
+- Moved all notion related rendering from `@util` to `@components/notion`
+- update color scheme
+- Update Favicon
+- update SEO
+### Removed
+- Unneccessary SCSS.
+
 ## [0.4.3] - 2022-02-11
 ### Added
 - Link to preload fonts fron Google fonts
-### Fix
+### Fixed
 - CustomLink Highlighting
 - Hamburger menu links being accessible when menu closed
 

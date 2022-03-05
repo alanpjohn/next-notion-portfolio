@@ -1,49 +1,100 @@
-import fs from "fs";
-import path from "path";
-import { Client } from "@notionhq/client";
-import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import {
     Block,
+    BlockWithChildren,
+    IPost,
+    IProfile,
+    IProfileSection,
+    IProject,
+    PageCoverProperty,
+    PageResult,
     PostResult,
+    PropertyValueDate,
     PropertyValueEditedTime,
     PropertyValueMultiSelect,
     PropertyValueRichText,
     PropertyValueTitle,
     PropertyValueUrl,
-    BlockWithChildren,
-    IPost,
-    IProject,
+    RichText,
 } from "@util/interface";
-import { getCanonicalURL } from "@util/router";
+import { getBaseURL, getCanonicalURL } from "@util/router";
+
+import { Client } from "@notionhq/client";
+import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
+import fs from "fs";
+import path from "path";
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 const allpostscache = "public/posts.json";
+const sitemapxml = "public/sitemap.xml";
 
-type IBlog = IPost[];
-
-const writeToCache = (blog: IBlog) => {
+const writeToCache = (blog: IPost[]) => {
     fs.writeFileSync(
         path.join(process.cwd(), allpostscache),
         JSON.stringify(blog),
     );
 };
 
-export const readFromCache = (): IBlog => {
+export const readFromCache = (): IPost[] => {
     const cacheContents = fs.readFileSync(
         path.join(process.cwd(), allpostscache),
         "utf-8",
     );
-    const cache: IBlog = JSON.parse(cacheContents);
+    const cache: IPost[] = JSON.parse(cacheContents);
     return cache;
 };
 
 export const readPost = (url: string): IPost | undefined => {
-    const blog: IBlog = readFromCache();
+    const blog: IPost[] = readFromCache();
     const post: IPost | undefined = blog.find((post) => {
         return post.url == url;
     });
     return post;
 };
+
+const generateSiteMap = (posts: IPost[]) => {
+    const baseUrl = getBaseURL();
+
+    const staticPages = fs
+        .readdirSync("pages")
+        .filter((staticPage) => {
+            return !["_app.tsx", "_document.tsx", "_error.tsx"].includes(
+                staticPage,
+            );
+        })
+        .map((staticPagePath) => {
+            return `${baseUrl}/${staticPagePath.split(".")[0]}`;
+        });
+
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${staticPages
+          .map((url) => {
+              return `
+            <url>
+              <loc>${url}</loc>
+              <lastmod>${new Date().toISOString()}</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>1.0</priority>
+            </url>
+          `;
+          })
+          .join("")}
+        ${posts
+            .map((post) => {
+                return `<url>
+            <loc>${baseUrl + "/" + post.url}</loc>
+            <lastmod>${post.modifiedDate}</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>1.0</priority>
+          </url>`;
+            })
+            .join("")}
+    </urlset>
+  `;
+
+    fs.writeFileSync(sitemapxml, sitemap);
+};
+
 type DatabaseItem = PostResult & {
     properties: {
         Title: PropertyValueTitle;
@@ -51,14 +102,29 @@ type DatabaseItem = PostResult & {
         Tags: PropertyValueMultiSelect;
         Description: PropertyValueRichText;
         Link: PropertyValueUrl;
+        PublishDate: PropertyValueDate;
+        LastUpdated?: PropertyValueDate;
     };
 };
 
-const extractPosts = (response: QueryDatabaseResponse): IPost[] => {
-    const posts: IPost[] = [];
-    response.results
-        .map((databaseItem) => databaseItem as DatabaseItem)
-        .map((postInDB: DatabaseItem) => {
+type PageWithCover = PageResult & {
+    cover: PageCoverProperty;
+};
+
+const getPageCover = async (pageId: string): Promise<PageCoverProperty> => {
+    const response = await notion.pages.retrieve({ page_id: pageId });
+    const cover = (response as PageWithCover).cover || null;
+    return cover;
+};
+
+const extractPosts = async (
+    response: QueryDatabaseResponse,
+): Promise<IPost[]> => {
+    const databaseItems: DatabaseItem[] = response.results.map(
+        (databaseItem) => databaseItem as DatabaseItem,
+    );
+    const posts: IPost[] = await Promise.all(
+        databaseItems.map(async (postInDB: DatabaseItem) => {
             const title = postInDB.properties.Title.title[0].plain_text;
             const date = postInDB.properties.Date.last_edited_time;
             const description =
@@ -66,17 +132,23 @@ const extractPosts = (response: QueryDatabaseResponse): IPost[] => {
             const url = getCanonicalURL(title);
             const link = postInDB.properties.Link.url || "";
             const tags = postInDB.properties.Tags.multi_select;
+            const cover = await getPageCover(postInDB.id);
+            const publishdate = postInDB.properties.PublishDate.date?.start;
 
-            posts.push({
+            const post: IPost = {
                 id: postInDB.id,
                 title: title,
-                date: date,
+                modifiedDate: date,
                 description: description,
                 url: url,
                 link: link,
+                cover: cover,
                 tags: tags,
-            });
-        });
+                publishDate: publishdate || date,
+            };
+            return post;
+        }),
+    );
     return posts;
 };
 
@@ -84,36 +156,25 @@ export async function getBlogPosts(): Promise<IPost[]> {
     const databaseId = process.env.NOTION_BLOG_DATABASE_ID
         ? process.env.NOTION_BLOG_DATABASE_ID
         : "";
-    let response: QueryDatabaseResponse;
-    if (process.env.NODE_ENV == "production") {
-        response = await notion.databases.query({
-            database_id: databaseId,
-            filter: {
-                property: "Publish",
-                checkbox: {
-                    equals: true,
-                },
+    const response: QueryDatabaseResponse = await notion.databases.query({
+        database_id: databaseId,
+        filter: {
+            property: "Publish",
+            checkbox: {
+                equals: process.env.LOCAL ? false : true,
             },
-            sorts: [
-                {
-                    property: "Date",
-                    direction: "descending",
-                },
-            ],
-        });
-    } else {
-        response = await notion.databases.query({
-            database_id: databaseId,
-            sorts: [
-                {
-                    property: "Date",
-                    direction: "descending",
-                },
-            ],
-        });
-    }
-    const posts = extractPosts(response);
+        },
+        sorts: [
+            {
+                property: process.env.LOCAL ? "Date" : "PublishDate",
+                direction: "descending",
+            },
+        ],
+    });
+
+    const posts = await extractPosts(response);
     writeToCache(posts);
+    generateSiteMap(posts);
     return posts;
 }
 
@@ -153,7 +214,7 @@ const getChildren = async (block: Block): Promise<BlockWithChildren> => {
     }
     const ablock: BlockWithChildren = {
         ...block,
-        children: children,
+        childblocks: children,
     };
     return ablock;
 };
@@ -186,7 +247,7 @@ const extractProjects = (response: QueryDatabaseResponse): IProject[] => {
             projects.push({
                 id: projectInDB.id,
                 title: title,
-                date: date,
+                modifiedDate: date,
                 description: description,
                 url: link,
                 link: link,
@@ -208,6 +269,46 @@ export const getPortfolioProjects = async (): Promise<IProject[]> => {
                 equals: true,
             },
         },
+        sorts: [
+            {
+                property: "LastUpdated",
+                direction: "descending",
+            },
+        ],
     });
     return extractProjects(response);
+};
+
+export const extractProfileData = (blocks: BlockWithChildren[]): IProfile => {
+    const sections: IProfileSection[] = [];
+    const about: BlockWithChildren[] = [];
+
+    blocks.map((block) => {
+        if (block.type == "toggle") {
+            const domain: string =
+                block.type == "toggle"
+                    ? block.toggle.text
+                          .map((text: RichText) => text.plain_text)
+                          .join("\n")
+                    : "";
+            sections.push({
+                title: domain,
+                content: block.has_children ? block.childblocks : [],
+            });
+        } else if (block.type == "heading_1" || block.type == "paragraph") {
+            about.push(block);
+        }
+    });
+
+    const profile: IProfile = {
+        about: about,
+        sections: sections,
+    };
+    return profile;
+};
+
+export const getProfile = async (): Promise<IProfile> => {
+    const page = process.env.NOTION_SKILLS_PAGE_ID || "";
+    const blocks = await getPostBlocks(page);
+    return extractProfileData(blocks);
 };

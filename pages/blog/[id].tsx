@@ -1,13 +1,19 @@
 import { Tag } from "@components/card";
 import { Layout } from "@components/layout";
+import { CustomLink } from "@components/link";
+import CustomArticleJsonLd from "@components/meta";
+import { RenderedPageContent } from "@components/notion";
 import { Section } from "@components/section";
+
 import { getMonthAndYear } from "@util/datetime";
-import { IPost, BlockWithChildren, ITag } from "@util/interface";
+import { BlockWithChildren, IPost, ITag } from "@util/interface";
 import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
-import { renderPage } from "@util/render";
+
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 import { ParsedUrlQuery } from "querystring";
+import { FaLink } from "react-icons/fa";
 
 type PostProps = {
     post: IPost;
@@ -18,33 +24,105 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
     if (!post) {
         return <></>;
     }
+    const image = post.cover;
+    let src = "";
+    if (image) {
+        src = image.type == "external" ? image.external.url : image.file.url;
+    }
+
+    const url = "https://www.alanjohn.dev.dev/" + post.url;
+    const truncated =
+        post.description.length > 110
+            ? post.description.substring(0, 110)
+            : post.description;
+
     return (
-        <Layout title={post.title} description={post.description}>
+        <Layout>
             <NextSeo
+                title={post.title}
+                description={post.description}
                 openGraph={{
+                    title: post.title,
+                    description: post.description,
+                    url: "https://www.example.com/articles/article-title",
+                    type: "article",
                     article: {
-                        publishedTime: post.date,
-                        authors: ["Alan P John"],
+                        publishedTime: post.publishDate,
+                        modifiedTime: post.modifiedDate,
                         section: "Software",
+                        authors: ["https://www.alanjohn.dev.dev"],
                         tags: post.tags.map((tag) => tag.name),
                     },
                 }}
             />
+            <CustomArticleJsonLd
+                type="BlogPosting"
+                url={url}
+                title={post.title}
+                images={
+                    post.cover
+                        ? [src]
+                        : [
+                              "https://www.alanjohn.dev.dev/images/social_media_preview.png",
+                          ]
+                }
+                datePublished={post.publishDate}
+                dateModified={post.modifiedDate}
+                authorName={{
+                    "@type": "person",
+                    name: "Alan John",
+                    url: "https://www.linkedin.com/in/alan-john-b2b521193",
+                }}
+                description={truncated}
+            />
             <Section>
-                <div className="post-section">
-                    <div className="post-hero">
-                        <span className="post-title">{post.title}</span>
-                        <div className="pb-4">
+                <div className="container px-4 my-20">
+                    {image ? (
+                        <div className="mx-auto w-full max-w-3xl">
+                            <figure className="blog__image">
+                                <Image
+                                    src={src}
+                                    layout="fill"
+                                    className="image saturate-50"
+                                    alt="Cover"
+                                    priority
+                                />
+                            </figure>
+                        </div>
+                    ) : (
+                        ""
+                    )}
+                    <div className="w-full max-w-2xl mx-auto px-2 whitespace-pre-wrap my-10">
+                        <span className="my-2 font-clash text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light">
+                            {post.title}
+                        </span>
+                        <div className="py-4 flex flex-wrap">
                             {post.tags.map((tag: ITag) => (
                                 <Tag key={tag.id} {...tag} />
                             ))}
                         </div>
-                        <p className="post-date">
-                            Last updated: {getMonthAndYear(post.date)}
+                        <p className="font-clash">
+                            Published on: {getMonthAndYear(post.publishDate)}
                         </p>
-                        <p className="post-desc">{post.description}</p>
+                        {post.publishDate != post.modifiedDate && (
+                            <p className="font-clash">
+                                Last updated:{" "}
+                                {getMonthAndYear(post.modifiedDate)}
+                            </p>
+                        )}
+                        {post.link && (
+                            <div className="flex flex-row items-center text-sm my-2">
+                                <FaLink className="text-jet dark:text-cultured mx-1" />
+                                <CustomLink href={post.link}>
+                                    Read this elsewhere
+                                </CustomLink>
+                            </div>
+                        )}
+                        <p className="mt-4 text-base font-light md:w-4/5 lg:w-3/4 border-l-8 px-2 border-secondary">
+                            {post.description}
+                        </p>
                     </div>
-                    <div className="post-main">{renderPage(blocks)}</div>
+                    <RenderedPageContent blocks={blocks} />
                 </div>
             </Section>
         </Layout>
