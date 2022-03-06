@@ -105,6 +105,12 @@
         @apply px-4 md:px-16 lg:px-32 xl:px-56 2xl:px-72;
     }
 
+    .del-last:last-of-type {
+        span {
+            @apply hidden;
+        }
+    }
+
     .card {
         @apply border-primary min-w-xs border-2 shadow-md shadow-jet dark:shadow-mint;
     }
