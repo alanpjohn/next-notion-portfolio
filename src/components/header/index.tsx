@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
             >
                 <CustomLink
                     href="/"
-                    className="font-logo text-4xl font-semibold "
+                    className="font-rubik text-4xl font-semibold "
                 >
                     AJ
                 </CustomLink>

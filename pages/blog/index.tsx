@@ -34,10 +34,9 @@ const BlogPage: NextPage<BlockPageProps> = ({ posts }: BlockPageProps) => {
                         <span className="section__heading">My Blog</span>
                         <div className="section__desc my-4">
                             <p className="md:text-2xl my-4">
-                                Sharing ideas and project case studies. Usually
-                                read a lot on devops and cloud native patterns
-                                so would pen down some articles on that as well.{" "}
-                                <br />
+                                Sharing ideas, theoretical topics, case studies,
+                                latest opensource tools and cloud native
+                                projects that I come across <br />
                             </p>
                             <CustomButton
                                 Icon={SiDevdotto}
