@@ -1,15 +1,38 @@
+import { DarkModeToggle } from "@components/darktoggle";
 import { CustomLink } from "@components/link";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { PropsWithRef, useEffect, useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
 
-type NavigationProps = {
+const navigationLinkData = [
+    {
+        text: "Home",
+        href: "/",
+    },
+    {
+        text: "About",
+        href: "/#About",
+    },
+    {
+        text: "Projects",
+        href: "/#Projects",
+    },
+    {
+        text: "Blog",
+        href: "/blog",
+    },
+    {
+        text: "Photos",
+        href: "https://photos.alanjohn.dev",
+    },
+];
+
+type NavigationProps = PropsWithRef<{
     text: string;
     href: string;
-    isOpen?: boolean;
-};
+}>;
 
 const menuLinkVariants = {
     open: {
@@ -96,14 +119,12 @@ export const Menu: React.FC = () => {
             exit="closed"
         >
             <div className="my-auto hidden flex-row justify-center md:flex">
-                <NavLink text="Home" href="/" />
-                <span className="mx-4"> / </span>
-                <NavLink text="Blog" href="/blog" />
-                <span className="mx-4"> / </span>
-                <NavLink
-                    text="Photography"
-                    href="https://photos.alanjohn.dev"
-                />
+                {navigationLinkData.map(({ text, href }) => (
+                    <div key={text} className="flex flex-row del-last">
+                        <NavLink text={text} href={href} />
+                        <span className="mx-2">/</span>
+                    </div>
+                ))}
             </div>
             {isOpen ? (
                 <BiX
@@ -120,18 +141,15 @@ export const Menu: React.FC = () => {
                 {isOpen && (
                     <motion.ul
                         variants={menuVariants}
-                        className="min-h-screen bg-primary pt-40 pl-2 -mr-4"
+                        className="min-h-screen bg-primary border-l-2 border-secondary text-center pt-40 pl-2 -mr-4"
                         initial="closed"
                         onClick={() => setOpen(!isOpen)}
                         exit="closed"
                     >
-                        <MenuLink text="Home" href="/" isOpen={isOpen} />
-                        <MenuLink text="Blog" href="/blog" isOpen={isOpen} />
-                        <MenuLink
-                            text="Photos"
-                            href="https://photos.alanjohn.dev"
-                            isOpen={isOpen}
-                        />
+                        <DarkModeToggle className="mx-auto w-min py-4" />
+                        {navigationLinkData.map(({ text, href }) => (
+                            <MenuLink key={text} text={text} href={href} />
+                        ))}
                     </motion.ul>
                 )}
             </AnimatePresence>

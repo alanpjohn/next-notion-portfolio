@@ -60,7 +60,7 @@ export const PostCard: React.FC<PostProps> = ({
                         <Tag key={tag.id} {...tag} />
                     ))}
                 </div>
-                <span className="font-cabinet text-xl font-light md:text-2xl">
+                <span className="font-rubik text-xl font-light md:text-2xl">
                     {description}
                 </span>
             </motion.div>

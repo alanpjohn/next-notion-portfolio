@@ -1,12 +1,7 @@
 import { CustomLink } from "@components/link";
 
-import {
-    SiBehance,
-    SiDevdotto,
-    SiGithub,
-    SiGmail,
-    SiLinkedin,
-} from "react-icons/si";
+import { FaCameraRetro } from "react-icons/fa";
+import { SiDevdotto, SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
 
 export const quicklinks = [
     {
@@ -20,9 +15,9 @@ export const quicklinks = [
         href: "https://www.linkedin.com/in/alan-john-b2b521193/",
     },
     {
-        Icon: SiBehance,
-        text: "Behance",
-        href: "https://www.behance.net/alanjohn8",
+        Icon: FaCameraRetro,
+        text: "Pictures",
+        href: "https://photos.alanjohn.dev",
     },
     {
         Icon: SiDevdotto,

@@ -13,8 +13,11 @@ export const isActiveLink = (
 };
 
 export const getCanonicalURL = (title: string): string => {
-    const cleaned = title.replace(/[^-\]_.~!*'();:@&=+$,/?%#[A-z0-9]/g, " ");
-    const removedSpaces = cleaned.split(" ").join("-");
+    const cleaned = title.replace(/\W/gm, " ");
+    const removedSpaces = cleaned
+        .split(" ")
+        .filter((str) => str)
+        .join("-");
     return removedSpaces;
 };
 

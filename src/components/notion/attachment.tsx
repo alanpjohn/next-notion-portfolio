@@ -1,6 +1,5 @@
 import { RoundButton } from "@components/button";
 import { CustomLink } from "@components/link";
-import { renderText } from "@components/notion/text";
 
 import { WebBookmarkBlock } from "@util/interface";
 
@@ -13,16 +12,16 @@ export const WebBookmark: React.FC<WebBookmarkProps> = ({
     id,
     bookmark,
 }: WebBookmarkProps) => {
-    const children =
-        bookmark.caption.length > 0
-            ? renderText(id, bookmark.caption)
-            : "For more information";
+    const altText = bookmark.caption
+        ? bookmark.caption.map((richText) => richText.plain_text).join(" ")
+        : "Learn more";
     return (
         <CustomLink
-            className="flex flex-row group items-center card justify-between prose m-2 p-4 font-clash"
+            key={id}
+            className="flex flex-row group items-center card justify-between prose m-2 p-4 font-clash no-underline"
             href={bookmark.url}
         >
-            {children}
+            {altText}
             <RoundButton href={bookmark.url} Icon={FaArrowRight} />
         </CustomLink>
     );

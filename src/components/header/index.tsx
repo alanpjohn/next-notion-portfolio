@@ -28,11 +28,11 @@ export const Header: React.FC = () => {
             >
                 <CustomLink
                     href="/"
-                    className="font-logo text-4xl font-semibold hidden md:block"
+                    className="font-rubik text-4xl font-semibold "
                 >
                     AJ
                 </CustomLink>
-                <DarkModeToggle />
+                <DarkModeToggle className="hidden md:block" />
                 <div className="w-2/5 md:w-min">
                     <Menu />
                 </div>

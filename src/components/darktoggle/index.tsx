@@ -9,7 +9,13 @@ const isDark = (): boolean =>
 
 const getThemeString = (isDark: boolean): string => (isDark ? "dark" : "light");
 
-export const DarkModeToggle = (): JSX.Element => {
+type darkprops = {
+    className?: string;
+};
+
+export const DarkModeToggle: React.FC<darkprops> = ({
+    className = "",
+}: darkprops) => {
     const [isDarkMode, setDarkMode] = useState(false);
 
     const toggleMode = (): void => {
@@ -32,7 +38,7 @@ export const DarkModeToggle = (): JSX.Element => {
     return (
         <AnimatePresence exitBeforeEnter initial={false}>
             <motion.div
-                className="text-2xl hover:text-orange dark:hover:text-purple sm:text-3xl cursor-pointer"
+                className={`text-2xl hover:text-orange dark:hover:text-purple sm:text-3xl cursor-pointer ${className}`}
                 onClick={() => toggleMode()}
                 key={isDarkMode ? "dark-icon" : "light-icon"}
                 initial={{ y: -20, opacity: 0 }}
