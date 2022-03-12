@@ -84,7 +84,7 @@ export const Quote: React.FC<QuoteBlockProps> = ({
     has_children,
 }: QuoteBlockProps) => {
     return (
-        <blockquote className="ml-3 font-playfair italic bg-primary text-xl">
+        <blockquote className="ml-3 my-2 font-playfair italic bg-primary text-xl">
             {has_children ? children : renderText(id, quote.text)}
         </blockquote>
     );
@@ -103,7 +103,7 @@ export const Callout: React.FC<CalloutProps> = ({
             ? callout.icon.emoji
             : "💡";
     return (
-        <div className="mx-auto flex flex-col md:flex-row items-center rounded-lg font-light px-6 py-2 md:w-5/6 border-2 border-primary">
+        <div className="mx-auto flex flex-col md:flex-row items-center rounded-lg font-light px-6 py-2 my-2 md:w-5/6 border-2 border-primary">
             <div>{icon}</div>
             <p className="ml-4">
                 {has_children ? children : renderText(id, callout.text)}

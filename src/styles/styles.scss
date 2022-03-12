@@ -112,7 +112,7 @@
     }
 
     .card {
-        @apply border-primary min-w-xs border-2 shadow-md shadow-jet dark:shadow-mint;
+        @apply border-primary min-w-xs border-2 shadow-md shadow-jet dark:shadow-none;
     }
 
     .card__nav {

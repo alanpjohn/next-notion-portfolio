@@ -27,6 +27,7 @@ class CustomDocument extends Document {
                         crossOrigin=""
                     />
                     <link
+                        rel="preload"
                         href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
                         as="font"
                         type="font/woff2"

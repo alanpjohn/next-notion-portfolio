@@ -57,13 +57,18 @@ const generateSiteMap = (posts: IPost[]) => {
     const staticPages = fs
         .readdirSync("pages")
         .filter((staticPage) => {
-            return !["_app.tsx", "_document.tsx", "_error.tsx"].includes(
-                staticPage,
-            );
+            return ![
+                "_app.tsx",
+                "_document.tsx",
+                "_error.tsx",
+                "index.tsx",
+            ].includes(staticPage);
         })
         .map((staticPagePath) => {
             return `${baseUrl}/${staticPagePath.split(".")[0]}`;
         });
+
+    staticPages.push(baseUrl);
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

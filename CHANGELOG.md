@@ -4,13 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.6] - 2022-03-06
+## [1.0.6] - 2022-03-12
 ### Added
 - Links to about section and project section to navigation
 ### Changed
 - Redirect behance link to Adobe portolfio
 - Blog page content altered
 - Darktoggle moved to hamburger menu for mobile screens
+- Bookmark component
+- Sitemap generation
+- Canonical URL generation
+
 ## [1.0.5] - 2022-03-05
 ### Changed
 - Footer contents
