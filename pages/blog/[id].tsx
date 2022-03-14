@@ -30,7 +30,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
         src = image.type == "external" ? image.external.url : image.file.url;
     }
 
-    const url = "https://www.alanjohn.dev.dev/" + post.url;
+    const url = "https://www.alanjohn.dev/" + post.url;
     const truncated =
         post.description.length > 110
             ? post.description.substring(0, 110)
@@ -50,7 +50,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                         publishedTime: post.publishDate,
                         modifiedTime: post.modifiedDate,
                         section: "Software",
-                        authors: ["https://www.alanjohn.dev.dev"],
+                        authors: ["https://www.alanjohn.dev"],
                         tags: post.tags.map((tag) => tag.name),
                     },
                 }}
@@ -63,7 +63,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     post.cover
                         ? [src]
                         : [
-                              "https://www.alanjohn.dev.dev/images/social_media_preview.png",
+                              "https://www.alanjohn.dev/images/social_media_preview.png",
                           ]
                 }
                 datePublished={post.publishDate}
