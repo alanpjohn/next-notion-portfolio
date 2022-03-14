@@ -42,7 +42,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                 openGraph={{
                     title: post.title,
                     description: post.description,
-                    url: "https://www.example.com/articles/article-title",
+                    url: url,
                     type: "article",
                     article: {
                         publishedTime: post.publishDate,
@@ -51,7 +51,17 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                         authors: ["https://www.alanjohn.dev"],
                         tags: post.tags.map((tag) => tag.name),
                     },
+                    images: [
+                        {
+                            url: src || "https://www.alanjohn.dev/images/social_media_preview.png",
+                            width: 1200,
+                            height: 628,
+                            alt: "My Portfolio Preview",
+                            type: "image/png",
+                        },
+                    ],
                 }}
+                canonical={url}
             />
             <CustomArticleJsonLd
                 type="BlogPosting"
