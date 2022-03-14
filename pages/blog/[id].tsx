@@ -11,7 +11,6 @@ import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
-import Image from "next/image";
 import { ParsedUrlQuery } from "querystring";
 import { FaLink } from "react-icons/fa";
 
@@ -29,8 +28,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
     if (image) {
         src = image.type == "external" ? image.external.url : image.file.url;
     }
-
-    const url = "https://www.alanjohn.dev.dev/" + post.url;
+    const url = "https://www.alanjohn.dev/" + post.url;
     const truncated =
         post.description.length > 110
             ? post.description.substring(0, 110)
@@ -44,16 +42,28 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                 openGraph={{
                     title: post.title,
                     description: post.description,
-                    url: "https://www.example.com/articles/article-title",
+                    url: url,
                     type: "article",
                     article: {
                         publishedTime: post.publishDate,
                         modifiedTime: post.modifiedDate,
                         section: "Software",
-                        authors: ["https://www.alanjohn.dev.dev"],
+                        authors: ["https://www.alanjohn.dev"],
                         tags: post.tags.map((tag) => tag.name),
                     },
+                    images: [
+                        {
+                            url:
+                                src ||
+                                "https://www.alanjohn.dev/images/social_media_preview.png",
+                            width: 1200,
+                            height: 628,
+                            alt: "My Portfolio Preview",
+                            type: "image/png",
+                        },
+                    ],
                 }}
+                canonical={url}
             />
             <CustomArticleJsonLd
                 type="BlogPosting"
@@ -63,7 +73,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     post.cover
                         ? [src]
                         : [
-                              "https://www.alanjohn.dev.dev/images/social_media_preview.png",
+                              "https://www.alanjohn.dev/images/social_media_preview.png",
                           ]
                 }
                 datePublished={post.publishDate}
@@ -77,21 +87,6 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
             />
             <Section>
                 <div className="container px-4 my-20">
-                    {image ? (
-                        <div className="mx-auto w-full max-w-3xl">
-                            <figure className="blog__image">
-                                <Image
-                                    src={src}
-                                    layout="fill"
-                                    className="image saturate-50"
-                                    alt="Cover"
-                                    priority
-                                />
-                            </figure>
-                        </div>
-                    ) : (
-                        ""
-                    )}
                     <div className="w-full max-w-2xl mx-auto px-2 whitespace-pre-wrap my-10">
                         <span className="my-2 font-clash text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light">
                             {post.title}

@@ -27,7 +27,7 @@ export const getBaseURL = (): string => {
         : {
               test: "https://alan-john-portfolio.vercel.app",
               development: "https://alan-john-portfolio.vercel.app",
-              production: "https://www.alanjohn.dev.dev",
+              production: "https://www.alanjohn.dev",
           }[process.env.NODE_ENV];
     return baseUrl;
 };

@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.7] - 2022-03-14
+### Fixed
+- External links and canonical URLS
+### Changed 
+- Social media preview
+- Bumped `@notionhq/client` to v0.4.13
+- Bumped `framer-motion` to v6.2.8
+- Bumped `@next/bundle-analyzer` to v12.1.0
+### Removed
+- Cover image in blog articles
+
 ## [1.0.6] - 2022-03-12
 ### Added
 - Links to about section and project section to navigation
