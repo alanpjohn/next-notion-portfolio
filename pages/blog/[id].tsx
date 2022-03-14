@@ -28,7 +28,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
     if (image) {
         src = image.type == "external" ? image.external.url : image.file.url;
     }
-    const url = "https://www.alanjohn.dev/" + post.url;
+    const url = "https://www.alanjohn.dev/blog/" + post.url;
     const truncated =
         post.description.length > 110
             ? post.description.substring(0, 110)
