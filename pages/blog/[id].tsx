@@ -53,7 +53,9 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     },
                     images: [
                         {
-                            url: src || "https://www.alanjohn.dev/images/social_media_preview.png",
+                            url:
+                                src ||
+                                "https://www.alanjohn.dev/images/social_media_preview.png",
                             width: 1200,
                             height: 628,
                             alt: "My Portfolio Preview",
