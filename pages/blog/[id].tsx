@@ -11,7 +11,6 @@ import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
-import Image from "next/image";
 import { ParsedUrlQuery } from "querystring";
 import { FaLink } from "react-icons/fa";
 
@@ -29,7 +28,6 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
     if (image) {
         src = image.type == "external" ? image.external.url : image.file.url;
     }
-
     const url = "https://www.alanjohn.dev/" + post.url;
     const truncated =
         post.description.length > 110
@@ -77,21 +75,6 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
             />
             <Section>
                 <div className="container px-4 my-20">
-                    {image ? (
-                        <div className="mx-auto w-full max-w-3xl">
-                            <figure className="blog__image">
-                                <Image
-                                    src={src}
-                                    layout="fill"
-                                    className="image saturate-50"
-                                    alt="Cover"
-                                    priority
-                                />
-                            </figure>
-                        </div>
-                    ) : (
-                        ""
-                    )}
                     <div className="w-full max-w-2xl mx-auto px-2 whitespace-pre-wrap my-10">
                         <span className="my-2 font-clash text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light">
                             {post.title}

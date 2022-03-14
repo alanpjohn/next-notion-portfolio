@@ -22,12 +22,12 @@ export const quicklinks = [
     {
         Icon: SiDevdotto,
         text: "DevTo",
-        href: "dev.to/theforeverlost",
+        href: "https://dev.to/theforeverlost",
     },
     {
         Icon: SiGmail,
         text: "Gmail",
-        href: "alansandra2013@gmail.com",
+        href: "mailto:alansandra2013@gmail.com",
     },
 ];
 
