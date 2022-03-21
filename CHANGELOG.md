@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2022-03-14
+### Added
+- Added Social.ts to handle all links in one place
+- Added react-device-detect v2.1.2
+- Added Hamburger Menu which handles the mobile friendly hamburger menu
+### Changed
+- Converted Header is now a dynamic component
+- Removed Components like the HeroSVG and navbar for mobile devices
+
 ## [1.0.8] - 2022-03-14
 ### Fixed
 - Font rendering issue in typekit hosted fonts, replaced with google fonts

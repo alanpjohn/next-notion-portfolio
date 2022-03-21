@@ -1,5 +1,4 @@
 import { Footer } from "@components/footer";
-import { Header } from "@components/header";
 
 import { pageview } from "@util/ga";
 import { getBaseURL } from "@util/router";
@@ -7,11 +6,16 @@ import { getBaseURL } from "@util/router";
 import "highlight.js/styles/github-dark-dimmed.css";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import React, { useEffect } from "react";
 
 import "@styles/styles.scss";
+
+const Header = dynamic<unknown>(
+    import("@components/header").then((mod) => mod.Header),
+);
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     const router = useRouter();
