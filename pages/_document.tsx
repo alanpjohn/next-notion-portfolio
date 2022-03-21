@@ -21,6 +21,7 @@ class CustomDocument extends Document {
             <Html lang="en">
                 <Head>
                     <link
+                        rel="preload"
                         href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2"
                         as="font"
                         type="font/woff2"

@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Converted Header is now a dynamic component
 - Removed Components like the HeroSVG and navbar for mobile devices
+- Footer is now a part of layout.
+- cabinet grotesk is now preloaded
+### Fixed
+- Accessibility issue due to poor color contrast in buttons
 
 ## [1.0.8] - 2022-03-14
 ### Fixed

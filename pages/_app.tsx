@@ -1,5 +1,3 @@
-import { Footer } from "@components/footer";
-
 import { pageview } from "@util/ga";
 import { getBaseURL } from "@util/router";
 
@@ -84,7 +82,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             />
             <Header />
             <Component {...pageProps} />
-            <Footer />
         </>
     );
 }

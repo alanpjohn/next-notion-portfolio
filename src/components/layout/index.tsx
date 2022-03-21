@@ -1,3 +1,5 @@
+import { Footer } from "@components/footer";
+
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
@@ -24,6 +26,7 @@ export const Layout: React.FC<Props> = ({ children }: Props) => {
             >
                 {children}
             </motion.main>
+            <Footer />
         </div>
     );
 };

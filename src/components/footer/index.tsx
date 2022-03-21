@@ -2,10 +2,9 @@ import { Contact } from "@components/contact";
 
 export const Footer: React.FC = () => (
     <footer
-        className="bottom-0 py-6 
+        className="bottom-0 py-6 mt-16 
         flex flex-col items-start px-4 
         md:flex-row md:justify-evenly md:items-center
-        border-t-2 border-primary
         "
     >
         <div className="flex flex-col">
