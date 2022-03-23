@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - 2022-03-14
 ### Added
+- Added getDomainName function to get domain name from links
 - Added Social.ts to handle all links in one place
 - Added react-device-detect v2.1.2
 - Added Hamburger Menu which handles the mobile friendly hamburger menu
@@ -16,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - cabinet grotesk is now preloaded
 ### Fixed
 - Accessibility issue due to poor color contrast in buttons
+- Link text at blog articles
 
 ## [1.0.8] - 2022-03-14
 ### Fixed

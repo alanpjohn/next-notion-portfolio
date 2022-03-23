@@ -8,6 +8,7 @@ import { Section } from "@components/section";
 import { getMonthAndYear } from "@util/datetime";
 import { BlockWithChildren, IPost, ITag } from "@util/interface";
 import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
+import { getDomainName } from "@util/router";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
@@ -109,7 +110,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                             <div className="flex flex-row items-center text-sm my-2">
                                 <FaLink className="text-jet dark:text-cultured mx-1" />
                                 <CustomLink href={post.link}>
-                                    Read this elsewhere
+                                    Also published at {getDomainName(post.link)}
                                 </CustomLink>
                             </div>
                         )}
