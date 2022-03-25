@@ -27,7 +27,7 @@ export const ListItem: React.FC<ListItemBlockProps> = ({
 }: ListItemBlockProps) => {
     return (
         <li>
-            {renderText(id, list_item.text)}
+            {renderText(id, list_item.rich_text)}
             {children}
         </li>
     );

@@ -292,7 +292,7 @@ export const extractProfileData = (blocks: BlockWithChildren[]): IProfile => {
         if (block.type == "toggle") {
             const domain: string =
                 block.type == "toggle"
-                    ? block.toggle.text
+                    ? block.toggle.rich_text
                           .map((text: RichText) => text.plain_text)
                           .join("\n")
                     : "";

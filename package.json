@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "@next/bundle-analyzer": "^12.1.0",
-        "@notionhq/client": "^0.4.13",
+        "@notionhq/client": "^1.0.4",
         "framer-motion": "^6.2.8",
         "next": "^12.1.0",
         "next-compose-plugins": "^2.2.1",

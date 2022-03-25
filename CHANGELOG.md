@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added react-device-detect v2.1.2
 - Added Hamburger Menu which handles the mobile friendly hamburger menu
 ### Changed
+- Bumped up @notionhq/client to v1.0.4. Notion API is finally out of Beta :)
 - Converted Header is now a dynamic component
 - Removed Components like the HeroSVG and navbar for mobile devices
 - Footer is now a part of layout.
