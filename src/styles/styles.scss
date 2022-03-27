@@ -175,6 +175,7 @@
     .blog__image {
         width: 100%;
         position: relative;
+        max-height: 400px;
 
         > div,
         span {

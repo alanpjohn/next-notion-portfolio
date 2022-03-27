@@ -21,7 +21,10 @@ export const WebBookmark: React.FC<WebBookmarkProps> = ({
             className="flex flex-row group items-center card justify-between prose m-2 p-4 font-clash no-underline"
             href={bookmark.url}
         >
-            {altText}
+            <div className="flex flex-col">
+                <span className="my-2">{altText}</span>
+                <span className="font-rubik text-sm">{bookmark.url}</span>
+            </div>
             <RoundButton href={bookmark.url} Icon={FaArrowRight} />
         </CustomLink>
     );

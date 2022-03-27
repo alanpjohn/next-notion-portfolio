@@ -2,7 +2,7 @@ import { Tag } from "@components/card";
 import { Layout } from "@components/layout";
 import { CustomLink } from "@components/link";
 import CustomArticleJsonLd from "@components/meta";
-import { RenderedPageContent } from "@components/notion";
+import { PostContent } from "@components/notion";
 import { Section } from "@components/section";
 
 import { getMonthAndYear } from "@util/datetime";
@@ -118,7 +118,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                             {post.description}
                         </p>
                     </div>
-                    <RenderedPageContent blocks={blocks} />
+                    <PostContent blocks={blocks} />
                 </div>
             </Section>
         </Layout>

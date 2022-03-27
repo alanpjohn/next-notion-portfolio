@@ -77,13 +77,13 @@ const renderBlock = (block: BlockWithChildren): React.ReactNode => {
     }
 };
 
-export type RenderProps = {
+export type PostContentProps = {
     blocks: Array<BlockWithChildren>;
 };
 
-export const RenderedPageContent: React.FC<RenderProps> = ({
+export const PostContent: React.FC<PostContentProps> = ({
     blocks,
-}: RenderProps) => {
+}: PostContentProps) => {
     const blocksWithList = extractListItems(blocks);
     return (
         <article className="prose mx-auto mt-8 lg:prose-lg lg:mt-16">
@@ -94,9 +94,9 @@ export const RenderedPageContent: React.FC<RenderProps> = ({
     );
 };
 
-export const RenderedProfileContent: React.FC<RenderProps> = ({
+export const ProfileContent: React.FC<PostContentProps> = ({
     blocks,
-}: RenderProps) => {
+}: PostContentProps) => {
     const blocksWithList = extractListItems(blocks);
     return (
         <article className="prose w-full lg:prose-lg">

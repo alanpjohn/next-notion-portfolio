@@ -2,7 +2,7 @@ import { renderText } from "@components/notion/text";
 
 import { BlockWithChildren } from "@util/interface";
 
-import { RenderProps } from ".";
+import { PostContentProps } from ".";
 
 const renderProfileBlock = (block: BlockWithChildren): React.ReactNode => {
     switch (block.type) {
@@ -23,9 +23,9 @@ const renderProfileBlock = (block: BlockWithChildren): React.ReactNode => {
     }
 };
 
-export const ProfileIntroduction: React.FC<RenderProps> = ({
+export const ProfileIntroduction: React.FC<PostContentProps> = ({
     blocks,
-}: RenderProps) => {
+}: PostContentProps) => {
     return (
         <div className="w-4/5 px-2 lg:w-2/5">
             {blocks.map((block) => {
