@@ -1,12 +1,16 @@
 import { CustomButton } from "@components/button";
-import { quicklinks } from "@components/contact";
 import { CustomLink } from "@components/link";
 import { Section } from "@components/section";
 
+import { quicklinks } from "@util/social";
+
+import dynamic from "next/dynamic";
+import { isMobile } from "react-device-detect";
 import { FaArrowDown } from "react-icons/fa";
 
-import HeroIllustration from "@public/vector/hero.svg";
 import SpinnerIllustration from "@public/vector/spinner.svg";
+
+const HeroIllustration = dynamic(() => import("@public/vector/hero.svg"));
 
 export const HeroSection: React.FC = () => {
     return (
@@ -38,11 +42,13 @@ export const HeroSection: React.FC = () => {
                         ))}
                     </div>
                 </div>
-                <div className="basis-1/2 hidden lg:block w-full">
-                    <div className="m-auto">
-                        <HeroIllustration />
+                {!isMobile && (
+                    <div className="basis-1/2 hidden lg:block w-full">
+                        <div className="m-auto">
+                            <HeroIllustration />
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
             <div className="bottom-0 mx-auto mb-2">
                 <CustomButton

@@ -92,7 +92,7 @@
     }
 
     .bg-accent {
-        @apply bg-razzmatazz text-eerie dark:bg-mint;
+        @apply bg-orange text-eerie dark:bg-mint;
     }
 
     .banner {
@@ -118,7 +118,7 @@
     .card__nav {
         @apply flex flex-row justify-between p-2 font-clash text-sm font-medium;
         @apply border-primary mb-1 border-b-2;
-        @apply group-hover:bg-orange dark:group-hover:bg-purple;
+        @apply group-hover:bg-razzmatazz dark:group-hover:bg-purple;
     }
 
     .card__title {
@@ -136,7 +136,7 @@
 
     .button {
         @apply z-0 m-2 flex h-12 w-min cursor-pointer justify-center rounded-md  px-8 py-2.5;
-        @apply border-2 border-jet text-jet dark:border-white dark:text-white;
+        @apply border-2 border-jet text-jet;
 
         .icon {
             @apply my-auto mr-2;
@@ -148,17 +148,19 @@
     }
 
     .button-primary {
-        @apply bg-razzmatazz hover:bg-orange dark:bg-mint dark:hover:bg-purple;
+        @apply dark:text-eerie;
+        @apply bg-orange hover:bg-razzmatazz dark:bg-mint dark:hover:bg-purple;
     }
 
     .button-secondary {
-        @apply bg-white  hover:bg-orange group-hover:bg-orange;
+        @apply dark:border-white dark:text-white;
+        @apply bg-white  hover:bg-razzmatazz group-hover:bg-razzmatazz;
         @apply dark:bg-eerie  dark:hover:bg-purple dark:group-hover:bg-purple;
     }
 
     .round-button {
         @apply z-0 flex aspect-square h-12 w-12 justify-center rounded-full p-2 transition-transform duration-300;
-        @apply group-hover:-rotate-45 group-hover:bg-orange dark:group-hover:bg-purple;
+        @apply group-hover:-rotate-45 group-hover:bg-razzmatazz dark:group-hover:bg-purple;
 
         .icon {
             @apply m-auto;
@@ -166,13 +168,14 @@
     }
 
     .default-link {
-        @apply font-semibold text-jet underline decoration-dotted underline-offset-4 hover:text-orange;
+        @apply font-semibold text-jet underline decoration-dotted underline-offset-4 hover:text-razzmatazz;
         @apply dark:text-cultured dark:hover:text-purple;
     }
 
     .blog__image {
         width: 100%;
         position: relative;
+        max-height: 400px;
 
         > div,
         span {

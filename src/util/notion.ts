@@ -158,9 +158,7 @@ const extractPosts = async (
 };
 
 export async function getBlogPosts(): Promise<IPost[]> {
-    const databaseId = process.env.NOTION_BLOG_DATABASE_ID
-        ? process.env.NOTION_BLOG_DATABASE_ID
-        : "";
+    const databaseId = process.env.NOTION_BLOG_DATABASE_ID || "";
     const response: QueryDatabaseResponse = await notion.databases.query({
         database_id: databaseId,
         filter: {
@@ -176,7 +174,6 @@ export async function getBlogPosts(): Promise<IPost[]> {
             },
         ],
     });
-
     const posts = await extractPosts(response);
     writeToCache(posts);
     generateSiteMap(posts);
@@ -187,7 +184,7 @@ export const getBlocks = async (blockId: string): Promise<Block[]> => {
     const blocks: Block[] = [];
     let response = await notion.blocks.children.list({
         block_id: blockId,
-        page_size: 25,
+        page_size: 100,
     });
 
     response.results.map((block) => {
@@ -196,7 +193,7 @@ export const getBlocks = async (blockId: string): Promise<Block[]> => {
     while (response.has_more && response.next_cursor) {
         response = await notion.blocks.children.list({
             block_id: blockId,
-            page_size: 25,
+            page_size: 100,
             start_cursor: response.next_cursor,
         });
         response.results.map((block) => {
@@ -292,7 +289,7 @@ export const extractProfileData = (blocks: BlockWithChildren[]): IProfile => {
         if (block.type == "toggle") {
             const domain: string =
                 block.type == "toggle"
-                    ? block.toggle.text
+                    ? block.toggle.rich_text
                           .map((text: RichText) => text.plain_text)
                           .join("\n")
                     : "";

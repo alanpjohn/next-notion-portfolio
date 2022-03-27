@@ -92,7 +92,7 @@ export type ToggleBlock = ExtractedBlockType<"toggle">;
 export type EmbedBlock = ExtractedBlockType<"embed">;
 export type WebBookmarkBlock = ExtractedBlockType<"bookmark">;
 
-export type RichText = ParagraphBlock["paragraph"]["text"][number];
+export type RichText = ParagraphBlock["paragraph"]["rich_text"][number];
 
 export type ImageBlock = ExtractedBlockType<"image">;
 export type File = ImageBlock["image"];

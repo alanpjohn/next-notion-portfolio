@@ -16,7 +16,7 @@ export const Heading1: React.FC<HeadingOneBlockProps> = ({
 }: HeadingOneBlockProps) => {
     return (
         <h2 className="font-medium text-eerie dark:text-white text-3xl">
-            {renderText(id, heading_1.text)}
+            {renderText(id, heading_1.rich_text)}
         </h2>
     );
 };
@@ -29,7 +29,7 @@ export const Heading2: React.FC<HeadingTwoBlockProps> = ({
 }: HeadingTwoBlockProps) => {
     return (
         <h3 className="font-medium text-eerie dark:text-white text-2xl">
-            {renderText(id, heading_2.text)}
+            {renderText(id, heading_2.rich_text)}
         </h3>
     );
 };
@@ -42,7 +42,7 @@ export const Heading3: React.FC<HeadingThreeBlockProps> = ({
 }: HeadingThreeBlockProps) => {
     return (
         <h4 className="font-medium text-eerie dark:text-white text-xl">
-            {renderText(id, heading_3.text)}
+            {renderText(id, heading_3.rich_text)}
         </h4>
     );
 };

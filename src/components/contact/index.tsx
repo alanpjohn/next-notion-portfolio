@@ -1,35 +1,6 @@
 import { CustomLink } from "@components/link";
 
-import { FaCameraRetro } from "react-icons/fa";
-import { SiDevdotto, SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
-
-export const quicklinks = [
-    {
-        Icon: SiGithub,
-        text: "Github",
-        href: "https://github.com/TheForeverLost",
-    },
-    {
-        Icon: SiLinkedin,
-        text: "Linkedin",
-        href: "https://www.linkedin.com/in/alan-john-b2b521193/",
-    },
-    {
-        Icon: FaCameraRetro,
-        text: "Pictures",
-        href: "https://photos.alanjohn.dev",
-    },
-    {
-        Icon: SiDevdotto,
-        text: "DevTo",
-        href: "https://dev.to/theforeverlost",
-    },
-    {
-        Icon: SiGmail,
-        text: "Gmail",
-        href: "mailto:alansandra2013@gmail.com",
-    },
-];
+import { quicklinks } from "@util/social";
 
 export const Contact: React.FC = () => (
     <div className="my-2 flex flex-row flex-wrap text-secondary dark:text-darksecondary">

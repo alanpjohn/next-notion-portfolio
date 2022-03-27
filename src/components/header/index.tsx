@@ -7,6 +7,11 @@ import { motion, useTransform, useViewportScroll } from "framer-motion";
 import React from "react";
 import { FaArrowUp } from "react-icons/fa";
 
+const headerVariants = {
+    hidden: { opacity: 0, x: 0, y: -100 },
+    enter: { opacity: 1, x: 0, y: 0 },
+};
+
 export const Header: React.FC = () => {
     const { scrollY } = useViewportScroll();
     const buttonAppearance = useTransform(
@@ -24,6 +29,9 @@ export const Header: React.FC = () => {
         <header>
             <motion.div
                 className="header border-b-2 border-secondary bg-primary"
+                variants={headerVariants}
+                initial="hidden"
+                animate="enter"
                 style={{ y: headerDisappearance }}
             >
                 <CustomLink

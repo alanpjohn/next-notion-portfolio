@@ -4,17 +4,17 @@ import { ListBlock, ListItemBlock } from "@util/interface";
 
 import { PropsWithChildren } from "react";
 
-type BlockContentProps = PropsWithChildren<ListBlock>;
+type ListBlockProps = PropsWithChildren<ListBlock>;
 
-export const UnorderedList: React.FC<BlockContentProps> = ({
+export const UnorderedList: React.FC<ListBlockProps> = ({
     children,
-}: BlockContentProps) => {
+}: ListBlockProps) => {
     return <ul>{children}</ul>;
 };
 
-export const OrderedList: React.FC<BlockContentProps> = ({
+export const OrderedList: React.FC<ListBlockProps> = ({
     children,
-}: BlockContentProps) => {
+}: ListBlockProps) => {
     return <ol>{children}</ol>;
 };
 
@@ -27,7 +27,7 @@ export const ListItem: React.FC<ListItemBlockProps> = ({
 }: ListItemBlockProps) => {
     return (
         <li>
-            {renderText(id, list_item.text)}
+            {renderText(id, list_item.rich_text)}
             {children}
         </li>
     );

@@ -1,6 +1,6 @@
 import { RoundButton } from "@components/button";
 import { CustomLink } from "@components/link";
-import { RenderedProfileContent } from "@components/notion";
+import { ProfileContent } from "@components/notion";
 
 import { IPost, IProfileSection, IProject, ITag } from "@util/interface";
 
@@ -117,7 +117,7 @@ export const ProfileSectionCard: React.FC<ProfileDetailsProps> = ({
     return (
         <div className="md:card md:p-8 rounded-md ">
             <h3 className="text-4xl my-4">{title}</h3>
-            <RenderedProfileContent blocks={content} />
+            <ProfileContent blocks={content} />
         </div>
     );
 };
