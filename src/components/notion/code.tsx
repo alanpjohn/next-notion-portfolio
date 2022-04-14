@@ -1,6 +1,5 @@
 import { renderText } from "@components/notion/text";
 
-import { getConfiguredHighlight } from "@util/highlight";
 import { CodeBlock } from "@util/interface";
 
 import { PropsWithRef, useEffect, useRef } from "react";
@@ -14,10 +13,16 @@ export const MultilineCodeBlock: React.FC<CodeBlockProps> = ({
     const ref = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        const hljs = getConfiguredHighlight();
-        if (ref.current) {
-            hljs.highlightElement(ref.current);
+        async function highlightcode() {
+            const highlightjs = (await import("@util/highlight"))
+                .getConfiguredHighlight;
+            const hljs = highlightjs();
+            if (ref.current) {
+                hljs.highlightElement(ref.current);
+            }
         }
+
+        highlightcode();
     });
 
     return (

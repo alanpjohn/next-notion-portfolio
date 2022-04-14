@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2022-04-09
+### Changed
+- ts configuration target changed from `es5` to `es2017`
+- moved Default SEO configuration from `_app.tsx` to `@components/layout`
+- highlight.js configuration is now dynamically loaded
+### Fixed
+- Canonical URL for dynamic routes fixed
+
 ## [1.1.1] - 2022-03-27
 ### Fixed
 - Broken page width on mobile due to misconfigured overflow-wrap style

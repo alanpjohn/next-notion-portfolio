@@ -1,11 +1,8 @@
 import { pageview } from "@util/ga";
-import { getBaseURL } from "@util/router";
 
 import "highlight.js/styles/github-dark-dimmed.css";
-import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import Script from "next/script";
 import React, { useEffect } from "react";
 
@@ -15,12 +12,7 @@ const Header = dynamic<unknown>(
     import("@components/header").then((mod) => mod.Header),
 );
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-    const router = useRouter();
-    const baseUrl = getBaseURL();
-
-    const url = `${baseUrl}${router.route}`;
-
+function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
     const GA_MEASUREMENT_ID =
         process.env.NODE_ENV == "production" &&
         process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
@@ -38,27 +30,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
     return (
         <>
-            <DefaultSeo
-                titleTemplate="%s - Alan John"
-                openGraph={{
-                    type: "website",
-                    locale: "en_IE",
-                    url: url,
-                    description:
-                        "The personal website for Alan John, developer.",
-                    site_name: "Alan John",
-                    images: [
-                        {
-                            url: `${baseUrl}/images/social_media_preview.png`,
-                            width: 1200,
-                            height: 628,
-                            alt: "My Portfolio Preview",
-                            type: "image/png",
-                        },
-                    ],
-                }}
-                canonical={url}
-            />
             <Script
                 strategy="afterInteractive"
                 async
