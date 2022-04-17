@@ -1,108 +1,50 @@
-import { WebBookmark } from "@components/notion/attachment";
-import { MultilineCodeBlock } from "@components/notion/code";
-import { Heading1, Heading2, Heading3 } from "@components/notion/headings";
-import { BlogImage } from "@components/notion/image";
-import { ListItem, OrderedList, UnorderedList } from "@components/notion/lists";
-import {
-    Callout,
-    NotSupportedBlock,
-    Paragraph,
-    Quote,
-} from "@components/notion/text";
+import { CustomImage } from "@components/image";
+import { CustomLink } from "@components/link";
 
-import { BlockWithChildren, extractListItems } from "@util/interface";
+import dynamic from "next/dynamic";
+import { CodeBlock, ExtendedRecordMap } from "notion-types";
+import { NotionRenderer } from "react-notion-x";
 
-import { PropsWithChildren } from "react";
+const Code = dynamic<{
+    block: CodeBlock;
+    defaultLanguage?: string | undefined;
+    className?: string | undefined;
+}>(
+    import("react-notion-x/build/third-party/code").then(async (mod) => {
+        await Promise.all([
+            import("prismjs/components/prism-typescript"),
+            import("prismjs/components/prism-javascript"),
+            import("prismjs/components/prism-java"),
+            import("prismjs/components/prism-bash"),
+            import("prismjs/components/prism-shell-session"),
+            import("prismjs/components/prism-json"),
+            import("prismjs/components/prism-yaml"),
+            import("prismjs/components/prism-docker"),
+            import("prismjs/components/prism-hcl"),
+            import("prismjs/components/prism-python"),
+            import("prismjs/components/prism-go"),
+        ]);
+        return mod.Code;
+    }),
+);
 
-export type BlockContentProps = PropsWithChildren<BlockWithChildren>;
-
-const renderBlock = (block: BlockWithChildren): React.ReactNode => {
-    const childblocks: BlockWithChildren[] = block.has_children
-        ? extractListItems(block.childblocks)
-        : [];
-    const content: React.ReactNode = childblocks.map(
-        (block: BlockWithChildren) => {
-            return renderBlock(block);
-        },
-    );
-    switch (block.type) {
-        case "paragraph":
-            return <Paragraph key={block.id} {...block} />;
-        case "heading_1":
-            return <Heading1 key={block.id} {...block} />;
-        case "heading_2":
-            return <Heading2 key={block.id} {...block} />;
-        case "heading_3":
-            return <Heading3 key={block.id} {...block} />;
-        case "quote":
-            return (
-                <Quote key={block.id} {...block}>
-                    {content}
-                </Quote>
-            );
-        case "callout":
-            return (
-                <Callout key={block.id} {...block}>
-                    {content}
-                </Callout>
-            );
-        case "divider":
-            return <hr key={block.id} />;
-        case "code":
-            return <MultilineCodeBlock key={block.id} {...block} />;
-        case "image":
-            return <BlogImage key={block.id} {...block} />;
-        case "bulleted_list":
-            return (
-                <UnorderedList key={block.id} {...block}>
-                    {content}
-                </UnorderedList>
-            );
-        case "numbered_list":
-            return (
-                <OrderedList key={block.id} {...block}>
-                    {content}
-                </OrderedList>
-            );
-        case "list_item":
-            return (
-                <ListItem key={block.id} {...block}>
-                    {content}
-                </ListItem>
-            );
-        case "bookmark":
-            return <WebBookmark key={block.id} {...block} />;
-        default:
-            return <NotSupportedBlock key={block.id} reason={block.type} />;
-    }
-};
-
-export type PostContentProps = {
-    blocks: Array<BlockWithChildren>;
-};
-
-export const PostContent: React.FC<PostContentProps> = ({
-    blocks,
-}: PostContentProps) => {
-    const blocksWithList = extractListItems(blocks);
+export const NotionPage: React.FC<{
+    recordMap: ExtendedRecordMap;
+    post: boolean;
+}> = ({ recordMap, post = true }) => {
     return (
-        <article className="prose mx-auto mt-8 lg:prose-lg lg:mt-16">
-            {blocksWithList.map((block: BlockWithChildren) => {
-                return renderBlock(block);
-            })}
-        </article>
-    );
-};
-
-export const ProfileContent: React.FC<PostContentProps> = ({
-    blocks,
-}: PostContentProps) => {
-    const blocksWithList = extractListItems(blocks);
-    return (
-        <article className="prose w-full lg:prose-lg">
-            {blocksWithList.map((block: BlockWithChildren) => {
-                return renderBlock(block);
-            })}
-        </article>
+        <NotionRenderer
+            recordMap={recordMap}
+            fullPage={post}
+            showTableOfContents={post}
+            disableHeader={true}
+            previewImages={true}
+            pageCover={<></>}
+            components={{
+                nextImage: CustomImage,
+                nextLink: CustomLink,
+                Code: Code,
+            }}
+        />
     );
 };

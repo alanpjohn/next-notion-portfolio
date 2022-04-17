@@ -1,40 +1,36 @@
-import { Tag } from "@components/card";
+import { Tag } from "@components/card/tag";
 import { Layout } from "@components/layout";
-import { CustomLink } from "@components/link";
 import CustomArticleJsonLd from "@components/meta";
-import { PostContent } from "@components/notion";
+import { NotionPage } from "@components/notion";
 import { Section } from "@components/section";
 
-import { getMonthAndYear } from "@util/datetime";
-import { BlockWithChildren, IPost, ITag } from "@util/interface";
-import { getBlogPosts, getPostBlocks, readPost } from "@util/notion";
-import { getDomainName } from "@util/router";
+import { readPost } from "@util/file-cache";
+import { generateSiteMap } from "@util/generate-sitemap";
+import { getSocialImageUrl } from "@util/get-social-image";
+import { getBlogPosts, getPage } from "@util/notion";
+import { getBaseURL } from "@util/router";
+import { BlogArticle } from "@util/types";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
+import { ExtendedRecordMap } from "notion-types";
 import { ParsedUrlQuery } from "querystring";
-import { FaLink } from "react-icons/fa";
 
-type PostProps = {
-    post: IPost;
-    blocks: BlockWithChildren[];
+type Props = {
+    post: BlogArticle;
+    recordMap: ExtendedRecordMap;
 };
 
-const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
+const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
     if (!post) {
         return <></>;
     }
-    const image = post.cover;
-    let src = "";
-    if (image) {
-        src = image.type == "external" ? image.external.url : image.file.url;
-    }
-    const url = "https://www.alanjohn.dev/blog/" + post.url;
     const truncated =
         post.description.length > 110
             ? post.description.substring(0, 110)
             : post.description;
-
+    const socialimageurl = getSocialImageUrl(post.id);
+    const url = getBaseURL() + "/blog/" + post.url;
     return (
         <Layout>
             <NextSeo
@@ -55,7 +51,7 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                     images: [
                         {
                             url:
-                                src ||
+                                socialimageurl ||
                                 "https://www.alanjohn.dev/images/social_media_preview.png",
                             width: 1200,
                             height: 628,
@@ -70,13 +66,10 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                 type="BlogPosting"
                 url={url}
                 title={post.title}
-                images={
-                    post.cover
-                        ? [src]
-                        : [
-                              "https://www.alanjohn.dev/images/social_media_preview.png",
-                          ]
-                }
+                images={[
+                    socialimageurl,
+                    "https://www.alanjohn.dev/images/social_media_preview.png",
+                ]}
                 datePublished={post.publishDate}
                 dateModified={post.modifiedDate}
                 authorName={{
@@ -86,41 +79,19 @@ const PostPage: NextPage<PostProps> = ({ post, blocks }: PostProps) => {
                 }}
                 description={truncated}
             />
-            <Section>
-                <div className="container px-4 my-20">
-                    <div className="w-full max-w-2xl mx-auto px-2 whitespace-pre-wrap my-10">
-                        <span className="my-2 font-clash text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light">
-                            {post.title}
-                        </span>
-                        <div className="py-4 flex flex-wrap">
-                            {post.tags.map((tag: ITag) => (
-                                <Tag key={tag.id} {...tag} />
-                            ))}
-                        </div>
-                        <p className="font-clash">
-                            Published on: {getMonthAndYear(post.publishDate)}
-                        </p>
-                        {post.publishDate != post.modifiedDate && (
-                            <p className="font-clash">
-                                Last updated:{" "}
-                                {getMonthAndYear(post.modifiedDate)}
-                            </p>
-                        )}
-                        {post.link && (
-                            <div className="flex flex-row items-center text-sm my-2">
-                                <FaLink className="text-jet dark:text-cultured mx-1" />
-                                <CustomLink href={post.link}>
-                                    Also published at {getDomainName(post.link)}
-                                </CustomLink>
-                            </div>
-                        )}
-                        <p className="mt-4 text-base font-light md:w-4/5 lg:w-3/4 border-l-8 px-2 border-secondary">
-                            {post.description}
-                        </p>
-                    </div>
-                    <PostContent blocks={blocks} />
+            <Section className="pt-32 pb-8 md:pt-24 ">
+                <div className="notion-page">
+                    <span className="text-base font-grotesk mt-4">
+                        Published on {post.publishDate || post.modifiedDate}
+                    </span>
+                </div>
+                <div className="notion-page flex-wrap flex-row flex">
+                    {post.tags.map((tag) => (
+                        <Tag key={tag.id} {...tag} />
+                    ))}
                 </div>
             </Section>
+            <NotionPage recordMap={recordMap} post={true} />
         </Layout>
     );
 };
@@ -129,17 +100,17 @@ interface IParams extends ParsedUrlQuery {
     id: string;
 }
 
-export const getStaticProps: GetStaticProps<PostProps> = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const { id } = context.params as IParams;
     const post = readPost(id);
     if (post) {
-        const blocks = await getPostBlocks(post.id);
+        const recordMap = await getPage(post.id);
         return {
             props: {
                 post: post,
-                blocks: blocks,
+                recordMap: recordMap,
             },
-            revalidate: 3600,
+            revalidate: 900,
         };
     } else {
         return {
@@ -150,10 +121,11 @@ export const getStaticProps: GetStaticProps<PostProps> = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const posts = await getBlogPosts();
+    generateSiteMap(posts);
     return {
-        paths: posts.map((post: IPost) => ({ params: { id: post.url } })),
+        paths: posts.map((post: BlogArticle) => ({ params: { id: post.url } })),
         fallback: true,
     };
 };
 
-export default PostPage;
+export default Page;

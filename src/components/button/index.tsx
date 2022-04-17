@@ -1,47 +1,48 @@
 import { CustomLink } from "@components/link";
 
-import { IconType } from "react-icons";
-import { FaArrowRight } from "react-icons/fa";
+import { PropsWithChildren } from "react";
+import { BsArrowRightCircle, BsArrowRightCircleFill } from "react-icons/bs";
 
-type CustomButtonProps = {
-    text: string;
-    Icon?: IconType;
-    href: string;
-    primary?: boolean;
-};
+type ButtonType = "default" | "retro" | "round";
 
-export const CustomButton: React.FC<CustomButtonProps> = ({
-    text,
-    Icon = FaArrowRight,
+type ButtonProps = PropsWithChildren<{
+    href: URL | string;
+    variant?: ButtonType;
+}>;
+
+export const CustomButton: React.FC<ButtonProps> = ({
     href,
-    primary = false,
-}: CustomButtonProps) => {
-    return (
-        <button>
-            <CustomLink
-                href={href}
-                className={`button ${
-                    primary ? "button-primary" : "button-secondary"
-                }`}
-            >
-                <Icon className="icon" />
-                <span>{text}</span>
-            </CustomLink>
-        </button>
-    );
-};
-
-type RoundButtonProps = {
-    Icon: IconType;
-    href?: string;
-};
-
-export const RoundButton: React.FC<RoundButtonProps> = ({
-    Icon,
-}: RoundButtonProps) => {
-    return (
-        <div className="round-button">
-            <Icon className="icon" />
-        </div>
-    );
+    children,
+    variant = "default",
+}) => {
+    if (variant == "default") {
+        return (
+            <button>
+                <CustomLink
+                    href={href.toString()}
+                    className={`group button-default`}
+                >
+                    {children}
+                </CustomLink>
+            </button>
+        );
+    } else if (variant == "retro") {
+        return (
+            <button>
+                <CustomLink
+                    href={href.toString()}
+                    className={`group button-retro`}
+                >
+                    <BsArrowRightCircle className="opacity-0 group-hover:opacity-100 h-8 mr-2" />{" "}
+                    {children}
+                </CustomLink>
+            </button>
+        );
+    } else {
+        return (
+            <button className="button-round">
+                <BsArrowRightCircleFill />
+            </button>
+        );
+    }
 };

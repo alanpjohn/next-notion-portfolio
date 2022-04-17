@@ -20,9 +20,9 @@ module.exports = {
             },
             fontFamily: {
                 ...fontFamily,
-                rubik: ["Rubik", "CabinetGrotesk", "sans-serif"],
-                clash: ["ClashDisplay", "sans-serif"],
-                playfair: ["playfair-display", "CabinetGrotesk", "sans-serif"],
+                sans: ["uncut-sans", "system-ui"],
+                grotesk: ["space-grotesk", "system-ui"],
+                rubik: ["Rubik", "san-serif", "system-ui"],
             },
             minWidth: {
                 xs: "320px",

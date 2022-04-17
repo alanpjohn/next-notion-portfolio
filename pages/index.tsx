@@ -1,20 +1,15 @@
+// import SpinnerIllustration from "@public/vector/spinner.svg";
+import { CustomButton } from "@components/button";
 import { Layout } from "@components/layout";
-import { AboutSection } from "@components/section/about";
-import { HeroSection } from "@components/section/hero";
-import { ProjectSection } from "@components/section/projects";
+import { CustomLink } from "@components/link";
+import { Section } from "@components/section";
 
-import { IProfile, IProject } from "@util/interface";
-import { getPortfolioProjects, getProfile } from "@util/notion";
+import { socialLinks } from "@util/config";
 
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import { NextSeo } from "next-seo";
 
-type HomeProps = {
-    projects: IProject[];
-    profile: IProfile;
-};
-
-const Home: NextPage<HomeProps> = ({ projects, profile }: HomeProps) => {
+const Home: NextPage = () => {
     return (
         <Layout>
             <NextSeo
@@ -28,24 +23,65 @@ const Home: NextPage<HomeProps> = ({ projects, profile }: HomeProps) => {
                     },
                 ]}
             />
-            <HeroSection />
-            <AboutSection profileData={profile} />
-            <ProjectSection projects={projects} />
+            <Section className="mt-32 flex-grow">
+                {/* <div className="w-24 absolute right-8 top-32 md:top-24">
+                    <SpinnerIllustration id="spinner" />
+                </div> */}
+                <div className="py-8 my-auto mx-4 flex flex-col lg:flex-row items-center justify-evenly">
+                    <div className="flex flex-col">
+                        <div className="flex flex-col">
+                            <h1 className="font-grotesk text-7xl sm:text-9xl font-normal">
+                                Alan John
+                            </h1>
+                            <h2 className="font-grotesk text-3xl sm:text-5xl font-light">
+                                Software Engineer
+                            </h2>
+                        </div>
+                        <div className="my-10 grid grid-flow-row grid-cols-5 max-w-sm mx-auto">
+                            {socialLinks.slice(0, 5).map(({ Icon, url }) => (
+                                <CustomLink
+                                    target="_blank"
+                                    rel="noopener noreferrer nofollow"
+                                    key={Icon.name}
+                                    href={url}
+                                    className="p-4"
+                                >
+                                    <Icon
+                                        className="text-4xl 
+                                    text-jet dark:text-cultured
+                                    hover:text-razzmatazz dark:hover:text-purple
+                                    "
+                                    />
+                                </CustomLink>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <span className="font-grotesk italic font-light mb-6">
+                            Select an option to proceed
+                        </span>
+                        <div className="grid grid-flow-col grid-rows-4 gap-4">
+                            <CustomButton href={"/about"} variant="retro">
+                                More about me
+                            </CustomButton>
+                            <CustomButton href={"/blog"} variant="retro">
+                                Check out Blog
+                            </CustomButton>
+                            <CustomButton
+                                href={"photos.alanjohn.dev"}
+                                variant="retro"
+                            >
+                                Explore Pictures
+                            </CustomButton>
+                            <CustomButton href={"/projects"} variant="retro">
+                                My Projects
+                            </CustomButton>
+                        </div>
+                    </div>
+                </div>
+            </Section>
         </Layout>
     );
-};
-
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-    const projects = await getPortfolioProjects();
-    const profile = await getProfile();
-
-    return {
-        props: {
-            projects: projects,
-            profile: profile,
-        },
-        revalidate: 86400,
-    };
 };
 
 export default Home;

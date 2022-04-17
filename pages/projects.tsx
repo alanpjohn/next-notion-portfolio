@@ -1,52 +1,54 @@
 import { CustomButton } from "@components/button";
-import { BlogCard } from "@components/card";
+import { ProjectCard } from "@components/card";
 import { Layout } from "@components/layout";
 import { Section } from "@components/section";
 
-import { getBlogPosts } from "@util/notion";
-import { BlogArticle } from "@util/types";
+import { getProjects } from "@util/notion";
+import { Project } from "@util/types";
 
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 
 type Props = {
-    posts: BlogArticle[];
+    projects: Project[];
 };
 
-const Blog: NextPage<Props> = ({ posts }: Props) => {
+const Blog: NextPage<Props> = ({ projects }: Props) => {
     return (
         <Layout>
             <NextSeo
-                title="Blog"
-                description="My engineering blog"
+                title="Projects"
+                description="2022 Portfolio"
                 additionalMetaTags={[
                     {
                         property: "keywords",
                         content:
-                            "Alan, John, Software Developer, Sofware Engineer, Developer, Portfolio, Devops, Cloud Native, Blog",
+                            "Alan, John, Software Developer, Sofware Engineer, Developer, Portfolio, Devops, Cloud Native",
                     },
                 ]}
             />
+
             <Section className="pt-16 md:pt-24 flex-grow">
                 <div className="my-20 flex flex-col lg:flex-row container">
                     <div className="flex flex-col px-8 lg:basis-1/3">
                         <h1 className="font-grotesk text-4xl md:text-6xl font-light">
-                            My Blog
+                            Projects
                         </h1>
                         <div className="my-4">
                             <p className="md:text-2xl my-4">
-                                Sharing ideas, theoretical topics, case studies,
-                                latest opensource tools and cloud native
-                                projects that I come across <br />
+                                Here are some of my favourite projects that I
+                                have made for either personal, competition or
+                                academic purposes. You can check out more at my
+                                Github Profile. <br />
                             </p>
                             <CustomButton href="https://dev.to/theforeverlost">
-                                Check out dev.to
+                                Check out Github
                             </CustomButton>
                         </div>
                     </div>
                     <div className="lg:basis-2/3 flex flex-col">
-                        {posts.map((post: BlogArticle) => (
-                            <BlogCard key={post.id} {...post} />
+                        {projects.map((post: Project) => (
+                            <ProjectCard key={post.id} {...post} />
                         ))}
                     </div>
                 </div>
@@ -56,10 +58,10 @@ const Blog: NextPage<Props> = ({ posts }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const posts = await getBlogPosts();
+    const projects = await getProjects();
     return {
         props: {
-            posts: posts,
+            projects: projects,
         },
         revalidate: 86400,
     };

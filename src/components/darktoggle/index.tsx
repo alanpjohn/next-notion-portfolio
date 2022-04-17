@@ -1,8 +1,7 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
-const isDark = (): boolean =>
+export const isDark = (): boolean =>
     (localStorage && localStorage.theme === "dark") ||
     (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches);
@@ -22,8 +21,10 @@ export const DarkModeToggle: React.FC<darkprops> = ({
         localStorage.theme = getThemeString(!isDarkMode);
         if (localStorage.theme === "dark") {
             document.documentElement.classList.add("dark");
+            document.documentElement.classList.add("dark-mode");
         } else {
             document.documentElement.classList.remove("dark");
+            document.documentElement.classList.remove("dark-mode");
         }
         setDarkMode(!isDarkMode);
     };
@@ -32,21 +33,17 @@ export const DarkModeToggle: React.FC<darkprops> = ({
         setDarkMode(isDark());
         if (isDark()) {
             document.documentElement.classList.add("dark");
+            document.documentElement.classList.add("dark-mode");
         }
     }, []);
 
     return (
-        <AnimatePresence exitBeforeEnter initial={false}>
-            <motion.div
-                className={`text-2xl hover:text-orange dark:hover:text-purple sm:text-3xl cursor-pointer ${className}`}
-                onClick={() => toggleMode()}
-                key={isDarkMode ? "dark-icon" : "light-icon"}
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 20, opacity: 0 }}
-            >
-                {!isDarkMode ? <BsSunFill /> : <BsMoonFill />}
-            </motion.div>
-        </AnimatePresence>
+        <div
+            className={`text-2xl hover:text-orange dark:hover:text-purple sm:text-3xl cursor-pointer ${className}`}
+            onClick={() => toggleMode()}
+            key={isDarkMode ? "dark-icon" : "light-icon"}
+        >
+            {!isDarkMode ? <BsSunFill /> : <BsMoonFill />}
+        </div>
     );
 };
