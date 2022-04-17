@@ -37,12 +37,12 @@ export async function getBlogPosts(): Promise<BlogArticle[]> {
     const response: QueryDatabaseResponse = await notion_client.databases.query(
         {
             database_id: databaseId,
-            // filter: {
-            //     property: "Publish",
-            //     checkbox: {
-            //         equals: isDev ? false : true,
-            //     },
-            // },
+            filter: {
+                property: "Publish",
+                checkbox: {
+                    equals: isDev ? false : true,
+                },
+            },
             sorts: [
                 {
                     property: isDev ? "Date" : "PublishDate",
@@ -63,12 +63,12 @@ export async function getProjects(): Promise<Array<Project>> {
     const response: QueryDatabaseResponse = await notion_client.databases.query(
         {
             database_id: databaseId,
-            // filter: {
-            //     property: "Publish",
-            //     checkbox: {
-            //         equals: isDev ? false : true,
-            //     },
-            // },
+            filter: {
+                property: "Publish",
+                checkbox: {
+                    equals: isDev ? false : true,
+                },
+            },
             sorts: [
                 {
                     property: "LastUpdated",
