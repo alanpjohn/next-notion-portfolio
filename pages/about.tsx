@@ -4,9 +4,9 @@ import { Layout } from "@components/layout";
 import { CustomLink } from "@components/link";
 import { Section } from "@components/section";
 
+import { domain } from "@util/config";
 import { getHomepage } from "@util/notion";
 import { getPreviewImage } from "@util/preview-image";
-import { getBaseURL } from "@util/router";
 
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
@@ -65,10 +65,9 @@ const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const recordMap = await getHomepage();
-    const preview = await getPreviewImage(
-        getBaseURL() + "/images/home_light.png",
-        { cacheKey: "about" },
-    );
+    const preview = await getPreviewImage(domain + "/images/home_light.png", {
+        cacheKey: "about",
+    });
 
     return {
         props: {

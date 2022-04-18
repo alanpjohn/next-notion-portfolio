@@ -10,7 +10,10 @@ import {
     extractProject,
 } from "./types";
 import { Client } from "@notionhq/client";
-import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
+import {
+    GetPageResponse,
+    QueryDatabaseResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 import { NotionCompatAPI } from "notion-compat";
 import { ExtendedRecordMap } from "notion-types";
 
@@ -56,6 +59,14 @@ export async function getBlogPosts(): Promise<BlogArticle[]> {
         .map((postInDB) => extractBlogPost(postInDB));
     writeToCache(posts);
     return posts;
+}
+
+export async function getBlogArticle(id: string): Promise<BlogArticle> {
+    const response: GetPageResponse = await notion_client.pages.retrieve({
+        page_id: id,
+    });
+    const post: BlogArticle = extractBlogPost(response as BlogArticleInDB);
+    return post;
 }
 
 export async function getProjects(): Promise<Array<Project>> {

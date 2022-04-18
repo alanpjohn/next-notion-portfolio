@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependabot to manage version updates
 - `/projects` route for project details
 - `/about` route for personal details
-- `/api/social-image` for social image generation
+- `/api/og-image` for social image generation
 - LQIP to generate base64 encoded images
 - redis support to store blurDataURL
 - react-notion-x with the help of notion-compat for better performance

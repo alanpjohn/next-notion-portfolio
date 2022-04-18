@@ -1,7 +1,7 @@
 import { Footer } from "@components/footer";
 import { Header } from "@components/header";
 
-import { getBaseURL } from "@util/router";
+import { domain } from "@util/config";
 
 import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
@@ -13,8 +13,7 @@ type Props = {
 
 export const Layout: React.FC<Props> = ({ children }: Props) => {
     const router = useRouter();
-    const baseUrl = getBaseURL();
-    const url = `${baseUrl}${router.asPath}`;
+    const url = `${domain}${router.asPath}`;
     return (
         <div className="flex w-full flex-col min-h-screen">
             <DefaultSeo
@@ -28,7 +27,7 @@ export const Layout: React.FC<Props> = ({ children }: Props) => {
                     site_name: "Alan John",
                     images: [
                         {
-                            url: `${baseUrl}/images/social_media_preview.png`,
+                            url: `${domain}/images/social_media_preview.png`,
                             width: 1200,
                             height: 628,
                             alt: "My Portfolio Preview",

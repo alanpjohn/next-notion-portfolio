@@ -23,7 +23,7 @@ export function getEnv(
 export const apiBaseUrl = `/api`;
 
 export const api = {
-    getSocialImage: `${apiBaseUrl}/social-image`,
+    getSocialImage: `${apiBaseUrl}/og-image`,
 };
 
 type TLink = {
@@ -94,4 +94,11 @@ export const redisUrl = getEnv(
 export const redisNamespace: string | null = getEnv(
     "REDIS_NAMESPACE",
     "preview-images",
+);
+
+export const domain = getEnv(
+    "DOMAIN",
+    process.env.NODE_ENV == "development"
+        ? "http://localhost:3000"
+        : "https://alanjohn.dev",
 );

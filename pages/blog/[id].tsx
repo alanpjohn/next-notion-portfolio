@@ -4,11 +4,11 @@ import CustomArticleJsonLd from "@components/meta";
 import { NotionPage } from "@components/notion";
 import { Section } from "@components/section";
 
+import { domain } from "@util/config";
 import { readPost } from "@util/file-cache";
 import { generateSiteMap } from "@util/generate-sitemap";
 import { getSocialImageUrl } from "@util/get-social-image";
 import { getBlogPosts, getPage } from "@util/notion";
-import { getBaseURL } from "@util/router";
 import { BlogArticle } from "@util/types";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
@@ -30,7 +30,7 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
             ? post.description.substring(0, 110)
             : post.description;
     const socialimageurl = getSocialImageUrl(post.id);
-    const url = getBaseURL() + "/blog/" + post.url;
+    const url = domain + "/blog/" + post.url;
     return (
         <Layout>
             <NextSeo

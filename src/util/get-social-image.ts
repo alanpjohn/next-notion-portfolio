@@ -1,8 +1,7 @@
-import { api } from "./config";
-import { getBaseURL } from "./router";
+import { api, domain } from "./config";
 
 export function getSocialImageUrl(pageId: string) {
-    const host = getBaseURL();
+    const host = domain;
     try {
         const url = new URL(api.getSocialImage, host);
 

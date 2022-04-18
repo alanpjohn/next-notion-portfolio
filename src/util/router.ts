@@ -20,14 +20,3 @@ export const getCanonicalURL = (title: string): string => {
         .join("-");
     return removedSpaces;
 };
-
-export const getBaseURL = (): string => {
-    const baseUrl = process.env.LOCAL
-        ? "http://localhost:3000"
-        : {
-              test: "https://alan-john-portfolio.vercel.app",
-              development: "https://alan-john-portfolio.vercel.app",
-              production: "https://alan-john-portfolio.vercel.app", // update before merging
-          }[process.env.NODE_ENV];
-    return baseUrl;
-};

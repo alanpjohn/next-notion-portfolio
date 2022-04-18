@@ -1,12 +1,10 @@
-import { getBaseURL } from "./router";
+import { domain } from "./config";
 import { BlogArticle } from "./types";
 import fs from "fs";
 
 const sitemapxml = "public/sitemap.xml";
 
 export const generateSiteMap = (posts: BlogArticle[]) => {
-    const baseUrl = getBaseURL();
-
     const staticPages = fs
         .readdirSync("pages")
         .filter((staticPage) => {
@@ -18,10 +16,10 @@ export const generateSiteMap = (posts: BlogArticle[]) => {
             ].includes(staticPage);
         })
         .map((staticPagePath) => {
-            return `${baseUrl}/${staticPagePath.split(".")[0]}`;
+            return `${domain}/${staticPagePath.split(".")[0]}`;
         });
 
-    staticPages.push(baseUrl);
+    staticPages.push(domain);
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -40,7 +38,7 @@ export const generateSiteMap = (posts: BlogArticle[]) => {
         ${posts
             .map((post) => {
                 return `<url>
-            <loc>${baseUrl + "/blog/" + post.url}</loc>
+            <loc>${domain + "/blog/" + post.url}</loc>
             <lastmod>${post.modifiedDate}</lastmod>
             <changefreq>daily</changefreq>
             <priority>1.0</priority>
