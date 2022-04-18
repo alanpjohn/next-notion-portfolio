@@ -1,7 +1,7 @@
 import { isDev } from "./config";
-import { writeToCache } from "./file-cache";
 import { BlogArticle, Project } from "./interface";
 import { getPreviewImageMap } from "./preview-image";
+import { db } from "./redis";
 import {
     BlogArticleInDB,
     ProjectInDB,
@@ -56,8 +56,14 @@ export async function getBlogPosts(): Promise<BlogArticle[]> {
     const posts: BlogArticle[] = response.results
         .map((item) => item as BlogArticleInDB)
         .map((postInDB) => extractBlogPost(postInDB));
-    writeToCache(posts);
-    return posts;
+    const cachedPosts = await Promise.all(
+        posts.map(async (post) => {
+            const response = await db.set(post.url, post.id);
+            isDev && console.log(post.title, response);
+            return post;
+        }),
+    );
+    return cachedPosts;
 }
 
 export async function getBlogArticle(id: string): Promise<BlogArticle> {
@@ -66,6 +72,13 @@ export async function getBlogArticle(id: string): Promise<BlogArticle> {
     });
     const post: BlogArticle = extractBlogPost(response as BlogArticleInDB);
     return post;
+}
+
+export async function getBlogArticleByCanonical(
+    url: string,
+): Promise<BlogArticle> {
+    const response = await db.get(url);
+    return await getBlogArticle(response as string);
 }
 
 export async function getProjects(): Promise<Array<Project>> {

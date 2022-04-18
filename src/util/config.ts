@@ -24,6 +24,7 @@ export const apiBaseUrl = `/api`;
 
 export const api = {
     getSocialImage: `${apiBaseUrl}/og-image`,
+    getPreviewHTML: `${apiBaseUrl}/preview-html`,
 };
 
 type TLink = {

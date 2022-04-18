@@ -1,9 +1,5 @@
+import { domain } from "./config";
 import { BlogArticle } from "./interface";
-import { readFileSync } from "fs";
-
-const space = readFileSync(
-    `public/fonts/Space-Grotesk/SpaceGrotesk[wght].woff2`,
-).toString("base64");
 
 const getCSS = () => {
     return `
@@ -12,7 +8,7 @@ const getCSS = () => {
     @font-face {
         font-family: 'space-grotesk';
         font-weight: 300 700;
-        src: url(data:font/woff2;charset=utf-8;base64,${space}) format('woff2');
+        src: url("${domain}/fonts/Space-Grotesk/SpaceGrotesk[wght].woff2") format('woff2');
     }
 
     body {
@@ -51,7 +47,7 @@ const getCSS = () => {
         font-size: 40px;
         font-weight: 500;
         width: 800px;
-        line-height: 36px;
+        line-height: 40px;
         margin: 0.5em 0;
     }
 

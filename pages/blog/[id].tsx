@@ -5,11 +5,10 @@ import { NotionPage } from "@components/notion";
 import { Section } from "@components/section";
 
 import { domain } from "@util/config";
-import { readPost } from "@util/file-cache";
 import { generateSiteMap } from "@util/generate-sitemap";
 import { getSocialImageUrl } from "@util/get-social-image";
 import { BlogArticle } from "@util/interface";
-import { getBlogPosts, getPage } from "@util/notion";
+import { getBlogArticleByCanonical, getBlogPosts, getPage } from "@util/notion";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
@@ -102,7 +101,7 @@ interface IParams extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const { id } = context.params as IParams;
-    const post = readPost(id);
+    const post = await getBlogArticleByCanonical(id);
     if (post) {
         const recordMap = await getPage(post.id);
         return {
