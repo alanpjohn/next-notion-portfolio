@@ -10,44 +10,26 @@ const exePath =
         ? "/usr/bin/google-chrome"
         : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
-interface Options {
-    args: string[];
-    executablePath: string;
-    headless: boolean;
-}
-
-export async function getOptions(isDev: boolean) {
-    let options: Options;
-    if (isDev) {
-        options = {
-            args: [],
-            executablePath: exePath,
-            headless: true,
-        };
-    } else {
-        options = {
-            args: chrome.args,
-            executablePath: await chrome.executablePath,
-            headless: chrome.headless,
-        };
-    }
-    return options;
-}
-
-async function getPage(isDev: boolean) {
+export async function getScreenshot(html: string) {
     if (_page) {
         return _page;
     }
-    const options = await getOptions(isDev);
+    const options = process.env.AWS_REGION
+        ? {
+              args: chrome.args,
+              executablePath: await chrome.executablePath,
+              headless: chrome.headless,
+          }
+        : {
+              args: [],
+              executablePath: exePath,
+          };
     const browser = await core.launch(options);
     _page = await browser.newPage();
-    return _page;
-}
 
-export async function getScreenshot(html: string, isDev: boolean) {
-    const page = await getPage(isDev);
+    const page = _page;
     await page.setViewport({ width: 1200, height: 628 });
     await page.setContent(html);
-    const file = await page.screenshot({ type: "png" });
+    const file = await _page.screenshot({ type: "png" });
     return file;
 }

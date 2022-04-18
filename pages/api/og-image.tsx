@@ -1,5 +1,4 @@
 import { getScreenshot } from "@util/chromium";
-import { isDev } from "@util/config";
 import { getBlogArticle } from "@util/notion";
 import { getHTML } from "@util/template";
 import { BlogArticle } from "@util/types";
@@ -17,7 +16,7 @@ export default async function handler(
         // res.setHeader('Content-Type', 'text/html');
         //     res.end(html);
         //     return;
-        const file = await getScreenshot(html, isDev);
+        const file = await getScreenshot(html);
         res.statusCode = 200;
         res.setHeader("Content-Type", `image/png`);
         res.setHeader(
