@@ -1,7 +1,7 @@
 import { CustomButton } from "@components/button";
 import { CustomLink } from "@components/link";
 
-import { BlogArticle, ITag } from "@util/types";
+import { BlogArticle, ITag } from "@util/interface";
 
 import { Tag } from "./tag";
 import { PropsWithRef } from "react";

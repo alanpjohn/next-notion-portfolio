@@ -1,4 +1,4 @@
-import { BlogArticle } from "./types";
+import { BlogArticle } from "./interface";
 import { readFileSync } from "fs";
 
 const space = readFileSync(

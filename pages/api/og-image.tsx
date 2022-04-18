@@ -1,7 +1,7 @@
 import { getScreenshot } from "@util/chromium";
-import { getBlogArticle } from "@util/notion";
+import { readPostById } from "@util/file-cache";
+import { BlogArticle } from "@util/interface";
 import { getHTML } from "@util/template";
-import { BlogArticle } from "@util/types";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -11,7 +11,7 @@ export default async function handler(
 ) {
     const { id } = req.query;
     try {
-        const article: BlogArticle = await getBlogArticle(id.toString());
+        const article: BlogArticle = readPostById(id.toString());
         const html = getHTML(article);
         // res.setHeader('Content-Type', 'text/html');
         //     res.end(html);

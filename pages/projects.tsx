@@ -3,8 +3,8 @@ import { ProjectCard } from "@components/card";
 import { Layout } from "@components/layout";
 import { Section } from "@components/section";
 
+import { Project } from "@util/interface";
 import { getProjects } from "@util/notion";
-import { Project } from "@util/types";
 
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";

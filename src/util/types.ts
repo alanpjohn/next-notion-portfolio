@@ -1,3 +1,4 @@
+import { BlogArticle, ITag, Project } from "./interface";
 import { getCanonicalURL } from "./router";
 import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import { formatDate } from "react-notion-x";
@@ -26,12 +27,6 @@ export type PropertyValueCheck = ExtractedPropertyValue<"checkbox">;
 export type PropertyValueEditedTime =
     ExtractedPropertyValue<"last_edited_time">;
 
-export interface ITag {
-    id: string;
-    name: string;
-    color: string;
-}
-
 export type BlogArticleInDB = PostResult & {
     properties: {
         Title: PropertyValueTitle;
@@ -43,17 +38,6 @@ export type BlogArticleInDB = PostResult & {
         PublishDate: PropertyValueDate;
     };
 };
-
-export interface BlogArticle {
-    id: string;
-    url: string;
-    tags: ITag[];
-    modifiedDate: string;
-    publishDate?: string;
-    title: string;
-    description: string;
-    link?: string;
-}
 
 export const extractBlogPost = (
     blogArticleInDB: BlogArticleInDB,
@@ -98,17 +82,6 @@ export type ProjectInDB = PostResult & {
         LastUpdated: PropertyValueDate;
     };
 };
-
-export interface Project {
-    id: string;
-    url: string;
-    tags: ITag[];
-    modifiedDate: string;
-    title: string;
-    description: string;
-    link: string;
-    lastUpdated: string;
-}
 
 export const extractProject = (projectInDB: ProjectInDB): Project => {
     const id = projectInDB.id;

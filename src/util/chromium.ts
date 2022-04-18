@@ -11,23 +11,22 @@ const exePath =
         : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 export async function getScreenshot(html: string) {
-    if (_page) {
-        return _page;
+    if (!_page) {
+        const options = process.env.AWS_REGION
+            ? {
+                  args: chrome.args,
+                  executablePath: await chrome.executablePath,
+                  headless: chrome.headless,
+              }
+            : {
+                  args: [],
+                  executablePath: exePath,
+              };
+        const browser = await core.launch(options);
+        _page = await browser.newPage();
     }
-    const options = process.env.AWS_REGION
-        ? {
-              args: chrome.args,
-              executablePath: await chrome.executablePath,
-              headless: chrome.headless,
-          }
-        : {
-              args: [],
-              executablePath: exePath,
-          };
-    const browser = await core.launch(options);
-    _page = await browser.newPage();
-
     const page = _page;
+
     await page.setViewport({ width: 1200, height: 628 });
     await page.setContent(html);
     const file = await _page.screenshot({ type: "png" });

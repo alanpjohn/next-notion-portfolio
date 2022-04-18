@@ -1,10 +1,9 @@
 import { isDev } from "./config";
 import { writeToCache } from "./file-cache";
+import { BlogArticle, Project } from "./interface";
 import { getPreviewImageMap } from "./preview-image";
 import {
-    BlogArticle,
     BlogArticleInDB,
-    Project,
     ProjectInDB,
     extractBlogPost,
     extractProject,

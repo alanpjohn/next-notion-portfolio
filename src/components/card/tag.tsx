@@ -1,4 +1,4 @@
-import { ITag } from "@util/types";
+import { ITag } from "@util/interface";
 
 import { PropsWithRef } from "react";
 

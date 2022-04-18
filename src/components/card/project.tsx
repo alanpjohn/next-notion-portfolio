@@ -1,7 +1,7 @@
 import { CustomButton } from "@components/button";
 import { CustomLink } from "@components/link";
 
-import { Project } from "@util/types";
+import { Project } from "@util/interface";
 
 import { Tag } from "./tag";
 import { PropsWithRef } from "react";

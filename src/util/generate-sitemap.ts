@@ -1,5 +1,5 @@
 import { domain } from "./config";
-import { BlogArticle } from "./types";
+import { BlogArticle } from "./interface";
 import fs from "fs";
 
 const sitemapxml = "public/sitemap.xml";

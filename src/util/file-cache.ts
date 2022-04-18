@@ -1,4 +1,4 @@
-import { BlogArticle } from "./types";
+import { BlogArticle } from "./interface";
 import fs from "fs";
 import path from "path";
 
@@ -24,6 +24,14 @@ export const readPost = (url: string): BlogArticle | undefined => {
     const blog: BlogArticle[] = readFromCache();
     const post: BlogArticle | undefined = blog.find((post) => {
         return post.url == url;
+    });
+    return post;
+};
+
+export const readPostById = (id: string): BlogArticle | undefined => {
+    const blog: BlogArticle[] = readFromCache();
+    const post: BlogArticle | undefined = blog.find((post) => {
+        return post.id == id;
     });
     return post;
 };

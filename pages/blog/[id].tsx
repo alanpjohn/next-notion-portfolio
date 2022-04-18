@@ -8,8 +8,8 @@ import { domain } from "@util/config";
 import { readPost } from "@util/file-cache";
 import { generateSiteMap } from "@util/generate-sitemap";
 import { getSocialImageUrl } from "@util/get-social-image";
+import { BlogArticle } from "@util/interface";
 import { getBlogPosts, getPage } from "@util/notion";
-import { BlogArticle } from "@util/types";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";

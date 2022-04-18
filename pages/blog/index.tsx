@@ -3,8 +3,8 @@ import { BlogCard } from "@components/card";
 import { Layout } from "@components/layout";
 import { Section } from "@components/section";
 
+import { BlogArticle } from "@util/interface";
 import { getBlogPosts } from "@util/notion";
-import { BlogArticle } from "@util/types";
 
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
