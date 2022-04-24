@@ -8,7 +8,7 @@ updates:
       timezone: "Asia/Kolkata"
       interval: weekly
       day: saturday
-      time: "0:00"
+      time: "00:00"
     labels:
       - "notion dependencies"
     allow:
