@@ -1,7 +1,7 @@
 import { CustomLink } from "@components/link";
 
 import { PropsWithChildren } from "react";
-import { BsArrowRightCircle, BsArrowRightCircleFill } from "react-icons/bs";
+import { BsArrowRight, BsArrowRightCircle } from "react-icons/bs";
 
 type ButtonType = "default" | "retro" | "round";
 
@@ -33,8 +33,13 @@ export const CustomButton: React.FC<ButtonProps> = ({
                     href={href.toString()}
                     className={`group button-retro`}
                 >
-                    <BsArrowRightCircleFill className="opacity-0 group-hover:opacity-100 h-8 mr-2" />{" "}
-                    {children}
+                    {children}{" "}
+                    <BsArrowRight
+                        className="
+                    group-hover:-rotate-45 transition-transform duration-300
+                    h-8 ml-2
+                    "
+                    />
                 </CustomLink>
             </button>
         );

@@ -74,11 +74,10 @@
     .header {
         @apply fixed top-0 z-50 p-3;
         @apply w-full bg-white dark:bg-eerie;
-        @apply border-b-2 border-cultured dark:border-jet;
     }
 
     .footer {
-        @apply w-full border-t-2 border-cultured dark:border-jet;
+        @apply w-full;
         @apply flex flex-col items-center justify-evenly px-8 py-2 md:flex-row;
     }
 
@@ -102,7 +101,9 @@
 
     .button-retro {
         @apply flex flex-row items-center justify-start text-2xl lg:text-3xl;
-        @apply text-jet hover:text-orange dark:text-cultured dark:hover:text-purple;
+        @apply border-2 border-jet dark:border-cultured lg:border-0;
+        @apply hover:text-white dark:hover:text-eerie;
+        @apply p-4 hover:bg-orange dark:hover:bg-purple;
     }
 
     .button-round {

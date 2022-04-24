@@ -7,7 +7,10 @@ import pjson from "package.json";
 export const Footer: React.FC = () => {
     return (
         <div className="footer">
-            <CustomLink href="/" className="font-rubik text-xl font-semibold">
+            <CustomLink
+                href="/"
+                className="font-rubik text-xl font-semibold hidden md:block"
+            >
                 AJ
             </CustomLink>
             <div className="grid grid-flow-row grid-cols-5 max-w-sm mx-auto">
@@ -19,7 +22,7 @@ export const Footer: React.FC = () => {
                         href={url}
                         className="p-4"
                     >
-                        <Icon className="text-xl hover:text-orange dark:hover:text-purple" />
+                        <Icon className="text-2xl hover:text-orange dark:hover:text-purple" />
                     </CustomLink>
                 ))}
             </div>
