@@ -1,16 +1,12 @@
 import { pageview } from "@util/ga";
 
-import "highlight.js/styles/github-dark-dimmed.css";
 import { AppProps } from "next/app";
-import dynamic from "next/dynamic";
 import Script from "next/script";
+import "prismjs/themes/prism-tomorrow.css";
 import React, { useEffect } from "react";
+import "react-notion-x/src/styles.css";
 
 import "@styles/styles.scss";
-
-const Header = dynamic<unknown>(
-    import("@components/header").then((mod) => mod.Header),
-);
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
     const GA_MEASUREMENT_ID =
@@ -51,7 +47,6 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                         `,
                 }}
             />
-            <Header />
             <Component {...pageProps} />
         </>
     );

@@ -12,7 +12,7 @@ export const Section: React.FC<Props> = ({
     className = "",
 }: Props) => {
     return (
-        <section id={title} className={`flex w-full flex-col ${className}`}>
+        <section id={title} className={`flex flex-col ${className}`}>
             {children}
         </section>
     );

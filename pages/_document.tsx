@@ -20,20 +20,7 @@ class CustomDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <link
-                        rel="preload"
-                        href="/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2"
-                        as="font"
-                        type="font/woff2"
-                        crossOrigin=""
-                    />
-                    <link
-                        rel="preload"
-                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
-                        as="font"
-                        type="font/woff2"
-                        crossOrigin=""
-                    />
+                    <link rel="shortcut icon" href="/favicon.ico" />
                     <link
                         rel="preconnect"
                         href="https://fonts.googleapis.com"
@@ -44,10 +31,16 @@ class CustomDocument extends Document {
                         crossOrigin=""
                     />
                     <link
-                        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Rubik:wght@300;400;500;600&display=swap"
+                        href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap"
                         rel="stylesheet"
                     />
-                    <link rel="shortcut icon" href="/favicon.ico" />
+                    <link
+                        rel="preload"
+                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
+                        as="font"
+                        type="font/woff2"
+                        crossOrigin=""
+                    />
                 </Head>
                 <body>
                     <Main />

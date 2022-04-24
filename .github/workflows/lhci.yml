@@ -19,6 +19,8 @@ jobs:
           NOTION_PROJECT_DATABASE_ID : ${{ secrets.NOTION_PROJECT_DATABASE_ID }}
           NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}
           NOTION_SKILLS_PAGE_ID: ${{ secrets.NOTION_SKILLS_PAGE_ID }}
+          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
       - name: run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.8.x
@@ -28,4 +30,6 @@ jobs:
           NOTION_KEY : ${{ secrets.NOTION_KEY }}
           NOTION_PROJECT_DATABASE_ID : ${{ secrets.NOTION_PROJECT_DATABASE_ID }}
           NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}
+          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
           LOCAL: TRUE

@@ -1,8 +1,8 @@
 import { Footer } from "@components/footer";
+import { Header } from "@components/header";
 
-import { getBaseURL } from "@util/router";
+import { domain } from "@util/config";
 
-import { motion } from "framer-motion";
 import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
@@ -11,18 +11,11 @@ type Props = {
     children: ReactNode;
 };
 
-const variants = {
-    hidden: { opacity: 0, x: -100, y: 0 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -100 },
-};
-
 export const Layout: React.FC<Props> = ({ children }: Props) => {
     const router = useRouter();
-    const baseUrl = getBaseURL();
-    const url = `${baseUrl}${router.asPath}`;
+    const url = `${domain}${router.asPath}`;
     return (
-        <div>
+        <div className="flex w-full flex-col min-h-screen">
             <DefaultSeo
                 titleTemplate="%s - Alan John"
                 openGraph={{
@@ -34,7 +27,7 @@ export const Layout: React.FC<Props> = ({ children }: Props) => {
                     site_name: "Alan John",
                     images: [
                         {
-                            url: `${baseUrl}/images/social_media_preview.png`,
+                            url: `${domain}/images/social_media_preview.png`,
                             width: 1200,
                             height: 628,
                             alt: "My Portfolio Preview",
@@ -44,16 +37,8 @@ export const Layout: React.FC<Props> = ({ children }: Props) => {
                 }}
                 canonical={url}
             />
-            <motion.main
-                initial="hidden"
-                animate="enter"
-                exit="exit"
-                variants={variants}
-                transition={{ type: "linear" }}
-                className="flex w-full flex-col items-start"
-            >
-                {children}
-            </motion.main>
+            <Header />
+            {children}
             <Footer />
         </div>
     );

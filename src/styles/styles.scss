@@ -2,45 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/**
- * @license
- *
- * Font Family: Clash Display
- * Designed by: Indian Type Foundry
- * URL: https://www.fontshare.com/fonts/clash-display
- * © 2022 Indian Type Foundry
- *
- * Font Styles:
- * Clash Display Variable(Variable font)
- *
-*/
+:root {
+    --fg-color: theme(colors.eerie);
+    --bg-color: theme(colors.white);
+    --select-color-0: theme(colors.razzmatazz);
+}
+
+.dark-mode {
+    --fg-color: theme(colors.cultured);
+    --bg-color: theme(colors.eerie);
+    --select-color-0: theme(colors.purple);
+}
 
 @font-face {
-    font-family: "ClashDisplay";
+    font-family: "clash-display";
     src: url("/fonts/ClashDisplay/ClashDisplay-Variable.woff2") format("woff2");
     font-weight: 200 700;
     font-display: swap;
     font-style: normal;
 }
 
-/**
- * @license
- *
- * Font Family: Cabinet Grotesk
- * Designed by: Indian Type Foundry
- * URL: https://www.fontshare.com/fonts/cabinet-grotesk
- * © 2022 Indian Type Foundry
- *
- * Font Styles:
- * Cabinet Grotesk Variable(Variable font)
- *
-*/
-
 @font-face {
-    font-family: "CabinetGrotesk";
-    src: url("/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2")
-        format("woff2");
-    font-weight: 100 900;
+    font-family: "uncut-sans";
+    src: url("/fonts/Uncut-Sans/Uncut-Sans-VF.woff2") format("woff2");
+    font-weight: 400 700;
     font-display: swap;
     font-style: normal;
 }
@@ -48,16 +33,13 @@
 @layer base {
     html,
     body {
+        --notion-font: theme(fontFamily.sans);
         @apply scroll-smooth bg-white text-eerie dark:bg-eerie dark:text-white;
-        // ::-webkit-scrollbar {
-        //     width: 0px;
-        //     background: transparent; /* make scrollbar transparent */
-        // }
     }
 
     p,
     li {
-        @apply font-rubik text-lg text-jet dark:text-cultured;
+        @apply font-sans text-lg text-jet dark:text-cultured;
     }
 
     h1,
@@ -65,12 +47,18 @@
     h3,
     h4,
     h5,
-    h6 {
-        @apply font-clash;
+    h6,
+    .notion-h {
+        @apply font-display font-normal;
     }
 
-    button {
-        @apply font-clash;
+    button,
+    aside {
+        @apply font-display;
+    }
+
+    #__next > div > main {
+        padding-bottom: 2em !important;
     }
 }
 
@@ -83,136 +71,45 @@
         @apply border-cultured dark:border-jet;
     }
 
-    .bg-primary {
-        @apply bg-white text-eerie dark:bg-eerie dark:text-white;
-    }
-
-    .bg-secondary {
-        @apply bg-cultured text-jet dark:bg-jet dark:text-cultured;
-    }
-
-    .bg-accent {
-        @apply bg-orange text-eerie dark:bg-mint;
-    }
-
-    .banner {
-        @apply mx-4 flex items-center justify-evenly py-10 lg:mx-0 lg:items-start lg:py-24;
-    }
-
     .header {
-        min-height: 5rem;
-        @apply fixed z-20 flex w-full flex-row items-center justify-between md:justify-evenly;
-        @apply px-4 md:px-16 lg:px-32 xl:px-56 2xl:px-72;
+        @apply fixed top-0 z-50 p-3;
+        @apply w-full bg-white dark:bg-eerie;
     }
 
-    .del-last:last-of-type {
-        span {
-            @apply hidden;
-        }
+    .footer {
+        @apply w-full;
+        @apply flex flex-col items-center justify-evenly px-8 py-2 md:flex-row;
     }
 
     .card {
-        @apply border-primary min-w-xs border-2 shadow-md shadow-jet dark:shadow-none;
+        @apply border-primary mx-2 min-w-xs border-2 shadow-md shadow-jet dark:shadow-none;
     }
 
     .card__nav {
-        @apply flex flex-row justify-between p-2 font-clash text-sm font-medium;
+        @apply flex flex-row justify-between p-2 font-display text-sm font-medium;
         @apply border-primary mb-1 border-b-2;
+        @apply bg-orange dark:bg-mint dark:text-jet;
         @apply group-hover:bg-razzmatazz dark:group-hover:bg-purple;
     }
 
-    .card__title {
-        @apply w-full px-2 pt-6  pb-10;
-        @apply font-clash text-5xl;
-    }
-
-    .section__heading {
-        @apply my-2 font-clash text-6xl font-light;
-    }
-
-    .section__desc {
-        @apply mt-4 text-xl md:w-4/5 lg:w-3/4;
-    }
-
-    .button {
-        @apply z-0 m-2 flex h-12 w-min cursor-pointer justify-center rounded-md  px-8 py-2.5;
+    .button-default {
+        @apply z-0 m-2 flex h-12 w-min cursor-pointer justify-center whitespace-nowrap rounded-md px-8 py-2.5 font-medium uppercase;
         @apply border-2 border-jet text-jet;
-
-        .icon {
-            @apply my-auto mr-2;
-        }
-
-        span {
-            @apply my-auto whitespace-nowrap font-clash text-lg font-medium;
-        }
-    }
-
-    .button-primary {
         @apply dark:text-eerie;
         @apply bg-orange hover:bg-razzmatazz dark:bg-mint dark:hover:bg-purple;
     }
 
-    .button-secondary {
-        @apply dark:border-white dark:text-white;
-        @apply bg-white  hover:bg-razzmatazz group-hover:bg-razzmatazz;
-        @apply dark:bg-eerie  dark:hover:bg-purple dark:group-hover:bg-purple;
+    .button-retro {
+        @apply flex flex-row items-center justify-start text-2xl lg:text-3xl;
+        @apply border-2 border-jet dark:border-cultured lg:border-0;
+        @apply hover:text-white dark:hover:text-eerie;
+        @apply p-4 hover:bg-orange dark:hover:bg-purple;
     }
 
-    .round-button {
-        @apply z-0 flex aspect-square h-12 w-12 justify-center rounded-full p-2 transition-transform duration-300;
-        @apply group-hover:-rotate-45 group-hover:bg-razzmatazz dark:group-hover:bg-purple;
-
-        .icon {
-            @apply m-auto;
-        }
-    }
-
-    .default-link {
-        @apply font-semibold text-jet underline decoration-dotted underline-offset-4 hover:text-razzmatazz;
-        @apply dark:text-cultured dark:hover:text-purple;
-    }
-
-    .blog__image {
-        width: 100%;
-        position: relative;
-        max-height: 400px;
-
-        > div,
-        span {
-            position: unset !important;
-        }
-
-        .image {
-            object-fit: contain;
-            width: 100% !important;
-            position: relative !important;
-            height: unset !important;
-        }
-    }
-
-    .footer__text {
-        @apply flex flex-row font-clash;
-
-        span {
-            @apply px-2 font-playfair italic;
-        }
-    }
-
-    .prose {
-        @apply text-base text-jet dark:text-cultured md:text-lg lg:text-xl;
-    }
-
-    #hero_svg__base-3,
-    #hero_svg__base-2 {
-        @apply fill-orange dark:fill-mint;
-    }
-
-    #hero_svg__base-4 {
-        @apply fill-razzmatazz dark:fill-purple;
-    }
-
-    #hero_svg__grid {
-        @apply dark:stroke-jet;
+    .button-round {
+        @apply mr-2 flex h-8 flex-row items-center text-2xl md:text-4xl;
+        @apply group-hover:-rotate-45 group-hover:text-razzmatazz  dark:group-hover:text-purple;
+        @apply transition-transform duration-300;
     }
 
     #spinner g path {
@@ -222,20 +119,90 @@
     #spinner g circle {
         @apply fill-orange dark:fill-purple;
     }
-}
 
-#spinner {
-    animation-name: spin;
-    animation-duration: 10000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
+    #spinner {
+        animation-name: spin;
+        animation-duration: 10000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
     }
-    to {
-        transform: rotate(360deg);
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.notion-page-content-has-aside {
+    @media (min-width: 1300px) {
+        width: calc((96vw + var(--notion-max-width)) / 2);
+    }
+}
+
+.notion-page-cover-wrapper,
+.notion-page-cover-wrapper span,
+.notion-page-cover-wrapper img {
+    max-width: 1200px !important;
+    border-radius: 0;
+
+    @media (min-width: 1300px) {
+        border-radius: 24px;
+    }
+}
+
+.notion-page-cover-wrapper {
+    width: 100% !important;
+    height: 30vh !important;
+    min-height: 30vh !important;
+    max-height: 30vh !important;
+    box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
+}
+
+.notion-page-cover-wrapper img {
+    object-fit: cover;
+    object-position: center;
+}
+
+.notion-title {
+    font-weight: 500;
+}
+
+.notion-table-of-contents-item {
+    font-size: 16px;
+    font-family: "clash-display", "system-ui";
+    font-weight: 500;
+}
+
+.notion-link,
+.default-link {
+    position: relative;
+    transition: unset;
+    opacity: 1;
+    border-bottom-width: 0.1rem;
+    background: transparent;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-size: 0 0.1rem;
+
+    &:focus,
+    &:hover {
+        color: var(--select-color-0);
+        border-bottom-color: transparent;
+        background-image: linear-gradient(
+            90.68deg,
+            var(--select-color-0) 0.26%,
+            #e5337e 102.37%
+        );
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        background-size: 100% 0.1rem;
+
+        transition-property: background-position, background-size;
+        transition-duration: 300ms;
     }
 }

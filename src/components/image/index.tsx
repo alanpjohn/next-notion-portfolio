@@ -1,34 +1,28 @@
-import Image from "next/image";
-import { FaHeartbeat } from "react-icons/fa";
+import Image, { ImageProps } from "next/image";
 
-type ImageProps = {
+type CustomImageProps = ImageProps & {
     src: string;
-    height: string;
-    width: string;
-    altText: string;
 };
 
-export const CustomImage: React.FC<ImageProps> = ({
+export const CustomImage: React.FC<CustomImageProps> = ({
     src,
-    height,
+    alt,
+    blurDataURL,
+    priority,
     width,
-    altText,
-}: ImageProps) => {
+    height,
+    onLoad,
+}: CustomImageProps) => {
     return (
-        <div className="h-fit w-fit card group">
-            <div className="card__nav">
-                <span>{altText}</span>
-                <FaHeartbeat />
-            </div>
-            <Image
-                src={src}
-                height={height}
-                width={width}
-                className="img"
-                priority
-                layout="intrinsic"
-                alt={altText}
-            />
-        </div>
+        <Image
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            blurDataURL={blurDataURL}
+            placeholder="blur"
+            priority={priority}
+            onLoad={onLoad}
+        />
     );
 };

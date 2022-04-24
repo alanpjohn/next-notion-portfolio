@@ -20,6 +20,7 @@ module.exports = withPlugins([withBundleAnalyzer], {
             "s3.us-west-2.amazonaws.com",
             "images.unsplash.com",
             "dev-to-uploads.s3.amazonaws.com",
+            "www.notion.so",
         ],
     },
 });
