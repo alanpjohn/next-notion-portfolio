@@ -42,19 +42,19 @@ const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
                     blurDataURL={preview.dataURIBase64}
                 />
                 <div className="flex mx-auto flex-col my-2 items-center">
-                <div className="grid grid-flow-row grid-cols-5 gap-2 max-w-sm mx-auto">
-                {socialLinks.slice(0, 5).map(({ Icon, url }) => (
-                    <CustomLink
-                        target="_blank"
-                        rel="noopener noreferrer nofollow"
-                        key={Icon.name}
-                        href={url}
-                        className="p-2"
-                    >
-                        <Icon className="text-3xl hover:text-orange dark:hover:text-purple" />
-                    </CustomLink>
-                ))}
-            </div>
+                    <div className="grid grid-flow-row grid-cols-5 gap-2 max-w-sm mx-auto">
+                        {socialLinks.slice(0, 5).map(({ Icon, url }) => (
+                            <CustomLink
+                                target="_blank"
+                                rel="noopener noreferrer nofollow"
+                                key={Icon.name}
+                                href={url}
+                                className="p-2"
+                            >
+                                <Icon className="text-3xl hover:text-orange dark:hover:text-purple" />
+                            </CustomLink>
+                        ))}
+                    </div>
                     <CustomButton href="https://drive.google.com/file/d/1OAWqwJ6cXa4yS0vrsdn-Ni3lAtw8aNA3/view?usp=sharing">
                         View Resume
                     </CustomButton>

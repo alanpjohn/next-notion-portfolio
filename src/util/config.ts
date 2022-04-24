@@ -101,5 +101,7 @@ export const domain = getEnv(
     "DOMAIN",
     process.env.NODE_ENV == "development"
         ? "http://localhost:3000"
-        : process.env.VERCEL_ENV == "production" ? "https://alanjohn.dev" : "alan-john-portfolio.vercel.app",
+        : process.env.VERCEL_ENV == "production"
+        ? "https://alanjohn.dev"
+        : "alan-john-portfolio.vercel.app",
 );
