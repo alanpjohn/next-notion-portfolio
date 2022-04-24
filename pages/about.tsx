@@ -4,7 +4,7 @@ import { Layout } from "@components/layout";
 import { CustomLink } from "@components/link";
 import { Section } from "@components/section";
 
-import { domain } from "@util/config";
+import { domain, socialLinks } from "@util/config";
 import { getHomepage } from "@util/notion";
 import { getPreviewImage } from "@util/preview-image";
 
@@ -41,10 +41,20 @@ const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
                     placeholder="blur"
                     blurDataURL={preview.dataURIBase64}
                 />
-                <div className="flex mx-auto flex-col md:flex-row my-2 items-center">
-                    <CustomButton href="https://www.linkedin.com/in/alan-john-b2b521193/">
-                        Connect on LinkedIn
-                    </CustomButton>
+                <div className="flex mx-auto flex-col my-2 items-center">
+                <div className="grid grid-flow-row grid-cols-5 gap-2 max-w-sm mx-auto">
+                {socialLinks.slice(0, 5).map(({ Icon, url }) => (
+                    <CustomLink
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        key={Icon.name}
+                        href={url}
+                        className="p-2"
+                    >
+                        <Icon className="text-3xl hover:text-orange dark:hover:text-purple" />
+                    </CustomLink>
+                ))}
+            </div>
                     <CustomButton href="https://drive.google.com/file/d/1OAWqwJ6cXa4yS0vrsdn-Ni3lAtw8aNA3/view?usp=sharing">
                         View Resume
                     </CustomButton>
