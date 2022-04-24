@@ -30,10 +30,10 @@ const Home: NextPage = () => {
                 <div className="py-8 my-auto mx-4 flex flex-col lg:flex-row items-center justify-evenly">
                     <div className="flex flex-col">
                         <div className="flex flex-col">
-                            <h1 className="font-grotesk text-7xl sm:text-9xl font-normal">
+                            <h1 className="font-display text-7xl sm:text-9xl font-normal">
                                 Alan John
                             </h1>
-                            <h2 className="font-grotesk text-3xl sm:text-5xl font-light">
+                            <h2 className="font-display text-3xl sm:text-5xl font-light">
                                 Software Engineer
                             </h2>
                         </div>
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
                         </div>
                     </div>
                     <div className="flex flex-col items-center">
-                        <span className="font-grotesk italic font-light mb-6">
+                        <span className="font-display italic font-light mb-6">
                             Select an option to proceed
                         </span>
                         <div className="grid grid-flow-col grid-rows-4 gap-4">
@@ -68,7 +68,7 @@ const Home: NextPage = () => {
                                 Check out Blog
                             </CustomButton>
                             <CustomButton
-                                href={"photos.alanjohn.dev"}
+                                href={"https://photos.alanjohn.dev"}
                                 variant="retro"
                             >
                                 Explore Pictures

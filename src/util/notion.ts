@@ -89,7 +89,7 @@ export async function getProjects(): Promise<Array<Project>> {
             filter: {
                 property: "Publish",
                 checkbox: {
-                    equals: isDev ? false : true,
+                    equals: true,
                 },
             },
             sorts: [

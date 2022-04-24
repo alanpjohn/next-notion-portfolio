@@ -20,8 +20,8 @@ module.exports = {
             },
             fontFamily: {
                 ...fontFamily,
+                display: ["clash-display", "system-ui"],
                 sans: ["uncut-sans", "system-ui"],
-                grotesk: ["space-grotesk", "system-ui"],
                 rubik: ["Rubik", "san-serif", "system-ui"],
             },
             minWidth: {

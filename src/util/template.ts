@@ -1,4 +1,3 @@
-import { domain } from "./config";
 import { BlogArticle } from "./interface";
 
 const getCSS = () => {
@@ -6,14 +5,14 @@ const getCSS = () => {
     @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
 
     @font-face {
-        font-family: 'space-grotesk';
-        font-weight: 300 700;
-        src: url("${domain}/fonts/Space-Grotesk/SpaceGrotesk[wght].woff2") format('woff2');
+        font-family: "clash-display";
+        src: url("/fonts/ClashDisplay/ClashDisplay-Variable.woff2") format("woff2");
+        font-weight: 200 700;
     }
 
     body {
-        font-family: "space-grotesk" , "system-ui";
-        font-weight : 300;
+        font-family: "clash-display" , "system-ui";
+        font-weight : 400;
         font-size: large;
         display: flex;
     }
@@ -44,8 +43,8 @@ const getCSS = () => {
     }
 
     .title {
-        font-size: 40px;
-        font-weight: 500;
+        font-size: 44px;
+        font-weight: 400;
         width: 800px;
         line-height: 40px;
         margin: 0.5em 0;
@@ -56,7 +55,7 @@ const getCSS = () => {
     }
 
     .link {
-        font-size: small;
+        font-size: 16px;
         font-weight: 400;
         display: flex;
         flex-direction: row;
@@ -75,7 +74,8 @@ const getCSS = () => {
     }
 
     .tag {
-        font-weight: 400;
+        font-size: 20px;
+        font-weight: 500;
         padding: 0 5px;
     }
     `;

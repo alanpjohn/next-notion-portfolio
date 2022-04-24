@@ -34,6 +34,13 @@ class CustomDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap"
                         rel="stylesheet"
                     />
+                    <link
+                        rel="preload"
+                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
+                        as="font"
+                        type="font/woff2"
+                        crossOrigin=""
+                    />
                 </Head>
                 <body>
                     <Main />

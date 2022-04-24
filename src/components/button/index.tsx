@@ -33,7 +33,7 @@ export const CustomButton: React.FC<ButtonProps> = ({
                     href={href.toString()}
                     className={`group button-retro`}
                 >
-                    <BsArrowRightCircle className="opacity-0 group-hover:opacity-100 h-8 mr-2" />{" "}
+                    <BsArrowRightCircleFill className="opacity-0 group-hover:opacity-100 h-8 mr-2" />{" "}
                     {children}
                 </CustomLink>
             </button>
@@ -41,7 +41,7 @@ export const CustomButton: React.FC<ButtonProps> = ({
     } else {
         return (
             <button className="button-round">
-                <BsArrowRightCircleFill />
+                <BsArrowRightCircle />
             </button>
         );
     }

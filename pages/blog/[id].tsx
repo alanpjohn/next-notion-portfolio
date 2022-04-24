@@ -1,8 +1,6 @@
 import { Tag } from "@components/card/tag";
-import { Layout } from "@components/layout";
 import CustomArticleJsonLd from "@components/meta";
 import { NotionPage } from "@components/notion";
-import { Section } from "@components/section";
 
 import { domain } from "@util/config";
 import { generateSiteMap } from "@util/generate-sitemap";
@@ -31,7 +29,7 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
     const socialimageurl = getSocialImageUrl(post.id);
     const url = domain + "/blog/" + post.url;
     return (
-        <Layout>
+        <NotionPage recordMap={recordMap}>
             <NextSeo
                 title={post.title}
                 description={post.description}
@@ -78,20 +76,16 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                 }}
                 description={truncated}
             />
-            <Section className="pt-32 pb-8 md:pt-24 ">
-                <div className="notion-page">
-                    <span className="text-base font-grotesk mt-4">
-                        Published on {post.publishDate || post.modifiedDate}
-                    </span>
-                </div>
-                <div className="notion-page flex-wrap flex-row flex">
-                    {post.tags.map((tag) => (
-                        <Tag key={tag.id} {...tag} />
-                    ))}
-                </div>
-            </Section>
-            <NotionPage recordMap={recordMap} post={true} />
-        </Layout>
+            <span className="flex font-normal">{post.title}</span>
+            <span className="text-base font-display mt-4">
+                Published on {post.publishDate || post.modifiedDate}
+            </span>
+            <div className="flex-wrap flex-row flex">
+                {post.tags.map((tag) => (
+                    <Tag key={tag.id} {...tag} />
+                ))}
+            </div>
+        </NotionPage>
     );
 };
 

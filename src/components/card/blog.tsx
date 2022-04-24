@@ -32,7 +32,7 @@ export const BlogCard: React.FC<Props> = ({
                         <Tag key={tag.id} {...tag} />
                     ))}
                 </div>
-                <span className="font-sans text-lg font-light md:text-xl">
+                <span className="font-sans text-jet dark:text-cultured text-lg font-light md:text-xl">
                     {description}
                 </span>
             </div>

@@ -31,7 +31,7 @@ const Blog: NextPage<Props> = ({ projects }: Props) => {
             <Section className="pt-16 md:pt-24 flex-grow">
                 <div className="my-20 flex flex-col lg:flex-row container">
                     <div className="flex flex-col px-8 lg:basis-1/3">
-                        <h1 className="font-grotesk text-4xl md:text-6xl font-light">
+                        <h1 className="font-display text-4xl md:text-6xl font-light">
                             Projects
                         </h1>
                         <div className="my-4">

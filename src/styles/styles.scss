@@ -2,10 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --fg-color: theme(colors.eerie);
+    --bg-color: theme(colors.white);
+    --select-color-0: theme(colors.razzmatazz);
+}
+
+.dark-mode {
+    --fg-color: theme(colors.cultured);
+    --bg-color: theme(colors.eerie);
+    --select-color-0: theme(colors.purple);
+}
+
 @font-face {
-    font-family: "space-grotesk";
-    src: url("/fonts/Space-Grotesk/SpaceGrotesk[wght].woff2") format("woff2");
-    font-weight: 300 700;
+    font-family: "clash-display";
+    src: url("/fonts/ClashDisplay/ClashDisplay-Variable.woff2") format("woff2");
+    font-weight: 200 700;
     font-display: swap;
     font-style: normal;
 }
@@ -35,60 +47,14 @@
     h3,
     h4,
     h5,
-    h6 {
-        @apply font-grotesk;
+    h6,
+    .notion-h {
+        @apply font-display font-normal;
     }
 
     button,
     aside {
-        @apply font-grotesk;
-    }
-
-    .dark-mode {
-        --fg-color: theme(colors.cultured);
-        --fg-color-0: var(--fg-color);
-        --fg-color-1: var(--fg-color);
-        --fg-color-2: var(--fg-color);
-        --fg-color-3: var(--fg-color);
-        --fg-color-4: var(--fg-color);
-        --fg-color-5: rgba(255, 255, 255, 0.7);
-        --fg-color-6: #fff;
-        --fg-color-icon: #fff;
-        --bg-color: theme(colors.eerie);
-        --bg-color-0: rgb(71, 76, 80);
-        --bg-color-1: rgb(63, 68, 71);
-        --bg-color-2: rgba(135, 131, 120, 0.15);
-        --notion-red: rgb(255, 115, 105);
-        --notion-pink: rgb(226, 85, 161);
-        --notion-blue: rgb(82, 156, 202);
-        --notion-purple: rgb(154, 109, 215);
-        --notion-teal: rgb(77, 171, 154);
-        --notion-yellow: rgb(255, 220, 73);
-        --notion-orange: rgb(255, 163, 68);
-        --notion-brown: rgb(147, 114, 100);
-        --notion-gray: rgba(151, 154, 155, 0.95);
-        --notion-red_background: rgb(89, 65, 65);
-        --notion-pink_background: rgb(83, 59, 76);
-        --notion-blue_background: rgb(54, 73, 84);
-        --notion-purple_background: rgb(68, 63, 87);
-        --notion-teal_background: rgb(53, 76, 75);
-        --notion-yellow_background: rgb(89, 86, 59);
-        --notion-orange_background: rgb(89, 74, 58);
-        --notion-brown_background: rgb(67, 64, 64);
-        --notion-gray_background: rgb(69, 75, 78);
-        --notion-red_background_co: rgba(89, 65, 65, 0.3);
-        --notion-pink_background_co: rgba(83, 59, 76, 0.3);
-        --notion-blue_background_co: rgba(120, 162, 187, 0.3);
-        --notion-purple_background_co: rgba(68, 63, 87, 0.3);
-        --notion-teal_background_co: rgba(53, 76, 75, 0.3);
-        --notion-yellow_background_co: rgba(89, 86, 59, 0.3);
-        --notion-orange_background_co: rgba(89, 74, 58, 0.3);
-        --notion-brown_background_co: rgba(67, 64, 64, 0.3);
-        --notion-gray_background_co: rgba(69, 75, 78, 0.3);
-    }
-
-    #__next > div > div.notion.notion-app > div.notion-frame > div > main {
-        padding-top: 0 !important;
+        @apply font-display;
     }
 
     #__next > div > main {
@@ -112,7 +78,7 @@
     }
 
     .footer {
-        @apply border-t-2 border-cultured dark:border-jet;
+        @apply w-full border-t-2 border-cultured dark:border-jet;
         @apply flex flex-col items-center justify-evenly px-8 py-2 md:flex-row;
     }
 
@@ -121,7 +87,7 @@
     }
 
     .card__nav {
-        @apply flex flex-row justify-between p-2 font-grotesk text-sm font-medium;
+        @apply flex flex-row justify-between p-2 font-display text-sm font-medium;
         @apply border-primary mb-1 border-b-2;
         @apply bg-orange dark:bg-mint dark:text-jet;
         @apply group-hover:bg-razzmatazz dark:group-hover:bg-purple;
@@ -135,7 +101,7 @@
     }
 
     .button-retro {
-        @apply flex flex-row items-center text-2xl md:text-4xl;
+        @apply flex flex-row items-center justify-start text-2xl lg:text-3xl;
         @apply text-jet hover:text-orange dark:text-cultured dark:hover:text-purple;
     }
 
@@ -167,5 +133,75 @@
         to {
             transform: rotate(360deg);
         }
+    }
+}
+
+.notion-page-content-has-aside {
+    @media (min-width: 1300px) {
+        width: calc((96vw + var(--notion-max-width)) / 2);
+    }
+}
+
+.notion-page-cover-wrapper,
+.notion-page-cover-wrapper span,
+.notion-page-cover-wrapper img {
+    max-width: 1200px !important;
+    border-radius: 0;
+
+    @media (min-width: 1300px) {
+        border-radius: 24px;
+    }
+}
+
+.notion-page-cover-wrapper {
+    width: 100% !important;
+    height: 30vh !important;
+    min-height: 30vh !important;
+    max-height: 30vh !important;
+    box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
+}
+
+.notion-page-cover-wrapper img {
+    object-fit: cover;
+    object-position: center;
+}
+
+.notion-title {
+    font-weight: 500;
+}
+
+.notion-table-of-contents-item {
+    font-size: 16px;
+    font-family: "clash-display", "system-ui";
+    font-weight: 500;
+}
+
+.notion-link,
+.default-link {
+    position: relative;
+    transition: unset;
+    opacity: 1;
+    border-bottom-width: 0.1rem;
+    background: transparent;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-size: 0 0.1rem;
+
+    &:focus,
+    &:hover {
+        color: var(--select-color-0);
+        border-bottom-color: transparent;
+        background-image: linear-gradient(
+            90.68deg,
+            var(--select-color-0) 0.26%,
+            #e5337e 102.37%
+        );
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        background-size: 100% 0.1rem;
+
+        transition-property: background-position, background-size;
+        transition-duration: 300ms;
     }
 }

@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
                     </CustomLink>
                 ))}
             </div>
-            <div className="flex flex-col text-sm font-grotesk text-jet dark:text-cultured">
+            <div className="flex flex-col text-sm font-display text-jet dark:text-cultured">
                 <span>Powered by Notion</span>
                 <span>Release: v{pjson.version}</span>
             </div>

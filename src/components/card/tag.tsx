@@ -11,7 +11,7 @@ export const Tag: React.FC<Props> = ({ id, name }: Props) => {
             className="bg-orange dark:bg-mint text-jet
         group-hover:bg-razzmatazz dark:group-hover:bg-purple
         h-8 px-4 m-1 rounded-full 
-        font-grotesk text-xl"
+        font-display text-xl"
         >
             {name}
         </span>

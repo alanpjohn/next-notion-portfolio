@@ -1,8 +1,11 @@
+import { Footer } from "@components/footer";
+import { NotionHeader } from "@components/header/blog";
 import { CustomImage } from "@components/image";
 import { CustomLink } from "@components/link";
 
 import dynamic from "next/dynamic";
 import { CodeBlock, ExtendedRecordMap } from "notion-types";
+import React, { PropsWithChildren } from "react";
 import { NotionRenderer } from "react-notion-x";
 
 const Code = dynamic<{
@@ -28,23 +31,32 @@ const Code = dynamic<{
     }),
 );
 
-export const NotionPage: React.FC<{
-    recordMap: ExtendedRecordMap;
-    post: boolean;
-}> = ({ recordMap, post = true }) => {
+export const NotionPage: React.FC<
+    PropsWithChildren<{
+        recordMap: ExtendedRecordMap;
+    }>
+> = ({ recordMap, children }) => {
+    const components = React.useMemo(
+        () => ({
+            nextImage: CustomImage,
+            nextLink: CustomLink,
+            Code,
+            Header: NotionHeader,
+        }),
+        [],
+    );
+    const footer = React.useMemo(() => <Footer />, []);
     return (
-        <NotionRenderer
-            recordMap={recordMap}
-            fullPage={post}
-            showTableOfContents={post}
-            disableHeader={true}
-            previewImages={true}
-            pageCover={<></>}
-            components={{
-                nextImage: CustomImage,
-                nextLink: CustomLink,
-                Code: Code,
-            }}
-        />
+        <>
+            <NotionRenderer
+                recordMap={recordMap}
+                fullPage={true}
+                showTableOfContents={true}
+                previewImages={true}
+                pageTitle={children}
+                components={components}
+                footer={footer}
+            />
+        </>
     );
 };

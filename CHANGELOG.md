@@ -14,15 +14,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - redis support to store blurDataURL
 - react-notion-x with the help of notion-compat for better performance
 - common config file to manage configuration
-- New fonts : Uncut Sans & Space Grotesk
+- New font : Uncut Sans
+- Cover image display on blog posts
 
 ### Changed
 - block rendering is now handled by `NotionRenderer`
 - styling changed to suit lighter site
+- blog pages do not follow layout pattern
 ### Removed
 - Framer motion classes for performance improvements
 - Hero SVG
-- Clash Display and Cabinet Grotesk fonts
+- Cabinet Grotesk font
 - Hamburger menu for performance improvements
 
 ## [1.1.2] - 2022-04-09
