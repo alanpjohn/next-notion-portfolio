@@ -47,9 +47,7 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                     },
                     images: [
                         {
-                            url:
-                                socialimageurl ||
-                                "https://www.alanjohn.dev/images/social_media_preview.png",
+                            url: socialimageurl,
                             width: 1200,
                             height: 628,
                             alt: "My Portfolio Preview",
@@ -63,10 +61,7 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                 type="BlogPosting"
                 url={url}
                 title={post.title}
-                images={[
-                    socialimageurl,
-                    "https://www.alanjohn.dev/images/social_media_preview.png",
-                ]}
+                images={[socialimageurl]}
                 datePublished={post.publishDate}
                 dateModified={post.modifiedDate}
                 authorName={{
