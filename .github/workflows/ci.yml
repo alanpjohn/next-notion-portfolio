@@ -12,6 +12,7 @@ on:
 
 jobs:
     ci:
+        if: github.actor != 'depbot'
         runs-on: ${{ matrix.os }}
 
         strategy:

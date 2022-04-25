@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2022-04-18
+## [2.0.1] - 2022-04-25
+### Changed
+- Bumped `notion-compat` to `v6.12.4`
+- styling for notion toggle blocks
+
+## [2.0.0] - 2022-04-24
 ### Added
 - Dependabot to manage version updates
 - `/projects` route for project details
