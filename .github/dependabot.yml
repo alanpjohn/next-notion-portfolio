@@ -9,8 +9,6 @@ updates:
       interval: weekly
       day: saturday
       time: "00:00"
-    labels:
-      - "notion dependencies"
     allow:
       - dependency-name: "react*"
       - dependency-name: "next*"
