@@ -2,6 +2,7 @@ name: Lighthouse CI
 on: [push]
 jobs:
   lhci:
+    if: github.actor != 'depbot'
     name: Lighthouse
     runs-on: ubuntu-latest
     steps:

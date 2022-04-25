@@ -48,8 +48,9 @@
     h4,
     h5,
     h6,
-    .notion-h {
-        @apply font-display font-normal;
+    .notion-h,
+    .notion-toggle > summary {
+        @apply font-display font-normal text-eerie dark:text-white;
     }
 
     button,
@@ -205,4 +206,8 @@
         transition-property: background-position, background-size;
         transition-duration: 300ms;
     }
+}
+
+.notion-toggle > summary {
+    font-size: 22px;
 }
