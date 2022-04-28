@@ -1,6 +1,12 @@
 # next-notion-portfolio
 
 This project was build on a template generated with [superplate](https://github.com/pankod/superplate).
+Currently hosted on vercel at www.alanjohn.dev
+
+Documented at
+- [Setting up my NextJS repository with the help of Superplate](https://www.alanjohn.dev/blog/Building-a-Developer-Portfolio-Setting-up-my-NextJS-repository-with-the-help-of-Superplate)
+- [Creating a NextJS blog in typescript using Notion API](https://www.alanjohn.dev/blog/Building-a-Developer-Portfolio-Creating-a-NextJS-blog-in-typescript-using-Notion-API)
+- [Understanding SEO and Web Vitals for your NextJS site and how to improve them?](https://www.alanjohn.dev/blog/Building-a-Developer-Portfolio-Understanding-SEO-and-Web-Vitals-for-your-NextJS-site-and-how-to-improve-them)
 
 ## Available Scripts
 
@@ -44,12 +50,6 @@ A React framework for production with all the features you need for production: 
 Allows to connect to Notion databases giving you the power to use Notion as a CMS
 
 [Go To Documentation](https://developers.notion.com/docs)
-
-### **Framer Motion**
-
-A opensource production-ready motion library for React.
-
-[Go To Documentation](https://www.framer.com/docs/)
 
 ### **TailwindCSS**
 

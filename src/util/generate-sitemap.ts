@@ -13,6 +13,7 @@ export const generateSiteMap = (posts: BlogArticle[]) => {
                 "_document.tsx",
                 "_error.tsx",
                 "index.tsx",
+                "404.tsx",
             ].includes(staticPage);
         })
         .map((staticPagePath) => {

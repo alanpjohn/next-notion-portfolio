@@ -23,7 +23,7 @@ export const Layout: React.FC<Props> = ({ children }: Props) => {
                     locale: "en_IE",
                     url: url,
                     description:
-                        "The personal website for Alan John, developer.",
+                        "Hi, I am Alan, A twenty-two year old software engineer currently working at HSBC. Based in Shillong",
                     site_name: "Alan John",
                     images: [
                         {

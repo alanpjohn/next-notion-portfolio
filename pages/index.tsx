@@ -13,7 +13,6 @@ const Home: NextPage = () => {
         <Layout>
             <NextSeo
                 title="Home"
-                description="2022 Portfolio"
                 additionalMetaTags={[
                     {
                         property: "keywords",

@@ -18,7 +18,6 @@ const Blog: NextPage<Props> = ({ projects }: Props) => {
         <Layout>
             <NextSeo
                 title="Projects"
-                description="2022 Portfolio"
                 additionalMetaTags={[
                     {
                         property: "keywords",
