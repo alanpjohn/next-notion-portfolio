@@ -38,7 +38,8 @@
     }
 
     p,
-    li {
+    li,
+    .notion-text {
         @apply font-sans text-lg text-jet dark:text-cultured;
     }
 

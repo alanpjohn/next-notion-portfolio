@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.2] - 2022-04-28
 ### Added
 - Custom 404 page
-- Custome error page
+- Custom error page
+- Added description to blog article page
 ### Changed
 - Meta description updated for static routes
+- Template design for social media preview
 - Google analytics only works in env variable `ANALYTICS_ENABLED`
 
 ## [2.0.1] - 2022-04-25

@@ -75,6 +75,9 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
             <span className="text-base font-display mt-4">
                 Published on {post.publishDate || post.modifiedDate}
             </span>
+            <p className="text-base font-sans italic my-4 font-light">
+                {post.description}
+            </p>
             <div className="flex-wrap flex-row flex">
                 {post.tags.map((tag) => (
                     <Tag key={tag.id} {...tag} />

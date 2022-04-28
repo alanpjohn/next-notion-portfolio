@@ -18,10 +18,10 @@ const getCSS = () => {
     }
 
     .main {
-        margin: 14px auto 14px auto;
-        max-width: 1000px;
-        height: 628px;
-        justify-content: space-evenly;
+        margin: 64px auto 14px auto;
+        min-width: 1000px;
+        height: 500px;
+        justify-content: space-between;
     }
 
     .main , .content {
@@ -43,10 +43,10 @@ const getCSS = () => {
     }
 
     .title {
-        font-size: 44px;
+        font-size: 48px;
         font-weight: 400;
         width: 800px;
-        line-height: 40px;
+        line-height: 46px;
         margin: 0.5em 0;
     }
 
