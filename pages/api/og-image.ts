@@ -1,3 +1,5 @@
+import { getPreviewHTML } from "@util/get-html-preview";
+
 import chrome from "chrome-aws-lambda";
 import type { NextApiRequest, NextApiResponse } from "next";
 import puppeteer from "puppeteer-core";
@@ -8,8 +10,7 @@ export default async function handler(
 ) {
     const { id } = req.query;
     try {
-        const url =
-            "https://www.alanjohn.dev/api/preview-html?id=" + id.toString();
+        const url = getPreviewHTML(id.toString());
         const options = process.env.AWS_REGION
             ? {
                   args: chrome.args,
