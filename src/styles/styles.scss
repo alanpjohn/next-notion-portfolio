@@ -40,7 +40,7 @@
     p,
     li,
     .notion-text {
-        @apply font-sans text-base md:text-lg text-jet dark:text-cultured;
+        @apply font-sans text-base text-jet dark:text-cultured md:text-lg;
     }
 
     h1,
