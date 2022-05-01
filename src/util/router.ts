@@ -20,3 +20,22 @@ export const getCanonicalURL = (title: string): string => {
         .join("-");
     return removedSpaces;
 };
+
+export const getDomainName = (url: string): string => {
+    const domainSelectionRe =
+        /\bhttps?:\/\/(?:www\.|ww2\.)?((?:[\w-]+\.){1,}\w+)\b/gm;
+    let domainName = "dev.to"; // Default case
+    let matches;
+    while ((matches = domainSelectionRe.exec(url)) !== null) {
+        // This is necessary to avoid infinite loops with zero-width matches
+        if (matches.index === domainSelectionRe.lastIndex) {
+            domainSelectionRe.lastIndex++;
+        }
+
+        // The result can be accessed through the `m`-variable.
+        matches.forEach((match) => {
+            domainName = match;
+        });
+    }
+    return domainName;
+};

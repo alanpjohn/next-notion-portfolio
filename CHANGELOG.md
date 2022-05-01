@@ -8,8 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Custom 404 page
 - Custom error page
-- Added description to blog article page
+- Added description, external link to blog article page
 ### Changed
+- `CustomArticleJsonLdProps` and `CustomArticleJsonLdProps` changed
 - Meta description updated for static routes
 - Template design for social media preview
 - Google analytics only works in env variable `ANALYTICS_ENABLED`

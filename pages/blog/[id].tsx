@@ -1,4 +1,5 @@
 import { Tag } from "@components/card/tag";
+import { CustomLink } from "@components/link";
 import CustomArticleJsonLd from "@components/meta";
 import { NotionPage } from "@components/notion";
 
@@ -7,6 +8,7 @@ import { generateSiteMap } from "@util/generate-sitemap";
 import { getSocialImageUrl } from "@util/get-social-image";
 import { BlogArticle } from "@util/interface";
 import { getBlogArticleByCanonical, getBlogPosts, getPage } from "@util/notion";
+import { getDomainName } from "@util/router";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
@@ -72,9 +74,21 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                 description={truncated}
             />
             <span className="flex font-normal">{post.title}</span>
-            <span className="text-base font-display mt-4">
+            <span className="flex text-base font-display mt-4">
                 Published on {post.publishDate || post.modifiedDate}
             </span>
+            {post.publishDate != post.modifiedDate && (
+                <span className="flex text-base font-display">
+                    Updated on {post.modifiedDate}
+                </span>
+            )}
+            {post.link && (
+                <CustomLink href={post.link}>
+                    <span className="text-base">
+                        Read on {getDomainName(post.link)}
+                    </span>
+                </CustomLink>
+            )}
             <p className="text-base font-sans italic my-4 font-light">
                 {post.description}
             </p>
