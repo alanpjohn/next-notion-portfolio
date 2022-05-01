@@ -38,8 +38,9 @@
     }
 
     p,
-    li {
-        @apply font-sans text-lg text-jet dark:text-cultured;
+    li,
+    .notion-text {
+        @apply font-sans text-base text-jet dark:text-cultured md:text-lg;
     }
 
     h1,

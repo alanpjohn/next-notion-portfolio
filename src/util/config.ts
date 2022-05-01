@@ -103,3 +103,5 @@ export const domain = getEnv(
         ? "http://localhost:3000"
         : "https://alanjohn.dev",
 );
+
+export const analyticsEnabled = getEnv("ANALYTICS_ENABLED", "");

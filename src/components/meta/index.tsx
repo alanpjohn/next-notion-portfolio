@@ -53,7 +53,7 @@ interface Author {
 }
 
 export interface CustomArticleJsonLdProps extends JsonLdProps {
-    type?: "Article" | "BlogPosting" | "NewsArticle";
+    type?: "Article" | "BlogPosting";
     url: string;
     title: string;
     images: ReadonlyArray<string>;
@@ -75,7 +75,6 @@ export const CustomArticleJsonLd: React.FC<CustomArticleJsonLdProps> = ({
     description,
 }: CustomArticleJsonLdProps) => {
     const data = {
-        datePublished,
         description,
         mainEntityOfPage: {
             "@type": "WebPage",
@@ -83,7 +82,8 @@ export const CustomArticleJsonLd: React.FC<CustomArticleJsonLdProps> = ({
         },
         headline: title,
         image: images,
-        dateModified: dateModified || datePublished,
+        datePublished: datePublished || dateModified,
+        dateModified: dateModified,
         author: authorName,
     };
     return (

@@ -1,3 +1,4 @@
+import { analyticsEnabled } from "@util/config";
 import { pageview } from "@util/ga";
 
 import { AppProps } from "next/app";
@@ -23,21 +24,23 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
             router.events.off("routeChangeComplete", handleRouteChange);
         };
     }, [router.events]);
-
     return (
         <>
-            <Script
-                strategy="afterInteractive"
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-            />
-            <Script
-                id="google analytics"
-                async
-                strategy="afterInteractive"
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                    __html: `
+            {analyticsEnabled && (
+                <Script
+                    strategy="afterInteractive"
+                    async
+                    src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+                />
+            )}
+            {analyticsEnabled && (
+                <Script
+                    id="google analytics"
+                    async
+                    strategy="afterInteractive"
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{
+                        __html: `
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
                         gtag('js', new Date());
@@ -45,8 +48,9 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                             page_path: window.location.pathname,
                         });
                         `,
-                }}
-            />
+                    }}
+                />
+            )}
             <Component {...pageProps} />
         </>
     );

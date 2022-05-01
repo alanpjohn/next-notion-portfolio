@@ -23,7 +23,6 @@ const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
         <Layout>
             <NextSeo
                 title="About"
-                description="2022 Portfolio"
                 additionalMetaTags={[
                     {
                         property: "keywords",
