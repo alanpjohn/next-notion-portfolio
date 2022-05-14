@@ -219,27 +219,25 @@
     font-style: italic;
     border-left: 5px solid var(--select-color-0);
     background-color: var(--notion-gray_background_co);
+    padding: 0.75em 1em;
 }
 
 .notion-bookmark {
-    background-color: var(--notion-gray_background_co);
-
-    div:first-child {
-        color: var(--fg-color-4);
-    }
-
-    .notion-bookmark-title {
-        font-size: 12px;
-        font-family: monospace;
-    }
-
-    .notion-bookmark-description {
-        font-size: 20px;
-        margin-top: 10px;
-        font-weight: bold;
-    }
-
     .notion-bookmark-link {
         font-family: monospace;
+    }
+
+    &:focus,
+    &:hover {
+        border-bottom-color: transparent;
+        background-image: linear-gradient(
+            90.68deg,
+            var(--select-color-0) 0.26%,
+            #e5337e 102.37%
+        );
+        background-repeat: no-repeat;
+
+        transition-property: background-image;
+        transition-duration: 300ms;
     }
 }

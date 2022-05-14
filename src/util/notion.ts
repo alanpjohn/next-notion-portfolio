@@ -1,3 +1,4 @@
+import { getBookmarks } from "./bookmark-support";
 import { isDev } from "./config";
 import { BlogArticle, Project } from "./interface";
 import { getPreviewImageMap } from "./preview-image";
@@ -22,10 +23,12 @@ export const notion = new NotionCompatAPI(notion_client);
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     const recordMap = await notion.getPage(pageId);
 
-    const previewImageMap = await getPreviewImageMap(recordMap);
-    (recordMap as ExtendedRecordMap).preview_images = previewImageMap;
+    const customizedRecordMap = await getBookmarks(recordMap);
 
-    return recordMap;
+    const previewImageMap = await getPreviewImageMap(customizedRecordMap);
+    (customizedRecordMap as ExtendedRecordMap).preview_images = previewImageMap;
+
+    return customizedRecordMap;
 }
 
 export async function getHomepage(): Promise<ExtendedRecordMap> {

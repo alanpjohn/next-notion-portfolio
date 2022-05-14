@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump react-notion-x from 6.11.0 to 6.12.9
 - Improved Bookmarks styling
 - Improved Quote styling
+### Fixed
+- Bookmarks not showing link preview due to limitation of `react-notion-x` when used with official notion client by creating `@util/bookmark-support` 
 
 ## [2.0.2] - 2022-04-28
 ### Added
