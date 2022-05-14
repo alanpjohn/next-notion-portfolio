@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --fg-color: theme(colors.eerie);
+    --fg-color: theme(colors.jet);
     --bg-color: theme(colors.white);
     --select-color-0: theme(colors.razzmatazz);
 }
@@ -211,4 +211,35 @@
 
 .notion-toggle > summary {
     font-size: 22px;
+}
+
+.notion-quote {
+    font-size: 14px;
+    font-family: monospace;
+    font-style: italic;
+    border-left: 5px solid var(--select-color-0);
+    background-color: var(--notion-gray_background_co);
+}
+
+.notion-bookmark {
+    background-color: var(--notion-gray_background_co);
+
+    div:first-child {
+        color: var(--fg-color-4);
+    }
+
+    .notion-bookmark-title {
+        font-size: 12px;
+        font-family: monospace;
+    }
+
+    .notion-bookmark-description {
+        font-size: 20px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .notion-bookmark-link {
+        font-family: monospace;
+    }
 }
