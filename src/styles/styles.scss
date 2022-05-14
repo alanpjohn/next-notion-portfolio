@@ -4,7 +4,7 @@
 
 :root {
     --fg-color: theme(colors.eerie);
-    --fg-color-secondary : theme(colors.jet);
+    --fg-color-secondary: theme(colors.jet);
     --bg-color: theme(colors.white);
     --bg-color-secondary: theme(colors.cultured);
     --select-color-0: theme(colors.razzmatazz);
@@ -13,9 +13,9 @@
 
 .dark-mode {
     --fg-color: theme(colors.white);
-    --fg-color-secondary : theme(colors.cultured);
+    --fg-color-secondary: theme(colors.cultured);
     --bg-color: theme(colors.eerie);
-    --bg-color-secondary : theme(colors.jet);
+    --bg-color-secondary: theme(colors.jet);
     --select-color-0: theme(colors.purple);
     --select-color-1: theme(colors.mint);
 }
