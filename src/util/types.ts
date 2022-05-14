@@ -59,7 +59,7 @@ export const extractBlogPost = (
     );
     const publishDate = blogArticleInDB.properties.PublishDate.date
         ? formatDate(blogArticleInDB.properties.PublishDate.date.start)
-        : undefined;
+        : null;
     return {
         id: id,
         title: title,

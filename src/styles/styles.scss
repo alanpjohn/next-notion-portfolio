@@ -4,14 +4,20 @@
 
 :root {
     --fg-color: theme(colors.eerie);
+    --fg-color-secondary: theme(colors.jet);
     --bg-color: theme(colors.white);
+    --bg-color-secondary: theme(colors.cultured);
     --select-color-0: theme(colors.razzmatazz);
+    --select-color-1: theme(colors.orange);
 }
 
 .dark-mode {
-    --fg-color: theme(colors.cultured);
+    --fg-color: theme(colors.white);
+    --fg-color-secondary: theme(colors.cultured);
     --bg-color: theme(colors.eerie);
+    --bg-color-secondary: theme(colors.jet);
     --select-color-0: theme(colors.purple);
+    --select-color-1: theme(colors.mint);
 }
 
 @font-face {
@@ -198,7 +204,7 @@
         background-image: linear-gradient(
             90.68deg,
             var(--select-color-0) 0.26%,
-            #e5337e 102.37%
+            var(--select-color-1) 102.37%
         );
         background-repeat: no-repeat;
         background-position: 0 100%;
@@ -211,4 +217,39 @@
 
 .notion-toggle > summary {
     font-size: 22px;
+}
+
+.notion-quote {
+    font-size: 14px;
+    font-family: monospace;
+    font-style: italic;
+    border-left: 5px solid var(--select-color-0);
+    background-color: var(--notion-gray_background_co);
+    padding: 0.75em 1em;
+}
+
+.notion-bookmark {
+    .notion-bookmark-link {
+        font-family: monospace;
+    }
+
+    .notion-bookmark-title {
+        font-weight: 500;
+        font-family: clash-display, system-ui;
+        font-size: 1em;
+    }
+
+    &:focus,
+    &:hover {
+        border-bottom-color: transparent;
+        background-image: linear-gradient(
+            90.68deg,
+            var(--select-color-0) 0.26%,
+            var(--select-color-1) 102.37%
+        );
+        background-repeat: no-repeat;
+
+        transition-property: background-image;
+        transition-duration: 300ms;
+    }
 }
