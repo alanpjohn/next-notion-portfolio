@@ -34,16 +34,20 @@ async function getPageMeta(link: string): Promise<bookmarkDetails> {
                 : null;
 
             let previewImage: string;
-            if (
-                preview.indexOf("http://") === 0 ||
-                preview.indexOf("https://") === 0
-            ) {
-                previewImage = preview;
+            if (preview) {
+                if (
+                    preview.indexOf("http://") === 0 ||
+                    preview.indexOf("https://") === 0
+                ) {
+                    previewImage = preview;
+                } else {
+                    previewImage = new URL(
+                        preview,
+                        "https://" + getDomainName(link),
+                    ).toString();
+                }
             } else {
-                previewImage = new URL(
-                    preview,
-                    "https://" + getDomainName(link),
-                ).toString();
+                previewImage = null;
             }
 
             return {
