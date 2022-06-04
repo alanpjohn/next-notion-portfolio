@@ -13,6 +13,7 @@ import { getDomainName } from "@util/router";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import { ExtendedRecordMap } from "notion-types";
+import { estimatePageReadTimeAsHumanizedString } from "notion-utils";
 import { ParsedUrlQuery } from "querystring";
 
 type Props = {
@@ -82,6 +83,7 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                     Updated on {post.modifiedDate}
                 </span>
             )}
+
             {post.link && (
                 <CustomLink href={post.link}>
                     <span className="text-base">
@@ -89,6 +91,9 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                     </span>
                 </CustomLink>
             )}
+            <p className="text-base font-clash my-2 font-normal">
+                Estimated reading time : {post.readingTime}
+            </p>
             <p className="text-base font-sans italic my-4 font-light">
                 {post.description}
             </p>
@@ -110,6 +115,16 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const post = await getBlogArticleByCanonical(id);
     if (post) {
         const recordMap = await getPage(post.id);
+        const pageBlock = recordMap.block[post.id].value;
+        const readTime = estimatePageReadTimeAsHumanizedString(
+            pageBlock,
+            recordMap,
+            {
+                wordsPerMinute: 200,
+                imageReadTimeInSeconds: 12,
+            },
+        );
+        post.readingTime = readTime;
         return {
             props: {
                 post: post,
