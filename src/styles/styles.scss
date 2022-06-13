@@ -46,7 +46,7 @@
     p,
     li,
     .notion-text {
-        @apply font-sans text-base text-jet dark:text-cultured md:text-lg;
+        @apply font-sans text-lg text-jet dark:text-cultured md:text-lg;
     }
 
     h1,
@@ -109,9 +109,10 @@
 
     .button-retro {
         @apply flex flex-row items-center justify-start text-2xl lg:text-3xl;
+        @apply bg-orange text-eerie dark:bg-mint;
+        @apply shadow-sm shadow-gray-600;
         @apply border-2 border-jet dark:border-cultured lg:border-0;
-        @apply hover:text-white dark:hover:text-eerie;
-        @apply p-4 hover:bg-orange dark:hover:bg-purple;
+        @apply p-4 hover:bg-razzmatazz dark:hover:bg-purple;
     }
 
     .button-round {

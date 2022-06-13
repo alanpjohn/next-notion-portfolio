@@ -13,6 +13,7 @@ export interface BlogArticle {
     title: string;
     description: string;
     link?: string;
+    readingTime?: string;
 }
 
 export interface Project {

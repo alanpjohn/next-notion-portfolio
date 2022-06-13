@@ -33,13 +33,13 @@ export const CustomButton: React.FC<ButtonProps> = ({
                     href={href.toString()}
                     className={`group button-retro`}
                 >
-                    {children}{" "}
                     <BsArrowRight
                         className="
                     group-hover:-rotate-45 transition-transform duration-300
-                    h-8 ml-2
+                    h-8 mr-2
                     "
                     />
+                    {children}{" "}
                 </CustomLink>
             </button>
         );

@@ -4,6 +4,7 @@ updates:
     open-pull-requests-limit: 1
     package-ecosystem: npm
     rebase-strategy: auto
+    target-branch: "staging"
     schedule:
       timezone: "Asia/Kolkata"
       interval: weekly
