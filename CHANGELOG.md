@@ -8,9 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added reading time to blog posts
 ### Changed
+- Home page button design
+- Increased paragraph text size
 - Bumps [react-use](https://github.com/streamich/react-use) from 17.3.2 to 17.4.0.
 - Bumps [sharp](https://github.com/lovell/sharp) from 0.30.3 to 0.30.5
 - Bumps [notion-compat](https://github.com/NotionX/react-notion-x) from 6.12.4 to 6.12.10.
+- Bumps [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) from 2.5.3 to 2.5.4.
 
 ## [2.0.4] - 2022-05-29
 ### Changed

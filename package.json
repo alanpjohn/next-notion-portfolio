@@ -34,7 +34,7 @@
         "react-dom": "^18.0.0",
         "react-notion-x": "^6.11.0",
         "sass": "^1.32.5",
-        "sharp": "^0.30.3"
+        "sharp": "^0.30.5"
     },
     "devDependencies": {
         "@next/eslint-plugin-next": "^12.0.10",
@@ -65,5 +65,10 @@
     },
     "optionalDependencies": {
         "fsevents": "2.1.2"
+    },
+    "overrides": {
+        "lqip-modern" : {
+            "sharp": "$sharp"
+        }
     }
 }
