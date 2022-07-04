@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Github and Dev.to links updated
 - Bumps [react-dom](https://github.com/facebook/react/tree/HEAD/packages/react-dom) from 18.1.0 to 18.2.0.
+- Bumps [next](https://github.com/vercel/next.js) from 12.1.6 to 12.2.0.
 
 ## [2.0.5] - 2022-06-02
 ### Added
