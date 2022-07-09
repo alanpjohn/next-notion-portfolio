@@ -117,11 +117,11 @@ export const getHTML = (article: BlogArticle) => {
                 <div class="social">
                     <div class="link">
                         <img height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/devdotto.svg" />
-                        dev.to/theforeverlost
+                        dev.to/alanpjohn
                     </div>
                     <div class="link">
                         <img height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg" />
-                        github.com/TheForeverLost
+                        github.com/alanpjohn
                     </div>
                     <div class="link">
                         <img height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/linkedin.svg" />

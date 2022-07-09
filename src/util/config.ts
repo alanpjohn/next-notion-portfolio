@@ -56,7 +56,7 @@ export const socialLinks: TLink[] = [
     {
         Icon: SiGithub,
         text: "Github",
-        url: "https://github.com/TheForeverLost",
+        url: "https://github.com/alanpjohn",
     },
     {
         Icon: SiLinkedin,
@@ -71,7 +71,7 @@ export const socialLinks: TLink[] = [
     {
         Icon: SiDevdotto,
         text: "DevTo",
-        url: "https://dev.to/theforeverlost",
+        url: "https://dev.to/alanpjohn",
     },
     {
         Icon: SiGmail,
