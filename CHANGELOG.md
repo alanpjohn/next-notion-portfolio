@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.7] - 2022-07-15
+### Changed
+- Meta description for default page SEO
+
 ## [2.0.6] - 2022-06-19
 ### Changed
 - Github and Dev.to links updated
