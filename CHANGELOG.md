@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bumps [next](https://github.com/vercel/next.js) from 12.2.1 to 12.2.5.
 - Bumps [react-hotkeys-hook](https://github.com/JohannesKlauss/react-keymap-hook) from 3.4.6 to 3.4.7.
 - Bumps [terser](https://github.com/terser/terser) from 5.14.1 to 5.14.2.
+- Bumps [next-seo](https://github.com/garmeeh/next-seo) from 5.4.0 to 5.5.0.
 - Reduced `/api/og-image` build size by refactoring `config.ts`.
 - `next.config.js` to remove next-compose-plugins as per latest NextJS
 ### Removed

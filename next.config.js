@@ -7,7 +7,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
  */
 module.exports = () => {
     const plugins = [withBundleAnalyzer];
-    return plugins.reduce((acc, next) => next(acc, {silent: true }), {
+    return plugins.reduce((acc, next) => next(acc, { silent: true }), {
         webpack(config) {
             const fileLoaderRule = config.module.rules.find(
                 (rule) => rule.test && rule.test.test(".svg"),
