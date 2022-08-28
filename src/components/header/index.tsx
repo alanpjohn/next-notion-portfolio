@@ -1,7 +1,7 @@
 import { DarkModeToggle } from "@components/darktoggle";
 import { CustomLink } from "@components/link";
 
-import { internalLinks } from "@util/config";
+import { internalLinks } from "@util/internalLinks";
 
 export const Header: React.FC = () => {
     return (

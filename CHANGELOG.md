@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] -
+### Changed
+- Bumps [next](https://github.com/vercel/next.js) from 12.2.1 to 12.2.5.
+- Bumps [react-hotkeys-hook](https://github.com/JohannesKlauss/react-keymap-hook) from 3.4.6 to 3.4.7.
+- Bumps [terser](https://github.com/terser/terser) from 5.14.1 to 5.14.2.
+- Reduced `/api/og-image` build size by refactoring `config.ts`.
+- `next.config.js` to remove next-compose-plugins as per latest NextJS
+### Removed
+- Removed next-compose-plugins. Refer [here](https://dev.to/krzysztofzuraw/migrating-nextjs-plugins-from-next-compose-plugins-2gnl)
+
 ## [2.0.7] - 2022-07-15
 ### Changed
 - Meta description for default page SEO
