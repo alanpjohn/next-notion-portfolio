@@ -21,7 +21,7 @@
         "ioredis": "^5.0.4",
         "lqip-modern": "^1.2.0",
         "next": "^12.2.5",
-        "next-seo": "^5.1.0",
+        "next-seo": "^5.5.0",
         "node-html-parser": "^5.3.3",
         "notion-compat": "^6.12.10",
         "notion-types": "^6.11.0",
