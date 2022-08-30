@@ -38,7 +38,7 @@ const Blog: NextPage<Props> = ({ posts }: Props) => {
                                 latest opensource tools and cloud native
                                 projects that I come across <br />
                             </p>
-                            <CustomButton href="https://dev.to/theforeverlost">
+                            <CustomButton href="https://dev.to/alanpjohn">
                                 Check out dev.to
                             </CustomButton>
                         </div>

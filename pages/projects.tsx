@@ -40,7 +40,7 @@ const Blog: NextPage<Props> = ({ projects }: Props) => {
                                 academic purposes. You can check out more at my
                                 Github Profile. <br />
                             </p>
-                            <CustomButton href="https://dev.to/theforeverlost">
+                            <CustomButton href="https://dev.to/alanpjohn">
                                 Check out Github
                             </CustomButton>
                         </div>
