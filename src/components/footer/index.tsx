@@ -1,6 +1,6 @@
 import { CustomLink } from "@components/link";
 
-import { socialLinks } from "@util/config";
+import { socialLinks } from "@util/internalLinks";
 
 import pjson from "package.json";
 

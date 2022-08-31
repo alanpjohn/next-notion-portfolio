@@ -1,7 +1,7 @@
 import { DarkModeToggle } from "@components/darktoggle";
 import { CustomLink } from "@components/link";
 
-import { internalLinks } from "@util/config";
+import { internalLinks } from "@util/internalLinks";
 
 export const Header: React.FC = () => {
     return (
@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
                 <div className="p-1 flex flex-row justify-center items-center">
                     {internalLinks.map((link) => (
                         <CustomLink
-                            className="hover:text-orange dark:hover:text-purple mx-2 uppercase font-display text-lg font-medium"
+                            className="hover:text-orange dark:hover:text-purple mx-2 uppercase font-display text-sm sm:text-lg font-medium"
                             key={link.text}
                             href={link.url.toString()}
                         >

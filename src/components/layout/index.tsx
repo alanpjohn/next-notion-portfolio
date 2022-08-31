@@ -18,13 +18,13 @@ export const Layout: React.FC<Props> = ({ children }: Props) => {
         <div className="flex w-full flex-col min-h-screen">
             <DefaultSeo
                 titleTemplate="%s - Alan John"
-                description="Hi, I am Alan, A twenty-two year old software engineer currently working at HSBC. Based in Shillong"
+                description="Hi, I am Alan, A twenty-three year old software engineer currently pursuing his MSC Advanced Computer Science from the University of Manchester"
                 openGraph={{
                     type: "website",
                     locale: "en_IE",
                     url: url,
                     description:
-                        "Hi, I am Alan, A twenty-two year old software engineer currently working at HSBC. Based in Shillong",
+                        "Hi, I am Alan, A twenty-three year old software engineer currently pursuing his MSC Advanced Computer Science from the University of Manchester",
                     site_name: "Alan John",
                     images: [
                         {

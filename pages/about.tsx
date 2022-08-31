@@ -4,7 +4,8 @@ import { Layout } from "@components/layout";
 import { CustomLink } from "@components/link";
 import { Section } from "@components/section";
 
-import { domain, socialLinks } from "@util/config";
+import { domain } from "@util/config";
+import { socialLinks } from "@util/internalLinks";
 import { getHomepage } from "@util/notion";
 import { getPreviewImage } from "@util/preview-image";
 
