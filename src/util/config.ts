@@ -19,7 +19,7 @@ export function getEnv(
 export const apiBaseUrl = `/api`;
 
 export const api = {
-    getSocialImage: `${apiBaseUrl}/og-image`,
+    getSocialImage: `${apiBaseUrl}/og`,
     getPreviewHTML: `${apiBaseUrl}/preview-html`,
 };
 
