@@ -1,4 +1,4 @@
-import { analyticsEnabled } from "@util/config";
+import { analyticsEnabled, getEnv, isDev } from "@util/config";
 import { pageview } from "@util/ga";
 
 import { AppProps } from "next/app";
@@ -10,9 +10,7 @@ import "react-notion-x/src/styles.css";
 import "@styles/styles.scss";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
-    const GA_MEASUREMENT_ID =
-        process.env.NODE_ENV == "production" &&
-        process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+    const GA_MEASUREMENT_ID = !isDev && getEnv("NEXT_PUBLIC_GOOGLE_ANALYTICS");
 
     useEffect(() => {
         const handleRouteChange = (url: URL) => {

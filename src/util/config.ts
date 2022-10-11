@@ -42,9 +42,7 @@ export const redisNamespace: string | null = getEnv(
 
 export const domain = getEnv(
     "DOMAIN",
-    process.env.NODE_ENV == "development"
-        ? "http://localhost:3000"
-        : "https://alanjohn.dev",
+    isDev ? "http://localhost:3000" : "https://alanjohn.dev",
 );
 
 export const analyticsEnabled = getEnv("ANALYTICS_ENABLED", "");

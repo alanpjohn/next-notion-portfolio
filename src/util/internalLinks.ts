@@ -1,6 +1,12 @@
 import { FaCameraRetro } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
-import { SiDevdotto, SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
+import {
+    SiDevdotto,
+    SiGithub,
+    SiGmail,
+    SiLinkedin,
+    SiTwitter,
+} from "react-icons/si";
 
 export type TLink = {
     text: string;
@@ -52,5 +58,10 @@ export const socialLinks: TLink[] = [
         Icon: SiGmail,
         text: "Gmail",
         url: "mailto:alansandra2013@gmail.com",
+    },
+    {
+        Icon: SiTwitter,
+        text: "Twitter",
+        url: "https://twitter.com/alanpjohn",
     },
 ];

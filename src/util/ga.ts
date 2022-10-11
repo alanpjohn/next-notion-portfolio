@@ -1,14 +1,10 @@
-import { analyticsEnabled } from "./config";
+import { analyticsEnabled, getEnv } from "./config";
 
 export const pageview = (url: URL): void => {
     if (analyticsEnabled) {
-        window.gtag(
-            "config",
-            process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS as string,
-            {
-                page_path: url,
-            },
-        );
+        window.gtag("config", getEnv("NEXT_PUBLIC_GOOGLE_ANALYTICS"), {
+            page_path: url,
+        });
     }
 };
 

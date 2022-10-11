@@ -70,7 +70,7 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                 authorName={{
                     "@type": "person",
                     name: "Alan John",
-                    url: "https://www.linkedin.com/in/alan-john-b2b521193",
+                    url: "https://alanjohn.dev",
                 }}
                 description={truncated}
             />

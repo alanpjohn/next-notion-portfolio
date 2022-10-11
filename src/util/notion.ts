@@ -1,5 +1,5 @@
 import { getBookmarks } from "./bookmark-support";
-import { isDev } from "./config";
+import { getEnv, isDev } from "./config";
 import { BlogArticle, Project } from "./interface";
 import { getPreviewImageMap } from "./preview-image";
 import { db } from "./redis";
@@ -17,7 +17,7 @@ import {
 import { NotionCompatAPI } from "notion-compat";
 import { ExtendedRecordMap } from "notion-types";
 
-const notion_client = new Client({ auth: process.env.NOTION_KEY });
+const notion_client = new Client({ auth: getEnv("NOTION_KEY") });
 export const notion = new NotionCompatAPI(notion_client);
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
@@ -32,13 +32,13 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
 }
 
 export async function getHomepage(): Promise<ExtendedRecordMap> {
-    const pageId = process.env.NOTION_SKILLS_PAGE_ID || "";
+    const pageId = getEnv("NOTION_SKILLS_PAGE_ID");
     const response = await getPage(pageId);
     return response;
 }
 
 export async function getBlogPosts(): Promise<BlogArticle[]> {
-    const databaseId = process.env.NOTION_BLOG_DATABASE_ID || "";
+    const databaseId = getEnv("NOTION_BLOG_DATABASE_ID");
     const response: QueryDatabaseResponse = await notion_client.databases.query(
         {
             database_id: databaseId,
@@ -85,7 +85,7 @@ export async function getBlogArticleByCanonical(
 }
 
 export async function getProjects(): Promise<Array<Project>> {
-    const databaseId = process.env.NOTION_PROJECT_DATABASE_ID || "";
+    const databaseId = getEnv("NOTION_PROJECT_DATABASE_ID");
     const response: QueryDatabaseResponse = await notion_client.databases.query(
         {
             database_id: databaseId,

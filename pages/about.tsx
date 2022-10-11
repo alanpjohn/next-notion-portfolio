@@ -42,8 +42,8 @@ const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
                     blurDataURL={preview.dataURIBase64}
                 />
                 <div className="flex mx-auto flex-col my-2 items-center">
-                    <div className="grid grid-flow-row grid-cols-5 gap-2 max-w-sm mx-auto">
-                        {socialLinks.slice(0, 5).map(({ Icon, url }) => (
+                    <div className="grid grid-flow-row grid-cols-6 gap-2 max-w-sm mx-auto">
+                        {socialLinks.slice(0, 6).map(({ Icon, url }) => (
                             <CustomLink
                                 target="_blank"
                                 rel="noopener noreferrer nofollow"
