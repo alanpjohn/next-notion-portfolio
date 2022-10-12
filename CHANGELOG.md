@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - Date
+### Added
+- Added [@vercel/og](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) for effecient social preview image generation instead of using `chrome-aws-lambda` and `puppeteer-core`
+### Changed
+- Bumps [notion-compat](https://github.com/NotionX/react-notion-x) from 6.12.10 to 6.13.11.
+- Bumps [react-notion-x](https://github.com/NotionX/react-notion-x) from 6.12.10 to 6.13.10.
+- Bumps [next](https://github.com/vercel/next.js) from 12.2.5 to 12.3.1.
+### Removed
+- Removed [chrome-aws-lambda](https://github.com/alixaxel/chrome-aws-lambda)
+- Removed [puppeteer-core](https://github.com/puppeteer/puppeteer)
+
 ## [2.1.0] - 2022-08-30
 ### Changed
 - Bumps [next](https://github.com/vercel/next.js) from 12.2.1 to 12.2.5.
