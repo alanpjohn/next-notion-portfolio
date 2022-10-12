@@ -46,3 +46,6 @@ export const domain = getEnv(
 );
 
 export const analyticsEnabled = getEnv("ANALYTICS_ENABLED", "");
+
+export const seoDescription =
+    "Hi, I am Alan, A twenty-three year old software engineer currently pursuing his MSC Advanced Computer Science from the University of Manchester";
