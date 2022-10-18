@@ -90,7 +90,7 @@ export default async function handler(req: NextRequest) {
                                 {title}
                             </div>
                             <div tw="flex text-9xl text-stone-50 pl-36 pr-12 my-8">
-                                Alan{" "}John
+                                Alan John
                             </div>
                             <div tw="flex text-emerald-500 text-2xl pl-36 pr-36">
                                 {description}
