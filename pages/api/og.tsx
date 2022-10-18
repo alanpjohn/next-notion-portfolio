@@ -86,13 +86,13 @@ export default async function handler(req: NextRequest) {
                         </div>
                     ) : (
                         <div tw="flex flex-col px-20">
-                            <div tw="flex text-3xl text-emerald-500 px-8">
-                                2022
-                            </div>
-                            <div tw="flex text-9xl text-stone-50 px-10 my-4">
+                            <div tw="flex text-3xl text-emerald-500 px-28">
                                 {title}
                             </div>
-                            <div tw="flex text-emerald-500 text-2xl px-24 pt-4">
+                            <div tw="flex text-9xl text-stone-50 pl-36 pr-12 my-8">
+                                Alan{" "}John
+                            </div>
+                            <div tw="flex text-emerald-500 text-2xl pl-36 pr-36">
                                 {description}
                             </div>
                         </div>
