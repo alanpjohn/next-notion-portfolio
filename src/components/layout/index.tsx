@@ -27,11 +27,11 @@ export const Layout: React.FC<Props> = ({ children }: Props) => {
                     site_name: "Alan John",
                     images: [
                         {
-                            url: `${domain}/images/social_media_preview.png`,
+                            url: `${domain}/api/og`,
                             width: 1200,
                             height: 628,
                             alt: "My Portfolio Preview",
-                            type: `${domain}/api/og`,
+                            type: `image/png`,
                         },
                     ],
                 }}
