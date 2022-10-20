@@ -13,8 +13,8 @@ export const Footer: React.FC = () => {
             >
                 AJ
             </CustomLink>
-            <div className="grid grid-flow-row grid-cols-5 max-w-sm mx-auto">
-                {socialLinks.slice(0, 5).map(({ Icon, url }) => (
+            <div className="grid grid-flow-row grid-cols-6 max-w-sm mx-auto">
+                {socialLinks.slice(0, 6).map(({ Icon, url }) => (
                     <CustomLink
                         target="_blank"
                         rel="noopener noreferrer nofollow"

@@ -3,6 +3,7 @@ import { ProjectCard } from "@components/card";
 import { Layout } from "@components/layout";
 import { Section } from "@components/section";
 
+import { domain } from "@util/config";
 import { Project } from "@util/interface";
 import { getProjects } from "@util/notion";
 
@@ -13,11 +14,15 @@ type Props = {
     projects: Project[];
 };
 
+const projectsDesc =
+    "Here are some of my favourite projects that I have made for either personal, competition or academic purposes.";
+
 const Blog: NextPage<Props> = ({ projects }: Props) => {
     return (
         <Layout>
             <NextSeo
                 title="Projects"
+                description={projectsDesc}
                 additionalMetaTags={[
                     {
                         property: "keywords",
@@ -25,6 +30,17 @@ const Blog: NextPage<Props> = ({ projects }: Props) => {
                             "Alan, John, Software Developer, Sofware Engineer, Developer, Portfolio, Devops, Cloud Native",
                     },
                 ]}
+                openGraph={{
+                    images: [
+                        {
+                            url: `${domain}/api/og?title=${"Projects"}&description=${projectsDesc}`,
+                            width: 1200,
+                            height: 628,
+                            alt: "My Portfolio Preview",
+                            type: `image/png`,
+                        },
+                    ],
+                }}
             />
 
             <Section className="pt-16 md:pt-24 flex-grow">

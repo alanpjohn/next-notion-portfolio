@@ -19,7 +19,7 @@ export function getEnv(
 export const apiBaseUrl = `/api`;
 
 export const api = {
-    getSocialImage: `${apiBaseUrl}/og-image`,
+    getSocialImage: `${apiBaseUrl}/og`,
     getPreviewHTML: `${apiBaseUrl}/preview-html`,
 };
 
@@ -42,9 +42,10 @@ export const redisNamespace: string | null = getEnv(
 
 export const domain = getEnv(
     "DOMAIN",
-    process.env.NODE_ENV == "development"
-        ? "http://localhost:3000"
-        : "https://alanjohn.dev",
+    isDev ? "http://localhost:3000" : "https://alanjohn.dev",
 );
 
 export const analyticsEnabled = getEnv("ANALYTICS_ENABLED", "");
+
+export const seoDescription =
+    "Hi, I am Alan, A twenty-three year old software engineer currently pursuing his MSC Advanced Computer Science from the University of Manchester";

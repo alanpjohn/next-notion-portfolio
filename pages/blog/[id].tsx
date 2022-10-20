@@ -29,7 +29,11 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
         post.description.length > 110
             ? post.description.substring(0, 110)
             : post.description;
-    const socialimageurl = getSocialImageUrl(post.id);
+    const socialimageurl = getSocialImageUrl(
+        post.title,
+        post.tags.map((tag) => tag.name),
+        post.publishDate || post.modifiedDate,
+    );
     const url = domain + "/blog/" + post.url;
     return (
         <NotionPage recordMap={recordMap}>
@@ -70,7 +74,7 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                 authorName={{
                     "@type": "person",
                     name: "Alan John",
-                    url: "https://www.linkedin.com/in/alan-john-b2b521193",
+                    url: "https://alanjohn.dev",
                 }}
                 description={truncated}
             />
