@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.1] - 2022-11-16
+### Changed
+- Bumps [react-modal](https://github.com/reactjs/react-modal) from 3.15.1 to 3.16.1.
+- Bumps [loader-utils](https://github.com/webpack/loader-utils) from 2.0.2 to 2.0.4 ([CVE-2022-37601](https://github.com/advisories/GHSA-76p3-8jx3-jpfq))
+
 ## [2.2.0] - 2022-10-20
 ### Added
 - Added [@vercel/og](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) for effecient social preview image generation instead of using `chrome-aws-lambda` and `puppeteer-core`
