@@ -4,8 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.2.1] - 2022-11-24
+## [2.2.1] - 2022-12-07
 ### Changed
+- Bumps [react-notion-x](https://github.com/NotionX/react-notion-x) from 6.13.10 to 6.15.7.
 - Bumps [react-remove-scroll-bar](https://github.com/theKashey/react-remove-scroll-bar) from 2.3.3 to 2.3.4.
 - Bumps [react-modal](https://github.com/reactjs/react-modal) from 3.15.1 to 3.16.1.
 - Bumps [loader-utils](https://github.com/webpack/loader-utils) from 2.0.2 to 2.0.4 ([CVE-2022-37601](https://github.com/advisories/GHSA-76p3-8jx3-jpfq))
