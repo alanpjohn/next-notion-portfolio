@@ -1,6 +1,6 @@
 {
     "name": "next-notion-portfolio",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "private": true,
     "scripts": {
         "dev": "next dev",
@@ -30,7 +30,7 @@
         "prismjs": "^1.27.0",
         "react": "^18.0.0",
         "react-dom": "^18.2.0",
-        "react-notion-x": "^6.13.10",
+        "react-notion-x": "^6.15.7",
         "sass": "^1.32.5",
         "sharp": "^0.30.5"
     },
@@ -54,7 +54,7 @@
         "postcss": "^8.2.4",
         "prettier": "^2.5.1",
         "prettier-plugin-tailwindcss": "^0.1.4",
-        "react-icons": "^4.6.0",
+        "react-icons": "^4.7.1",
         "stylelint": "^14.3.0",
         "stylelint-config-prettier-scss": "^0.0.1",
         "stylelint-config-standard-scss": "^3.0.0",
