@@ -44,13 +44,13 @@ const Blog: NextPage<Props> = ({ projects }: Props) => {
             />
 
             <Section className="pt-16 md:pt-24 flex-grow">
-                <div className="my-20 flex flex-col lg:flex-row container">
-                    <div className="flex flex-col px-8 lg:basis-1/3">
-                        <h1 className="font-display text-4xl md:text-6xl font-light">
+                <div className="my-20 flex flex-col mx-auto">
+                    <div className="flex flex-col px-8 lg:w-2/3 mx-auto mb-4">
+                        <h1 className="font-sans text-5xl xl:text-7xl font-light">
                             Projects
                         </h1>
                         <div className="my-4">
-                            <p className="md:text-2xl my-4">
+                            <p className="md:text-2xl my-4 max-w-2xl">
                                 Here are some of my favourite projects that I
                                 have made for either personal, competition or
                                 academic purposes. You can check out more at my
@@ -61,7 +61,7 @@ const Blog: NextPage<Props> = ({ projects }: Props) => {
                             </CustomButton>
                         </div>
                     </div>
-                    <div className="lg:basis-2/3 flex flex-col">
+                    <div className="flex flex-col mx-auto px-8 max-w-7xl">
                         {projects.map((post: Project) => (
                             <ProjectCard key={post.id} {...post} />
                         ))}

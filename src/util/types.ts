@@ -72,6 +72,14 @@ export const extractBlogPost = (
     };
 };
 
+type PropertyCover = {
+    type: "file";
+    file: {
+        url: string;
+        expiry_time: string;
+    };
+};
+
 export type ProjectInDB = PostResult & {
     properties: {
         Title: PropertyValueTitle;
@@ -81,6 +89,7 @@ export type ProjectInDB = PostResult & {
         Link: PropertyValueUrl;
         LastUpdated: PropertyValueDate;
     };
+    cover?: PropertyCover;
 };
 
 export const extractProject = (projectInDB: ProjectInDB): Project => {
@@ -101,6 +110,7 @@ export const extractProject = (projectInDB: ProjectInDB): Project => {
     const lastUpdated = projectInDB.properties.LastUpdated.date
         ? formatDate(projectInDB.properties.LastUpdated.date.start)
         : undefined;
+    const cover = projectInDB.cover ? projectInDB.cover.file.url : null;
     return {
         id: id,
         title: title,
@@ -110,5 +120,6 @@ export const extractProject = (projectInDB: ProjectInDB): Project => {
         link: link,
         tags: tags,
         lastUpdated: lastUpdated,
+        cover: cover,
     };
 };

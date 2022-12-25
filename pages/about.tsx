@@ -19,7 +19,7 @@ type Props = {
     preview: PreviewImage;
 };
 
-const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
+const About: NextPage<Props> = ({ recordMap, preview }: Props) => {
     return (
         <Layout>
             <NextSeo
@@ -51,7 +51,7 @@ const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
                                 href={url}
                                 className="p-2"
                             >
-                                <Icon className="text-3xl hover:text-orange dark:hover:text-purple" />
+                                <Icon className="text-3xl hover:text-accent-primary dark:hover:text-accent-secondary" />
                             </CustomLink>
                         ))}
                     </div>
@@ -88,4 +88,4 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     };
 };
 
-export default Home;
+export default About;

@@ -79,11 +79,11 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                 description={truncated}
             />
             <span className="flex font-normal">{post.title}</span>
-            <span className="flex text-base font-display mt-4">
+            <span className="flex text-base font-sans mt-4">
                 Published on {post.publishDate || post.modifiedDate}
             </span>
             {post.publishDate != post.modifiedDate && (
-                <span className="flex text-base font-display">
+                <span className="flex text-base font-sans">
                     Updated on {post.modifiedDate}
                 </span>
             )}

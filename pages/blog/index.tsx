@@ -29,11 +29,11 @@ const Blog: NextPage<Props> = ({ posts }: Props) => {
             <Section className="pt-16 md:pt-24 flex-grow">
                 <div className="my-20 flex flex-col lg:flex-row container">
                     <div className="flex flex-col px-8 lg:basis-1/3">
-                        <h1 className="font-display text-4xl md:text-6xl font-light">
+                        <h1 className="font-sans text-5xl xl:text-7xl font-light">
                             My Blog
                         </h1>
                         <div className="my-4">
-                            <p className="md:text-2xl my-4">
+                            <p className="md:text-2xl my-4 max-w-2xl">
                                 Sharing ideas, theoretical topics, case studies,
                                 latest opensource tools and cloud native
                                 projects that I come across <br />

@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
                 <div className="flex-grow py-2 px-10 flex flex-row justify-between items-center">
                     <CustomLink
                         href="/"
-                        className="font-rubik text-3xl font-semibold"
+                        className="font-rubik text-3xl font-medium"
                     >
                         AJ
                     </CustomLink>
@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
                 <div className="p-1 flex flex-row justify-center items-center">
                     {internalLinks.map((link) => (
                         <CustomLink
-                            className="hover:text-orange dark:hover:text-purple mx-2 uppercase font-display text-sm sm:text-lg font-medium"
+                            className="hover:text-accent dark:hover:text-accent-secondary mx-2 uppercase font-mono text-sm sm:text-lg font-medium"
                             key={link.text}
                             href={link.url.toString()}
                         >

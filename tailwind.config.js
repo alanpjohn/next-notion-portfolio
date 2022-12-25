@@ -9,19 +9,27 @@ module.exports = {
         extend: {
             colors: {
                 codeblock: "#22272e",
-                eerie: "#16161A",
-                jet: "#2a2a2a",
-                purple: "#7f5af0",
-                mint: "#2cb67d",
-                orange: "#ff8e3c",
-                razzmatazz: "#f25f4c",
-                cultured: "#b9beca",
-                white: "#fffffe",
+                foreground: {
+                    DEFAULT: "#F0EDE6",
+                    primary: "#F0EDE6",
+                    secondary: "#DAD7D2",
+                },
+                background: {
+                    DEFAULT: "#242526",
+                    secondary: "#0D0E10",
+                    primary: "#242526",
+                },
+                accent: {
+                    DEFAULT: "#7f5af0",
+                    alternate: "#2cb67d",
+                    secondary: "#f25f4c",
+                    primary: "#7f5af0",
+                },
             },
             fontFamily: {
                 ...fontFamily,
-                display: ["clash-display", "system-ui"],
-                sans: ["uncut-sans", "system-ui"],
+                sans: ["Space Grotesk", "sans-serif"],
+                mono: ["Space Mono", "monospace"],
                 rubik: ["Rubik", "san-serif", "system-ui"],
             },
             minWidth: {
