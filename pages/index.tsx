@@ -57,7 +57,7 @@ const Home: NextPage<Props> = ({ preview }: Props) => {
                         title={"about"}
                         subtitle={"There is more to him"}
                         description={
-                            "Considering this page does not have much on him"
+                            "Considering this page does not have much about him"
                         }
                     />
                     <HomeButton

@@ -35,7 +35,8 @@ const About: NextPage<Props> = ({ recordMap, preview }: Props) => {
             <Section className="notion-page pt-32 md:pt-24 items-center">
                 <CustomImage
                     alt="Alan John"
-                    src="/images/home_light.png"
+                    className="rounded-full"
+                    src="/images/About.jpg"
                     height={preview.originalHeight}
                     width={preview.originalWidth}
                     placeholder="blur"
@@ -75,7 +76,7 @@ const About: NextPage<Props> = ({ recordMap, preview }: Props) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const recordMap = await getHomepage();
-    const preview = await getPreviewImage(domain + "/images/home_light.png", {
+    const preview = await getPreviewImage(domain + "/images/About.jpg", {
         cacheKey: "about",
     });
 

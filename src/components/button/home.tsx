@@ -27,7 +27,7 @@ export const HomeButton: React.FC<HomeButtonProps> = ({
                 href={href.toString()}
                 className="flex flex-row h-full text-background-primary bg-accent-alternate
                 group-hover:bg-accent-primary dark:group-hover:bg-accent-secondary
-                transition-transform duration-300
+                transition-transform duration-300 border-background-secondary border-2
             "
             >
                 <div className="flex">
