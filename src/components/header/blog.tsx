@@ -10,7 +10,7 @@ export const NotionHeader: React.FC = () => {
                 <div className="notion-nav-header-rhs">
                     <CustomLink
                         href="/blog"
-                        className="font-display text-xl font-normal flex flex-row items-center hover:text-orange dark:hover:text-mint"
+                        className="font-sans text-xl font-normal flex flex-row items-center hover:text-accent dark:hover:text-accent-secondary"
                     >
                         <BsArrowLeftCircle className="mx-2" /> Explore Blog
                     </CustomLink>

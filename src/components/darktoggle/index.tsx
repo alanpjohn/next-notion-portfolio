@@ -39,7 +39,7 @@ export const DarkModeToggle: React.FC<darkprops> = ({
 
     return (
         <div
-            className={`text-2xl hover:text-orange dark:hover:text-purple sm:text-3xl cursor-pointer ${className}`}
+            className={`text-2xl hover:text-accent-primary dark:hover:text-accent-secondary sm:text-3xl cursor-pointer ${className}`}
             onClick={() => toggleMode()}
             key={isDarkMode ? "dark-icon" : "light-icon"}
         >

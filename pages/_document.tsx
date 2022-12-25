@@ -31,15 +31,8 @@ class CustomDocument extends Document {
                         crossOrigin=""
                     />
                     <link
-                        href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap"
+                        href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&family=Space+Grotesk:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap"
                         rel="stylesheet"
-                    />
-                    <link
-                        rel="preload"
-                        href="/fonts/ClashDisplay/ClashDisplay-Variable.woff2"
-                        as="font"
-                        type="font/woff2"
-                        crossOrigin=""
                     />
                 </Head>
                 <body>

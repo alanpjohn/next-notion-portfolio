@@ -1,3 +1,5 @@
+import { PreviewImage } from "notion-types";
+
 export interface ITag {
     id: string;
     name: string;
@@ -25,4 +27,6 @@ export interface Project {
     description: string;
     link: string;
     lastUpdated: string;
+    cover?: string;
+    coverPreview?: PreviewImage;
 }

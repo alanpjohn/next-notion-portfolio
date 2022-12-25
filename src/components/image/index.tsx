@@ -11,6 +11,7 @@ export const CustomImage: React.FC<CustomImageProps> = ({
     priority,
     width,
     height,
+    className = "",
     onLoad,
 }: CustomImageProps) => {
     return (
@@ -22,6 +23,7 @@ export const CustomImage: React.FC<CustomImageProps> = ({
             blurDataURL={blurDataURL}
             placeholder="blur"
             priority={priority}
+            className={className}
             onLoad={onLoad}
         />
     );
