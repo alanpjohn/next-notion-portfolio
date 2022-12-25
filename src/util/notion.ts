@@ -1,7 +1,7 @@
 import { getBookmarks } from "./bookmark-support";
 import { getEnv, isDev } from "./config";
 import { BlogArticle, Project } from "./interface";
-import { getPreviewImageMap } from "./preview-image";
+import { getPreviewImage, getPreviewImageMap } from "./preview-image";
 import { db } from "./redis";
 import {
     BlogArticleInDB,
@@ -103,8 +103,21 @@ export async function getProjects(): Promise<Array<Project>> {
             ],
         },
     );
-    const projects: Project[] = response.results
-        .map((item) => item as ProjectInDB)
-        .map((projectInDB) => extractProject(projectInDB));
+    const projects: Project[] = await Promise.all(
+        response.results
+            .map((item) => item as ProjectInDB)
+            .map((projectInDB) => extractProject(projectInDB))
+            .map(async (projectInDB) => {
+                if (projectInDB.cover) {
+                    projectInDB.coverPreview = await getPreviewImage(
+                        projectInDB.cover,
+                        {
+                            cacheKey: projectInDB.id,
+                        },
+                    );
+                }
+                return projectInDB;
+            }),
+    );
     return projects;
 }

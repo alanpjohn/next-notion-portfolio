@@ -3,50 +3,34 @@
 @tailwind utilities;
 
 :root {
-    --fg-color: theme(colors.eerie);
-    --fg-color-secondary: theme(colors.jet);
-    --bg-color: theme(colors.white);
-    --bg-color-secondary: theme(colors.cultured);
-    --select-color-0: theme(colors.razzmatazz);
-    --select-color-1: theme(colors.orange);
+    --fg-color: theme(colors.foreground.primary);
+    --fg-color-secondary: theme(colors.foreground.secondary);
+    --bg-color: theme(colors.background.primary);
+    --bg-color-secondary: theme(colors.background.secondary);
+    --select-color-0: theme(colors.accent.primary);
+    --select-color-1: theme(colors.accent.alternate);
 }
 
 .dark-mode {
-    --fg-color: theme(colors.white);
-    --fg-color-secondary: theme(colors.cultured);
-    --bg-color: theme(colors.eerie);
-    --bg-color-secondary: theme(colors.jet);
-    --select-color-0: theme(colors.purple);
-    --select-color-1: theme(colors.mint);
-}
-
-@font-face {
-    font-family: "clash-display";
-    src: url("/fonts/ClashDisplay/ClashDisplay-Variable.woff2") format("woff2");
-    font-weight: 200 700;
-    font-display: swap;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "uncut-sans";
-    src: url("/fonts/Uncut-Sans/Uncut-Sans-VF.woff2") format("woff2");
-    font-weight: 400 700;
-    font-display: swap;
-    font-style: normal;
+    --fg-color: theme(colors.background.primary);
+    --fg-color-secondary: theme(colors.background.secondary);
+    --bg-color: theme(colors.foreground.primary);
+    --bg-color-secondary: theme(colors.foreground.secondary);
+    --select-color-0: theme(colors.accent.secondary);
+    --select-color-1: theme(colors.accent.alternate);
 }
 
 @layer base {
     html,
     body {
         --notion-font: theme(fontFamily.sans);
-        @apply scroll-smooth bg-white text-eerie dark:bg-eerie dark:text-white;
+        @apply scroll-smooth bg-background-primary text-foreground-secondary dark:bg-foreground-primary dark:text-background-secondary;
     }
 
     p,
     li,
     .notion-text {
-        @apply font-sans text-lg text-jet dark:text-cultured md:text-lg;
+        @apply font-sans text-lg text-foreground-secondary dark:text-background-secondary md:text-lg;
     }
 
     h1,
@@ -57,12 +41,12 @@
     h6,
     .notion-h,
     .notion-toggle > summary {
-        @apply font-display font-normal text-eerie dark:text-white;
+        @apply font-sans font-normal text-foreground-secondary dark:text-background-secondary;
     }
 
     button,
     aside {
-        @apply font-display;
+        @apply font-mono;
     }
 
     #__next > div > main {
@@ -71,17 +55,9 @@
 }
 
 @layer components {
-    .border-primary {
-        @apply border-jet dark:border-cultured;
-    }
-
-    .border-secondary {
-        @apply border-cultured dark:border-jet;
-    }
-
     .header {
         @apply fixed top-0 z-50 p-3;
-        @apply w-full bg-white dark:bg-eerie;
+        @apply w-full bg-background-primary dark:bg-foreground-primary;
     }
 
     .footer {
@@ -89,61 +65,23 @@
         @apply flex flex-col items-center justify-evenly px-8 py-2 md:flex-row;
     }
 
-    .card {
-        @apply border-primary mx-2 min-w-xs border-2 shadow-md shadow-jet dark:shadow-none;
-    }
-
-    .card__nav {
-        @apply flex flex-row justify-between p-2 font-display text-sm font-medium;
-        @apply border-primary mb-1 border-b-2;
-        @apply bg-orange dark:bg-mint dark:text-jet;
-        @apply group-hover:bg-razzmatazz dark:group-hover:bg-purple;
-    }
-
     .button-default {
         @apply z-0 m-2 flex h-12 w-min cursor-pointer justify-center whitespace-nowrap rounded-md px-8 py-2.5 font-medium uppercase;
-        @apply border-2 border-jet text-jet;
-        @apply dark:text-eerie;
-        @apply bg-orange hover:bg-razzmatazz dark:bg-mint dark:hover:bg-purple;
-    }
-
-    .button-retro {
-        @apply flex flex-row items-center justify-start text-2xl lg:text-3xl;
-        @apply bg-orange text-eerie dark:bg-mint;
-        @apply shadow-sm shadow-gray-600;
-        @apply border-2 border-jet dark:border-none lg:border-0;
-        @apply p-4 hover:bg-razzmatazz dark:hover:bg-purple;
+        @apply border-2 border-background-secondary text-background-secondary;
+        @apply dark:text-background-primary;
+        @apply bg-accent-primary hover:bg-accent-alternate dark:bg-accent-secondary dark:hover:hover:bg-accent-alternate;
     }
 
     .button-round {
-        @apply mr-2 flex h-8 flex-row items-center text-2xl md:text-4xl;
-        @apply group-hover:-rotate-45 group-hover:text-razzmatazz  dark:group-hover:text-purple;
+        @apply mr-2 flex h-8 flex-row items-center self-center text-3xl md:text-4xl;
+        @apply group-hover:-rotate-45 group-hover:text-accent-primary  dark:group-hover:text-accent-secondary;
         @apply transition-transform duration-300;
     }
+}
 
-    #spinner g path {
-        @apply fill-jet dark:fill-white;
-    }
-
-    #spinner g circle {
-        @apply fill-orange dark:fill-purple;
-    }
-
-    #spinner {
-        animation-name: spin;
-        animation-duration: 10000ms;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-    }
-
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
+.vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
 }
 
 .notion-page-content-has-aside {
@@ -182,7 +120,7 @@
 
 .notion-table-of-contents-item {
     font-size: 16px;
-    font-family: "clash-display", "system-ui";
+    font-family: "Space Mono", "system-ui";
     font-weight: 500;
 }
 
@@ -192,6 +130,7 @@
     transition: unset;
     opacity: 1;
     border-bottom-width: 0.1rem;
+    border-bottom-style: dotted;
     background: transparent;
     background-origin: border-box;
     background-repeat: no-repeat;
@@ -205,7 +144,7 @@
         background-image: linear-gradient(
             90.68deg,
             var(--select-color-0) 0.26%,
-            var(--select-color-1) 102.37%
+            var(--select-color-0) 102.37%
         );
         background-repeat: no-repeat;
         background-position: 0 100%;
@@ -230,13 +169,15 @@
 }
 
 .notion-bookmark {
+    padding: 1em;
+
     .notion-bookmark-link {
         font-family: monospace;
     }
 
     .notion-bookmark-title {
         font-weight: 500;
-        font-family: clash-display, system-ui;
+        font-family: "Space Mono", system-ui;
         font-size: 1em;
     }
 
@@ -246,7 +187,7 @@
         background-image: linear-gradient(
             90.68deg,
             var(--select-color-0) 0.26%,
-            var(--select-color-1) 102.37%
+            var(--select-color-0) 102.37%
         );
         background-repeat: no-repeat;
 

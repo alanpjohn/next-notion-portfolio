@@ -19,7 +19,7 @@ type Props = {
     preview: PreviewImage;
 };
 
-const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
+const About: NextPage<Props> = ({ recordMap, preview }: Props) => {
     return (
         <Layout>
             <NextSeo
@@ -35,7 +35,8 @@ const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
             <Section className="notion-page pt-32 md:pt-24 items-center">
                 <CustomImage
                     alt="Alan John"
-                    src="/images/home_light.png"
+                    className="rounded-full"
+                    src="/images/About.jpg"
                     height={preview.originalHeight}
                     width={preview.originalWidth}
                     placeholder="blur"
@@ -51,7 +52,7 @@ const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
                                 href={url}
                                 className="p-2"
                             >
-                                <Icon className="text-3xl hover:text-orange dark:hover:text-purple" />
+                                <Icon className="text-3xl hover:text-accent-primary dark:hover:text-accent-secondary" />
                             </CustomLink>
                         ))}
                     </div>
@@ -75,7 +76,7 @@ const Home: NextPage<Props> = ({ recordMap, preview }: Props) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const recordMap = await getHomepage();
-    const preview = await getPreviewImage(domain + "/images/home_light.png", {
+    const preview = await getPreviewImage(domain + "/images/About.jpg", {
         cacheKey: "about",
     });
 
@@ -88,4 +89,4 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     };
 };
 
-export default Home;
+export default About;

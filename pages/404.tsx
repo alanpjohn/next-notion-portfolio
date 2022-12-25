@@ -9,8 +9,8 @@ const PageNotFound404: NextPage = () => {
         <Layout>
             <Section className="flex-grow">
                 <div className="py-8 my-auto mx-4 flex flex-col items-center justify-evenly">
-                    <span className="font-display text-9xl">404</span>
-                    <span className="font-display my-4 text-xl">
+                    <span className="font-sans text-9xl">404</span>
+                    <span className="font-sans my-4 text-xl">
                         You seemed to have lost your way
                     </span>
                     <CustomButton href={"/"}>Take me home</CustomButton>
