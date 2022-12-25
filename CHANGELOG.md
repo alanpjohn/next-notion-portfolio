@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Added
 - Added support project cover image
 ## Changed
+- Bumps [notion-compat](https://github.com/NotionX/react-notion-x) from 6.13.11 to 6.15.6.
 - Changes Layout for home page and projects page.
 - Changes Color theme.
 - Changes Fonts to Space Grotesk and Space Mono.
