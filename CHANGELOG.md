@@ -4,16 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2022-27-12
+### Changed
+- Fixes [Next Image 502_BAD_GATEWAY error](https://github.com/vercel/next.js/issues/42776) for Project images.
+
 ## [3.0.0] - 2022-26-12
-## Added
+### Added
 - Added support project cover image
-## Changed
+### Changed
 - Bumps [notion-compat](https://github.com/NotionX/react-notion-x) from 6.13.11 to 6.15.6.
 - Changes Layout for home page and projects page.
 - Changes Color theme.
 - Changes Fonts to Space Grotesk and Space Mono.
 - Changed `styles.scss`
-## Removed
+### Removed
 - Removed 2022 Portfolio spinner
 
 ## [2.2.1] - 2022-12-10
