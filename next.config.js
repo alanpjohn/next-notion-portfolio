@@ -25,7 +25,6 @@ module.exports = () => {
                 "images.unsplash.com",
                 "dev-to-uploads.s3.amazonaws.com",
                 "www.notion.so",
-                "localhost",
             ],
         },
     });

@@ -1,4 +1,3 @@
-import { domain } from "./config";
 import { BlogArticle, ITag, Project } from "./interface";
 import { getCanonicalURL } from "./router";
 import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
@@ -106,7 +105,7 @@ export const extractProject = (projectInDB: ProjectInDB): Project => {
     const image = projectInDB.properties.Image.rich_text
         .map((text) => text.plain_text)
         .join(" ");
-    const cover = domain + "/images/" + image + ".png";
+    const cover = "/images/" + image + ".png";
     return {
         id: id,
         title: title,
