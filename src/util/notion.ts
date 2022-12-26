@@ -1,5 +1,5 @@
 import { getBookmarks } from "./bookmark-support";
-import { getEnv, isDev } from "./config";
+import { domain, getEnv, isDev } from "./config";
 import { BlogArticle, Project } from "./interface";
 import { getPreviewImage, getPreviewImageMap } from "./preview-image";
 import { db } from "./redis";
@@ -110,7 +110,7 @@ export async function getProjects(): Promise<Array<Project>> {
             .map(async (projectInDB) => {
                 if (projectInDB.cover) {
                     projectInDB.coverPreview = await getPreviewImage(
-                        projectInDB.cover,
+                        domain + projectInDB.cover,
                         {
                             cacheKey: projectInDB.id,
                         },

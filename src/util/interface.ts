@@ -27,6 +27,6 @@ export interface Project {
     description: string;
     link: string;
     lastUpdated: string;
-    cover?: string;
+    cover: string;
     coverPreview?: PreviewImage;
 }

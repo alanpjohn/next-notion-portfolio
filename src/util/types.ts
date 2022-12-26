@@ -72,14 +72,6 @@ export const extractBlogPost = (
     };
 };
 
-type PropertyCover = {
-    type: "file";
-    file: {
-        url: string;
-        expiry_time: string;
-    };
-};
-
 export type ProjectInDB = PostResult & {
     properties: {
         Title: PropertyValueTitle;
@@ -88,8 +80,8 @@ export type ProjectInDB = PostResult & {
         Description: PropertyValueRichText;
         Link: PropertyValueUrl;
         LastUpdated: PropertyValueDate;
+        Image: PropertyValueRichText;
     };
-    cover?: PropertyCover;
 };
 
 export const extractProject = (projectInDB: ProjectInDB): Project => {
@@ -110,7 +102,10 @@ export const extractProject = (projectInDB: ProjectInDB): Project => {
     const lastUpdated = projectInDB.properties.LastUpdated.date
         ? formatDate(projectInDB.properties.LastUpdated.date.start)
         : undefined;
-    const cover = projectInDB.cover ? projectInDB.cover.file.url : null;
+    const image = projectInDB.properties.Image.rich_text
+        .map((text) => text.plain_text)
+        .join(" ");
+    const cover = "/images/" + image + ".png";
     return {
         id: id,
         title: title,
