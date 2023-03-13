@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.0.2] - 2023-03-13
 ### Changed
 - Migrated to Next 13 from Next 12. Upgraded [next](https://github.com/vercel/next.js) from 12.3.1 to 13.2.4.
-- Mitigated CVE-2022-25881 by upgrading [http-cache-semantics] to 4.1.1.
-- Mitigated CVE-2022-46175 by upgrading [json] to 2.2.3.
+- Mitigated CVE-2022-25881 by upgrading [http-cache-semantics](https://www.npmjs.com/package/@types/http-cache-semantics) to 4.1.1.
+- Mitigated CVE-2022-46175 by upgrading [json5](https://www.npmjs.com/package/json5) to 2.2.3.
 - Removed NodeJS version 14 checks from github CI.
 - Upgraded vercel environment to Node 16.
 - Changed edge runtime for `/api/og` from `experimental-edge` to `edge`.
