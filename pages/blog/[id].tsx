@@ -1,12 +1,14 @@
 import { Tag } from "@components/card/tag";
 import { CustomLink } from "@components/link";
+import { MarkdownPage } from "@components/markdown";
 import CustomArticleJsonLd from "@components/meta";
 import { NotionPage } from "@components/notion";
 
 import { domain } from "@util/config";
 import { generateSiteMap } from "@util/generate-sitemap";
 import { getSocialImageUrl } from "@util/get-social-image";
-import { BlogArticle } from "@util/interface";
+import { BlogArticle, BlogType } from "@util/interface";
+import { getMdPostByCanonical, getMdPostContentBySlug } from "@util/markdown";
 import { getBlogArticleByCanonical, getBlogPosts, getPage } from "@util/notion";
 import { getDomainName } from "@util/router";
 
@@ -18,10 +20,11 @@ import { ParsedUrlQuery } from "querystring";
 
 type Props = {
     post: BlogArticle;
-    recordMap: ExtendedRecordMap;
+    recordMap?: ExtendedRecordMap;
+    markdown?: string;
 };
 
-const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
+const Page: NextPage<Props> = ({ post, recordMap, markdown }: Props) => {
     if (!post) {
         return <></>;
     }
@@ -35,8 +38,8 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
         post.publishDate || post.modifiedDate,
     );
     const url = domain + "/blog/" + post.url;
-    return (
-        <NotionPage recordMap={recordMap}>
+    const headerComponents = (
+        <>
             <NextSeo
                 title={post.title}
                 description={post.description}
@@ -106,8 +109,17 @@ const Page: NextPage<Props> = ({ post, recordMap }: Props) => {
                     <Tag key={tag.id} {...tag} />
                 ))}
             </div>
-        </NotionPage>
+        </>
     );
+    if (post.type == BlogType.Notion) {
+        return (
+            <NotionPage recordMap={recordMap}>{headerComponents}</NotionPage>
+        );
+    } else {
+        return (
+            <MarkdownPage content={markdown}>{headerComponents}</MarkdownPage>
+        );
+    }
 };
 
 interface IParams extends ParsedUrlQuery {
@@ -116,7 +128,13 @@ interface IParams extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const { id } = context.params as IParams;
-    const post = await getBlogArticleByCanonical(id);
+    let post: BlogArticle | null;
+    try {
+        post = await getBlogArticleByCanonical(id);
+    } catch (error) {
+        post = null;
+    }
+
     if (post) {
         const recordMap = await getPage(post.id);
         const pageBlock = recordMap.block[post.id].value;
@@ -136,11 +154,20 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
             },
             revalidate: 900,
         };
-    } else {
+    }
+    const mdPost = await getMdPostByCanonical(id);
+    if (mdPost) {
+        const pageContent = getMdPostContentBySlug(mdPost.id);
         return {
-            notFound: true,
+            props: {
+                post: mdPost,
+                markdown: pageContent,
+            },
         };
     }
+    return {
+        notFound: true,
+    };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

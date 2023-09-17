@@ -4,6 +4,7 @@ import { Layout } from "@components/layout";
 import { Section } from "@components/section";
 
 import { BlogArticle } from "@util/interface";
+import { getMdBlogPosts } from "@util/markdown";
 import { getBlogPosts } from "@util/notion";
 
 import { GetStaticProps, NextPage } from "next";
@@ -56,11 +57,14 @@ const Blog: NextPage<Props> = ({ posts }: Props) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const posts = await getBlogPosts();
+    const mdPosts = await getMdBlogPosts();
+    // const mdPosts = []
+    const allPosts = mdPosts.concat(posts);
     return {
         props: {
-            posts: posts,
+            posts: allPosts,
         },
-        revalidate: 86400,
+        revalidate: 3600,
     };
 };
 
