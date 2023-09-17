@@ -6,9 +6,15 @@ export interface ITag {
     color: string;
 }
 
+export enum BlogType {
+    Notion,
+    Markdown,
+}
+
 export interface BlogArticle {
     id: string;
     url: string;
+    type: BlogType;
     tags: ITag[];
     modifiedDate: string;
     publishDate?: string;

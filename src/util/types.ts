@@ -1,4 +1,4 @@
-import { BlogArticle, ITag, Project } from "./interface";
+import { BlogArticle, BlogType, ITag, Project } from "./interface";
 import { getCanonicalURL } from "./router";
 import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import { formatDate } from "react-notion-x";
@@ -63,6 +63,7 @@ export const extractBlogPost = (
     return {
         id: id,
         title: title,
+        type: BlogType.Notion,
         modifiedDate: modifiedDate,
         description: description,
         url: url,

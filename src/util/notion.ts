@@ -61,8 +61,7 @@ export async function getBlogPosts(): Promise<BlogArticle[]> {
         .map((postInDB) => extractBlogPost(postInDB));
     const cachedPosts = await Promise.all(
         posts.map(async (post) => {
-            const response = await db.set(post.url, post.id);
-            isDev && console.log(post.title, response);
+            await db.set(post.url, post.id);
             return post;
         }),
     );
