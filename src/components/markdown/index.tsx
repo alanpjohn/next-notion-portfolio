@@ -1,3 +1,4 @@
+import { Footer } from "@components/footer";
 import { NotionHeader } from "@components/header/blog";
 import { CustomLink } from "@components/link";
 
@@ -62,7 +63,6 @@ const MarkdownImage: React.FC<ImageProps> = ({ src, alt }) => {
     useEffect(() => {
         async function loadData(path: string) {
             const filename = path.split("/").pop();
-            console.log(filename);
             const data = await import(`public/images/${filename}`);
             setFileSrc(data);
         }
@@ -314,6 +314,7 @@ export const MarkdownPage: React.FC<
                             {content}
                         </ReactMarkdown>
                     </main>
+                    <Footer />
                 </div>
             </div>
         </div>

@@ -28,8 +28,7 @@ export async function getMdBlogPosts(): Promise<BlogArticle[]> {
         .filter((post1) => post1.publish);
     const cachedPosts = await Promise.all(
         posts.map(async (post) => {
-            const response = await db.set(post.url, post.id);
-            isDev && console.log(post.title, response);
+            await db.set(post.url, post.id);
             return post as BlogArticle;
         }),
     );
