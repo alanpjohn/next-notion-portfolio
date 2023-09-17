@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.1.1] - 2022-09-17
 ### Changed
 - Adds Markdown support to transition away from Notion Content
+- Bumps [next-seo](https://github.com/garmeeh/next-seo) from 5.15.0 to 6.1.0.
 
 ## [3.0.3] - 2022-09-13
 ### Changed
