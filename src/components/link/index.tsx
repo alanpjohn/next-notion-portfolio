@@ -44,7 +44,7 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
     }
     const internal: boolean = href.startsWith("/") || href.startsWith("#");
     return internal ? (
-        <Link href={href} passHref>
+        <Link href={href} passHref legacyBehavior>
             <a className={className} aria-label={label[0]}>
                 {children}
             </a>
