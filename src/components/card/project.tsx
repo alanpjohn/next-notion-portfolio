@@ -52,7 +52,7 @@ export const ProjectCard: React.FC<Props> = ({
                     <VscGitPullRequest />
                     <span className="font-mono">{title}</span>
                 </div>
-                {cover && (
+                {coverPreview && (
                     <div className="p-2 ">
                         <CustomImage
                             className=""
