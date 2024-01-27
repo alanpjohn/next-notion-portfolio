@@ -98,9 +98,11 @@ const Page: NextPage<Props> = ({ post, recordMap, markdown }: Props) => {
                     </span>
                 </CustomLink>
             )}
-            <p className="text-base font-clash my-2 font-normal">
-                Estimated reading time : {post.readingTime}
-            </p>
+            {post.readingTime && (
+                <p className="text-base font-clash my-2 font-normal">
+                    Estimated reading time : {post.readingTime}
+                </p>
+            )}
             <p className="text-base font-sans italic my-4 font-light">
                 {post.description}
             </p>

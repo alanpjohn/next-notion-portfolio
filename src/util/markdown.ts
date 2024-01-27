@@ -66,6 +66,7 @@ export function getMdPostBySlug(slug: string): MdBlogArticle {
         timestamp: articleDate.getTime(),
         modifiedDate: dateFormatter.format(articleDate),
         url: getCanonicalURL(title),
+        link: data["link"] || "",
         tags: parsedTags,
         description: desc,
         publish: publish || isDev,
