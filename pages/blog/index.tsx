@@ -3,10 +3,8 @@ import { BlogCard } from "@components/card";
 import { Layout } from "@components/layout";
 import { Section } from "@components/section";
 
-import { isDev } from "@util/config";
 import { BlogArticle } from "@util/interface";
 import { getMdBlogPosts } from "@util/markdown";
-import { getBlogPosts } from "@util/notion";
 
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
@@ -58,14 +56,9 @@ const Blog: NextPage<Props> = ({ posts }: Props) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const mdPosts = await getMdBlogPosts();
-    let posts = [];
-    if (isDev) {
-        posts = await getBlogPosts();
-    }
-    const allPosts = mdPosts.concat(posts);
     return {
         props: {
-            posts: allPosts,
+            posts: mdPosts,
         },
         revalidate: 3600,
     };
