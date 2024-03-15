@@ -127,6 +127,9 @@ export async function getMdProjects(): Promise<Array<Project>> {
             .map((filename) => join(projectsDirectory, filename))
             .filter((filename) => filename != aboutMePath)
             .map((filepath) => getMdProjectByName(filepath))
+            .sort((post1, post2) =>
+                post1.modifiedDate > post2.modifiedDate ? -1 : 1,
+            )
             .map(async (project) => {
                 if (project.cover) {
                     const image = "/images/" + project.cover + ".png";

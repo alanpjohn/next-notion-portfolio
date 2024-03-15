@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
                 ))}
             </div>
             <div className="flex flex-col text-sm font-sans text-foreground-secondary dark:text-background-secondary">
-                <span>Powered by Notion</span>
+                <span>Powered by Markdown</span>
                 <span>Release: v{pjson.version}</span>
             </div>
         </div>
