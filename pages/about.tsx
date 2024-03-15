@@ -2,24 +2,24 @@ import { CustomButton } from "@components/button";
 import { CustomImage } from "@components/image";
 import { Layout } from "@components/layout";
 import { CustomLink } from "@components/link";
+import { MarkdownAboutPage } from "@components/markdown/about";
 import { Section } from "@components/section";
 
 import { domain } from "@util/config";
 import { socialLinks } from "@util/internalLinks";
-import { getHomepage } from "@util/notion";
+import { getProfile } from "@util/markdown";
 import { getPreviewImage } from "@util/preview-image";
 
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { ExtendedRecordMap, PreviewImage } from "notion-types";
-import { NotionRenderer } from "react-notion-x";
+import { PreviewImage } from "notion-types";
 
 type Props = {
-    recordMap: ExtendedRecordMap;
+    mdContent: string;
     preview: PreviewImage;
 };
 
-const About: NextPage<Props> = ({ recordMap, preview }: Props) => {
+const About: NextPage<Props> = ({ preview, mdContent }: Props) => {
     return (
         <Layout>
             <NextSeo
@@ -61,28 +61,20 @@ const About: NextPage<Props> = ({ recordMap, preview }: Props) => {
                     </CustomButton>
                 </div>
             </Section>
-            <NotionRenderer
-                recordMap={recordMap}
-                fullPage={false}
-                darkMode={false}
-                components={{
-                    nextImage: CustomImage,
-                    nextLink: CustomLink,
-                }}
-            />
+            <MarkdownAboutPage content={mdContent} />
         </Layout>
     );
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const recordMap = await getHomepage();
+    const mdContent = getProfile();
     const preview = await getPreviewImage(domain + "/images/About.jpg", {
         cacheKey: "about",
     });
 
     return {
         props: {
-            recordMap: recordMap,
+            mdContent: mdContent,
             preview: preview,
         },
         revalidate: 86400,

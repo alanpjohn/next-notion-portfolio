@@ -15,7 +15,6 @@
         "@keyvhq/core": "^1.6.26",
         "@keyvhq/redis": "^1.6.28",
         "@next/bundle-analyzer": "^12.3.4",
-        "@notionhq/client": "^1.0.4",
         "@vercel/og": "^0.0.16",
         "got": "^12.6.1",
         "gray-matter": "^4.0.3",

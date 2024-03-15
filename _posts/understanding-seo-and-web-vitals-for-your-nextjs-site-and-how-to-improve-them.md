@@ -186,6 +186,8 @@ Whenever you share a link on whatsapp, telegram or any application, you get a pr
  
 For regular static page routes, this might be tolerated. Though for blog page articles, not having a social media preview image that visually describes the content of the article might reduce the engagement. A descriptive social media image will go a long way into attracting people to click on the link.
 
+![Default Social Media Preview](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pvu4iwpfxrrr68eif9rv.png)
+
 To generate dynamic social media preview images for our blog articles, I have used two serverless functions implemented via [Next.js API routes](https://nextjs.org/docs/api-routes/introduction). I could have done the social media preview generation using one function but vercel has a 50mb size limit which gets exhausted by `puppeteer-core` and `chrome-aws-lambda` which I have utilized to create the social media preview image. So I created two API routes:
 
 The `/api/preview-html` generates the preview using HTML, CSS and returns the HTML document in response.

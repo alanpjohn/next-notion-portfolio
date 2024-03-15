@@ -7,6 +7,7 @@ import { Project } from "@util/interface";
 
 import { PropsWithRef } from "react";
 import { VscGitPullRequest } from "react-icons/vsc";
+import ReactMarkdown from "react-markdown";
 
 type Props = PropsWithRef<Project>;
 
@@ -38,7 +39,85 @@ export const ProjectCard: React.FC<Props> = ({
                         <Tag key={tag.id} {...tag} />
                     ))}
                 </div>
-                <p className="">{description}</p>
+                <ReactMarkdown
+                    className="notion-page-content"
+                    components={{
+                        a: ({ children, href, ...props }) => (
+                            <CustomLink href={href} {...props}>
+                                {children}
+                            </CustomLink>
+                        ),
+                        blockquote: ({ children, ...props }) => (
+                            <blockquote
+                                className="notion-quote notion-default"
+                                {...props}
+                            >
+                                {children}
+                            </blockquote>
+                        ),
+                        p: ({ children }) => (
+                            <div className="notion-text notion-default">
+                                {children}
+                            </div>
+                        ),
+                        h1: ({ children }) => {
+                            const id = Math.floor(
+                                Math.random() * 50,
+                            ).toString();
+                            return (
+                                <h4 className="notion-h notion-h1 notion-default notion-h-indent-0">
+                                    <span>
+                                        <div
+                                            id={id}
+                                            className="notion-header-anchor"
+                                        ></div>
+                                        <span className="notion-h-title">
+                                            {children}
+                                        </span>
+                                    </span>
+                                </h4>
+                            );
+                        },
+                        h2: ({ children }) => {
+                            const id = Math.floor(
+                                Math.random() * 50,
+                            ).toString();
+                            return (
+                                <h5 className="notion-h notion-h1 notion-default notion-h-indent-0">
+                                    <span>
+                                        <div
+                                            id={id}
+                                            className="notion-header-anchor"
+                                        ></div>
+                                        <span className="notion-h-title">
+                                            {children}
+                                        </span>
+                                    </span>
+                                </h5>
+                            );
+                        },
+                        h3: ({ children }) => {
+                            const id = Math.floor(
+                                Math.random() * 50,
+                            ).toString();
+                            return (
+                                <h6 className="notion-h notion-h1 notion-default notion-h-indent-0">
+                                    <span>
+                                        <div
+                                            id={id}
+                                            className="notion-header-anchor"
+                                        ></div>
+                                        <span className="notion-h-title">
+                                            {children}
+                                        </span>
+                                    </span>
+                                </h6>
+                            );
+                        },
+                    }}
+                >
+                    {description}
+                </ReactMarkdown>
             </div>
             <div className="basis-1/3 m-4 border-2 border-foreground-primary dark:border-background-primary max-w-2xl">
                 <div

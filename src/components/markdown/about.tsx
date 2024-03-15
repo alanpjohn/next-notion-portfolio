@@ -1,5 +1,3 @@
-import { Footer } from "@components/footer";
-import { NotionHeader } from "@components/header/blog";
 import { CustomLink } from "@components/link";
 
 import { getDomainName } from "@util/router";
@@ -85,7 +83,7 @@ const MarkdownImage: React.FC<ImageProps> = ({ src, alt }) => {
     return <Image src={fileSrc} alt={alt} />;
 };
 
-export const MarkdownPage: React.FC<
+export const MarkdownAboutPage: React.FC<
     PropsWithChildren<{
         content: string;
     }>
@@ -94,7 +92,6 @@ export const MarkdownPage: React.FC<
         <div className="notion notion-app light-mode">
             <div className="notion-viewport"></div>
             <div className="notion-frame">
-                <NotionHeader />
                 <div className="notion-page-scroller">
                     <main className="notion-page notion-page-no-cover notion-page-no-icon notion-page-has-text-icon notion-full-page">
                         <h1 className="notion-title">{children}</h1>
@@ -322,7 +319,6 @@ export const MarkdownPage: React.FC<
                             {content}
                         </ReactMarkdown>
                     </main>
-                    <Footer />
                 </div>
             </div>
         </div>
