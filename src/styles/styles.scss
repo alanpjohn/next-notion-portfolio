@@ -131,6 +131,7 @@
     opacity: 1;
     border-bottom-width: 0.1rem;
     border-bottom-style: dotted;
+    border-bottom-color: var(--fg-color);
     background: transparent;
     background-origin: border-box;
     background-repeat: no-repeat;
@@ -160,12 +161,15 @@
 }
 
 .notion-quote {
-    font-size: 14px;
+    font-size: 10px;
     font-family: monospace;
-    font-style: italic;
     border-left: 5px solid var(--select-color-0);
-    background-color: var(--notion-gray_background_co);
+    background-color: #2d2d2d;
     padding: 0.75em 1em;
+
+    .notion-text {
+        color: #dad7d2 !important;
+    }
 }
 
 .notion-bookmark {

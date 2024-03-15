@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.1] - 2024-03-15
+Removed Notion Support
+### Added
+- Pages are now powered by Markdown
+### Removed
+- Notion Support
+
 ## [3.1.2] - 2022-09-18
 ### Added
 - Images for go-cdcl and ukfaas

@@ -5,7 +5,7 @@ import { Section } from "@components/section";
 
 import { domain } from "@util/config";
 import { Project } from "@util/interface";
-import { getProjects } from "@util/notion";
+import { getMdProjects } from "@util/markdown";
 
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
@@ -62,8 +62,8 @@ const Blog: NextPage<Props> = ({ projects }: Props) => {
                         </div>
                     </div>
                     <div className="flex flex-col mx-auto px-8 max-w-7xl">
-                        {projects.map((post: Project) => (
-                            <ProjectCard key={post.id} {...post} />
+                        {projects.map((proj: Project) => (
+                            <ProjectCard key={proj.id} {...proj} />
                         ))}
                     </div>
                 </div>
@@ -73,7 +73,7 @@ const Blog: NextPage<Props> = ({ projects }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const projects = await getProjects();
+    const projects = await getMdProjects();
     return {
         props: {
             projects: projects,

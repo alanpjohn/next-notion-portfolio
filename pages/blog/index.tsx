@@ -5,7 +5,6 @@ import { Section } from "@components/section";
 
 import { BlogArticle } from "@util/interface";
 import { getMdBlogPosts } from "@util/markdown";
-import { getBlogPosts } from "@util/notion";
 
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
@@ -56,13 +55,10 @@ const Blog: NextPage<Props> = ({ posts }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const posts = await getBlogPosts();
     const mdPosts = await getMdBlogPosts();
-    // const mdPosts = []
-    const allPosts = mdPosts.concat(posts);
     return {
         props: {
-            posts: allPosts,
+            posts: mdPosts,
         },
         revalidate: 3600,
     };

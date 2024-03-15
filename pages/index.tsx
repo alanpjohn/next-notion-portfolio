@@ -1,4 +1,3 @@
-// import SpinnerIllustration from "@public/vector/spinner.svg";
 import { HomeButton } from "@components/button/home";
 import { CustomImage } from "@components/image";
 import { Layout } from "@components/layout";

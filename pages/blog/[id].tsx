@@ -2,29 +2,28 @@ import { Tag } from "@components/card/tag";
 import { CustomLink } from "@components/link";
 import { MarkdownPage } from "@components/markdown";
 import CustomArticleJsonLd from "@components/meta";
-import { NotionPage } from "@components/notion";
 
 import { domain } from "@util/config";
 import { generateSiteMap } from "@util/generate-sitemap";
 import { getSocialImageUrl } from "@util/get-social-image";
-import { BlogArticle, BlogType } from "@util/interface";
-import { getMdPostByCanonical, getMdPostContentBySlug } from "@util/markdown";
-import { getBlogArticleByCanonical, getBlogPosts, getPage } from "@util/notion";
+import { BlogArticle } from "@util/interface";
+import {
+    getMdBlogPosts,
+    getMdPostByCanonical,
+    getMdPostContentBySlug,
+} from "@util/markdown";
 import { getDomainName } from "@util/router";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { ExtendedRecordMap } from "notion-types";
-import { estimatePageReadTimeAsHumanizedString } from "notion-utils";
 import { ParsedUrlQuery } from "querystring";
 
 type Props = {
     post: BlogArticle;
-    recordMap?: ExtendedRecordMap;
     markdown?: string;
 };
 
-const Page: NextPage<Props> = ({ post, recordMap, markdown }: Props) => {
+const Page: NextPage<Props> = ({ post, markdown }: Props) => {
     if (!post) {
         return <></>;
     }
@@ -98,9 +97,11 @@ const Page: NextPage<Props> = ({ post, recordMap, markdown }: Props) => {
                     </span>
                 </CustomLink>
             )}
-            <p className="text-base font-clash my-2 font-normal">
-                Estimated reading time : {post.readingTime}
-            </p>
+            {post.readingTime && (
+                <p className="text-base font-clash my-2 font-normal">
+                    Estimated reading time : {post.readingTime}
+                </p>
+            )}
             <p className="text-base font-sans italic my-4 font-light">
                 {post.description}
             </p>
@@ -111,15 +112,16 @@ const Page: NextPage<Props> = ({ post, recordMap, markdown }: Props) => {
             </div>
         </>
     );
-    if (post.type == BlogType.Notion) {
-        return (
-            <NotionPage recordMap={recordMap}>{headerComponents}</NotionPage>
-        );
-    } else {
-        return (
-            <MarkdownPage content={markdown}>{headerComponents}</MarkdownPage>
-        );
-    }
+    // if (post.type == BlogType.Notion) {
+    //     return (
+    //         <NotionPage recordMap={recordMap}>{headerComponents}</NotionPage>
+    //     );
+    // } else {
+    //     return (
+    //         <MarkdownPage content={markdown}>{headerComponents}</MarkdownPage>
+    //     );
+    // }
+    return <MarkdownPage content={markdown}>{headerComponents}</MarkdownPage>;
 };
 
 interface IParams extends ParsedUrlQuery {
@@ -128,33 +130,6 @@ interface IParams extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const { id } = context.params as IParams;
-    let post: BlogArticle | null;
-    try {
-        post = await getBlogArticleByCanonical(id);
-    } catch (error) {
-        post = null;
-    }
-
-    if (post) {
-        const recordMap = await getPage(post.id);
-        const pageBlock = recordMap.block[post.id].value;
-        const readTime = estimatePageReadTimeAsHumanizedString(
-            pageBlock,
-            recordMap,
-            {
-                wordsPerMinute: 200,
-                imageReadTimeInSeconds: 12,
-            },
-        );
-        post.readingTime = readTime;
-        return {
-            props: {
-                post: post,
-                recordMap: recordMap,
-            },
-            revalidate: 900,
-        };
-    }
     const mdPost = await getMdPostByCanonical(id);
     if (mdPost) {
         const pageContent = getMdPostContentBySlug(mdPost.id);
@@ -171,7 +146,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const posts = await getBlogPosts();
+    const posts = await getMdBlogPosts();
     generateSiteMap(posts);
     return {
         paths: posts.map((post: BlogArticle) => ({ params: { id: post.url } })),

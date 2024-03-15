@@ -56,8 +56,8 @@ export const socialLinks: TLink[] = [
     },
     {
         Icon: SiGmail,
-        text: "Gmail",
-        url: "mailto:alansandra2013@gmail.com",
+        text: "Email",
+        url: "mailto:alanpjohn@outlook.com",
     },
     {
         Icon: SiTwitter,
