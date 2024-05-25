@@ -16,14 +16,14 @@ module.exports = {
                 },
                 background: {
                     DEFAULT: "#242526",
-                    secondary: "#0D0E10",
-                    primary: "#242526",
+                    secondary: "#242526",
+                    primary: "#0D0E10",
                 },
                 accent: {
-                    DEFAULT: "#7f5af0",
-                    alternate: "#2cb67d",
+                    DEFAULT: "#e11d48",
+                    alternate: "#e11d48",
                     secondary: "#f25f4c",
-                    primary: "#7f5af0",
+                    primary: "#2cb67d",
                 },
             },
             fontFamily: {

@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
                 <div className="p-1 flex flex-row justify-center items-center">
                     {internalLinks.map((link) => (
                         <CustomLink
-                            className="hover:text-accent dark:hover:text-accent-secondary mx-2 uppercase font-mono text-sm sm:text-lg font-medium"
+                            className="hover:text-accent-primary dark:hover:text-accent-secondary mx-2 uppercase font-mono text-sm sm:text-lg font-medium"
                             key={link.text}
                             href={link.url.toString()}
                         >

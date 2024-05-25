@@ -36,7 +36,7 @@ const About: NextPage<Props> = ({ preview, mdContent }: Props) => {
                 <CustomImage
                     alt="Alan John"
                     className="rounded-full"
-                    src="/images/About.jpg"
+                    src="/images/Alan.jpg"
                     height={preview.originalHeight}
                     width={preview.originalWidth}
                     placeholder="blur"
@@ -68,7 +68,7 @@ const About: NextPage<Props> = ({ preview, mdContent }: Props) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const mdContent = getProfile();
-    const preview = await getPreviewImage(domain + "/images/About.jpg", {
+    const preview = await getPreviewImage(domain + "/images/Alan.jpg", {
         cacheKey: "about",
     });
 

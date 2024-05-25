@@ -8,10 +8,10 @@ export const Tag: React.FC<Props> = ({ id, name }: Props) => {
     return (
         <span
             key={id}
-            className=" text-jet
+            className=" text-background-secondary
             bg-accent-primary dark:bg-accent-secondary whitespace-nowrap
-       h-8 px-4 m-1 rounded-full 
-        font-sans text-lg"
+       h-6 px-4 m-1 rounded-full items-center flex
+        font-sans text-sm"
         >
             {name}
         </span>

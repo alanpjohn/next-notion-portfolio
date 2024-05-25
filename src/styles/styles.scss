@@ -72,6 +72,13 @@
         @apply bg-accent-primary hover:bg-accent-alternate dark:bg-accent-secondary dark:hover:hover:bg-accent-alternate;
     }
 
+    .button-home {
+        @apply z-0 m-2 flex h-12 w-40 cursor-pointer justify-center whitespace-nowrap rounded-md px-8 py-2.5 font-medium uppercase;
+        @apply border-2 border-background-secondary text-background-secondary;
+        @apply dark:text-background-primary;
+        @apply bg-accent-alternate hover:bg-accent-primary dark:bg-accent-alternate dark:hover:bg-accent-secondary;
+    }
+
     .button-round {
         @apply mr-2 flex h-8 flex-row items-center self-center text-3xl md:text-4xl;
         @apply group-hover:-rotate-45 group-hover:text-accent-primary  dark:group-hover:text-accent-secondary;

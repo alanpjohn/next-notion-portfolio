@@ -153,3 +153,14 @@ export function getProfile(): string {
 
     return content;
 }
+
+export async function getLatestBlog(): Promise<BlogArticle> {
+    const articles = await getMdBlogPosts();
+
+    return articles[0];
+}
+
+export async function getFeaturedProject(): Promise<Project> {
+    const projects = await getMdProjects();
+    return projects[0];
+}

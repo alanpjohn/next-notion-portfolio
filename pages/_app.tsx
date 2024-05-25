@@ -5,8 +5,8 @@ import { AppProps } from "next/app";
 import Script from "next/script";
 import "prismjs/themes/prism-tomorrow.css";
 import React, { useEffect } from "react";
-import "react-notion-x/src/styles.css";
 
+import "@styles/notion.css";
 import "@styles/styles.scss";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
