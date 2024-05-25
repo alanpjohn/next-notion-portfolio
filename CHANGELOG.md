@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [4.0.2] - 2024-05-24
 ## Added
-- Latest post and project to home screen
+- Call out buttons to about page and photography in `/` page
+- Latest post and project in `/` page
 ## Removed
 - Home page button components
 

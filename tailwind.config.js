@@ -20,10 +20,10 @@ module.exports = {
                     primary: "#0D0E10",
                 },
                 accent: {
-                    DEFAULT: "#2cb67d",
-                    alternate: "#2cb67d",
+                    DEFAULT: "#e11d48",
+                    alternate: "#e11d48",
                     secondary: "#f25f4c",
-                    primary: "#e11d48",
+                    primary: "#2cb67d",
                 },
             },
             fontFamily: {

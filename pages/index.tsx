@@ -1,3 +1,4 @@
+import { CustomButton } from "@components/button";
 import { HomeCard } from "@components/card/home";
 import { Tag } from "@components/card/tag";
 import { CustomImage } from "@components/image";
@@ -37,26 +38,27 @@ const Home: NextPage<Props> = ({ preview, blog, project }: Props) => {
                     <h1
                         className="text-3xl lg:text-4xl 
                         font-light pr-12 mb-4 pb-2 w-min whitespace-nowrap border-dotted
-                        border-b-4 border-accent-alternate"
+                        border-b-4 border-accent-primary"
                     >
                         Alan John
                     </h1>
                     <h2 className="text-3xl md:text-5xl lg:text-7xl md:pl-4 whitespace-pre-wrap">
-                        Software Developer
+                        Software Engineer
                     </h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 grid-flow-row mx-auto mt-6">
-                    <div className="md:row-span-2 max-w-sm p-4 mx-auto">
+                    <div className="md:row-span-2 max-w-lg p-4 mx-auto">
                         <CustomImage
                             alt="Alan John"
                             src="/images/Alan.jpg"
                             height={preview.originalHeight}
                             width={preview.originalWidth}
-                            className="rounded-md"
+                            className="rounded-xl"
                             placeholder="blur"
                             blurDataURL={preview.dataURIBase64}
                         />
                     </div>
+
                     <HomeCard
                         title={blog.title}
                         subtitle={blog.description}
@@ -83,6 +85,15 @@ const Home: NextPage<Props> = ({ preview, blog, project }: Props) => {
                             </div>
                         )}
                     </HomeCard>
+                    <div></div>
+                    <div className="mx-auto md:mx-0 flex flex-row">
+                        <CustomButton href="/projects">
+                            View Projects
+                        </CustomButton>
+                        <CustomButton href="https://photos.alanjohn.dev">
+                            View Photos
+                        </CustomButton>
+                    </div>
                 </div>
             </Section>
         </Layout>
