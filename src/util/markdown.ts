@@ -26,7 +26,7 @@ export async function getMdBlogPosts(): Promise<BlogArticle[]> {
         .map((slug) => getMdPostBySlug(slug))
         // sort posts by date in descending order
         .sort((post1, post2) =>
-            post1.modifiedDate > post2.modifiedDate ? -1 : 1,
+            post1.modifiedDate > post2.modifiedDate ? 1 : -1,
         )
         .filter((post1) => post1.publish);
     const cachedPosts = await Promise.all(
@@ -100,6 +100,7 @@ function getMdProjectByName(name: string): Project {
         month: "short",
         day: "numeric",
     });
+
     const parsedTags: ITag[] = tags
         ? tags.map((tag) => ({
               id: tag,
@@ -107,7 +108,7 @@ function getMdProjectByName(name: string): Project {
               name: tag,
           }))
         : [];
-    return {
+    const project = {
         id: name,
         url: data["url"],
         cover: data["cover"],
@@ -115,9 +116,10 @@ function getMdProjectByName(name: string): Project {
         description: content,
         title: data["title"],
         modifiedDate: dateFormatter.format(articleDate),
-        lastUpdated: dateFormatter.format(articleDate),
+        lastUpdated: articleDate.toISOString(),
         link: data["url"],
     };
+    return project;
 }
 
 export async function getMdProjects(): Promise<Array<Project>> {
@@ -128,7 +130,7 @@ export async function getMdProjects(): Promise<Array<Project>> {
             .filter((filename) => filename != aboutMePath)
             .map((filepath) => getMdProjectByName(filepath))
             .sort((post1, post2) =>
-                post1.modifiedDate > post2.modifiedDate ? -1 : 1,
+                post1.lastUpdated > post2.lastUpdated ? -1 : 1,
             )
             .map(async (project) => {
                 if (project.cover) {

@@ -21,6 +21,14 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ preview, blog, project }: Props) => {
+    const blog_description =
+        blog.description.length > 100
+            ? blog.description.substring(0, 100) + "..."
+            : blog.description;
+    const project_description =
+        project.description.length > 100
+            ? project.description.substring(0, 100) + "..."
+            : project.description;
     return (
         <Layout>
             <NextSeo
@@ -61,7 +69,7 @@ const Home: NextPage<Props> = ({ preview, blog, project }: Props) => {
 
                     <HomeCard
                         title={blog.title}
-                        subtitle={blog.description}
+                        subtitle={blog_description}
                         isBlog={true}
                         url={"/blog/" + blog.url}
                     >
@@ -75,7 +83,7 @@ const Home: NextPage<Props> = ({ preview, blog, project }: Props) => {
                     </HomeCard>
                     <HomeCard
                         title={project.title}
-                        subtitle={project.description}
+                        subtitle={project_description}
                     >
                         {project.tags.length > 0 && (
                             <div className="flex flex-wrap shrink">

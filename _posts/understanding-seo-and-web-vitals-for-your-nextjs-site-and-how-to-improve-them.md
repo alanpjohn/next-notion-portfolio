@@ -9,6 +9,7 @@ tags:
     - corewebvitals
     - lighthouse
 publish: true
+link: https://dev.to/alanpjohn/understanding-seo-and-web-vitals-for-your-nextjs-site-and-how-to-improve-them-3k1a
 ---
 
 # Prerequisites

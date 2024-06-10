@@ -9,6 +9,7 @@ tags:
     - notion
     - typescript
 publish: true
+link: https://dev.to/alanpjohn/creating-a-nextjs-blog-in-typescript-using-notion-api-2a9
 ---
 
 > This article is for an outdated version of the notion API. Currently I am moving away from Notion as they have introduced a limit on the blocks in the free tier which limits my note making progress.
