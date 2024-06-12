@@ -12,13 +12,13 @@ link: https://dev.to/alanpjohn/forking-openfaas-faasd-to-support-firecracker-con
 ---
 # Why you would need to do that?
 
-As part of my research, I needed to evaluate the performance of Firecracker in serverless environments compared to traditional Linux containers. [OpenFaaS](https://www.openfaas.com), with its modular design, offered an excellent framework for this comparison. OpenFaas offered two running modes, which were OpenFaas using Kubernetes and [faasd](https://github.com/openfaas/faasd). Firecracker-containerd isn’t directly supported by Kubernetes due to the lack of a stable CRI plugin unless you consider the now unsupported [Firekube](https://github.com/weaveworks/wks-quickstart-firekube). Extending faasd to support Firecracker is simpler and served as sufficient proof of concept from my research. Otherwise, from a general point of view, the primary advantage of Firecracker over LXC in serverless computing is isolation, which isn’t crucial if you’re running faasd since serverless loads on faasd are typically trusted. So, there is no big need to do this other than plain curiosity.
+As part of my research, I needed to evaluate the performance of Firecracker in serverless environments compared to traditional Linux containers (LXC). [OpenFaaS](https://www.openfaas.com), with its modular design, offered an excellent framework for this comparison. OpenFaas offered two running modes, which were OpenFaas using Kubernetes and [faasd](https://github.com/openfaas/faasd). Firecracker-containerd isn’t directly supported by Kubernetes due to the lack of a stable CRI plugin unless you consider the now unsupported [Firekube](https://github.com/weaveworks/wks-quickstart-firekube). Extending faasd to support Firecracker was simpler and served as sufficient proof of concept from my research. Otherwise, from a general point of view, the primary advantage of Firecracker over LXC in serverless computing is isolation, which isn’t crucial if you’re running faasd since serverless loads on faasd are typically trusted. So, there is no big need to do this other than plain curiosity.
 
-With that in mind, let’s dive into the details. This guide isn’t a polished product; there are still rough edges, which I’ll cover in the caveats section later.
+With that in mind, let’s dive into the details. This guide isn’t a polished product; there are still rough edges, which I’ll cover in the conclusion section later.
 
 # Prerequisites
 
-To set up Firecracker, follow the guide at [Firecracker-containerd's Getting Started](https://github.com/firecracker-microvm/firecracker-containerd/blob/main/docs/getting-started.md). The key steps involve building the necessary components by running the make command.
+To set up Firecracker, I followed the guide at [Firecracker-containerd's Getting Started](https://github.com/firecracker-microvm/firecracker-containerd/blob/main/docs/getting-started.md). The key steps involve building the necessary components by running the make command.
 
 Before running make, I made a few adjustments to the Makefile to use `golang:1.21-bullseye` as the builder image. Then, I ran the following commands:
 
@@ -28,14 +28,12 @@ Before running make, I made a few adjustments to the Makefile to use `golang:1.2
 
 The goal is to have binaries for `Firecracker`, `firecracker-ctr`, `firecracker-containerd`, and `containerd-shim-v2-firecracker`, along with the Firecracker CNI plugin [`tc-redirect-tap`](https://github.com/firecracker-microvm/firecracker-go-sdk/tree/main/cni). The guide well explains each setup.
 
-We use the `tc-redirect-tap` CNI plugin to connect containers running on Firecracker via the CNI network. A five-year-old (quite outdated) guide on Firecracker-containerd CNI networking options is found [here](https://github.com/firecracker-microvm/firecracker-containerd/blob/main/docs/networking.md). To simplify things, we connect the instances without using a network bridge and let Firecracker-containerd handle the networks.
-
-For simplicity's sake, we connect to the instances without using a network bridge and let Firecracker-containerd set up the networks. I attempted to adjust the configuration to use a network bridge, but using the `bridge` CNI plugin with the `tc-redirect-tap` plugin shows some weird behaviour, ultimately making the instance unreachable. So we set up container networking through the firecracker containerd configuration as mentioned in the [Networking Support section of the getting started guide](https://github.com/firecracker-microvm/firecracker-containerd/blob/main/docs/getting-started.md#networking-support). so ensure that your firecracker-containerd configuration files `/etc/containerd/firecracker-runtime.json` and `config.toml` are configured as per as the getting started guide.
-I recommend you testing out your firecracker-containerd setup and playing around with it to get comfortable with it.
+I use the `tc-redirect-tap` CNI plugin to connect containers running on Firecracker to the CNI network. A five-year-old (quite outdated) guide on Firecracker-containerd CNI networking options is found [here](https://github.com/firecracker-microvm/firecracker-containerd/blob/main/docs/networking.md). For simplicity's sake, I connect to the instances without using a network bridge and let Firecracker-containerd set up the networks. I attempted to adjust the configuration to use a network bridge, but using the `bridge` CNI plugin with the `tc-redirect-tap` plugin shows some weird behaviour, ultimately making the instance unreachable. So we set up container networking through the firecracker containerd configuration as mentioned in the [Networking Support section of the getting started guide](https://github.com/firecracker-microvm/firecracker-containerd/blob/main/docs/getting-started.md#networking-support). so ensure that your firecracker-containerd configuration files `/etc/containerd/firecracker-runtime.json` and `config.toml` are configured as per as the getting started guide.
+I recommend testing out your firecracker-containerd setup and playing around with it to get comfortable with it.
 
 # Extending faasd to firecracker-containerd
 
-We must set faasd to use the firecracker-containerd socket instead of the default containerd socket. While we can pass the socket and runtime using environment variables, as previously mentioned, we are **only** running on firecracker containerd, so we can hard set the default runtime and socket. Changing the runtime and socket at runtime using environment variables would mean adding code to handle both cases and validating the configurations of all components, which is added code which we are avoiding for now. You can override the default runtime in the `ReadFromEnv` function at the `pkg/provider/config/read.go`. Changes need to be made to the `read_test.go` test file accordingly
+I had to set faasd to use the firecracker-containerd socket instead of the default containerd socket. While we can pass the socket and runtime using environment variables, as previously mentioned, the objective is **only** running on firecracker containerd, so we can hard set the default runtime and socket. Changing the runtime and socket at runtime using environment variables would mean adding code to handle both cases and validating the configurations of all components, which is additionaly code which we are avoiding for now. You can override the default runtime in the `ReadFromEnv` function at the `pkg/provider/config/read.go`. Changes need to be made to the `read_test.go` test file accordingly.
 
 ```go
 func ReadFromEnv(hasEnv types.HasEnv) (*types.FaaSConfig, *ProviderConfig, error) {
@@ -84,7 +82,7 @@ import (
 )
 ```
 
-Now, we adjust the container options for firecracker-containerd by adding the `firecrackeroci.WithVMID` and `firecrackeroci.WithVMNetwork` options to be able to identify the VM and make firecracker containerd setup the networking as per the previous discussion on networking. We also commented out the mounts option as adding mounted volumes on firecracker-containerd was causing permission issues, and firecracker-containerd could not find the mounts (This could be a system issue with my system, something to be looked into later).
+Now, we adjust the container options for firecracker-containerd by adding the `firecrackeroci.WithVMID` and `firecrackeroci.WithVMNetwork` options to be able to identify the VM and make firecracker containerd setup the networking as per the previous discussion on networking. We also commented out the mounts option as adding mounted volumes on firecracker-containerd was causing permission issues, and firecracker-containerd could not find the mounts (An issue that is persistent when running with Microk8s Kata as well).
 
 ```go
 func deploy(ctx context.Context, req types.FunctionDeployment, client *containerd.Client, cni gocni.CNI, secretMountPath string, alwaysPull bool) error {
@@ -215,7 +213,7 @@ var defaultCNIConf = fmt.Sprintf(`
 `, defaultNetworkName, defaultSubnet, CNIDataDir)
 
 ```
-faasd retrieves the IP addresses for the containers by using the service name and the container task PID. Still, I observed the task PID returned by the firecracker-containerd is not in line with the task PID of the firecracker process, which means the current code to retrieve the IP address would fail. So, I removed the PID parameter and used the service name to retrieve the IP address.
+faasd retrieves the IP addresses for the containers by using the service name and the container task PID. However, I observed the task PID returned by the firecracker-containerd is not in line with the task PID of the firecracker process, which means the current code to retrieve the IP address would fail. So, I removed the PID parameter and used the service name to retrieve the IP address.
 ```go
 func isCNIResultForContainer(fileName, container string) (bool, error) {
 	found := false
@@ -267,7 +265,7 @@ Changes must be made to the `cni_network_test.go` test file accordingly.
 The `GetIPAdress` function is also called the `pkg/supervisor.go`, which runs the Faas gateway and other processes required by OpenFaas. Therefore, we would need to modify the function call in that.
 
 ## Changes to conf files
-To avoid this fork from clashing with an existing OpenFaas faasd installation, we rename the binary and systemd services as faasd-fc; in the relevant file paths, in the `Makefile`,  the systemd service files in `hack/faasd-fc.service` and `hack/faasd-fc-provider.service` and the `cmd/install.go` file. 
+To avoid this fork from clashing with an existing OpenFaas faasd installation, I renamed the binary and systemd services as faasd-fc; in the relevant file paths, in the `Makefile`,  the systemd service files in `hack/faasd-fc.service` and `hack/faasd-fc-provider.service` and the `cmd/install.go` file. 
 You can build the faasd-fc binary using the command.
 ```bash
 make dist-local
