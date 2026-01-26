@@ -1,5 +1,7 @@
 # next-notion-portfolio
 
+> No longer maintained, now using https://github.com/alanpjohn/2026-portfolio
+
 This project was build on a template generated with [superplate](https://github.com/pankod/superplate).
 Currently hosted on vercel at www.alanjohn.dev
 
